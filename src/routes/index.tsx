@@ -69,11 +69,11 @@ function Hero() {
       });
     };
 
-    const w = window as unknown as {
-      YT?: unknown;
+    const w2 = window as unknown as {
+      YT?: { Player?: unknown };
       onYouTubeIframeAPIReady?: () => void;
     };
-    if (w.YT?.Player) {
+    if (w2.YT && typeof w2.YT.Player === "function") {
       build();
     } else {
       const prev = w.onYouTubeIframeAPIReady;
