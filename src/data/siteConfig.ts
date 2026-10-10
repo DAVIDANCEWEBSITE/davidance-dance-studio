@@ -1,4 +1,5 @@
 import logoAsset from "@/assets/logo.png.asset.json";
+import teamPhotoAsset from "@/assets/equipa-davidance.jpg.asset.json";
 
 /**
  * DAVIDANCE — CONTEÚDO CENTRAL
