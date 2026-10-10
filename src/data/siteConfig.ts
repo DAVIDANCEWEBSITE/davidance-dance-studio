@@ -164,7 +164,7 @@ export type ProjectMedia =
 
 export const projectYears: { year: number; description: string; media: ProjectMedia[] }[] = [
   { year: 2026, description: "Um ano de palco, partilha e superação.", media: [
-    { type: "youtube", id: "dQw4w9WgXcQ" },
+    { type: "video", src: "/projeto-2026.mp4", poster: u("photo-1508700929628-666bc8bd84ea") }, // ou { type: "youtube", id: "ID_DO_VIDEO" }
     { type: "image", src: u("photo-1547153760-18fc86324498") },
     { type: "image", src: u("photo-1508700929628-666bc8bd84ea") },
     { type: "image", src: u("photo-1545959570-a94084071b5d") },
