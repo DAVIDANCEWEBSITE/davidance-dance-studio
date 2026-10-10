@@ -40,13 +40,14 @@ function Hero() {
   const y = useTransform(scrollY, [0, 800], [0, 200]);
   return (
     <section className="relative h-[100svh] overflow-hidden bg-plum" aria-label="Vídeo de apresentação">
-      <motion.div style={{ y }} className="absolute inset-0">
-        <video
-          className="h-full w-full object-cover"
-          src={siteConfig.hero.video}
-          poster={siteConfig.hero.poster}
-          autoPlay muted loop playsInline preload="auto"
-          aria-hidden
+      <motion.div style={{ y }} className="absolute inset-0 overflow-hidden" aria-hidden>
+        <iframe
+          src={`https://www.youtube.com/embed/${siteConfig.hero.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${siteConfig.hero.youtubeId}&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1&iv_load_policy=3`}
+          title="Davidance — vídeo de apresentação"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          tabIndex={-1}
+          frameBorder="0"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[56.25vw] w-[177.78vh] min-h-full min-w-full -translate-x-1/2 -translate-y-1/2"
         />
       </motion.div>
       <div className="absolute inset-0 bg-hero-overlay" />

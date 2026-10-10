@@ -185,7 +185,14 @@ export function ContactCard({ light, className }: { light?: boolean; className?:
 
 /* ---------- Logo ---------- */
 export function Logo({ light, className }: { light?: boolean; className?: string }) {
-  if (siteConfig.logo) return <img src={siteConfig.logo} alt="Davidance" className={cn("h-10 w-auto", className)} />;
+  if (siteConfig.logo)
+    return (
+      <img
+        src={siteConfig.logo}
+        alt="Davidance"
+        className={cn("h-10 w-auto", light ? "invert" : "", className)}
+      />
+    );
   return (
     <span className={cn("font-display text-2xl italic tracking-tight transition-colors duration-500", light ? "text-cream" : "text-primary", className)}>
       Davidance
