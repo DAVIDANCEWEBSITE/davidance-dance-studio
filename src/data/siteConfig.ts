@@ -1,3 +1,5 @@
+import logoAsset from "@/assets/logo.png.asset.json";
+
 /**
  * DAVIDANCE — CONTEÚDO CENTRAL
  * Edite aqui todos os textos, links, imagens e dados do site.
@@ -12,10 +14,10 @@ export const siteConfig = {
   tagline: "Onde a dança é família.",
   showHeroTagline: false,
   // Substitua por "/logo.png" (coloque o ficheiro em /public) ou por um URL.
-  logo: "" as string,
+  logo: logoAsset.url,
   hero: {
-    // [PLACEHOLDER: hero.mp4] — coloque o vídeo em /public/hero.mp4 ou indique um URL.
-    video: "/hero.mp4",
+    // Vídeo do hero no YouTube — toca automaticamente, sem som, em loop.
+    youtubeId: "c4Frs8xJtiA",
     poster: u("photo-1508700929628-666bc8bd84ea", 1920),
   },
 

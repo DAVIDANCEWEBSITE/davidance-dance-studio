@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { siteConfig, styles, teachers, getStyle } from "@/data/siteConfig";
@@ -38,16 +38,62 @@ function Home() {
 function Hero() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 800], [0, 200]);
+  const hostRef = useRef<HTMLDivElement>(null);
+
+  // Player do YouTube sem controlos, em loop infinito (via IFrame API).
+  useEffect(() => {
+    const host = hostRef.current;
+    if (!host || !siteConfig.hero.youtubeId) return;
+    let player: { destroy?: () => void } | null = null;
+    let cancelled = false;
+
+    const build = () => {
+      if (cancelled) return;
+      const w = window as unknown as { YT?: { Player?: unknown } };
+      if (!w.YT || typeof w.YT.Player !== "function") return;
+      const YT = w.YT as { Player: new (el: HTMLElement, opts: unknown) => { destroy?: () => void } };
+      player = new YT.Player(host, {
+        videoId: siteConfig.hero.youtubeId,
+        width: "100%",
+        height: "100%",
+        playerVars: {
+          autoplay: 1, mute: 1, controls: 0, playsinline: 1,
+          rel: 0, modestbranding: 1, iv_load_policy: 3, disablekb: 1, fs: 0,
+        },
+        events: {
+          onReady: (e: { mute: () => void; playVideo: () => void }) => { e.mute(); e.playVideo(); },
+          onStateChange: (e: { data: number; seekTo: (s: number, allow: boolean) => void }) => {
+            if (e.data === 0) e.seekTo(0, true); // volta ao início quando acaba
+          },
+        },
+      });
+    };
+
+    const w2 = window as unknown as {
+      YT?: { Player?: unknown };
+      onYouTubeIframeAPIReady?: () => void;
+    };
+    if (w2.YT && typeof w2.YT.Player === "function") {
+      build();
+    } else {
+      const prev = w2.onYouTubeIframeAPIReady;
+      w2.onYouTubeIframeAPIReady = () => { prev?.(); build(); };
+      if (!document.querySelector('script[src*="iframe_api"]')) {
+        const tag = document.createElement("script");
+        tag.src = "https://www.youtube.com/iframe_api";
+        document.head.appendChild(tag);
+      }
+    }
+    return () => { cancelled = true; player?.destroy?.(); };
+  }, []);
+
   return (
     <section className="relative h-[100svh] overflow-hidden bg-plum" aria-label="Vídeo de apresentação">
-      <motion.div style={{ y }} className="absolute inset-0">
-        <video
-          className="h-full w-full object-cover"
-          src={siteConfig.hero.video}
-          poster={siteConfig.hero.poster}
-          autoPlay muted loop playsInline preload="auto"
-          aria-hidden
-        />
+      <motion.div style={{ y }} className="absolute inset-0 overflow-hidden" aria-hidden>
+        <img src={siteConfig.hero.poster} alt="" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[56.25vw] w-[177.78vh] min-h-full min-w-full -translate-x-1/2 -translate-y-1/2">
+          <div ref={hostRef} className="h-full w-full" />
+        </div>
       </motion.div>
       <div className="absolute inset-0 bg-hero-overlay" />
       {siteConfig.showHeroTagline && (
