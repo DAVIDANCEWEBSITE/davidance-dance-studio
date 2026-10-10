@@ -6,7 +6,7 @@ import { siteConfig } from "@/data/siteConfig";
 import { SmartImage } from "./SmartImage";
 
 /* ---------- Reveal (scroll animation) ---------- */
-export function Reveal({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+export function Reveal({ children, className, delay = 0 }: { children: React.ReactNode; className?: string | undefined; delay?: number }) {
   const reduce = useReducedMotion();
   return (
     <motion.div
@@ -108,7 +108,7 @@ export function PageHero({ title, eyebrow, image, children }: { title: string; e
 /* ---------- GalleryCard ---------- */
 export function GalleryCard({
   to, params, image, title, tag, className,
-}: { to: "/estilos/$slug"; params: { slug: string }; image: string; title: string; tag?: string; className?: string }) {
+}: { to: "/estilos/$slug"; params: { slug: string }; image: string; title: string; tag?: string | undefined; className?: string }) {
   return (
     <Link to={to} params={params} className={cn("group relative block overflow-hidden rounded-[2rem] shadow-soft", className)} aria-label={title}>
       <SmartImage src={image} alt={title} wrapperClassName="absolute inset-0" className="group-hover:scale-110" />
