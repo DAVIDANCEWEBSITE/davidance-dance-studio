@@ -163,29 +163,33 @@ function TeachersSection() {
       <div className="blob -left-32 top-1/3 h-96 w-96 bg-rose" />
       <div className="container relative mx-auto px-5">
         <SectionTitle eyebrow="Quem te guia" title="Os Nossos Professores" />
-        <Reveal className="relative">
-          <div className="absolute -bottom-4 -right-3 h-full w-full rounded-[2.5rem] bg-gradient-to-br from-violet to-rose opacity-60" aria-hidden />
-          <SmartImage src={teamPhoto} alt="Equipa de professores Davidance" wrapperClassName="relative aspect-[16/10] rounded-[2.5rem] shadow-soft md:aspect-[21/9]" />
-        </Reveal>
-        <div className="mt-12 flex items-center justify-between gap-4">
-          <p className="min-w-0 text-sm font-semibold uppercase tracking-[0.25em] text-muted-foreground">Conhece a equipa</p>
-          <div className="flex shrink-0 gap-2">
-            <button onClick={() => scroll(-1)} aria-label="Anterior" className="grid h-10 w-10 place-items-center rounded-full bg-card shadow-soft transition hover:bg-primary hover:text-primary-foreground"><ChevronLeft className="h-5 w-5" /></button>
-            <button onClick={() => scroll(1)} aria-label="Seguinte" className="grid h-10 w-10 place-items-center rounded-full bg-card shadow-soft transition hover:bg-primary hover:text-primary-foreground"><ChevronRight className="h-5 w-5" /></button>
-          </div>
-        </div>
-        <div ref={scroller} className="-mx-5 mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {teachers.map((t) => (
-            <article key={t.name} className="w-44 shrink-0 snap-start rounded-[1.75rem] bg-card p-3 shadow-soft md:w-52">
-              <SmartImage src={t.photo} alt={t.name} wrapperClassName="aspect-square rounded-[1.25rem]" />
-              <h3 className="mt-3 truncate px-1 text-lg font-medium text-foreground">{t.name}</h3>
-              <div className="mt-2 flex flex-wrap gap-1.5 px-1 pb-1">
-                {getTeacherStyles(t.name).map((s) => (
-                  <span key={s.slug} className="rounded-full bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground">{s.name}</span>
-                ))}
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:gap-14">
+          <Reveal className="relative mx-auto w-full max-w-xs lg:max-w-none">
+            <div className="absolute -bottom-4 -right-3 h-full w-full rounded-[2.5rem] bg-gradient-to-br from-violet to-rose opacity-60" aria-hidden />
+            <SmartImage src={teamPhoto} alt="Equipa de professores Davidance" wrapperClassName="relative aspect-[1387/1920] rounded-[2.5rem] shadow-soft" />
+          </Reveal>
+          <div className="min-w-0">
+            <div className="flex items-center justify-between gap-4">
+              <p className="min-w-0 text-sm font-semibold uppercase tracking-[0.25em] text-muted-foreground">Conhece a equipa</p>
+              <div className="flex shrink-0 gap-2">
+                <button onClick={() => scroll(-1)} aria-label="Anterior" className="grid h-10 w-10 place-items-center rounded-full bg-card shadow-soft transition hover:bg-primary hover:text-primary-foreground"><ChevronLeft className="h-5 w-5" /></button>
+                <button onClick={() => scroll(1)} aria-label="Seguinte" className="grid h-10 w-10 place-items-center rounded-full bg-card shadow-soft transition hover:bg-primary hover:text-primary-foreground"><ChevronRight className="h-5 w-5" /></button>
               </div>
-            </article>
-          ))}
+            </div>
+            <div ref={scroller} className="-mx-5 mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 lg:mx-0 lg:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {teachers.map((t) => (
+                <article key={t.name} className="w-44 shrink-0 snap-start rounded-[1.75rem] bg-card p-3 shadow-soft md:w-52">
+                  <SmartImage src={t.photo} alt={t.name} wrapperClassName="aspect-square rounded-[1.25rem]" />
+                  <h3 className="mt-3 truncate px-1 text-lg font-medium text-foreground">{t.name}</h3>
+                  <div className="mt-2 flex flex-wrap gap-1.5 px-1 pb-1">
+                    {getTeacherStyles(t.name).map((s) => (
+                      <span key={s.slug} className="rounded-full bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground">{s.name}</span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

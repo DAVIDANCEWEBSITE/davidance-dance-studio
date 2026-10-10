@@ -1,4 +1,5 @@
 import logoAsset from "@/assets/logo.png.asset.json";
+import teamPhotoAsset from "@/assets/equipa-davidance.jpg.asset.json";
 
 /**
  * DAVIDANCE — CONTEÚDO CENTRAL
@@ -143,7 +144,7 @@ export const styles: Style[] = [
 export type Teacher = { name: string; photo: string };
 
 /** Fotografia de grupo de todos os professores. */
-export const teamPhoto = u("photo-1504609773096-104ff2c73ba4", 1800);
+export const teamPhoto = teamPhotoAsset.url;
 
 export const teachers: Teacher[] = [
   { name: "Ana Ribeiro", photo: u("photo-1494790108377-be9c29b29330", 800) },
