@@ -84,7 +84,7 @@ function ContactForm() {
   };
 
   const field = "w-full rounded-2xl border border-input bg-card px-5 py-3.5 text-foreground outline-none transition focus:border-violet focus:ring-4 focus:ring-violet/20";
-  const Err = ({ m }: { m?: string }) => (m ? <p className="mt-1.5 text-sm text-destructive" role="alert">{m}</p> : null);
+  const Err = ({ m }: { m?: string | undefined }) => (m ? <p className="mt-1.5 text-sm text-destructive" role="alert">{m}</p> : null);
 
   if (sent) {
     return (
