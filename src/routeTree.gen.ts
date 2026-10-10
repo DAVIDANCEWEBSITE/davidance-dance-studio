@@ -10,7 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CasamentosRouteImport } from './routes/casamentos'
 import { Route as EstilosRouteImport } from './routes/estilos'
+import { Route as HorarioContactosRouteImport } from './routes/horario-contactos'
+import { Route as ProjetoDavidanceRouteImport } from './routes/projeto-davidance'
 import { Route as EstilosIndexRouteImport } from './routes/estilos.index'
 import { Route as EstilosSlugRouteImport } from './routes/estilos.$slug'
 
@@ -19,9 +22,24 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CasamentosRoute = CasamentosRouteImport.update({
+  id: '/casamentos',
+  path: '/casamentos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EstilosRoute = EstilosRouteImport.update({
   id: '/estilos',
   path: '/estilos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HorarioContactosRoute = HorarioContactosRouteImport.update({
+  id: '/horario-contactos',
+  path: '/horario-contactos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjetoDavidanceRoute = ProjetoDavidanceRouteImport.update({
+  id: '/projeto-davidance',
+  path: '/projeto-davidance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EstilosIndexRoute = EstilosIndexRouteImport.update({
@@ -37,33 +55,66 @@ const EstilosSlugRoute = EstilosSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/casamentos': typeof CasamentosRoute
   '/estilos': typeof EstilosRouteWithChildren
+  '/horario-contactos': typeof HorarioContactosRoute
+  '/projeto-davidance': typeof ProjetoDavidanceRoute
   '/estilos/$slug': typeof EstilosSlugRoute
   '/estilos/': typeof EstilosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/casamentos': typeof CasamentosRoute
+  '/horario-contactos': typeof HorarioContactosRoute
+  '/projeto-davidance': typeof ProjetoDavidanceRoute
   '/estilos/$slug': typeof EstilosSlugRoute
   '/estilos': typeof EstilosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/casamentos': typeof CasamentosRoute
   '/estilos': typeof EstilosRouteWithChildren
+  '/horario-contactos': typeof HorarioContactosRoute
+  '/projeto-davidance': typeof ProjetoDavidanceRoute
   '/estilos/$slug': typeof EstilosSlugRoute
   '/estilos/': typeof EstilosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/estilos' | '/estilos/$slug' | '/estilos/'
+  fullPaths:
+    | '/'
+    | '/casamentos'
+    | '/estilos'
+    | '/horario-contactos'
+    | '/projeto-davidance'
+    | '/estilos/$slug'
+    | '/estilos/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/estilos/$slug' | '/estilos'
-  id: '__root__' | '/' | '/estilos' | '/estilos/$slug' | '/estilos/'
+  to:
+    | '/'
+    | '/casamentos'
+    | '/horario-contactos'
+    | '/projeto-davidance'
+    | '/estilos/$slug'
+    | '/estilos'
+  id:
+    | '__root__'
+    | '/'
+    | '/casamentos'
+    | '/estilos'
+    | '/horario-contactos'
+    | '/projeto-davidance'
+    | '/estilos/$slug'
+    | '/estilos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CasamentosRoute: typeof CasamentosRoute
   EstilosRoute: typeof EstilosRouteWithChildren
+  HorarioContactosRoute: typeof HorarioContactosRoute
+  ProjetoDavidanceRoute: typeof ProjetoDavidanceRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,11 +126,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/casamentos': {
+      id: '/casamentos'
+      path: '/casamentos'
+      fullPath: '/casamentos'
+      preLoaderRoute: typeof CasamentosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/estilos': {
       id: '/estilos'
       path: '/estilos'
       fullPath: '/estilos'
       preLoaderRoute: typeof EstilosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/horario-contactos': {
+      id: '/horario-contactos'
+      path: '/horario-contactos'
+      fullPath: '/horario-contactos'
+      preLoaderRoute: typeof HorarioContactosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projeto-davidance': {
+      id: '/projeto-davidance'
+      path: '/projeto-davidance'
+      fullPath: '/projeto-davidance'
+      preLoaderRoute: typeof ProjetoDavidanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/estilos/': {
@@ -114,7 +186,10 @@ const EstilosRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CasamentosRoute: CasamentosRoute,
   EstilosRoute: EstilosRouteWithChildren,
+  HorarioContactosRoute: HorarioContactosRoute,
+  ProjetoDavidanceRoute: ProjetoDavidanceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
