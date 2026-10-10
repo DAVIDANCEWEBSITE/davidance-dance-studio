@@ -49,8 +49,9 @@ function Hero() {
 
     const build = () => {
       if (cancelled) return;
-      const YT = (window as unknown as { YT?: { Player: new (el: HTMLElement, opts: unknown) => { destroy?: () => void } } }).YT;
-      if (!YT) return;
+      const w = window as unknown as { YT?: { Player?: unknown } };
+      if (!w.YT || typeof w.YT.Player !== "function") return;
+      const YT = w.YT as { Player: new (el: HTMLElement, opts: unknown) => { destroy?: () => void } };
       player = new YT.Player(host, {
         videoId: siteConfig.hero.youtubeId,
         width: "100%",
