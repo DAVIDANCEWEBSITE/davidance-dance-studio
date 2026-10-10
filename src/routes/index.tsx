@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown } from "lucide-react";
-import { siteConfig, styles, teachers, getStyle } from "@/data/siteConfig";
+import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { siteConfig, styles, teachers, teamPhoto, getTeacherStyles } from "@/data/siteConfig";
 import { ContactCard, CTAButton, GalleryCard, Reveal, SectionTitle, SectionWave, SocialButtons } from "@/components/site/primitives";
 import { SmartImage } from "@/components/site/SmartImage";
 import { Lightbox } from "@/components/site/Lightbox";
@@ -156,16 +156,35 @@ function ValuesSection() {
 }
 
 function TeachersSection() {
+  const scroller = useRef<HTMLDivElement>(null);
+  const scroll = (dir: number) => scroller.current?.scrollBy({ left: dir * 260, behavior: "smooth" });
   return (
     <section className="relative py-20 md:py-24">
       <div className="blob -left-32 top-1/3 h-96 w-96 bg-rose" />
       <div className="container relative mx-auto px-5">
         <SectionTitle eyebrow="Quem te guia" title="Os Nossos Professores" />
-        <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
-          {teachers.map((t, i) => (
-            <Reveal key={t.name} delay={(i % 3) * 0.1} className={cn(i % 3 === 1 && "md:translate-y-12")}>
-              <GalleryCard to="/estilos/$slug" params={{ slug: t.styleSlug }} image={t.photo} title={t.name} tag={getStyle(t.styleSlug)?.name} className="aspect-[3/4]" />
-            </Reveal>
+        <Reveal className="relative">
+          <div className="absolute -bottom-4 -right-3 h-full w-full rounded-[2.5rem] bg-gradient-to-br from-violet to-rose opacity-60" aria-hidden />
+          <SmartImage src={teamPhoto} alt="Equipa de professores Davidance" wrapperClassName="relative aspect-[16/10] rounded-[2.5rem] shadow-soft md:aspect-[21/9]" />
+        </Reveal>
+        <div className="mt-12 flex items-center justify-between gap-4">
+          <p className="min-w-0 text-sm font-semibold uppercase tracking-[0.25em] text-muted-foreground">Conhece a equipa</p>
+          <div className="flex shrink-0 gap-2">
+            <button onClick={() => scroll(-1)} aria-label="Anterior" className="grid h-10 w-10 place-items-center rounded-full bg-card shadow-soft transition hover:bg-primary hover:text-primary-foreground"><ChevronLeft className="h-5 w-5" /></button>
+            <button onClick={() => scroll(1)} aria-label="Seguinte" className="grid h-10 w-10 place-items-center rounded-full bg-card shadow-soft transition hover:bg-primary hover:text-primary-foreground"><ChevronRight className="h-5 w-5" /></button>
+          </div>
+        </div>
+        <div ref={scroller} className="-mx-5 mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {teachers.map((t) => (
+            <article key={t.name} className="w-44 shrink-0 snap-start rounded-[1.75rem] bg-card p-3 shadow-soft md:w-52">
+              <SmartImage src={t.photo} alt={t.name} wrapperClassName="aspect-square rounded-[1.25rem]" />
+              <h3 className="mt-3 truncate px-1 text-lg font-medium text-foreground">{t.name}</h3>
+              <div className="mt-2 flex flex-wrap gap-1.5 px-1 pb-1">
+                {getTeacherStyles(t.name).map((s) => (
+                  <span key={s.slug} className="rounded-full bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground">{s.name}</span>
+                ))}
+              </div>
+            </article>
           ))}
         </div>
       </div>
