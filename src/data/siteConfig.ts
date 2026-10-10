@@ -140,15 +140,18 @@ export const styles: Style[] = [
   },
 ];
 
-export type Teacher = { name: string; photo: string; styleSlug: string };
+export type Teacher = { name: string; photo: string };
+
+/** Fotografia de grupo de todos os professores. */
+export const teamPhoto = u("photo-1504609773096-104ff2c73ba4", 1800);
 
 export const teachers: Teacher[] = [
-  { name: "Ana Ribeiro", photo: u("photo-1494790108377-be9c29b29330", 800), styleSlug: "ballet" },
-  { name: "Rui Costa", photo: u("photo-1500648767791-00dcc994a43e", 800), styleSlug: "hip-hop" },
-  { name: "Marta Lopes", photo: u("photo-1438761681033-6461ffad8d80", 800), styleSlug: "contemporaneo" },
-  { name: "Sofia Martins", photo: u("photo-1544005313-94ddf0286df2", 800), styleSlug: "jazz" },
-  { name: "Carlos Mendes", photo: u("photo-1506794778202-cad84cf45f1d", 800), styleSlug: "danca-latina" },
-  { name: "Joana Silva", photo: u("photo-1534528741775-53994a69daeb", 800), styleSlug: "zumba" },
+  { name: "Ana Ribeiro", photo: u("photo-1494790108377-be9c29b29330", 800) },
+  { name: "Rui Costa", photo: u("photo-1500648767791-00dcc994a43e", 800) },
+  { name: "Marta Lopes", photo: u("photo-1438761681033-6461ffad8d80", 800) },
+  { name: "Sofia Martins", photo: u("photo-1544005313-94ddf0286df2", 800) },
+  { name: "Carlos Mendes", photo: u("photo-1506794778202-cad84cf45f1d", 800) },
+  { name: "Joana Silva", photo: u("photo-1534528741775-53994a69daeb", 800) },
 ];
 
 export type Testimonial = { couple: string; text: string; photos: string[] };
@@ -192,3 +195,6 @@ export const navLinks = [
 
 export const getStyle = (slug: string) => styles.find((s) => s.slug === slug);
 export const getTeacherByName = (name: string) => teachers.find((t) => t.name === name);
+
+/** Estilos que cada professor leciona (derivado de styles[].teacher). */
+export const getTeacherStyles = (name: string) => styles.filter((s) => s.teacher === name);
