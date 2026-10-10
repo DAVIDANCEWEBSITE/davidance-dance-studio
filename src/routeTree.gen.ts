@@ -10,33 +10,60 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EstilosRouteImport } from './routes/estilos'
+import { Route as EstilosIndexRouteImport } from './routes/estilos.index'
+import { Route as EstilosSlugRouteImport } from './routes/estilos.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EstilosRoute = EstilosRouteImport.update({
+  id: '/estilos',
+  path: '/estilos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EstilosIndexRoute = EstilosIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EstilosRoute,
+} as any)
+const EstilosSlugRoute = EstilosSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => EstilosRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/estilos': typeof EstilosRouteWithChildren
+  '/estilos/$slug': typeof EstilosSlugRoute
+  '/estilos/': typeof EstilosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/estilos/$slug': typeof EstilosSlugRoute
+  '/estilos': typeof EstilosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/estilos': typeof EstilosRouteWithChildren
+  '/estilos/$slug': typeof EstilosSlugRoute
+  '/estilos/': typeof EstilosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/estilos' | '/estilos/$slug' | '/estilos/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/estilos/$slug' | '/estilos'
+  id: '__root__' | '/' | '/estilos' | '/estilos/$slug' | '/estilos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EstilosRoute: typeof EstilosRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +75,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/estilos': {
+      id: '/estilos'
+      path: '/estilos'
+      fullPath: '/estilos'
+      preLoaderRoute: typeof EstilosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/estilos/': {
+      id: '/estilos/'
+      path: '/'
+      fullPath: '/estilos/'
+      preLoaderRoute: typeof EstilosIndexRouteImport
+      parentRoute: typeof EstilosRoute
+    }
+    '/estilos/$slug': {
+      id: '/estilos/$slug'
+      path: '/$slug'
+      fullPath: '/estilos/$slug'
+      preLoaderRoute: typeof EstilosSlugRouteImport
+      parentRoute: typeof EstilosRoute
+    }
   }
 }
 
+interface EstilosRouteChildren {
+  EstilosSlugRoute: typeof EstilosSlugRoute
+  EstilosIndexRoute: typeof EstilosIndexRoute
+}
+
+const EstilosRouteChildren: EstilosRouteChildren = {
+  EstilosSlugRoute: EstilosSlugRoute,
+  EstilosIndexRoute: EstilosIndexRoute,
+}
+
+const EstilosRouteWithChildren =
+  EstilosRoute._addFileChildren(EstilosRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EstilosRoute: EstilosRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
