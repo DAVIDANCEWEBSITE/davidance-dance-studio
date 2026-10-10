@@ -76,8 +76,8 @@ function Hero() {
     if (w2.YT && typeof w2.YT.Player === "function") {
       build();
     } else {
-      const prev = w.onYouTubeIframeAPIReady;
-      w.onYouTubeIframeAPIReady = () => { prev?.(); build(); };
+      const prev = w2.onYouTubeIframeAPIReady;
+      w2.onYouTubeIframeAPIReady = () => { prev?.(); build(); };
       if (!document.querySelector('script[src*="iframe_api"]')) {
         const tag = document.createElement("script");
         tag.src = "https://www.youtube.com/iframe_api";
