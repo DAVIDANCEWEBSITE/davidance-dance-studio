@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Volume1, Volume2, VolumeX } from "lucide-react";
 import { siteConfig, styles, teachers, teamPhoto, getTeacherStyles } from "@/data/siteConfig";
 import { ContactCard, CTAButton, GalleryCard, Reveal, SectionTitle, SectionWave, SocialButtons } from "@/components/site/primitives";
 import { SmartImage } from "@/components/site/SmartImage";
@@ -35,23 +35,59 @@ function Home() {
   );
 }
 
+type YTPlayer = {
+  destroy?: () => void; mute: () => void; unMute: () => void; playVideo: () => void;
+  setVolume: (v: number) => void; seekTo: (s: number, allow: boolean) => void;
+};
+
+function SoundControl({ playerRef }: { playerRef: React.RefObject<YTPlayer | null> }) {
+  const [muted, setMuted] = useState(true);
+  const [volume, setVolume] = useState(60);
+  const toggle = () => {
+    const p = playerRef.current; if (!p) return;
+    if (muted) { p.unMute(); p.setVolume(volume || 60); if (!volume) setVolume(60); } else p.mute();
+    setMuted(!muted);
+  };
+  const change = (v: number) => {
+    setVolume(v);
+    const p = playerRef.current; if (!p) return;
+    p.setVolume(v);
+    if (v === 0) { p.mute(); setMuted(true); } else if (muted) { p.unMute(); setMuted(false); }
+  };
+  const Icon = muted || volume === 0 ? VolumeX : volume < 50 ? Volume1 : Volume2;
+  return (
+    <div className="group absolute bottom-28 right-5 z-10 flex items-center gap-2 rounded-full bg-plum/50 px-2 py-2 text-cream backdrop-blur md:bottom-32 md:right-8">
+      <input
+        type="range" min={0} max={100} value={muted ? 0 : volume}
+        onChange={(e) => change(Number(e.target.value))}
+        aria-label="Volume do vídeo"
+        className="w-0 cursor-pointer accent-primary opacity-0 transition-all duration-300 group-hover:w-24 group-hover:opacity-100 group-focus-within:w-24 group-focus-within:opacity-100"
+      />
+      <button onClick={toggle} aria-label={muted ? "Ativar som" : "Desativar som"} className="rounded-full p-2 transition hover:bg-cream/20">
+        <Icon className="h-5 w-5" />
+      </button>
+    </div>
+  );
+}
+
 function Hero() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 800], [0, 200]);
   const hostRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<YTPlayer | null>(null);
 
   // Player do YouTube sem controlos, em loop infinito (via IFrame API).
   useEffect(() => {
     const host = hostRef.current;
     if (!host || !siteConfig.hero.youtubeId) return;
-    let player: { destroy?: () => void } | null = null;
+    let player: YTPlayer | null = null;
     let cancelled = false;
 
     const build = () => {
       if (cancelled) return;
       const w = window as unknown as { YT?: { Player?: unknown } };
       if (!w.YT || typeof w.YT.Player !== "function") return;
-      const YT = w.YT as { Player: new (el: HTMLElement, opts: unknown) => { destroy?: () => void } };
+      const YT = w.YT as { Player: new (el: HTMLElement, opts: unknown) => YTPlayer };
       player = new YT.Player(host, {
         videoId: siteConfig.hero.youtubeId,
         width: "100%",
@@ -61,9 +97,9 @@ function Hero() {
           rel: 0, modestbranding: 1, iv_load_policy: 3, disablekb: 1, fs: 0,
         },
         events: {
-          onReady: (e: { mute: () => void; playVideo: () => void }) => { e.mute(); e.playVideo(); },
-          onStateChange: (e: { data: number; seekTo: (s: number, allow: boolean) => void }) => {
-            if (e.data === 0) e.seekTo(0, true); // volta ao início quando acaba
+          onReady: (e: { target: YTPlayer }) => { e.target.mute(); e.target.setVolume(60); e.target.playVideo(); playerRef.current = e.target; },
+          onStateChange: (e: { data: number; target: YTPlayer }) => {
+            if (e.data === 0) e.target.seekTo(0, true); // volta ao início quando acaba
           },
         },
       });
@@ -84,7 +120,7 @@ function Hero() {
         document.head.appendChild(tag);
       }
     }
-    return () => { cancelled = true; player?.destroy?.(); };
+    return () => { cancelled = true; playerRef.current = null; player?.destroy?.(); };
   }, []);
 
   return (
@@ -102,11 +138,12 @@ function Hero() {
         </div>
       )}
       {!siteConfig.showHeroTagline && <h1 className="sr-only">Davidance — Escola de Dança</h1>}
-      <a href="#estilos" aria-label="Descer" className="absolute bottom-28 left-1/2 -translate-x-1/2 text-cream md:bottom-32">
-        <motion.span className="flex flex-col items-center gap-2 text-xs uppercase tracking-[0.3em]" animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
-          Descobre <ChevronDown className="h-5 w-5" />
-        </motion.span>
-      </a>
+      <motion.img
+        src={siteConfig.logo} alt="" aria-hidden
+        initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.2, delay: 0.3 }}
+        className="pointer-events-none absolute left-1/2 top-1/2 w-[70vw] max-w-[440px] -translate-x-1/2 -translate-y-1/2 invert drop-shadow-2xl"
+      />
+      <SoundControl playerRef={playerRef} />
       <div className="absolute inset-x-0 bottom-0">
         <SectionWave />
       </div>
