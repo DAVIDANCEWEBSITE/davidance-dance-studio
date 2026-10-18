@@ -35,7 +35,7 @@ export function Navbar() {
     )}>
       <nav className="container mx-auto flex h-20 items-center justify-between px-5" aria-label="Principal">
         <Link to="/" aria-label="Davidance — início" className="shrink-0">
-          <Logo light={overHero && !open} />
+          <Logo light={overHero && !open} className={cn("transition-opacity duration-500", isHome && overHero && !open ? "opacity-0" : "opacity-100")} />
         </Link>
         <motion.ul
           className="hidden items-center gap-1 lg:flex"

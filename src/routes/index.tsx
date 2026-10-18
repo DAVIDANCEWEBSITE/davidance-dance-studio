@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronLeft, ChevronRight, Volume1, Volume2, VolumeX } from "lucide-react";
 import { siteConfig, styles, teachers, teamPhoto, getTeacherStyles } from "@/data/siteConfig";
@@ -40,7 +40,7 @@ type YTPlayer = {
   setVolume: (v: number) => void; seekTo: (s: number, allow: boolean) => void;
 };
 
-function SoundControl({ playerRef }: { playerRef: React.RefObject<YTPlayer | null> }) {
+function SoundControl({ playerRef }: { playerRef: RefObject<YTPlayer | null> }) {
   const [muted, setMuted] = useState(true);
   const [volume, setVolume] = useState(60);
   const toggle = () => {
