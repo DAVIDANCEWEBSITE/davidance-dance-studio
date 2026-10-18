@@ -187,11 +187,12 @@ export const projectYears: { year: number; description: string; media: ProjectMe
 ];
 
 export const navLinks = [
-  { to: "/", label: "Home" },
-  { to: "/estilos", label: "Estilos" },
+  { to: "/", label: "Davidance" },
+  { to: "/estilos", label: "Aulas de Dança" },
   { to: "/projeto-davidance", label: "Projeto Davidance" },
   { to: "/casamentos", label: "Casamentos" },
-  { to: "/horario-contactos", label: "Horário e Contactos" },
+  { to: "/horarios", label: "Horários" },
+  { to: "/contactos", label: "Contactos" },
 ] as const;
 
 export const getStyle = (slug: string) => styles.find((s) => s.slug === slug);

@@ -35,8 +35,8 @@ function ProjectPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-indigo-deep via-indigo-deep/40 to-indigo-mid/30" />
         <div className="relative container mx-auto px-5 pb-24">
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-4 text-xs font-semibold uppercase tracking-[0.4em] text-violet">A face da Davidance</motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="text-6xl font-light leading-none md:text-9xl">
-            Projeto <em className="text-gradient-brand">Davidance</em>
+          <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="font-script text-7xl font-normal leading-none md:text-[10rem]" style={{ letterSpacing: 0 }}>
+            Projeto <span className="text-gradient-brand">Davidance</span>
           </motion.h1>
         </div>
       </section>
