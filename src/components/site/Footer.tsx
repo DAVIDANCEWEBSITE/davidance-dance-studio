@@ -10,7 +10,7 @@ export function Footer() {
       <div className="-mt-px bg-plum pb-24 pt-6 text-cream/80 md:pb-10">
         <div className="container mx-auto grid gap-10 px-5 md:grid-cols-3">
           <div>
-            <Logo light />
+            <Logo light className="h-20 md:h-24" />
             <p className="mt-3 max-w-xs text-sm">{siteConfig.tagline}</p>
           </div>
           <ul className="grid grid-cols-2 gap-2 text-sm">
