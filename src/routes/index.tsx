@@ -138,11 +138,6 @@ function Hero() {
         </div>
       )}
       {!siteConfig.showHeroTagline && <h1 className="sr-only">Davidance — Escola de Dança</h1>}
-      <motion.img
-        src={siteConfig.logo} alt="" aria-hidden
-        initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.2, delay: 0.3 }}
-        className="pointer-events-none absolute left-1/2 top-1/2 w-[70vw] max-w-[440px] -translate-x-1/2 -translate-y-1/2 invert drop-shadow-2xl"
-      />
       <SoundControl playerRef={playerRef} />
       <div className="absolute inset-x-0 bottom-0">
         <SectionWave />
