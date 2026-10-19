@@ -23,14 +23,19 @@ export function Navbar() {
     return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onResize); };
   }, []);
   useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
 
   const overHero = (isHome && scrollY < vh * 0.75) || (isProject && scrollY < vh * 0.6);
   const solid = !overHero;
 
   return (
+    <>
     <header className={cn(
       "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-      solid ? "bg-cream/80 shadow-soft backdrop-blur-lg" : "bg-transparent",
+      open ? "bg-cream" : solid ? "bg-cream/80 shadow-soft backdrop-blur-lg" : "bg-transparent",
     )}>
       <nav className={cn("container relative z-50 mx-auto flex items-center justify-between px-5 transition-all duration-500", isHome && overHero && !open ? "h-24 md:h-28" : "h-20")} aria-label="Principal">
         <Link to="/" aria-label="Davidance — início" className="shrink-0">
@@ -59,6 +64,7 @@ export function Navbar() {
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </nav>
+    </header>
       <AnimatePresence>
         {open && (
           <motion.div
@@ -66,7 +72,7 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-cream px-6 pb-10 pt-28 lg:hidden"
+            className="fixed inset-0 z-40 flex h-[100dvh] flex-col overflow-y-auto bg-cream px-6 pb-10 pt-28 lg:hidden"
           >
             <ul className="divide-y divide-border">
               {navLinks.map((l, i) => (
@@ -90,6 +96,6 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
