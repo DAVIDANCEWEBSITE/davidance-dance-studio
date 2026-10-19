@@ -25,7 +25,6 @@ export function Navbar() {
   useEffect(() => setOpen(false), [pathname]);
 
   const overHero = (isHome && scrollY < vh * 0.75) || (isProject && scrollY < vh * 0.6);
-  const hideLinks = false;
   const solid = !overHero;
 
   return (
