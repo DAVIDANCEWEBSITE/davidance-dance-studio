@@ -1,3 +1,4 @@
+import kidsImage from "@/assets/kids-dance.jpg";
 import logoAsset from "@/assets/logo.png.asset.json";
 import teamPhotoAsset from "@/assets/equipa-davidance.jpg.asset.json";
 
@@ -12,6 +13,7 @@ const u = (id: string, w = 1200) =>
 
 export const siteConfig = {
   name: "Davidance",
+  kidsImage,
   tagline: "Vamos viver a Dança!",
   showHeroTagline: false,
   // Substitua por "/logo.png" (coloque o ficheiro em /public) ou por um URL.
@@ -130,7 +132,7 @@ export const siteConfig = {
     text: "Em Paio Pires, a Davidance recebe-te num estúdio amplo, com chão com caixa de ar, preparado para a prática da dança. Um espaço onde trabalhamos técnica, exploramos o movimento e partilhamos o caminho entre os ensaios e o palco.",
     photos: [
       u("photo-1518611012118-696072aa579a"),
-      u("photo-1540497077202-7c8a3999166f"),
+      u("photo-1547153760-18fc86324498"),
       u("photo-1524594152303-9fd13543fe6e"),
       u("photo-1571019613454-1cb2f99b2d8b"),
       u("photo-1535525153412-5a42439a210d"),
@@ -169,7 +171,7 @@ export const styles: Style[] = [
       ],
       gallery: [],
     },
-    cover: u("photo-1540497077202-7c8a3999166f"),
+    cover: u("photo-1547153760-18fc86324498"),
   },
   {
     ...{
@@ -277,7 +279,7 @@ export const styles: Style[] = [
         },
       ],
     },
-    cover: u("photo-1540497077202-7c8a3999166f"),
+    cover: u("photo-1547153760-18fc86324498"),
   },
   {
     ...{
@@ -370,7 +372,7 @@ export const styles: Style[] = [
         },
       ],
     },
-    cover: u("photo-1540497077202-7c8a3999166f"),
+    cover: u("photo-1547153760-18fc86324498"),
   },
   {
     ...{

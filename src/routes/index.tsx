@@ -200,7 +200,7 @@ function Hero() {
 
 function AudienceSection() {
   const images = [
-    styles[0]?.cover ?? siteConfig.groupPhoto,
+    siteConfig.kidsImage,
     siteConfig.groupPhoto,
     siteConfig.weddingsHero,
   ];
