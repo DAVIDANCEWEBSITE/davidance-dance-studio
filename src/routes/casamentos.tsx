@@ -1,9 +1,82 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { Quote } from 'lucide-react';
-import { siteConfig, testimonials } from '@/data/siteConfig';
-import { CTAButton, PageHero, SectionTitle } from '@/components/site/primitives';
-import { Portrait } from '@/components/site/Portrait';
-import { SmartImage } from '@/components/site/SmartImage';
-import { cn } from '@/lib/utils';
-export const Route=createFileRoute('/casamentos')({head:()=>({meta:[{title:'Casamentos — A vossa primeira dança | Davidance'},{name:'description',content:siteConfig.copy.weddingsText},{property:'og:title',content:'Casamentos — Davidance'},{property:'og:description',content:siteConfig.copy.weddingsPhrase},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'},{property:'og:image',content:siteConfig.weddingsHero},{name:'twitter:image',content:siteConfig.weddingsHero}]}),component:WeddingsPage});
-function WeddingsPage(){return <><PageHero title="Casamentos" image={siteConfig.weddingsHero}/><section className="container mx-auto max-w-3xl px-5 py-14 text-center"><p className="whitespace-pre-line text-lg leading-relaxed text-muted-foreground">{siteConfig.copy.weddingsText}</p><p className="mt-7 text-xl italic text-primary">{siteConfig.copy.weddingsPhrase}</p><div className="mt-8"><CTAButton href={siteConfig.links.weddings} variant="glow">{siteConfig.copy.weddingsButton}</CTAButton></div></section><section className="bg-secondary/40 py-16"><div className="container mx-auto px-5"><SectionTitle title={siteConfig.copy.loveTitle} eyebrow={siteConfig.copy.testimonialsTitle}/><div className="space-y-16">{testimonials.map((t,i)=><div key={t.couple+i} className={cn('mx-auto grid max-w-5xl items-center gap-8 md:grid-cols-[300px_1fr]',i%2&&'md:grid-cols-[1fr_300px] md:[&>*:first-child]:order-2')}><div className="relative">{t.photos[0]?<SmartImage src={t.photos[0]} alt={t.couple} wrapperClassName="aspect-[4/3] rounded-lg shadow-soft"/>:<Portrait name={t.couple} className="aspect-[4/3] rounded-lg"/>}</div><div>{t.text&&<><Quote className="h-8 w-8 text-primary"/><blockquote className="mt-3 text-lg font-light leading-relaxed">“{t.text}”</blockquote></>}<p className="mt-5 font-semibold text-primary">{t.couple}</p></div></div>)}</div></div></section></>;}
+import { createFileRoute } from "@tanstack/react-router";
+import { Quote } from "lucide-react";
+import { siteConfig, testimonials } from "@/data/siteConfig";
+import { CTAButton, PageHero, SectionTitle } from "@/components/site/primitives";
+import { Portrait } from "@/components/site/Portrait";
+import { SmartImage } from "@/components/site/SmartImage";
+import { cn } from "@/lib/utils";
+export const Route = createFileRoute("/casamentos")({
+  head: () => ({
+    meta: [
+      { title: "Casamentos — A vossa primeira dança | Davidance" },
+      { name: "description", content: siteConfig.copy.weddingsText },
+      { property: "og:title", content: "Casamentos — Davidance" },
+      { property: "og:description", content: siteConfig.copy.weddingsPhrase },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: siteConfig.weddingsHero },
+      { name: "twitter:image", content: siteConfig.weddingsHero },
+    ],
+  }),
+  component: WeddingsPage,
+});
+function WeddingsPage() {
+  return (
+    <>
+      <PageHero title="Casamentos" image={siteConfig.weddingsHero} />
+      <section className="container mx-auto max-w-3xl px-5 py-14 text-center">
+        <p className="whitespace-pre-line text-lg leading-relaxed text-muted-foreground">
+          {siteConfig.copy.weddingsText}
+        </p>
+        <p className="mt-7 text-xl italic text-primary">{siteConfig.copy.weddingsPhrase}</p>
+        <div className="mt-8">
+          <CTAButton href={siteConfig.links.weddings} variant="glow">
+            {siteConfig.copy.weddingsButton}
+          </CTAButton>
+        </div>
+      </section>
+      <section className="bg-secondary/40 py-16">
+        <div className="container mx-auto px-5">
+          <SectionTitle
+            title={siteConfig.copy.loveTitle}
+            eyebrow={siteConfig.copy.testimonialsTitle}
+          />
+          <div className="space-y-16">
+            {testimonials.map((t, i) => (
+              <div
+                key={t.couple + i}
+                className={cn(
+                  "mx-auto grid max-w-5xl items-center gap-8 md:grid-cols-[300px_1fr]",
+                  i % 2 && "md:grid-cols-[1fr_300px] md:[&>*:first-child]:order-2",
+                )}
+              >
+                <div className="relative">
+                  {t.photos[0] ? (
+                    <SmartImage
+                      src={t.photos[0]}
+                      alt={t.couple}
+                      wrapperClassName="aspect-[4/3] rounded-lg shadow-soft"
+                    />
+                  ) : (
+                    <Portrait name={t.couple} className="aspect-[4/3] rounded-lg" />
+                  )}
+                </div>
+                <div>
+                  {t.text && (
+                    <>
+                      <Quote className="h-8 w-8 text-primary" />
+                      <blockquote className="mt-3 text-lg font-light leading-relaxed">
+                        “{t.text}”
+                      </blockquote>
+                    </>
+                  )}
+                  <p className="mt-5 font-semibold text-primary">{t.couple}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

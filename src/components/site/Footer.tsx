@@ -15,20 +15,42 @@ export function Footer() {
           </div>
           <ul className="grid grid-cols-2 gap-2 text-sm">
             {navLinks.map((l) => (
-              <li key={l.to}><Link to={l.to} className="hover:text-cream">{l.label}</Link></li>
+              <li key={l.to}>
+                <Link to={l.to} className="hover:text-cream">
+                  {l.label}
+                </Link>
+              </li>
             ))}
-            <li><Link to="/kids">Kids</Link></li>
-            <li><Link to="/jovens-adultos">Jovens &amp; Adultos</Link></li>
-            <li><a href="#contactos">Contactos</a></li>
+            <li>
+              <Link to="/kids">Kids</Link>
+            </li>
+            <li>
+              <Link to="/jovens-adultos">Jovens &amp; Adultos</Link>
+            </li>
+            <li>
+              <a href="#contactos">Contactos</a>
+            </li>
           </ul>
           <div className="space-y-1 text-sm">
             <p>{c.address}</p>
-            <p><a href={`tel:${c.phone.replace(/\s/g, "")}`} className="hover:text-cream">{c.phone}</a></p>
-            <p><a href={`mailto:${c.email}`} className="hover:text-cream">{c.email}</a></p>
-            <div className="pt-4"><SocialButtons light /></div>
+            <p>
+              <a href={`tel:${c.phone.replace(/\s/g, "")}`} className="hover:text-cream">
+                {c.phone}
+              </a>
+            </p>
+            <p>
+              <a href={`mailto:${c.email}`} className="hover:text-cream">
+                {c.email}
+              </a>
+            </p>
+            <div className="pt-4">
+              <SocialButtons light />
+            </div>
           </div>
         </div>
-        <p className="container mx-auto mt-10 px-5 text-xs text-cream/50">© {new Date().getFullYear()} Davidance. Todos os direitos reservados.</p>
+        <p className="container mx-auto mt-10 px-5 text-xs text-cream/50">
+          © {new Date().getFullYear()} Davidance. Todos os direitos reservados.
+        </p>
       </div>
     </footer>
   );

@@ -3,7 +3,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
-type Props = { images: string[]; index: number | null; onClose: () => void; onChange: (i: number) => void; alt?: string };
+type Props = {
+  images: string[];
+  index: number | null;
+  onClose: () => void;
+  onChange: (i: number) => void;
+  alt?: string;
+};
 
 export function Lightbox({ images, index, onClose, onChange, alt = "Fotografia" }: Props) {
   const open = index !== null;
@@ -35,22 +41,46 @@ export function Lightbox({ images, index, onClose, onChange, alt = "Fotografia" 
           exit={{ opacity: 0 }}
           onClick={onClose}
         >
-          <Button variant="ghost" size="icon" aria-label="Fechar" onClick={onClose} className="absolute right-5 top-5 rounded-full bg-cream/10 p-3 text-cream hover:bg-cream/20">
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label="Fechar"
+            onClick={onClose}
+            className="absolute right-5 top-5 rounded-full bg-cream/10 p-3 text-cream hover:bg-cream/20"
+          >
             <X className="h-6 w-6" />
           </Button>
           {images.length > 1 && (
             <>
-              <Button variant="ghost" size="icon" aria-label="Anterior" onClick={(e) => { e.stopPropagation(); onChange(((index ?? 0) - 1 + images.length) % images.length); }} className="absolute left-4 rounded-full bg-cream/10 p-3 text-cream hover:bg-cream/20">
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="Anterior"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onChange(((index ?? 0) - 1 + images.length) % images.length);
+                }}
+                className="absolute left-4 rounded-full bg-cream/10 p-3 text-cream hover:bg-cream/20"
+              >
                 <ChevronLeft className="h-6 w-6" />
               </Button>
-              <Button variant="ghost" size="icon" aria-label="Seguinte" onClick={(e) => { e.stopPropagation(); onChange(((index ?? 0) + 1) % images.length); }} className="absolute right-4 rounded-full bg-cream/10 p-3 text-cream hover:bg-cream/20">
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="Seguinte"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onChange(((index ?? 0) + 1) % images.length);
+                }}
+                className="absolute right-4 rounded-full bg-cream/10 p-3 text-cream hover:bg-cream/20"
+              >
                 <ChevronRight className="h-6 w-6" />
               </Button>
             </>
           )}
           <motion.img
             key={index}
-            src={images[(index ?? 0)]}
+            src={images[index ?? 0]}
             alt={`${alt} ${(index ?? 0) + 1}`}
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}

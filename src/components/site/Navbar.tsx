@@ -1,22 +1,229 @@
-import { useEffect, useState } from 'react';
-import { Link, useRouterState } from '@tanstack/react-router';
-import { Menu, X, ChevronDown } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { navLinks, siteConfig, classGroups } from '@/data/siteConfig';
-import { Logo } from './primitives';
-import { Button } from '@/components/ui/button';
+import { useEffect, useState } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { navLinks, siteConfig, classGroups } from "@/data/siteConfig";
+import { Logo } from "./primitives";
+import { Button } from "@/components/ui/button";
 
 export function Navbar() {
- const pathname=useRouterState({select:s=>s.location.pathname});
- const [scrollY,setScrollY]=useState(0); const [vh,setVh]=useState(800);
- const [open,setOpen]=useState(false); const [classesOpen,setClassesOpen]=useState(false);
- useEffect(()=>{const scroll=()=>setScrollY(window.scrollY);const resize=()=>{setVh(window.innerHeight);if(window.innerWidth>=1024)setOpen(false);};scroll();resize();window.addEventListener('scroll',scroll,{passive:true});window.addEventListener('resize',resize);return()=>{window.removeEventListener('scroll',scroll);window.removeEventListener('resize',resize);};},[]);
- useEffect(()=>{setOpen(false);setClassesOpen(false);},[pathname]);
- useEffect(()=>{const previous=document.body.style.overflow; if(open)document.body.style.overflow='hidden';const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){setOpen(false);setClassesOpen(false);}};document.addEventListener('keydown',key);return()=>{document.body.style.overflow=previous;document.removeEventListener('keydown',key);};},[open]);
- const overHero=(pathname==='/'&&scrollY<vh*.7)||(pathname==='/projeto-davidance'&&scrollY<vh*.6);
- const close=()=>{setOpen(false);setClassesOpen(false);};
- const linkClass=cn('block rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-brand-hover hover:text-primary-foreground',overHero?'text-cream':'text-foreground');
- const contact=(e:React.MouseEvent<HTMLAnchorElement>)=>{e.preventDefault();close();document.getElementById('contactos')?.scrollIntoView({behavior:'smooth'});};
- const groups=<><Link to="/kids" onClick={close} className="block rounded-md px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary">{classGroups.kids.menu}</Link><Link to="/jovens-adultos" onClick={close} className="block rounded-md px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary">{classGroups.adults.menu}</Link></>;
- return <><header className={cn('fixed inset-x-0 top-0 z-50 transition-colors',open?'bg-background':overHero?'bg-transparent':'bg-background/95 shadow-soft backdrop-blur-lg')}><nav aria-label="Principal" className={cn('container mx-auto flex items-center justify-between gap-5 px-5',pathname==='/'&&overHero&&!open?'h-24 md:h-28':'h-20')}><Link to="/" onClick={close} aria-label="Davidance — início"><Logo light={overHero&&!open} className={cn('transition-all',pathname==='/'&&overHero&&!open?'h-14 md:h-16':'h-10')}/></Link><ul className="hidden items-center gap-1 lg:flex"><li><Link to="/" className={linkClass} activeOptions={{exact:true}}>{navLinks[0].label}</Link></li><li className="relative" onMouseEnter={()=>setClassesOpen(true)} onMouseLeave={()=>setClassesOpen(false)}><Button variant="ghost" aria-expanded={classesOpen} aria-controls="desktop-classes" onClick={()=>setClassesOpen(true)} className={cn(linkClass,'inline-flex h-auto items-center gap-1')}>Aulas de Dança<ChevronDown className={cn('transition-transform',classesOpen&&'rotate-180')}/></Button>{classesOpen&&<div id="desktop-classes" className="absolute left-0 top-full min-w-56 rounded-lg border border-border bg-background p-2 shadow-soft" onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget))setClassesOpen(false);}}>{groups}</div>}</li>{navLinks.slice(1).map(l=><li key={l.to}><Link to={l.to} className={linkClass}>{l.label}</Link></li>)}<li><a href="#contactos" onClick={contact} className={linkClass}>Contactos</a></li></ul><Button variant="ghost" size="icon" className={cn('lg:hidden',overHero&&!open?'text-cream':'text-primary')} aria-label={open?'Fechar menu':'Abrir menu'} aria-expanded={open} aria-controls="mobile-menu" onClick={()=>setOpen(v=>!v)}>{open?<X/>:<Menu/>}</Button></nav></header>{open&&<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" className="fixed inset-0 z-40 flex h-dvh flex-col overflow-y-auto bg-background px-6 pb-6 pt-24 lg:hidden"><nav aria-label="Menu móvel"><Link to="/" onClick={close} className="block border-b border-border py-3 text-lg font-medium">{navLinks[0].label}</Link><div className="border-b border-border py-2"><Button variant="ghost" onClick={()=>setClassesOpen(v=>!v)} aria-expanded={classesOpen} aria-controls="mobile-classes" className="h-auto w-full justify-between px-0 py-2 text-lg font-medium">Aulas de Dança<ChevronDown className={cn(classesOpen&&'rotate-180')}/></Button>{classesOpen&&<div id="mobile-classes" className="pl-3">{groups}</div>}</div>{navLinks.slice(1).map(l=><Link key={l.to} to={l.to} onClick={close} className="block border-b border-border py-3 text-lg font-medium">{l.label}</Link>)}<a href="#contactos" onClick={contact} className="block py-3 text-lg font-medium">Contactos</a></nav><div className="mt-auto space-y-2 pt-5 text-sm text-muted-foreground"><a className="block" href={`tel:${siteConfig.contacts.phone.replace(/\s/g,'')}`}>{siteConfig.contacts.phone}</a><a className="block" href={`mailto:${siteConfig.contacts.email}`}>{siteConfig.contacts.email}</a></div></div>}</>;
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const [scrollY, setScrollY] = useState(0);
+  const [vh, setVh] = useState(800);
+  const [open, setOpen] = useState(false);
+  const [classesOpen, setClassesOpen] = useState(false);
+  useEffect(() => {
+    const scroll = () => setScrollY(window.scrollY);
+    const resize = () => {
+      setVh(window.innerHeight);
+      if (window.innerWidth >= 1024) setOpen(false);
+    };
+    scroll();
+    resize();
+    window.addEventListener("scroll", scroll, { passive: true });
+    window.addEventListener("resize", resize);
+    return () => {
+      window.removeEventListener("scroll", scroll);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+  useEffect(() => {
+    setOpen(false);
+    setClassesOpen(false);
+  }, [pathname]);
+  useEffect(() => {
+    const previous = document.body.style.overflow;
+    if (open) document.body.style.overflow = "hidden";
+    const key = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        setClassesOpen(false);
+      }
+    };
+    document.addEventListener("keydown", key);
+    return () => {
+      document.body.style.overflow = previous;
+      document.removeEventListener("keydown", key);
+    };
+  }, [open]);
+  const overHero =
+    (pathname === "/" && scrollY < vh * 0.7) ||
+    (pathname === "/projeto-davidance" && scrollY < vh * 0.6);
+  const close = () => {
+    setOpen(false);
+    setClassesOpen(false);
+  };
+  const linkClass = cn(
+    "block rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-brand-hover hover:text-primary-foreground",
+    overHero ? "text-cream" : "text-foreground",
+  );
+  const contact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    close();
+    document.getElementById("contactos")?.scrollIntoView({ behavior: "smooth" });
+  };
+  const groups = (
+    <>
+      <Link
+        to="/kids"
+        onClick={close}
+        className="block rounded-md px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary"
+      >
+        {classGroups.kids.menu}
+      </Link>
+      <Link
+        to="/jovens-adultos"
+        onClick={close}
+        className="block rounded-md px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary"
+      >
+        {classGroups.adults.menu}
+      </Link>
+    </>
+  );
+  return (
+    <>
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 transition-colors",
+          open
+            ? "bg-background"
+            : overHero
+              ? "bg-transparent"
+              : "bg-background/95 shadow-soft backdrop-blur-lg",
+        )}
+      >
+        <nav
+          aria-label="Principal"
+          className={cn(
+            "container mx-auto flex items-center justify-between gap-5 px-5",
+            pathname === "/" && overHero && !open ? "h-24 md:h-28" : "h-20",
+          )}
+        >
+          <Link to="/" onClick={close} aria-label="Davidance — início">
+            <Logo
+              light={overHero && !open}
+              className={cn(
+                "transition-all",
+                pathname === "/" && overHero && !open ? "h-14 md:h-16" : "h-10",
+              )}
+            />
+          </Link>
+          <ul className="hidden items-center gap-1 lg:flex">
+            <li>
+              <Link to="/" className={linkClass} activeOptions={{ exact: true }}>
+                {navLinks[0].label}
+              </Link>
+            </li>
+            <li
+              className="relative"
+              onMouseEnter={() => setClassesOpen(true)}
+              onMouseLeave={() => setClassesOpen(false)}
+            >
+              <Button
+                variant="ghost"
+                aria-expanded={classesOpen}
+                aria-controls="desktop-classes"
+                onClick={() => setClassesOpen(true)}
+                className={cn(linkClass, "inline-flex h-auto items-center gap-1")}
+              >
+                Aulas de Dança
+                <ChevronDown className={cn("transition-transform", classesOpen && "rotate-180")} />
+              </Button>
+              {classesOpen && (
+                <div
+                  id="desktop-classes"
+                  className="absolute left-0 top-full min-w-56 rounded-lg border border-border bg-background p-2 shadow-soft"
+                  onBlur={(e) => {
+                    if (!e.currentTarget.contains(e.relatedTarget)) setClassesOpen(false);
+                  }}
+                >
+                  {groups}
+                </div>
+              )}
+            </li>
+            {navLinks.slice(1).map((l) => (
+              <li key={l.to}>
+                <Link to={l.to} className={linkClass}>
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <a href="#contactos" onClick={contact} className={linkClass}>
+                Contactos
+              </a>
+            </li>
+          </ul>
+          <Button
+            variant="ghost"
+            size="icon"
+            className={cn("lg:hidden", overHero && !open ? "text-cream" : "text-primary")}
+            aria-label={open ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X /> : <Menu />}
+          </Button>
+        </nav>
+      </header>
+      {open && (
+        <div
+          id="mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu"
+          className="fixed inset-0 z-40 flex h-dvh flex-col overflow-y-auto bg-background px-6 pb-6 pt-24 lg:hidden"
+        >
+          <nav aria-label="Menu móvel">
+            <Link
+              to="/"
+              onClick={close}
+              className="block border-b border-border py-3 text-lg font-medium"
+            >
+              {navLinks[0].label}
+            </Link>
+            <div className="border-b border-border py-2">
+              <Button
+                variant="ghost"
+                onClick={() => setClassesOpen((v) => !v)}
+                aria-expanded={classesOpen}
+                aria-controls="mobile-classes"
+                className="h-auto w-full justify-between px-0 py-2 text-lg font-medium"
+              >
+                Aulas de Dança
+                <ChevronDown className={cn(classesOpen && "rotate-180")} />
+              </Button>
+              {classesOpen && (
+                <div id="mobile-classes" className="pl-3">
+                  {groups}
+                </div>
+              )}
+            </div>
+            {navLinks.slice(1).map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                onClick={close}
+                className="block border-b border-border py-3 text-lg font-medium"
+              >
+                {l.label}
+              </Link>
+            ))}
+            <a href="#contactos" onClick={contact} className="block py-3 text-lg font-medium">
+              Contactos
+            </a>
+          </nav>
+          <div className="mt-auto space-y-2 pt-5 text-sm text-muted-foreground">
+            <a className="block" href={`tel:${siteConfig.contacts.phone.replace(/\s/g, "")}`}>
+              {siteConfig.contacts.phone}
+            </a>
+            <a className="block" href={`mailto:${siteConfig.contacts.email}`}>
+              {siteConfig.contacts.email}
+            </a>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
