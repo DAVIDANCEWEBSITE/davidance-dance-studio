@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ImageOff } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -11,6 +11,11 @@ type Props = React.ImgHTMLAttributes<HTMLImageElement> & {
 export function SmartImage({ src, alt = "", className, wrapperClassName, eager, ...rest }: Props) {
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(!src);
+  const imageRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    const image = imageRef.current;
+    if (image?.complete && image.naturalWidth > 0) setLoaded(true);
+  }, [src]);
 
   return (
     <div className={cn("relative overflow-hidden", wrapperClassName)}>
@@ -21,6 +26,7 @@ export function SmartImage({ src, alt = "", className, wrapperClassName, eager, 
         </div>
       ) : (
         <img
+          ref={imageRef}
           src={src}
           alt={alt}
           loading={eager ? "eager" : "lazy"}
