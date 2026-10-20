@@ -11,7 +11,7 @@ describe('Davidance business rules',()=>{
  it('Kizomba Fusion has the supplied level schedules',()=>{expect(getStyle('kizomba-fusion')?.levels?.map(l=>l.schedule)).toEqual([[{day:'Quarta',time:'21h00 - 22h00'}],[{day:'Quarta',time:'20h00 - 21h00'}]]);});
  it('Dança Criativa accepts ages 3–5',()=>expect(getStyle('danca-criativa')?.ageRange).toBe('3 - 5 anos'));
  for(const slug of ['contemporaneo-kids','ballet-kids','hip-hop-kids'])it(`${slug} accepts ages 6–9`,()=>expect(getStyle(slug)?.ageRange).toBe('6 - 9 anos'));
- for(const [slug,age] of [['lyrical-jazz','+15 anos'],['choreography','+12 anos'],['high-heels','+16 anos'],['kizomba-fusion','+16 anos'],['ritmos-latinos','+16 anos']])it(`${slug} has the approved age range`,()=>expect(getStyle(slug)?.ageRange).toBe(age));
+ for(const [slug,age] of [['lyrical-jazz','+15 anos'],['choreography','+12 anos'],['high-heels','+16 anos'],['kizomba-fusion','+16 anos'],['ritmos-latinos','+16 anos']] as const)it(`${slug} has the approved age range`,()=>expect(getStyle(slug)?.ageRange).toBe(age));
  it('dancers are divided into groups of 13 and 6',()=>expect(projectConfig.groups.map(g=>g.people.length)).toEqual([13,6]));
  it('uses the real enrolment link',()=>expect(siteConfig.links.enrol).toBe('https://forms.gle/HEKGNfnnKE4jBG616'));
  it('uses the real trial link',()=>expect(siteConfig.links.trialClass).toBe('https://forms.gle/ibVWxdEjLrz4qWv59'));
