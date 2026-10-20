@@ -64,7 +64,7 @@ const ctaVariants = {
 };
 export function CTAButton({ href, children, variant = "primary", disabled, className, icon = true }: CTAProps) {
   const cls = cn(
-    "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-all duration-300",
+    "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold whitespace-normal text-center transition-all duration-300",
     disabled ? "cursor-not-allowed bg-muted text-muted-foreground opacity-80" : ctaVariants[variant],
     className,
   );
@@ -87,17 +87,15 @@ export function CTAButton({ href, children, variant = "primary", disabled, class
 export function PageHero({ title, eyebrow, image, children }: { title: string; eyebrow?: string; image?: string; children?: React.ReactNode }) {
   return (
     <section className="relative overflow-hidden pt-32 md:pt-40">
-      <div className="blob -left-20 top-10 h-72 w-72 bg-violet" />
-      <div className="blob -right-10 top-40 h-80 w-80 bg-rose" />
       <div className="container relative mx-auto px-5 text-center">
         <Reveal>
           {eyebrow && <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-rose">{eyebrow}</p>}
-          <h1 className="text-5xl font-light text-foreground md:text-7xl">{title}</h1>
+          <h1 className="text-4xl font-light text-foreground md:text-6xl">{title}</h1>
           {children && <div className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">{children}</div>}
         </Reveal>
         {image && (
           <Reveal delay={0.15} className="mx-auto mt-12 max-w-5xl">
-            <SmartImage src={image} alt={title} eager wrapperClassName="aspect-[16/8] rounded-[3rem] rounded-tl-[8rem] rounded-br-[8rem] shadow-soft" />
+            <SmartImage src={image} alt={title} eager wrapperClassName="aspect-[16/9] rounded-lg shadow-soft" />
           </Reveal>
         )}
       </div>

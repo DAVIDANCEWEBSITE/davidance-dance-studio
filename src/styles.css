@@ -56,7 +56,7 @@
   --plum: oklch(0.2 0.05 355);
   --violet: oklch(0.64 0.2 289);
   --rose: oklch(0.63 0.13 357);
-  --brand-hover: #96305a;
+  --brand-hover: oklch(0.47 0.15 357);
   --blush: oklch(0.95 0.03 355);
   --lilac: oklch(0.94 0.04 290);
   --indigo-deep: oklch(0.18 0.07 278);
@@ -105,7 +105,7 @@
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
   }
   :focus-visible {
     outline: 2px solid var(--violet);
