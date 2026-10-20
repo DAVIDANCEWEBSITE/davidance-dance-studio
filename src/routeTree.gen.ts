@@ -15,7 +15,10 @@ import { Route as ContactosRouteImport } from './routes/contactos'
 import { Route as EstilosRouteImport } from './routes/estilos'
 import { Route as HorarioContactosRouteImport } from './routes/horario-contactos'
 import { Route as HorariosRouteImport } from './routes/horarios'
+import { Route as JovensAdultosRouteImport } from './routes/jovens-adultos'
+import { Route as KidsRouteImport } from './routes/kids'
 import { Route as ProjetoDavidanceRouteImport } from './routes/projeto-davidance'
+import { Route as SofiaDavidLuzRouteImport } from './routes/sofia-david-luz'
 import { Route as EstilosIndexRouteImport } from './routes/estilos.index'
 import { Route as EstilosSlugRouteImport } from './routes/estilos.$slug'
 
@@ -49,9 +52,24 @@ const HorariosRoute = HorariosRouteImport.update({
   path: '/horarios',
   getParentRoute: () => rootRouteImport,
 } as any)
+const JovensAdultosRoute = JovensAdultosRouteImport.update({
+  id: '/jovens-adultos',
+  path: '/jovens-adultos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KidsRoute = KidsRouteImport.update({
+  id: '/kids',
+  path: '/kids',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjetoDavidanceRoute = ProjetoDavidanceRouteImport.update({
   id: '/projeto-davidance',
   path: '/projeto-davidance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SofiaDavidLuzRoute = SofiaDavidLuzRouteImport.update({
+  id: '/sofia-david-luz',
+  path: '/sofia-david-luz',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EstilosIndexRoute = EstilosIndexRouteImport.update({
@@ -72,7 +90,10 @@ export interface FileRoutesByFullPath {
   '/estilos': typeof EstilosRouteWithChildren
   '/horario-contactos': typeof HorarioContactosRoute
   '/horarios': typeof HorariosRoute
+  '/jovens-adultos': typeof JovensAdultosRoute
+  '/kids': typeof KidsRoute
   '/projeto-davidance': typeof ProjetoDavidanceRoute
+  '/sofia-david-luz': typeof SofiaDavidLuzRoute
   '/estilos/$slug': typeof EstilosSlugRoute
   '/estilos/': typeof EstilosIndexRoute
 }
@@ -82,7 +103,10 @@ export interface FileRoutesByTo {
   '/contactos': typeof ContactosRoute
   '/horario-contactos': typeof HorarioContactosRoute
   '/horarios': typeof HorariosRoute
+  '/jovens-adultos': typeof JovensAdultosRoute
+  '/kids': typeof KidsRoute
   '/projeto-davidance': typeof ProjetoDavidanceRoute
+  '/sofia-david-luz': typeof SofiaDavidLuzRoute
   '/estilos/$slug': typeof EstilosSlugRoute
   '/estilos': typeof EstilosIndexRoute
 }
@@ -94,7 +118,10 @@ export interface FileRoutesById {
   '/estilos': typeof EstilosRouteWithChildren
   '/horario-contactos': typeof HorarioContactosRoute
   '/horarios': typeof HorariosRoute
+  '/jovens-adultos': typeof JovensAdultosRoute
+  '/kids': typeof KidsRoute
   '/projeto-davidance': typeof ProjetoDavidanceRoute
+  '/sofia-david-luz': typeof SofiaDavidLuzRoute
   '/estilos/$slug': typeof EstilosSlugRoute
   '/estilos/': typeof EstilosIndexRoute
 }
@@ -107,7 +134,10 @@ export interface FileRouteTypes {
     | '/estilos'
     | '/horario-contactos'
     | '/horarios'
+    | '/jovens-adultos'
+    | '/kids'
     | '/projeto-davidance'
+    | '/sofia-david-luz'
     | '/estilos/$slug'
     | '/estilos/'
   fileRoutesByTo: FileRoutesByTo
@@ -117,7 +147,10 @@ export interface FileRouteTypes {
     | '/contactos'
     | '/horario-contactos'
     | '/horarios'
+    | '/jovens-adultos'
+    | '/kids'
     | '/projeto-davidance'
+    | '/sofia-david-luz'
     | '/estilos/$slug'
     | '/estilos'
   id:
@@ -128,7 +161,10 @@ export interface FileRouteTypes {
     | '/estilos'
     | '/horario-contactos'
     | '/horarios'
+    | '/jovens-adultos'
+    | '/kids'
     | '/projeto-davidance'
+    | '/sofia-david-luz'
     | '/estilos/$slug'
     | '/estilos/'
   fileRoutesById: FileRoutesById
@@ -140,7 +176,10 @@ export interface RootRouteChildren {
   EstilosRoute: typeof EstilosRouteWithChildren
   HorarioContactosRoute: typeof HorarioContactosRoute
   HorariosRoute: typeof HorariosRoute
+  JovensAdultosRoute: typeof JovensAdultosRoute
+  KidsRoute: typeof KidsRoute
   ProjetoDavidanceRoute: typeof ProjetoDavidanceRoute
+  SofiaDavidLuzRoute: typeof SofiaDavidLuzRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -187,11 +226,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HorariosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/jovens-adultos': {
+      id: '/jovens-adultos'
+      path: '/jovens-adultos'
+      fullPath: '/jovens-adultos'
+      preLoaderRoute: typeof JovensAdultosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kids': {
+      id: '/kids'
+      path: '/kids'
+      fullPath: '/kids'
+      preLoaderRoute: typeof KidsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projeto-davidance': {
       id: '/projeto-davidance'
       path: '/projeto-davidance'
       fullPath: '/projeto-davidance'
       preLoaderRoute: typeof ProjetoDavidanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sofia-david-luz': {
+      id: '/sofia-david-luz'
+      path: '/sofia-david-luz'
+      fullPath: '/sofia-david-luz'
+      preLoaderRoute: typeof SofiaDavidLuzRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/estilos/': {
@@ -231,7 +291,10 @@ const rootRouteChildren: RootRouteChildren = {
   EstilosRoute: EstilosRouteWithChildren,
   HorarioContactosRoute: HorarioContactosRoute,
   HorariosRoute: HorariosRoute,
+  JovensAdultosRoute: JovensAdultosRoute,
+  KidsRoute: KidsRoute,
   ProjetoDavidanceRoute: ProjetoDavidanceRoute,
+  SofiaDavidLuzRoute: SofiaDavidLuzRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

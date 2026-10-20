@@ -12,6 +12,8 @@ export const Route = createFileRoute("/contactos")({
   head: () => ({
     meta: [
       { title: "Contactos — Davidance" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "description", content: "Entra em contacto com a Davidance: morada, telefone, email e formulário." },
       { property: "og:title", content: "Contactos — Davidance" },
       { property: "og:description", content: "Morada, telefone e formulário de contacto da Davidance." },

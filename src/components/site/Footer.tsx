@@ -17,6 +17,9 @@ export function Footer() {
             {navLinks.map((l) => (
               <li key={l.to}><Link to={l.to} className="hover:text-cream">{l.label}</Link></li>
             ))}
+            <li><Link to="/kids">Kids</Link></li>
+            <li><Link to="/jovens-adultos">Jovens &amp; Adultos</Link></li>
+            <li><a href="#contactos">Contactos</a></li>
           </ul>
           <div className="space-y-1 text-sm">
             <p>{c.address}</p>
