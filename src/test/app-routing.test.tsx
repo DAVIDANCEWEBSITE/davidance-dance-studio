@@ -14,4 +14,11 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+  for (const path of ["/kids", "/jovens-adultos", "/sofia-david-luz", "/horarios", "/projeto-davidance", "/casamentos"]) {
+    it(`matches the public page ${path}`, () => {
+      const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+      expect(router.matchRoutes(path).at(-1)?.pathname).toBe(path);
+      expect(router.matchRoutes(path).at(-1)?.routeId).not.toBe(rootRouteId);
+    });
+  }
 });
