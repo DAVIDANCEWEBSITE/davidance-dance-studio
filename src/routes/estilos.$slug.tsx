@@ -1,11 +1,10 @@
-import { createFileRoute, notFound, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { CalendarClock, Camera, Users } from "lucide-react";
-import { getStyle, getTeacherByName, siteConfig, styles } from "@/data/siteConfig";
-import { CTAButton, GalleryCard, Reveal, SectionTitle } from "@/components/site/primitives";
+import { createFileRoute, notFound, Link, useRouter } from "@tanstack/react-router";
+import { ArrowLeft, CalendarClock, LockKeyhole, Users } from "lucide-react";
+import { classGroups, getStyle, getTeacherByName, siteConfig } from "@/data/siteConfig";
+import { CTAButton } from "@/components/site/primitives";
 import { SmartImage } from "@/components/site/SmartImage";
-import { Lightbox } from "@/components/site/Lightbox";
-
+import { Portrait } from "@/components/site/Portrait";
+import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/estilos/$slug")({
   loader: ({ params }) => {
     const style = getStyle(params.slug);
@@ -13,15 +12,19 @@ export const Route = createFileRoute("/estilos/$slug")({
     return { style };
   },
   head: ({ loaderData }) => {
-    if (!loaderData) return { meta: [{ title: "Estilo não encontrado — Davidance" }, { name: "robots", content: "noindex" }] };
+    if (!loaderData)
+      return {
+        meta: [{ title: "Aula indisponível — Davidance" }, { name: "robots", content: "noindex" }],
+      };
     const s = loaderData.style;
-    const t = `${s.name} — Davidance`;
     return {
       meta: [
-        { title: t },
+        { title: `${s.name} — Aulas de Dança | Davidance` },
         { name: "description", content: s.description },
-        { property: "og:title", content: t },
+        { property: "og:title", content: `${s.name} — Davidance` },
         { property: "og:description", content: s.description },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
         { property: "og:image", content: s.cover },
         { name: "twitter:image", content: s.cover },
       ],
@@ -29,83 +32,99 @@ export const Route = createFileRoute("/estilos/$slug")({
   },
   component: StylePage,
 });
-
 function StylePage() {
   const { style } = Route.useLoaderData();
   const teacher = getTeacherByName(style.teacher);
-  const [idx, setIdx] = useState<number | null>(null);
-  const others = styles.filter((s) => s.slug !== style.slug).slice(0, 4);
-
+  const router = useRouter();
+  const back = () => {
+    if (router.history.canGoBack()) router.history.back();
+    else
+      router.navigate({
+        to: classGroups.kids.slugs.includes(style.slug) ? "/kids" : "/jovens-adultos",
+      });
+  };
   return (
-    <>
-      <section className="relative overflow-hidden pt-28">
-        <div className="blob -left-20 top-40 h-80 w-80 bg-violet" />
-        <div className="container relative mx-auto px-5">
-          <Reveal>
-            <SmartImage src={style.cover} alt={style.name} eager wrapperClassName="aspect-[16/9] rounded-[3rem] rounded-tr-[10rem] rounded-bl-[10rem] shadow-soft md:aspect-[21/9]" />
-          </Reveal>
-          <div className="mt-12 grid gap-12 lg:grid-cols-[1.3fr_1fr]">
-            <Reveal>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-rose">Estilo</p>
-              <h1 className="text-5xl font-light text-foreground md:text-7xl">{style.name}</h1>
-              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{style.description}</p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <CTAButton href={siteConfig.links.trialClass} variant="glow">Vem experimentar uma aula!</CTAButton>
-                <CTAButton href={siteConfig.links.enrol} variant="outline">Inscreve-te!</CTAButton>
-              </div>
-            </Reveal>
-            <Reveal delay={0.1} className="space-y-4">
-              <div className="flex items-center gap-4 rounded-[2rem] bg-card p-5 shadow-soft">
-                {teacher && <SmartImage src={teacher.photo} alt={teacher.name} wrapperClassName="h-14 w-14 shrink-0 rounded-full" />}
-                <div><p className="text-xs uppercase tracking-widest text-muted-foreground">Professor(a)</p><p className="font-display text-xl">{style.teacher}</p></div>
-              </div>
-              <div className="flex items-center gap-4 rounded-[2rem] bg-card p-5 shadow-soft">
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-lilac text-violet"><Users className="h-6 w-6" /></span>
-                <div><p className="text-xs uppercase tracking-widest text-muted-foreground">Faixa etária</p><p className="font-display text-xl">{style.ageRange}</p></div>
-              </div>
-              <div className="flex items-start gap-4 rounded-[2rem] bg-card p-5 shadow-soft">
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-blush text-primary"><CalendarClock className="h-6 w-6" /></span>
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">Horário das aulas</p>
-                  <ul className="mt-1 space-y-1">{style.schedule.map((s) => <li key={s.day + s.time}><strong className="font-semibold">{s.day}</strong> · {s.time}</li>)}</ul>
-                </div>
-              </div>
-            </Reveal>
+    <section className="container mx-auto px-5 pb-20 pt-28">
+      <Button variant="ghost" onClick={back} className="mb-6 px-0 text-primary">
+        <ArrowLeft />
+        {siteConfig.copy.back}
+      </Button>
+      <div className="grid items-start gap-10 lg:grid-cols-2">
+        <SmartImage
+          src={style.cover}
+          alt={style.name}
+          eager
+          wrapperClassName="aspect-[4/3] rounded-lg lg:sticky lg:top-28"
+        />
+        <div>
+          <h1 className="text-4xl font-light md:text-5xl">{style.name}</h1>
+          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{style.description}</p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <CTAButton href={siteConfig.links.trialClass} variant="glow">
+              {siteConfig.copy.trialButton}
+            </CTAButton>
+            <CTAButton href={siteConfig.links.enrol} variant="outline">
+              {siteConfig.copy.enrolButton}
+            </CTAButton>
           </div>
-        </div>
-      </section>
-
-      <section className="bg-gradient-to-b from-background via-blush to-background py-20">
-        <div className="container mx-auto px-5">
-          <SectionTitle title="Galeria" />
-          {style.gallery.length === 0 ? (
-            <div className="mx-auto flex max-w-md flex-col items-center rounded-[2rem] border-2 border-dashed border-rose/40 p-10 text-center">
-              <Camera className="h-10 w-10 text-rose" />
-              <p className="mt-4 font-display text-2xl">Fotografias a caminho</p>
-              <p className="mt-2 text-muted-foreground">Em breve vais poder ver aqui os melhores momentos destas aulas.</p>
+          <div className="mt-10 flex items-center gap-4 border-t border-border pt-7">
+            <Portrait
+              src={teacher?.photo}
+              name={style.teacher}
+              className="h-20 w-20 shrink-0 rounded-lg"
+            />
+            <div>
+              <p className="text-sm text-muted-foreground">{siteConfig.copy.teacher}</p>
+              <h2 className="mt-1 text-xl font-medium">{style.teacher}</h2>
             </div>
-          ) : (
-            <div className="columns-2 gap-4 md:columns-3">
-              {style.gallery.map((g, i) => (
-                <button key={g + i} onClick={() => setIdx(i)} className="group mb-4 block w-full overflow-hidden rounded-[1.5rem]" aria-label={`Ampliar fotografia ${i + 1}`}>
-                  <SmartImage src={g} alt={`${style.name} ${i + 1}`} wrapperClassName={i % 2 ? "aspect-[3/4]" : "aspect-square"} className="group-hover:scale-105" />
-                </button>
-              ))}
+          </div>
+          {style.ageRange && (
+            <div className="mt-6 flex items-center gap-3">
+              <Users className="h-5 w-5 text-primary" />
+              <p>
+                <span className="text-muted-foreground">{siteConfig.copy.age} · </span>
+                {style.ageRange}
+              </p>
             </div>
           )}
+          <div className="mt-7 border-t border-border pt-6">
+            <h2 className="mb-5 flex items-center gap-3 text-xl font-medium">
+              <CalendarClock className="h-5 w-5 text-primary" />
+              {siteConfig.copy.schedule}
+            </h2>
+            {style.levels ? (
+              style.levels.map((level) => (
+                <div key={level.name} className="mb-5 border-l-2 border-primary pl-4">
+                  <h3 className="flex items-center gap-2 font-semibold">
+                    {level.name}
+                    {level.requiresApproval && <LockKeyhole className="h-4 w-4 text-primary" />}
+                  </h3>
+                  <ul className="mt-2 space-y-1 text-muted-foreground">
+                    {level.schedule.map((s) => (
+                      <li key={s.day + s.time}>
+                        {s.day} · {s.time}
+                      </li>
+                    ))}
+                  </ul>
+                  {level.requiresApproval && (
+                    <p className="mt-3 text-sm font-medium text-primary">
+                      {siteConfig.copy.approval}
+                    </p>
+                  )}
+                </div>
+              ))
+            ) : (
+              <ul className="space-y-2 text-muted-foreground">
+                {style.schedule.map((s) => (
+                  <li key={s.day + s.time}>
+                    {s.day} · {s.time}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
-        <Lightbox images={style.gallery} index={idx} onClose={() => setIdx(null)} onChange={setIdx} alt={style.name} />
-      </section>
-
-      <section className="container mx-auto px-5 pb-16">
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <h2 className="text-3xl font-light md:text-4xl">Outros estilos</h2>
-          <Link to="/estilos" className="shrink-0 text-sm font-semibold text-primary hover:underline">Ver todos</Link>
-        </div>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {others.map((s) => <GalleryCard key={s.slug} to="/estilos/$slug" params={{ slug: s.slug }} image={s.cover} title={s.name} className="aspect-[4/5]" />)}
-        </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

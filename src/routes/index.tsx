@@ -1,71 +1,95 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type RefObject } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronLeft, ChevronRight, Volume1, Volume2, VolumeX } from "lucide-react";
-import { siteConfig, styles, teachers, teamPhoto, getTeacherStyles } from "@/data/siteConfig";
-import { ContactCard, CTAButton, GalleryCard, Reveal, SectionTitle, SectionWave, SocialButtons } from "@/components/site/primitives";
+import { ArrowUpRight, Volume1, Volume2, VolumeX } from "lucide-react";
+import { siteConfig, teachers, teamPhoto, homeCards, styles } from "@/data/siteConfig";
+import { CTAButton, Reveal, SectionTitle, SectionWave } from "@/components/site/primitives";
 import { SmartImage } from "@/components/site/SmartImage";
 import { Lightbox } from "@/components/site/Lightbox";
-import { cn } from "@/lib/utils";
-
+import { Portrait } from "@/components/site/Portrait";
+import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Davidance — Escola de Dança onde a dança é família" },
-      { name: "description", content: "Ballet, Hip Hop, Contemporâneo, Jazz, Dança Latina e muito mais. Vem experimentar uma aula na Davidance." },
-      { property: "og:title", content: "Davidance — Escola de Dança" },
-      { property: "og:description", content: "Uma escola de dança com alma. Descobre os nossos estilos, professores e instalações." },
+      { title: "Davidance — Estúdio de Dança em Paio Pires" },
+      { name: "description", content: siteConfig.copy.blocks[0]?.text },
+      { property: "og:title", content: "Davidance — Estúdio de Dança" },
+      { property: "og:description", content: siteConfig.copy.familyPhrase },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:image", content: siteConfig.hero.poster },
       { name: "twitter:image", content: siteConfig.hero.poster },
     ],
   }),
   component: Home,
 });
-
 function Home() {
   return (
     <>
       <Hero />
-      <StylesSection />
-      <ValuesSection />
-      <TeachersSection />
-      <FacilitiesSection />
-      <ContactSection />
+      <AudienceSection />
+      <Presentation />
+      <TeamSection />
+      <SpaceSection />
     </>
   );
 }
-
 type YTPlayer = {
-  destroy?: () => void; mute: () => void; unMute: () => void; playVideo: () => void;
-  setVolume: (v: number) => void; seekTo: (s: number, allow: boolean) => void;
+  destroy?: () => void;
+  mute: () => void;
+  unMute: () => void;
+  playVideo: () => void;
+  setVolume: (v: number) => void;
+  seekTo: (s: number, allow: boolean) => void;
 };
 
 function SoundControl({ playerRef }: { playerRef: RefObject<YTPlayer | null> }) {
   const [muted, setMuted] = useState(true);
   const [volume, setVolume] = useState(60);
   const toggle = () => {
-    const p = playerRef.current; if (!p) return;
-    if (muted) { p.unMute(); p.setVolume(volume || 60); if (!volume) setVolume(60); } else p.mute();
+    const p = playerRef.current;
+    if (!p) return;
+    if (muted) {
+      p.unMute();
+      p.setVolume(volume || 60);
+      if (!volume) setVolume(60);
+    } else p.mute();
     setMuted(!muted);
   };
   const change = (v: number) => {
     setVolume(v);
-    const p = playerRef.current; if (!p) return;
+    const p = playerRef.current;
+    if (!p) return;
     p.setVolume(v);
-    if (v === 0) { p.mute(); setMuted(true); } else if (muted) { p.unMute(); setMuted(false); }
+    if (v === 0) {
+      p.mute();
+      setMuted(true);
+    } else if (muted) {
+      p.unMute();
+      setMuted(false);
+    }
   };
   const Icon = muted || volume === 0 ? VolumeX : volume < 50 ? Volume1 : Volume2;
   return (
     <div className="group absolute bottom-28 right-5 z-10 flex items-center gap-2 rounded-full bg-plum/50 px-2 py-2 text-cream backdrop-blur md:bottom-32 md:right-8">
       <input
-        type="range" min={0} max={100} value={muted ? 0 : volume}
+        type="range"
+        min={0}
+        max={100}
+        value={muted ? 0 : volume}
         onChange={(e) => change(Number(e.target.value))}
         aria-label="Volume do vídeo"
         className="w-0 cursor-pointer accent-primary opacity-0 transition-all duration-300 group-hover:w-24 group-hover:opacity-100 group-focus-within:w-24 group-focus-within:opacity-100"
       />
-      <button onClick={toggle} aria-label={muted ? "Ativar som" : "Desativar som"} className="rounded-full p-2 transition hover:bg-cream/20">
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={toggle}
+        aria-label={muted ? "Ativar som" : "Desativar som"}
+        className="rounded-full p-2 transition hover:bg-cream/20"
+      >
         <Icon className="h-5 w-5" />
-      </button>
+      </Button>
     </div>
   );
 }
@@ -93,11 +117,23 @@ function Hero() {
         width: "100%",
         height: "100%",
         playerVars: {
-          autoplay: 1, mute: 1, controls: 0, playsinline: 1,
-          rel: 0, modestbranding: 1, iv_load_policy: 3, disablekb: 1, fs: 0,
+          autoplay: 1,
+          mute: 1,
+          controls: 0,
+          playsinline: 1,
+          rel: 0,
+          modestbranding: 1,
+          iv_load_policy: 3,
+          disablekb: 1,
+          fs: 0,
         },
         events: {
-          onReady: (e: { target: YTPlayer }) => { e.target.mute(); e.target.setVolume(60); e.target.playVideo(); playerRef.current = e.target; },
+          onReady: (e: { target: YTPlayer }) => {
+            e.target.mute();
+            e.target.setVolume(60);
+            e.target.playVideo();
+            playerRef.current = e.target;
+          },
           onStateChange: (e: { data: number; target: YTPlayer }) => {
             if (e.data === 0) e.target.seekTo(0, true); // volta ao início quando acaba
           },
@@ -113,20 +149,34 @@ function Hero() {
       build();
     } else {
       const prev = w2.onYouTubeIframeAPIReady;
-      w2.onYouTubeIframeAPIReady = () => { prev?.(); build(); };
+      w2.onYouTubeIframeAPIReady = () => {
+        prev?.();
+        build();
+      };
       if (!document.querySelector('script[src*="iframe_api"]')) {
         const tag = document.createElement("script");
         tag.src = "https://www.youtube.com/iframe_api";
         document.head.appendChild(tag);
       }
     }
-    return () => { cancelled = true; playerRef.current = null; player?.destroy?.(); };
+    return () => {
+      cancelled = true;
+      playerRef.current = null;
+      player?.destroy?.();
+    };
   }, []);
 
   return (
-    <section className="relative h-[100svh] overflow-hidden bg-plum" aria-label="Vídeo de apresentação">
+    <section
+      className="relative h-[92svh] overflow-hidden bg-plum"
+      aria-label="Vídeo de apresentação"
+    >
       <motion.div style={{ y }} className="absolute inset-0 overflow-hidden" aria-hidden>
-        <img src={siteConfig.hero.poster} alt="" className="absolute inset-0 h-full w-full object-cover" />
+        <img
+          src={siteConfig.hero.poster}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+        />
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[56.25vw] w-[177.78vh] min-h-full min-w-full -translate-x-1/2 -translate-y-1/2">
           <div ref={hostRef} className="h-full w-full" />
         </div>
@@ -134,7 +184,9 @@ function Hero() {
       <div className="absolute inset-0 bg-hero-overlay" />
       {siteConfig.showHeroTagline && (
         <div className="absolute inset-0 flex items-center justify-center px-5">
-          <h1 className="text-center text-5xl font-light italic text-cream md:text-7xl">{siteConfig.tagline}</h1>
+          <h1 className="text-center text-5xl font-light italic text-cream md:text-7xl">
+            {siteConfig.tagline}
+          </h1>
         </div>
       )}
       {!siteConfig.showHeroTagline && <h1 className="sr-only">Davidance — Escola de Dança</h1>}
@@ -146,130 +198,160 @@ function Hero() {
   );
 }
 
-function StylesSection() {
-  const spans = ["md:row-span-2", "", "", "md:row-span-2", "", "md:row-span-2", "", ""];
+function AudienceSection() {
+  const images = [
+    siteConfig.kidsImage,
+    siteConfig.groupPhoto,
+    siteConfig.weddingsHero,
+  ];
   return (
-    <section id="estilos" className="relative -mt-px scroll-mt-20 py-16 md:py-24">
-      <div className="blob -right-32 top-20 h-96 w-96 bg-violet" />
-      <div className="container relative mx-auto px-5">
-        <SectionTitle eyebrow="Encontra o teu ritmo" title="Os Nossos Estilos" />
-        <div className="grid auto-rows-[220px] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {styles.map((s, i) => (
-            <Reveal key={s.slug} delay={(i % 4) * 0.08} className={cn(spans[i % spans.length])}>
-              <GalleryCard to="/estilos/$slug" params={{ slug: s.slug }} image={s.cover} title={s.name} className="h-full" />
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ValuesSection() {
-  return (
-    <section className="relative bg-gradient-to-b from-background via-blush to-background py-20 md:py-28">
-      <div className="container mx-auto grid items-center gap-14 px-5 lg:grid-cols-2">
-        <Reveal>
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-rose">Quem Somos</p>
-          <h2 className="text-4xl font-light text-foreground md:text-6xl">Os Nossos <em className="text-primary">Valores</em></h2>
-          <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
-            <p>Na Davidance, acreditamos que a dança é muito mais do que passos e coreografias: é uma família. Aqui, cada aluno é recebido com carinho e respeito, independentemente da idade, da experiência ou do sonho que traz consigo.</p>
-            <p>Movidos pela paixão, trabalhamos todos os dias com dedicação para criar um espaço inclusivo onde se cresce, se arrisca e se celebra. Porque quando dançamos juntos, ficamos mais fortes — dentro e fora do estúdio.</p>
-          </div>
-          <div className="mt-10"><CTAButton href={siteConfig.links.joinFamily} variant="glow">Junta-te à nossa família</CTAButton></div>
-        </Reveal>
-        <Reveal delay={0.15} className="relative">
-          <div className="absolute -bottom-6 -right-4 h-full w-full rounded-[3rem] bg-gradient-to-br from-violet to-rose opacity-70" aria-hidden />
-          <SmartImage src={siteConfig.groupPhoto} alt="Fotografia de grupo da família Davidance" wrapperClassName="relative aspect-[4/3] rounded-[3rem] shadow-soft" />
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function TeachersSection() {
-  const scroller = useRef<HTMLDivElement>(null);
-  const scroll = (dir: number) => scroller.current?.scrollBy({ left: dir * 260, behavior: "smooth" });
-  return (
-    <section className="relative py-20 md:py-24">
-      <div className="blob -left-32 top-1/3 h-96 w-96 bg-rose" />
-      <div className="container relative mx-auto px-5">
-        <SectionTitle eyebrow="Quem te guia" title="Os Nossos Professores" />
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:gap-14">
-          <Reveal className="relative mx-auto w-full max-w-xs lg:max-w-none">
-            <div className="absolute -bottom-4 -right-3 h-full w-full rounded-[2.5rem] bg-gradient-to-br from-violet to-rose opacity-60" aria-hidden />
-            <SmartImage src={teamPhoto} alt="Equipa de professores Davidance" wrapperClassName="relative aspect-[1387/1920] rounded-[2.5rem] shadow-soft" />
-          </Reveal>
-          <div className="min-w-0">
-            <div className="flex items-center justify-between gap-4">
-              <p className="min-w-0 text-sm font-semibold uppercase tracking-[0.25em] text-muted-foreground">Conhece a equipa</p>
-              <div className="flex shrink-0 gap-2">
-                <button onClick={() => scroll(-1)} aria-label="Anterior" className="grid h-10 w-10 place-items-center rounded-full bg-card shadow-soft transition hover:bg-primary hover:text-primary-foreground"><ChevronLeft className="h-5 w-5" /></button>
-                <button onClick={() => scroll(1)} aria-label="Seguinte" className="grid h-10 w-10 place-items-center rounded-full bg-card shadow-soft transition hover:bg-primary hover:text-primary-foreground"><ChevronRight className="h-5 w-5" /></button>
-              </div>
+    <section className="container mx-auto px-5 py-16 md:py-20">
+      <SectionTitle title={siteConfig.copy.homeTitle} />
+      <div className="grid gap-10 md:grid-cols-3">
+        {homeCards.map((c, i) => (
+          <Link key={c.to} to={c.to} className="group min-w-0">
+            <SmartImage
+              src={images[i]}
+              alt={c.title}
+              wrapperClassName="aspect-[4/3] rounded-lg"
+              className="group-hover:scale-105"
+            />
+            <div className="mt-5 flex items-start justify-between gap-3">
+              <h3 className="text-xl font-medium">{c.title}</h3>
+              <ArrowUpRight className="h-5 w-5 shrink-0 text-primary" />
             </div>
-            <div ref={scroller} className="-mx-5 mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 lg:mx-0 lg:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-              {teachers.map((t) => (
-                <article key={t.name} className="w-44 shrink-0 snap-start rounded-[1.75rem] bg-card p-3 shadow-soft md:w-52">
-                  <SmartImage src={t.photo} alt={t.name} wrapperClassName="aspect-square rounded-[1.25rem]" />
-                  <h3 className="mt-3 truncate px-1 text-lg font-medium text-foreground">{t.name}</h3>
-                  <div className="mt-2 flex flex-wrap gap-1.5 px-1 pb-1">
-                    {getTeacherStyles(t.name).map((s) => (
-                      <span key={s.slug} className="rounded-full bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground">{s.name}</span>
-                    ))}
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
+            <p className="mt-3 leading-relaxed text-muted-foreground">{c.text}</p>
+          </Link>
+        ))}
       </div>
     </section>
   );
 }
-
-function FacilitiesSection() {
-  const photos = siteConfig.facilities.photos;
-  const [idx, setIdx] = useState<number | null>(null);
-  const layout = ["md:col-span-2 md:row-span-2", "", "", "md:col-span-2", "", "md:col-span-2"];
+function Presentation() {
   return (
-    <section className="relative bg-gradient-to-b from-background via-lilac to-background py-20 md:py-28">
+    <section className="bg-secondary/40 py-16 md:py-20">
       <div className="container mx-auto px-5">
-        <SectionTitle eyebrow="O nosso espaço" title="As Nossas Instalações" className="mb-6" />
-        <Reveal><p className="mx-auto mb-12 max-w-xl text-center text-lg text-muted-foreground">{siteConfig.facilities.text}</p></Reveal>
-        <div className="grid auto-rows-[180px] grid-cols-2 gap-4 md:grid-cols-4">
-          {photos.map((p, i) => (
-            <Reveal key={p + i} delay={i * 0.06} className={layout[i % layout.length]}>
-              <button onClick={() => setIdx(i)} className="group block h-full w-full overflow-hidden rounded-[2rem] shadow-soft" aria-label={`Ampliar fotografia ${i + 1} das instalações`}>
-                <SmartImage src={p} alt={`Instalações Davidance ${i + 1}`} wrapperClassName="h-full w-full" className="group-hover:scale-105" />
-              </button>
-            </Reveal>
+        <SmartImage
+          src={siteConfig.groupPhoto}
+          alt={siteConfig.copy.presentationTitle}
+          wrapperClassName="aspect-[16/9] rounded-lg md:aspect-[21/9]"
+        />
+        <h2 className="mx-auto mt-12 max-w-4xl text-center text-3xl font-light md:text-4xl">
+          {siteConfig.copy.presentationTitle}
+        </h2>
+        <div className="mt-10 grid gap-8 lg:grid-cols-3">
+          {siteConfig.copy.blocks.map((b) => (
+            <div key={b.title}>
+              <h3 className="text-xl font-medium text-primary">{b.title}</h3>
+              <p className="mt-4 leading-relaxed text-muted-foreground">{b.text}</p>
+            </div>
           ))}
         </div>
+        <div className="mt-12 text-center">
+          <p className="mx-auto max-w-3xl text-xl font-light">{siteConfig.copy.familyPhrase}</p>
+          <div className="mt-6">
+            <CTAButton href={siteConfig.links.enrol} variant="glow">
+              {siteConfig.copy.familyButton}
+            </CTAButton>
+          </div>
+        </div>
       </div>
-      <Lightbox images={photos} index={idx} onClose={() => setIdx(null)} onChange={setIdx} alt="Instalações" />
     </section>
   );
 }
-
-function ContactSection() {
+function TeamSection() {
+  const f = siteConfig.founder;
   return (
-    <section className="relative px-5 pb-10 pt-10">
-      <Reveal className="container relative mx-auto overflow-hidden rounded-[3rem] bg-gradient-brand p-8 shadow-glow md:p-16">
-        <div className="blob -right-20 -top-20 h-80 w-80 bg-cream opacity-20" />
-        <div className="relative grid gap-12 lg:grid-cols-2">
-          <div>
-            <h2 className="text-5xl font-light text-cream md:text-6xl">Fale <em>connosco!</em></h2>
-            <p className="mt-4 max-w-md text-cream/85">Tens dúvidas ou queres conhecer-nos? Estamos à tua espera.</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <CTAButton href={siteConfig.links.enrol} variant="light">Inscreve-te!</CTAButton>
-              <CTAButton href={siteConfig.links.trialClass} variant="light" className="bg-transparent text-cream ring-2 ring-cream hover:bg-cream/15">Vem experimentar uma aula!</CTAButton>
-            </div>
-            <div className="mt-8"><SocialButtons light /></div>
-          </div>
-          <ContactCard light className="rounded-[2rem] bg-plum/20 p-8 backdrop-blur" />
+    <section className="container mx-auto px-5 py-16 md:py-20">
+      <SectionTitle title={siteConfig.copy.teamTitle} />
+      <div className="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-[280px_1fr]">
+        <Portrait
+          src={f.photo}
+          name={f.name}
+          className="mx-auto aspect-[3/4] w-full max-w-[280px] rounded-lg"
+        />
+        <div>
+          <p className="text-sm font-medium text-primary">{f.role}</p>
+          <h3 className="mt-3 text-3xl font-light">{f.name}</h3>
+          <p className="mt-5 leading-relaxed text-muted-foreground">{f.intro}</p>
+          <Button asChild className="mt-6 h-auto whitespace-normal rounded-full px-6 py-3">
+            <Link to="/sofia-david-luz">
+              {siteConfig.copy.biographyButton}
+              <ArrowUpRight />
+            </Link>
+          </Button>
         </div>
-      </Reveal>
+      </div>
+      <h2 className="mb-8 mt-16 text-center text-3xl font-light">
+        {siteConfig.copy.teachersTitle}
+      </h2>
+      <div className="grid items-center gap-8 lg:grid-cols-[260px_1fr]">
+        <SmartImage
+          src={teamPhoto}
+          alt={siteConfig.copy.teamTitle}
+          wrapperClassName="mx-auto aspect-[1387/1920] w-full max-w-[260px] rounded-lg"
+        />
+        <div className="grid grid-cols-2 gap-x-5 gap-y-7 sm:grid-cols-3">
+          {teachers.map((t) => (
+            <article key={t.name} className="min-w-0">
+              <Portrait src={t.photo} name={t.name} className="aspect-square rounded-lg" />
+              <h3 className="mt-3 text-base font-medium">{t.name}</h3>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+function SpaceSection() {
+  const photos = siteConfig.facilities.photos.slice(0, 4);
+  const [idx, setIdx] = useState<number | null>(null);
+  return (
+    <section className="bg-secondary/40 py-16 md:py-20">
+      <div className="container mx-auto px-5">
+        <SectionTitle title={siteConfig.copy.spaceTitle} />
+        <div className="grid items-center gap-8 lg:grid-cols-[1.5fr_1fr]">
+          <Button
+            variant="ghost"
+            onClick={() => setIdx(0)}
+            className="h-auto w-full overflow-hidden rounded-lg p-0"
+            aria-label="Ampliar fotografia do espaço"
+          >
+            <SmartImage
+              src={photos[0]}
+              alt={siteConfig.copy.spaceTitle}
+              wrapperClassName="aspect-[16/10] w-full"
+            />
+          </Button>
+          <p className="text-lg leading-relaxed text-muted-foreground">
+            {siteConfig.facilities.text}
+          </p>
+        </div>
+        <div className="mt-6 grid grid-cols-3 gap-3 md:gap-6">
+          {photos.slice(1).map((p, i) => (
+            <Button
+              key={p}
+              variant="ghost"
+              onClick={() => setIdx(i + 1)}
+              aria-label={`Ampliar fotografia ${i + 2} do espaço`}
+              className="h-auto overflow-hidden rounded-lg p-0"
+            >
+              <SmartImage
+                src={p}
+                alt={siteConfig.copy.spaceTitle}
+                wrapperClassName="aspect-[4/3] w-full"
+              />
+            </Button>
+          ))}
+        </div>
+      </div>
+      <Lightbox
+        images={photos}
+        index={idx}
+        onClose={() => setIdx(null)}
+        onChange={setIdx}
+        alt={siteConfig.copy.spaceTitle}
+      />
     </section>
   );
 }

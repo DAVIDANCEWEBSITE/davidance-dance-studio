@@ -11,3 +11,7 @@
 
 - All editable site content (links, contacts, styles, teachers, testimonials, project years, auditionsOpen) lives in src/data/siteConfig.ts; components only read from it — keeps content swappable in one place.
 - Shared site UI (SmartImage, Lightbox, CTAButton, PageHero, GalleryCard, ContactCard, SectionWave) lives in src/components/site/ — reuse instead of re-implementing per page.
+- Audience categories use separate public routes and a shared class catalogue; shared classes resolve to one detail URL so schedules cannot diverge.
+- Render the contact band once in the root shell and navigate to its in-page anchor from every page, avoiding duplicated contacts.
+- Missing named-person and couple photographs render brand placeholders, never stock identities; project history media stays inactive until real source URLs are configured.
+- Generate the downloadable timetable from the configured class schedules when no timetable artwork is supplied, preserving one source of truth.

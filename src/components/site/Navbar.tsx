@@ -1,101 +1,229 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { navLinks, siteConfig } from "@/data/siteConfig";
+import { navLinks, siteConfig, classGroups } from "@/data/siteConfig";
 import { Logo } from "./primitives";
+import { Button } from "@/components/ui/button";
 
 export function Navbar() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const isHome = pathname === "/";
-  const isProject = pathname === "/projeto-davidance";
   const [scrollY, setScrollY] = useState(0);
   const [vh, setVh] = useState(800);
   const [open, setOpen] = useState(false);
-
+  const [classesOpen, setClassesOpen] = useState(false);
   useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY);
-    const onResize = () => setVh(window.innerHeight);
-    onScroll(); onResize();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onResize);
-    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onResize); };
+    const scroll = () => setScrollY(window.scrollY);
+    const resize = () => {
+      setVh(window.innerHeight);
+      if (window.innerWidth >= 1024) setOpen(false);
+    };
+    scroll();
+    resize();
+    window.addEventListener("scroll", scroll, { passive: true });
+    window.addEventListener("resize", resize);
+    return () => {
+      window.removeEventListener("scroll", scroll);
+      window.removeEventListener("resize", resize);
+    };
   }, []);
-  useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    setOpen(false);
+    setClassesOpen(false);
+  }, [pathname]);
+  useEffect(() => {
+    const previous = document.body.style.overflow;
+    if (open) document.body.style.overflow = "hidden";
+    const key = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        setClassesOpen(false);
+      }
+    };
+    document.addEventListener("keydown", key);
+    return () => {
+      document.body.style.overflow = previous;
+      document.removeEventListener("keydown", key);
+    };
   }, [open]);
-
-  const overHero = (isHome && scrollY < vh * 0.75) || (isProject && scrollY < vh * 0.6);
-  const solid = !overHero;
-
+  const overHero =
+    (pathname === "/" && scrollY < vh * 0.7) ||
+    (pathname === "/projeto-davidance" && scrollY < vh * 0.6);
+  const close = () => {
+    setOpen(false);
+    setClassesOpen(false);
+  };
+  const linkClass = cn(
+    "block rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-brand-hover hover:text-primary-foreground",
+    overHero ? "text-cream" : "text-foreground",
+  );
+  const contact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    close();
+    document.getElementById("contactos")?.scrollIntoView({ behavior: "smooth" });
+  };
+  const groups = (
+    <>
+      <Link
+        to="/kids"
+        onClick={close}
+        className="block rounded-md px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary"
+      >
+        {classGroups.kids.menu}
+      </Link>
+      <Link
+        to="/jovens-adultos"
+        onClick={close}
+        className="block rounded-md px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary"
+      >
+        {classGroups.adults.menu}
+      </Link>
+    </>
+  );
   return (
     <>
-    <header className={cn(
-      "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-      open ? "bg-cream" : solid ? "bg-cream/80 shadow-soft backdrop-blur-lg" : "bg-transparent",
-    )}>
-      <nav className={cn("container relative z-50 mx-auto flex items-center justify-between px-5 transition-all duration-500", isHome && overHero && !open ? "h-24 md:h-28" : "h-20")} aria-label="Principal">
-        <Link to="/" aria-label="Davidance — início" className="shrink-0">
-          <Logo light={overHero && !open} className={cn("transition-all duration-500", isHome && overHero && !open ? "h-14 drop-shadow-lg md:h-16" : "h-10")} />
-        </Link>
-        <ul className="hidden items-center gap-1 lg:flex">
-          {navLinks.map((l) => (
-            <li key={l.to}>
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 transition-colors",
+          open
+            ? "bg-background"
+            : overHero
+              ? "bg-transparent"
+              : "bg-background/95 shadow-soft backdrop-blur-lg",
+        )}
+      >
+        <nav
+          aria-label="Principal"
+          className={cn(
+            "container mx-auto flex items-center justify-between gap-5 px-5",
+            pathname === "/" && overHero && !open ? "h-24 md:h-28" : "h-20",
+          )}
+        >
+          <Link to="/" onClick={close} aria-label="Davidance — início">
+            <Logo
+              light={overHero && !open}
+              className={cn(
+                "transition-all",
+                pathname === "/" && overHero && !open ? "h-14 md:h-16" : "h-10",
+              )}
+            />
+          </Link>
+          <ul className="hidden items-center gap-1 lg:flex">
+            <li>
+              <Link to="/" className={linkClass} activeOptions={{ exact: true }}>
+                {navLinks[0].label}
+              </Link>
+            </li>
+            <li
+              className="relative"
+              onMouseEnter={() => setClassesOpen(true)}
+              onMouseLeave={() => setClassesOpen(false)}
+            >
+              <Button
+                variant="ghost"
+                aria-expanded={classesOpen}
+                aria-controls="desktop-classes"
+                onClick={() => setClassesOpen(true)}
+                className={cn(linkClass, "inline-flex h-auto items-center gap-1")}
+              >
+                Aulas de Dança
+                <ChevronDown className={cn("transition-transform", classesOpen && "rotate-180")} />
+              </Button>
+              {classesOpen && (
+                <div
+                  id="desktop-classes"
+                  className="absolute left-0 top-full min-w-56 rounded-lg border border-border bg-background p-2 shadow-soft"
+                  onBlur={(e) => {
+                    if (!e.currentTarget.contains(e.relatedTarget)) setClassesOpen(false);
+                  }}
+                >
+                  {groups}
+                </div>
+              )}
+            </li>
+            {navLinks.slice(1).map((l) => (
+              <li key={l.to}>
+                <Link to={l.to} className={linkClass}>
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <a href="#contactos" onClick={contact} className={linkClass}>
+                Contactos
+              </a>
+            </li>
+          </ul>
+          <Button
+            variant="ghost"
+            size="icon"
+            className={cn("lg:hidden", overHero && !open ? "text-cream" : "text-primary")}
+            aria-label={open ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X /> : <Menu />}
+          </Button>
+        </nav>
+      </header>
+      {open && (
+        <div
+          id="mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu"
+          className="fixed inset-0 z-40 flex h-dvh flex-col overflow-y-auto bg-background px-6 pb-6 pt-24 lg:hidden"
+        >
+          <nav aria-label="Menu móvel">
+            <Link
+              to="/"
+              onClick={close}
+              className="block border-b border-border py-3 text-lg font-medium"
+            >
+              {navLinks[0].label}
+            </Link>
+            <div className="border-b border-border py-2">
+              <Button
+                variant="ghost"
+                onClick={() => setClassesOpen((v) => !v)}
+                aria-expanded={classesOpen}
+                aria-controls="mobile-classes"
+                className="h-auto w-full justify-between px-0 py-2 text-lg font-medium"
+              >
+                Aulas de Dança
+                <ChevronDown className={cn(classesOpen && "rotate-180")} />
+              </Button>
+              {classesOpen && (
+                <div id="mobile-classes" className="pl-3">
+                  {groups}
+                </div>
+              )}
+            </div>
+            {navLinks.slice(1).map((l) => (
               <Link
+                key={l.to}
                 to={l.to}
-                activeOptions={{ exact: l.to === "/" }}
-                className={cn("rounded-full px-4 py-2 text-sm font-medium transition-colors", overHero ? "text-cream hover:bg-brand-hover hover:text-cream" : "text-foreground hover:bg-brand-hover hover:text-cream")}
-                activeProps={{ className: overHero ? "bg-cream/15" : "bg-secondary text-primary" }}
+                onClick={close}
+                className="block border-b border-border py-3 text-lg font-medium"
               >
                 {l.label}
               </Link>
-            </li>
-          ))}
-        </ul>
-        <button
-          className={cn("rounded-full p-2.5 lg:hidden", open ? "text-primary hover:bg-secondary" : overHero ? "text-cream hover:bg-cream/15" : "text-primary hover:bg-secondary")}
-          aria-label={open ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((o) => !o)}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </nav>
-    </header>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 flex h-[100dvh] flex-col overflow-y-auto bg-cream px-6 pb-10 pt-28 lg:hidden"
-          >
-            <ul className="divide-y divide-border">
-              {navLinks.map((l, i) => (
-                <motion.li key={l.to} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 + i * 0.04 }}>
-                  <Link
-                    to={l.to}
-                    onClick={() => setOpen(false)}
-                    activeOptions={{ exact: l.to === "/" }}
-                    className="block py-4 text-xl font-medium text-foreground transition-colors hover:text-brand-hover"
-                    activeProps={{ className: "text-brand-hover" }}
-                  >
-                    {l.label}
-                  </Link>
-                </motion.li>
-              ))}
-            </ul>
-            <div className="mt-auto space-y-1 pt-10 text-sm text-muted-foreground">
-              <a href={`tel:${siteConfig.contacts.phone.replace(/\s/g, "")}`} className="block hover:text-brand-hover">{siteConfig.contacts.phone}</a>
-              <a href={`mailto:${siteConfig.contacts.email}`} className="block hover:text-brand-hover">{siteConfig.contacts.email}</a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            ))}
+            <a href="#contactos" onClick={contact} className="block py-3 text-lg font-medium">
+              Contactos
+            </a>
+          </nav>
+          <div className="mt-auto space-y-2 pt-5 text-sm text-muted-foreground">
+            <a className="block" href={`tel:${siteConfig.contacts.phone.replace(/\s/g, "")}`}>
+              {siteConfig.contacts.phone}
+            </a>
+            <a className="block" href={`mailto:${siteConfig.contacts.email}`}>
+              {siteConfig.contacts.email}
+            </a>
+          </div>
+        </div>
+      )}
     </>
   );
 }

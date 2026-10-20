@@ -13,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/site/Navbar";
+import { ContactSection } from "@/components/site/ContactSection";
 import { Footer } from "@/components/site/Footer";
 
 function NotFoundComponent() {
@@ -23,8 +24,13 @@ function NotFoundComponent() {
       <div className="relative max-w-md text-center">
         <p className="font-display text-8xl italic text-gradient-brand">404</p>
         <h1 className="mt-4 text-3xl text-foreground">Perdeste o passo?</h1>
-        <p className="mt-3 text-muted-foreground">Esta página não existe ou mudou de lugar. Vamos voltar à pista de dança.</p>
-        <Link to="/" className="mt-8 inline-flex rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-rose">
+        <p className="mt-3 text-muted-foreground">
+          Esta página não existe ou mudou de lugar. Vamos voltar à pista de dança.
+        </p>
+        <Link
+          to="/"
+          className="mt-8 inline-flex rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-rose"
+        >
           Voltar ao início
         </Link>
       </div>
@@ -42,16 +48,26 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">Esta página não carregou</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Algo correu mal. Tenta novamente ou volta ao início.</p>
+        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+          Esta página não carregou
+        </h1>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Algo correu mal. Tenta novamente ou volta ao início.
+        </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
-            onClick={() => { router.invalidate(); reset(); }}
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
             className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
           >
             Tentar novamente
           </button>
-          <a href="/" className="inline-flex items-center justify-center rounded-full border border-input px-4 py-2 text-sm font-medium text-foreground">
+          <a
+            href="/"
+            className="inline-flex items-center justify-center rounded-full border border-input px-4 py-2 text-sm font-medium text-foreground"
+          >
             Início
           </a>
         </div>
@@ -66,7 +82,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Davidance — Escola de Dança" },
-      { name: "description", content: "Davidance, escola de dança: ballet, hip hop, contemporâneo, jazz e muito mais." },
+      {
+        name: "description",
+        content: "Davidance, escola de dança: ballet, hip hop, contemporâneo, jazz e muito mais.",
+      },
       { property: "og:site_name", content: "Davidance" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -75,7 +94,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300..800;1,300..800&family=Great+Vibes&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300..800;1,300..800&family=Great+Vibes&display=swap",
+      },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
     ],
@@ -109,6 +131,7 @@ function RootComponent() {
         <main className="flex-1">
           <Outlet />
         </main>
+        <ContactSection />
         <Footer />
       </div>
     </QueryClientProvider>

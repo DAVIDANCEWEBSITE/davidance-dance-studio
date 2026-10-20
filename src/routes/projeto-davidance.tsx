@@ -1,113 +1,135 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { projectYears, siteConfig, type ProjectMedia } from "@/data/siteConfig";
-import { CTAButton, Reveal, SectionWave } from "@/components/site/primitives";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { projectConfig as p, siteConfig } from "@/data/siteConfig";
 import { SmartImage } from "@/components/site/SmartImage";
-import { Lightbox } from "@/components/site/Lightbox";
-import { cn } from "@/lib/utils";
-
+import { Portrait } from "@/components/site/Portrait";
+import { SectionTitle } from "@/components/site/primitives";
+import { Button } from "@/components/ui/button";
+import { ProjectVideo } from "@/components/site/ProjectVideo";
 export const Route = createFileRoute("/projeto-davidance")({
   head: () => ({
     meta: [
-      { title: "Projeto Davidance — A companhia da Davidance" },
-      { name: "description", content: "Conhece o Projeto Davidance: espetáculos, vídeos e fotografias de cada temporada." },
-      { property: "og:title", content: "Projeto Davidance" },
-      { property: "og:description", content: "A face da Davidance: espetáculos, vídeos e fotografias de cada ano." },
+      { title: "Projeto Davidance — Formação artística 2026/2027" },
+      { name: "description", content: p.description },
+      { property: "og:title", content: "Projeto Davidance — Formação artística" },
+      { property: "og:description", content: p.description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:image", content: siteConfig.projectHero },
       { name: "twitter:image", content: siteConfig.projectHero },
     ],
   }),
   component: ProjectPage,
 });
-
 function ProjectPage() {
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 700], [0, 180]);
-  const scale = useTransform(scrollY, [0, 700], [1, 1.12]);
-
   return (
-    <div className="bg-indigo-deep text-cream">
-      <section className="relative flex h-[90svh] items-end overflow-hidden">
-        <motion.div style={{ y, scale }} className="absolute inset-0">
-          <SmartImage src={siteConfig.projectHero} alt="Projeto Davidance em palco" eager wrapperClassName="h-full w-full" />
-        </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-t from-indigo-deep via-indigo-deep/40 to-indigo-mid/30" />
-        <div className="relative container mx-auto px-5 pb-24">
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-4 text-xs font-semibold uppercase tracking-[0.4em] text-violet">A face da Davidance</motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="font-script text-7xl font-normal leading-none md:text-[10rem]" style={{ letterSpacing: 0 }}>
-            Projeto <span className="text-gradient-brand">Davidance</span>
-          </motion.h1>
+    <>
+      <section className="relative flex min-h-[76svh] items-end overflow-hidden bg-plum">
+        <SmartImage
+          src={siteConfig.projectHero}
+          alt={p.title}
+          eager
+          wrapperClassName="absolute inset-0"
+        />
+        <div className="absolute inset-0 bg-hero-overlay" />
+        <div className="container relative mx-auto px-5 pb-14 pt-32">
+          <h1 className="max-w-5xl font-script text-6xl font-normal leading-tight text-cream md:text-8xl">
+            {p.title}
+          </h1>
         </div>
       </section>
-
-      <section className="relative py-24">
-        <div className="blob left-1/4 top-0 h-96 w-96 bg-violet opacity-30" />
-        <Reveal className="container relative mx-auto max-w-3xl px-5 text-center">
-          <p className="font-display text-2xl font-light leading-relaxed text-cream/90 md:text-4xl">
-            Um grupo de bailarinos que partilham o palco, o suor e o sonho. O Projeto Davidance é onde a técnica encontra a emoção — e onde cada temporada se transforma numa história para contar.
-          </p>
-        </Reveal>
+      <section className="container mx-auto px-5 py-16">
+        <p className="mx-auto max-w-4xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+          {p.description}
+        </p>
       </section>
-
-      {projectYears.map((y, i) => <YearSection key={y.year} year={y.year} description={y.description} media={y.media} alt={i % 2 === 1} />)}
-
-      <section className="relative overflow-hidden bg-gradient-night py-28 text-center">
-        <div className="blob left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 bg-primary opacity-40" />
-        <Reveal className="container relative mx-auto px-5">
-          <h2 className="text-4xl font-light md:text-6xl">Queres fazer parte do <em>nosso projeto</em>?</h2>
-          <div className="mt-10">
-            {/* Controlado por siteConfig.auditionsOpen em src/data/siteConfig.ts:
-                true → botão ativo "Marca a tua audição"; false → desativado "Já estamos cheios". */}
-            <CTAButton href={siteConfig.links.audition} variant="glow" disabled={!siteConfig.auditionsOpen} icon={siteConfig.auditionsOpen}>
-              {siteConfig.auditionsOpen ? "Marca a tua audição" : "Já estamos cheios"}
-            </CTAButton>
+      <section className="bg-secondary/40 py-16">
+        <div className="container mx-auto grid items-center gap-10 px-5 md:grid-cols-[280px_1fr]">
+          <Portrait
+            src={siteConfig.founder.photo}
+            name={siteConfig.founder.name}
+            className="mx-auto aspect-[3/4] w-full max-w-[280px] rounded-lg"
+          />
+          <div>
+            <h2 className="text-3xl font-light md:text-4xl">{p.directionTitle}</h2>
+            <h3 className="mt-4 text-xl font-medium text-primary">{siteConfig.founder.name}</h3>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              {p.directionText}
+            </p>
           </div>
-        </Reveal>
-      </section>
-      <SectionWave fillClass="fill-background" className="bg-indigo-mid" />
-    </div>
-  );
-}
-
-function YearSection({ year, description, media, alt }: { year: number; description: string; media: ProjectMedia[]; alt: boolean }) {
-  const images = media.filter((m): m is Extract<ProjectMedia, { type: "image" }> => m.type === "image").map((m) => m.src);
-  const [idx, setIdx] = useState<number | null>(null);
-  let imgCounter = -1;
-  return (
-    <section className={cn("relative py-20", alt && "bg-indigo-mid/40")}>
-      <div className="container mx-auto px-5">
-        <Reveal className="mb-10 flex flex-wrap items-baseline gap-x-6 gap-y-2">
-          <h2 className="text-4xl font-light md:text-6xl">Projeto Davidance <span className="text-gradient-brand italic">{year}</span></h2>
-          <p className="text-cream/70">{description}</p>
-        </Reveal>
-        <div className="grid auto-rows-[200px] grid-cols-2 gap-4 md:grid-cols-4">
-          {media.map((m, i) => {
-            const big = i === 0 ? "col-span-2 row-span-2" : i === 3 ? "col-span-2" : "";
-            if (m.type === "image") {
-              imgCounter++;
-              const n = imgCounter;
-              return (
-                <Reveal key={i} delay={i * 0.06} className={big}>
-                  <button onClick={() => setIdx(n)} className="group h-full w-full overflow-hidden rounded-[2rem]" aria-label={`Ampliar fotografia ${year}`}>
-                    <SmartImage src={m.src} alt={`Projeto Davidance ${year}`} wrapperClassName="h-full w-full" className="group-hover:scale-105" />
-                  </button>
-                </Reveal>
-              );
-            }
-            return (
-              <Reveal key={i} delay={i * 0.06} className={cn(big, "overflow-hidden rounded-[2rem] bg-plum")}>
-                {m.type === "youtube" ? (
-                  <iframe className="h-full w-full" src={`https://www.youtube-nocookie.com/embed/${m.id}`} title={`Vídeo Projeto Davidance ${year}`} loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowFullScreen />
-                ) : (
-                  <video className="h-full w-full object-cover" src={m.src} poster={m.poster} controls preload="none" />
-                )}
-              </Reveal>
-            );
-          })}
         </div>
-      </div>
-      <Lightbox images={images} index={idx} onClose={() => setIdx(null)} onChange={setIdx} alt={`Projeto Davidance ${year}`} />
-    </section>
+      </section>
+      <section className="container mx-auto px-5 py-16">
+        <SectionTitle title={p.formationTitle} />
+        <div className="space-y-12">
+          {p.formations.map((f) => (
+            <div key={f.title}>
+              <h3 className="text-2xl font-medium">{f.title}</h3>
+              {f.subtitle && <p className="mt-2 text-muted-foreground">{f.subtitle}</p>}
+              <div className="mt-6 grid grid-cols-2 gap-6 md:grid-cols-4">
+                {f.people.map((person) => (
+                  <article key={person.name} className="min-w-0">
+                    <Portrait
+                      src={person.photo}
+                      name={person.name}
+                      className="aspect-[4/3] rounded-lg"
+                    />
+                    <h4 className="mt-3 text-base font-medium">{person.name}</h4>
+                    <p className="mt-1 text-sm text-muted-foreground">{person.area}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section className="bg-secondary/40 py-16">
+        <div className="container mx-auto px-5">
+          <SectionTitle title={p.dancersTitle} />
+          <Portrait
+            src={p.groupPhoto}
+            name={p.dancersTitle}
+            className="mx-auto mb-12 aspect-[21/9] w-full rounded-lg"
+          />
+          {p.groups.map((g, i) => (
+            <div key={g.title} className={i ? "mt-12 border-t border-border pt-10" : ""}>
+              <h3 className="mb-6 text-2xl font-medium">{g.title}</h3>
+              <div className="grid grid-cols-2 gap-x-5 gap-y-7 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+                {g.people.map((person) => (
+                  <article key={person.name} className="min-w-0">
+                    <Portrait
+                      src={person.photo}
+                      name={person.name}
+                      className="aspect-[3/4] rounded-lg"
+                    />
+                    <h4 className="mt-3 text-sm font-medium">{person.name}</h4>
+                  </article>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section className="container mx-auto px-5 py-16">
+        <SectionTitle title={p.historyTitle} />
+        <div className="grid gap-6 md:grid-cols-3">
+          {p.videos.map((v, i) => (
+            <div key={v.title} className={i === 0 ? "md:col-span-3" : ""}>
+              <ProjectVideo video={v} />
+            </div>
+          ))}
+        </div>
+      </section>
+      <section className="bg-secondary/40 py-16">
+        <div className="container mx-auto max-w-3xl px-5 text-center">
+          <h2 className="text-4xl font-light">{p.futureTitle}</h2>
+          <p className="mt-6 whitespace-pre-line text-lg leading-relaxed text-muted-foreground">
+            {p.futureText}
+          </p>
+          <Button asChild className="mt-8 h-auto rounded-full px-7 py-3.5">
+            <Link to="/jovens-adultos">{p.futureButton}</Link>
+          </Button>
+        </div>
+      </section>
+    </>
   );
 }

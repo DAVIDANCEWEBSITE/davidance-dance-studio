@@ -1,51 +1,80 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Quote } from "lucide-react";
 import { siteConfig, testimonials } from "@/data/siteConfig";
-import { CTAButton, PageHero, Reveal, SectionTitle } from "@/components/site/primitives";
+import { CTAButton, PageHero, SectionTitle } from "@/components/site/primitives";
+import { Portrait } from "@/components/site/Portrait";
 import { SmartImage } from "@/components/site/SmartImage";
 import { cn } from "@/lib/utils";
-
 export const Route = createFileRoute("/casamentos")({
   head: () => ({
     meta: [
-      { title: "Casamentos — Coreografias de primeira dança | Davidance" },
-      { name: "description", content: "Coreografias para a primeira dança, para padrinhos e madrinhas, e acompanhamento personalizado para o vosso grande dia." },
+      { title: "Casamentos — A vossa primeira dança | Davidance" },
+      { name: "description", content: siteConfig.copy.weddingsText },
       { property: "og:title", content: "Casamentos — Davidance" },
-      { property: "og:description", content: "Tornem a vossa primeira dança inesquecível com a Davidance." },
+      { property: "og:description", content: siteConfig.copy.weddingsPhrase },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:image", content: siteConfig.weddingsHero },
       { name: "twitter:image", content: siteConfig.weddingsHero },
     ],
   }),
   component: WeddingsPage,
 });
-
 function WeddingsPage() {
   return (
     <>
-      <PageHero eyebrow="O vosso grande dia" title="Casamentos" image={siteConfig.weddingsHero} />
-      <section className="container mx-auto max-w-3xl px-5 py-20 text-center">
-        <Reveal className="space-y-5 text-lg leading-relaxed text-muted-foreground">
-          <p>A primeira dança é um dos momentos mais especiais de um casamento. Na Davidance criamos coreografias à vossa medida, ao ritmo da vossa música e da vossa história — seja algo romântico e delicado ou uma surpresa cheia de energia.</p>
-          <p>Preparamos também coreografias de grupo para padrinhos, madrinhas e família, e oferecemos acompanhamento personalizado para que se sintam confiantes e à vontade no grande dia.</p>
-        </Reveal>
-        <Reveal delay={0.1} className="mt-10"><CTAButton href={siteConfig.links.weddings} variant="glow">Pede o teu orçamento</CTAButton></Reveal>
+      <PageHero title="Casamentos" image={siteConfig.weddingsHero} />
+      <section className="container mx-auto max-w-3xl px-5 py-14 text-center">
+        <p className="whitespace-pre-line text-lg leading-relaxed text-muted-foreground">
+          {siteConfig.copy.weddingsText}
+        </p>
+        <p className="mt-7 text-xl italic text-primary">{siteConfig.copy.weddingsPhrase}</p>
+        <div className="mt-8">
+          <CTAButton href={siteConfig.links.weddings} variant="glow">
+            {siteConfig.copy.weddingsButton}
+          </CTAButton>
+        </div>
       </section>
-      <section className="bg-gradient-to-b from-background via-blush to-background py-20">
-        <div className="container mx-auto space-y-24 px-5">
-          <SectionTitle eyebrow="Histórias de amor" title="Testemunhos" />
-          {testimonials.map((t, i) => (
-            <div key={t.couple} className={cn("grid items-center gap-10 md:grid-cols-2", i % 2 && "md:[&>*:first-child]:order-2")}>
-              <Reveal className="relative h-80 md:h-[26rem]">
-                <SmartImage src={t.photos[0]} alt={t.couple} wrapperClassName={cn("absolute rounded-[2.5rem] shadow-soft", t.photos[1] ? "left-0 top-0 h-[80%] w-[75%]" : "inset-0")} />
-                {t.photos[1] && <SmartImage src={t.photos[1]} alt={`${t.couple} 2`} wrapperClassName="absolute bottom-0 right-0 h-[55%] w-[50%] rounded-[2rem] border-8 border-background shadow-soft" />}
-              </Reveal>
-              <Reveal delay={0.1}>
-                <Quote className="h-10 w-10 text-violet" aria-hidden />
-                <blockquote className="mt-4 font-display text-2xl font-light leading-relaxed md:text-3xl">“{t.text}”</blockquote>
-                <p className="mt-6 text-sm font-semibold uppercase tracking-[0.25em] text-primary">{t.couple}</p>
-              </Reveal>
-            </div>
-          ))}
+      <section className="bg-secondary/40 py-16">
+        <div className="container mx-auto px-5">
+          <SectionTitle
+            title={siteConfig.copy.loveTitle}
+            eyebrow={siteConfig.copy.testimonialsTitle}
+          />
+          <div className="space-y-16">
+            {testimonials.map((t, i) => (
+              <div
+                key={t.couple + i}
+                className={cn(
+                  "mx-auto grid max-w-5xl items-center gap-8 md:grid-cols-[300px_1fr]",
+                  i % 2 && "md:grid-cols-[1fr_300px] md:[&>*:first-child]:order-2",
+                )}
+              >
+                <div className="relative">
+                  {t.photos[0] ? (
+                    <SmartImage
+                      src={t.photos[0]}
+                      alt={t.couple}
+                      wrapperClassName="aspect-[4/3] rounded-lg shadow-soft"
+                    />
+                  ) : (
+                    <Portrait name={t.couple} className="aspect-[4/3] rounded-lg" />
+                  )}
+                </div>
+                <div>
+                  {t.text && (
+                    <>
+                      <Quote className="h-8 w-8 text-primary" />
+                      <blockquote className="mt-3 text-lg font-light leading-relaxed">
+                        “{t.text}”
+                      </blockquote>
+                    </>
+                  )}
+                  <p className="mt-5 font-semibold text-primary">{t.couple}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </>
