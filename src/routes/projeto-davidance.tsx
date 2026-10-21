@@ -95,7 +95,7 @@ function ProjectPage() {
           <Portrait
             src={p.groupPhoto}
             name={p.dancersTitle}
-             className="mx-auto mb-10 aspect-[3/2] w-full max-w-4xl rounded-lg"
+            className="mx-auto mb-10 aspect-[3/2] w-full max-w-4xl rounded-lg"
           />
           <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
             {p.groups

@@ -40,7 +40,12 @@ export function ProjectVideo({ video }: { video: Video }) {
         ) : (
           <>
             {video.poster ? (
-              <SmartImage src={video.poster} alt={video.title} wrapperClassName="absolute inset-0" className="object-contain" />
+              <SmartImage
+                src={video.poster}
+                alt={video.title}
+                wrapperClassName="absolute inset-0"
+                className="object-contain"
+              />
             ) : (
               <Portrait name={video.title} className="absolute inset-0" />
             )}
@@ -51,7 +56,9 @@ export function ProjectVideo({ video }: { video: Video }) {
                 variant="ghost"
                 className="absolute inset-0 h-full w-full rounded-none p-0 hover:bg-transparent"
               >
-                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg"><Play /></span>
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
+                  <Play />
+                </span>
               </Button>
             )}
           </>
