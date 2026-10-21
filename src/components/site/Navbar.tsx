@@ -67,14 +67,14 @@ export function Navbar() {
       <Link
         to="/kids"
         onClick={close}
-        className="block rounded-md px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary"
+        className="block rounded-md px-4 py-3 text-sm font-medium text-foreground hover:bg-brand-hover hover:text-cream"
       >
         {classGroups.kids.menu}
       </Link>
       <Link
         to="/jovens-adultos"
         onClick={close}
-        className="block rounded-md px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary"
+        className="block rounded-md px-4 py-3 text-sm font-medium text-foreground hover:bg-brand-hover hover:text-cream"
       >
         {classGroups.adults.menu}
       </Link>
