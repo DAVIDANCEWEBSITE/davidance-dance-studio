@@ -204,7 +204,7 @@ function Hero() {
 }
 
 function AudienceSection() {
-  const images = [siteConfig.kidsImage, siteConfig.groupPhoto, siteConfig.weddingsHero];
+  const images = [siteConfig.kidsImage, siteConfig.youngAdultsImage, siteConfig.weddingsHero];
   return (
     <section className="container mx-auto px-5 py-12 md:py-16">
       <SectionTitle title={siteConfig.copy.homeTitle} />
