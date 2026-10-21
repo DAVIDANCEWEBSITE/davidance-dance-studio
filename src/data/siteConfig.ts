@@ -4,6 +4,16 @@ import cls_ballet_kids from "@/assets/class-ballet-kids.jpg.asset.json";
 import cls_hip_hop_kids from "@/assets/class-hip-hop-kids.jpg.asset.json";
 import cls_flexibilidade from "@/assets/class-flexibilidade.jpg.asset.json";
 import cls_acrobacias from "@/assets/class-acrobacias.jpg.asset.json";
+import cls_contemporaneo from "@/assets/class-contemporaneo.jpg.asset.json";
+import cls_lyrical_jazz from "@/assets/class-lyrical-jazz.jpg.asset.json";
+import cls_ballet from "@/assets/class-ballet.jpg.asset.json";
+import cls_hip_hop from "@/assets/class-hip-hop.jpg.asset.json";
+import cls_choreography from "@/assets/class-choreography.jpg.asset.json";
+import cls_high_heels from "@/assets/class-high-heels.jpg.asset.json";
+import cls_kizomba_fusion from "@/assets/class-kizomba-fusion.jpg.asset.json";
+import cls_ritmos_latinos from "@/assets/class-ritmos-latinos.jpg.asset.json";
+import cls_danca_oriental from "@/assets/class-danca-oriental.jpg.asset.json";
+import img_projeto_hero from "@/assets/projeto-hero.jpg.asset.json";
 import img_andreia_paulo from "@/assets/home-andreia-paulo.jpg.asset.json";
 import img_beatriz from "@/assets/home-beatriz.jpg.asset.json";
 import img_casamentos from "@/assets/home-casamentos.jpg.asset.json";
@@ -156,7 +166,7 @@ export const siteConfig = {
   },
 
   groupPhoto: img_davidance.url,
-  projectHero: u("photo-1547153760-18fc86324498", 1920),
+  projectHero: img_projeto_hero.url,
   weddingsHero: img_casamentos.url,
 };
 
@@ -295,7 +305,7 @@ export const styles: Style[] = [
         },
       ],
     },
-    cover: u("photo-1547153760-18fc86324498"),
+    cover: cls_contemporaneo.url,
   },
   {
     ...{
@@ -311,7 +321,7 @@ export const styles: Style[] = [
       ],
       gallery: [],
     },
-    cover: u("photo-1547153760-18fc86324498"),
+    cover: cls_lyrical_jazz.url,
   },
   {
     ...{
@@ -324,7 +334,7 @@ export const styles: Style[] = [
       schedule: [{ day: "Segunda", time: "20H00 - 21H00" }],
       gallery: [],
     },
-    cover: u("photo-1518834107812-67b0b7c58434"),
+    cover: cls_ballet.url,
   },
   {
     ...{
@@ -337,7 +347,7 @@ export const styles: Style[] = [
       schedule: [{ day: "Terça", time: "19H00 - 20H00" }],
       gallery: [],
     },
-    cover: u("photo-1535525153412-5a42439a210d"),
+    cover: cls_hip_hop.url,
   },
   {
     ...{
@@ -350,7 +360,7 @@ export const styles: Style[] = [
       schedule: [{ day: "Terça", time: "20H00 - 21H00" }],
       gallery: [],
     },
-    cover: u("photo-1518611012118-696072aa579a"),
+    cover: cls_choreography.url,
   },
   {
     ...{
@@ -363,7 +373,7 @@ export const styles: Style[] = [
       schedule: [{ day: "Quinta", time: "19H00 - 20H00" }],
       gallery: [],
     },
-    cover: u("photo-1524594152303-9fd13543fe6e"),
+    cover: cls_high_heels.url,
   },
   {
     ...{
@@ -388,7 +398,7 @@ export const styles: Style[] = [
         },
       ],
     },
-    cover: u("photo-1547153760-18fc86324498"),
+    cover: cls_kizomba_fusion.url,
   },
   {
     ...{
@@ -401,7 +411,7 @@ export const styles: Style[] = [
       schedule: [{ day: "Quinta", time: "21H00 - 22H00" }],
       gallery: [],
     },
-    cover: u("photo-1547153760-18fc86324498"),
+    cover: cls_ritmos_latinos.url,
   },
   {
     ...{
@@ -414,7 +424,7 @@ export const styles: Style[] = [
       schedule: [{ day: "Quinta", time: "21H00 - 22H00" }],
       gallery: [],
     },
-    cover: u("photo-1518834107812-67b0b7c58434"),
+    cover: cls_danca_oriental.url,
   },
 ];
 export type Teacher = { name: string; photo: string };
