@@ -213,9 +213,9 @@ function AudienceSection() {
     siteConfig.weddingsHero,
   ];
   return (
-    <section className="container mx-auto px-5 py-16 md:py-20">
+    <section className="container mx-auto px-5 py-12 md:py-16">
       <SectionTitle title={siteConfig.copy.homeTitle} />
-      <div className="grid gap-10 md:grid-cols-3">
+      <div className="grid gap-8 md:grid-cols-3">
         {homeCards.map((c, i) => (
           <Link key={c.to} to={c.to} className="group min-w-0">
             <SmartImage
@@ -224,11 +224,8 @@ function AudienceSection() {
               wrapperClassName="aspect-[4/3] rounded-lg"
               className="group-hover:scale-105"
             />
-            <div className="mt-5 flex items-start justify-between gap-3">
-              <h3 className="text-xl font-medium">{c.title}</h3>
-              <ArrowUpRight className="h-5 w-5 shrink-0 text-primary" />
-            </div>
-            <p className="mt-3 leading-relaxed text-muted-foreground">{c.text}</p>
+            <h3 className="mt-4 text-lg font-medium">{c.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.text}</p>
           </Link>
         ))}
       </div>
@@ -237,28 +234,33 @@ function AudienceSection() {
 }
 function Presentation() {
   return (
-    <section className="bg-secondary/40 py-16 md:py-20">
+    <section className="bg-secondary/40 py-12 md:py-16">
       <div className="container mx-auto px-5">
         <SmartImage
           src={siteConfig.groupPhoto}
           alt={siteConfig.copy.presentationTitle}
           wrapperClassName="aspect-[16/9] rounded-lg md:aspect-[21/9]"
         />
-        <h2 className="mx-auto mt-12 max-w-4xl text-center text-3xl font-light md:text-4xl">
+        <h2 className="mx-auto mt-10 max-w-4xl text-center text-2xl font-light md:text-3xl">
           {siteConfig.copy.presentationTitle}
         </h2>
-        <div className="mt-10 grid gap-8 lg:grid-cols-3">
+        <div className="mt-8 grid gap-6 lg:grid-cols-3">
           {siteConfig.copy.blocks.map((b) => (
-            <div key={b.title}>
-              <h3 className="text-xl font-medium text-primary">{b.title}</h3>
-              <p className="mt-4 leading-relaxed text-muted-foreground">{b.text}</p>
+            <div
+              key={b.title}
+              className="rounded-2xl bg-card p-7 text-center shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-glow"
+            >
+              <h3 className="text-lg font-medium text-primary">{b.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{b.text}</p>
             </div>
           ))}
         </div>
-        <div className="mt-12 text-center">
-          <p className="mx-auto max-w-3xl text-xl font-light">{siteConfig.copy.familyPhrase}</p>
+        <div className="mt-10 text-center">
+          <p className="mx-auto max-w-4xl text-base font-light md:whitespace-nowrap md:text-lg">
+            {siteConfig.copy.familyPhrase}
+          </p>
           <div className="mt-6">
-            <CTAButton href={siteConfig.links.enrol} variant="glow">
+            <CTAButton href={siteConfig.links.enrol} variant="glow" icon={false}>
               {siteConfig.copy.familyButton}
             </CTAButton>
           </div>
@@ -270,40 +272,44 @@ function Presentation() {
 function TeamSection() {
   const f = siteConfig.founder;
   return (
-    <section className="container mx-auto px-5 py-16 md:py-20">
+    <section className="container mx-auto px-5 py-12 md:py-16">
       <SectionTitle title={siteConfig.copy.teamTitle} />
-      <div className="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-[280px_1fr]">
+      <div className="mx-auto grid max-w-4xl items-center gap-8 md:grid-cols-[240px_1fr]">
         <Portrait
           src={f.photo}
           name={f.name}
-          className="mx-auto aspect-[3/4] w-full max-w-[280px] rounded-lg"
+          className="mx-auto aspect-[3/4] w-full max-w-[240px] rounded-lg"
         />
         <div>
           <p className="text-sm font-medium text-primary">{f.role}</p>
-          <h3 className="mt-3 text-3xl font-light">{f.name}</h3>
-          <p className="mt-5 leading-relaxed text-muted-foreground">{f.intro}</p>
-          <Button asChild className="mt-6 h-auto whitespace-normal rounded-full px-6 py-3">
-            <Link to="/sofia-david-luz">
-              {siteConfig.copy.biographyButton}
-              <ArrowUpRight />
-            </Link>
+          <h3 className="mt-2 text-2xl font-light md:text-3xl">{f.name}</h3>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+            {f.intro}
+          </p>
+          <Button asChild className="mt-5 h-auto whitespace-normal rounded-full px-6 py-3">
+            <Link to="/sofia-david-luz">{siteConfig.copy.biographyButton}</Link>
           </Button>
         </div>
       </div>
-      <h2 className="mb-8 mt-16 text-center text-3xl font-light">
+      <h2 className="mb-8 mt-14 text-center text-2xl font-light md:text-3xl">
         {siteConfig.copy.teachersTitle}
       </h2>
-      <div className="grid items-center gap-8 lg:grid-cols-[260px_1fr]">
+      <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,360px)_1fr]">
         <SmartImage
           src={teamPhoto}
           alt={siteConfig.copy.teamTitle}
-          wrapperClassName="mx-auto aspect-[1387/1920] w-full max-w-[260px] rounded-lg"
+          wrapperClassName="mx-auto aspect-[1387/1920] w-full max-w-[360px] rounded-lg shadow-soft"
         />
-        <div className="grid grid-cols-2 gap-x-5 gap-y-7 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3">
           {teachers.map((t) => (
             <article key={t.name} className="min-w-0">
               <Portrait src={t.photo} name={t.name} className="aspect-square rounded-lg" />
-              <h3 className="mt-3 text-base font-medium">{t.name}</h3>
+              <h3 className="mt-2 text-sm font-medium">{t.name}</h3>
+              <p className="mt-0.5 text-xs leading-snug text-muted-foreground">
+                {getTeacherStyles(t.name)
+                  .map((s) => s.name)
+                  .join(", ")}
+              </p>
             </article>
           ))}
         </div>
@@ -315,10 +321,10 @@ function SpaceSection() {
   const photos = siteConfig.facilities.photos.slice(0, 4);
   const [idx, setIdx] = useState<number | null>(null);
   return (
-    <section className="bg-secondary/40 py-16 md:py-20">
-      <div className="container mx-auto px-5">
+    <section className="bg-secondary/40 py-12 md:py-16">
+      <div className="container mx-auto max-w-5xl px-5">
         <SectionTitle title={siteConfig.copy.spaceTitle} />
-        <div className="grid items-center gap-8 lg:grid-cols-[1.5fr_1fr]">
+        <div className="grid items-center gap-6 lg:grid-cols-[1.5fr_1fr]">
           <Button
             variant="ghost"
             onClick={() => setIdx(0)}
