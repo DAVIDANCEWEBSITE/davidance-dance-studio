@@ -31,6 +31,10 @@ import projectGroup from "@/assets/projeto-grupo.jpg.asset.json";
 import quorum from "@/assets/projeto-quorum.jpg.asset.json";
 import ritaSpider from "@/assets/projeto-rita-spider.jpg.asset.json";
 import afonsoRola from "@/assets/projeto-afonso-rola.jpg.asset.json";
+import dancerCarolinaMaia from "@/assets/projeto-carolina-maia.jpg.asset.json";
+import dancerCatiaSoares from "@/assets/projeto-catia-soares.jpg.asset.json";
+import dancerLeonorCatarrilhas from "@/assets/projeto-leonor-catarrilhas.jpg.asset.json";
+import dancerSusanaFerreira from "@/assets/projeto-susana-ferreira.jpg.asset.json";
 import senhoraCover from "@/assets/projeto-senhora-do-mar.jpg.asset.json";
 import futebolCover from "@/assets/projeto-futebol.jpg.asset.json";
 import voilaCover from "@/assets/projeto-voila.jpg.asset.json";
@@ -689,8 +693,8 @@ export const projectConfig = {
       people: [
         { name: "Andreia Silva", photo: "" },
         { name: "Carolina Carvalho", photo: "" },
-        { name: "Cátia Soares", photo: "" },
-        { name: "Leonor Catarrilhas", photo: "" },
+        { name: "Cátia Soares", photo: dancerCatiaSoares.url },
+        { name: "Leonor Catarrilhas", photo: dancerLeonorCatarrilhas.url },
         { name: "Margarida Palminha", photo: "" },
         { name: "Maria Inês Costa", photo: "" },
         { name: "Matheus Gonçalves", photo: "" },
@@ -698,7 +702,7 @@ export const projectConfig = {
         { name: "Raquel Pinto", photo: "" },
         { name: "Sofia Conde", photo: "" },
         { name: "Sofia Silva", photo: "" },
-        { name: "Susana Ferreira", photo: "" },
+        { name: "Susana Ferreira", photo: dancerSusanaFerreira.url },
       ],
     },
     {
@@ -706,7 +710,7 @@ export const projectConfig = {
       people: [
         { name: "Alexandre Portugal", photo: "" },
         { name: "Deusa Santana", photo: "" },
-        { name: "Carolina Maia", photo: "" },
+        { name: "Carolina Maia", photo: dancerCarolinaMaia.url },
         { name: "Joana Luz", photo: "" },
         { name: "Margarida Dores", photo: "" },
         { name: "Tatiana Teixeira", photo: "" },
