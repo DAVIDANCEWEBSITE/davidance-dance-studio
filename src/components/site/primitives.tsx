@@ -94,7 +94,7 @@ export function SectionTitle({
 type CTAProps = {
   href?: string;
   children: React.ReactNode;
-  variant?: "primary" | "outline" | "light" | "glow";
+  variant?: "primary" | "outline" | "light" | "glow" | "outlineLight";
   disabled?: boolean;
   className?: string;
   icon?: boolean;
@@ -103,6 +103,7 @@ const ctaVariants = {
   primary: "bg-primary text-primary-foreground shadow-soft hover:bg-rose hover:-translate-y-0.5",
   outline: "border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground",
   light: "bg-cream text-primary hover:bg-blush hover:-translate-y-0.5 shadow-soft",
+  outlineLight: "border-2 border-cream text-cream hover:bg-cream/15",
   glow: "bg-gradient-brand text-cream shadow-glow hover:-translate-y-0.5 hover:brightness-110",
 };
 export function CTAButton({
@@ -234,7 +235,7 @@ export function SocialButtons({ light }: { light?: boolean }) {
     { href: siteConfig.links.linktree, label: "Linktree", Icon: Link2 },
   ];
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-nowrap gap-2 sm:gap-3">
       {items.map(({ href, label, Icon }) => (
         <a
           key={label}
@@ -243,7 +244,7 @@ export function SocialButtons({ light }: { light?: boolean }) {
           rel="noopener noreferrer"
           aria-label={label}
           className={cn(
-            "inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium transition-all hover:-translate-y-0.5",
+            "inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-xs sm:gap-2 sm:px-4 sm:py-2.5 sm:text-sm font-medium transition-all hover:-translate-y-0.5",
             light
               ? "bg-cream/15 text-cream hover:bg-cream/25"
               : "bg-secondary text-primary hover:bg-primary hover:text-primary-foreground",
@@ -279,7 +280,7 @@ export function ContactCard({ light, className }: { light?: boolean; className?:
       <div className={row}>
         <MapPin className={icon} aria-hidden />
         <div>
-          <p>{c.address}</p>
+          <p className="whitespace-pre-line">{c.address.replace(/, (\d{4}-\d{3}), /, ",\n$1 ")}</p>
           <a
             href={siteConfig.links.maps}
             target="_blank"

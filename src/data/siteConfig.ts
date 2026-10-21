@@ -37,7 +37,7 @@ export const siteConfig = {
     ],
     familyPhrase:
       "Independentemente da idade ou experiência, há um lugar para ti na nossa família.",
-    familyButton: "Junta-te à família Davidance",
+    familyButton: "Junta-te à família Davidance!",
     teamTitle: "A nossa equipa",
     teachersTitle: "Professores",
     spaceTitle: "O nosso espaço",
@@ -46,17 +46,17 @@ export const siteConfig = {
     trialButton: "Vem experimentar uma aula",
     enrolButton: "Inscreve-te",
     timetableTitle: "Horário",
-    timetableText: "Consulta o horário das aulas.",
+    timetableText: "Consulta o horário das aulas e vem dançar!",
     back: "Voltar",
     teacher: "Professor(a)",
     age: "Faixa etária",
     schedule: "Horário das aulas",
     approval:
-      "Só podes experimentar ou inscrever-te no Nível II mediante autorização prévia dos professores.",
+      "Só podes experimentar ou inscrever-te no Nível II\nmediante autorização prévia dos professores.",
     biographyButton: "Conhecer o percurso",
     instagramButton: "Instagram",
     weddingsText:
-      "Acreditamos que a primeira dança é um dos momentos mais especiais do vosso dia. As aulas para casamento são privadas, personalizadas e agendadas de acordo com a disponibilidade dos noivos, preferencialmente nas semanas que antecedem a celebração.\nA coreografia é criada à medida do casal, tendo em conta a música escolhida e o nível de experiência, para que possam viver e desfrutar deste momento com confiança e naturalidade. Temos todo o gosto em preparar convosco uma recordação única para uma união tão especial.",
+      "Acreditamos que a primeira dança é um dos momentos mais especiais do vosso dia. As aulas para casamento são privadas, personalizadas e agendadas de acordo com a disponibilidade dos noivos, preferencialmente nas semanas que antecedem a celebração.\n\nA coreografia é criada à medida do casal, tendo em conta a música escolhida e o nível de experiência, para que possam viver e desfrutar deste momento com confiança e naturalidade. Temos todo o gosto em preparar convosco uma recordação única para uma união tão especial.",
     weddingsPhrase: "As melhores memórias são aquelas que se vivem com emoção.",
     weddingsButton: "Queremos preparar a nossa dança!",
     loveTitle: "Histórias de amor",
@@ -639,7 +639,7 @@ export const projectConfig = {
       title: "Workshops",
       subtitle: "Abertos a todos os alunos",
       people: [
-        { name: "Quorum Dance Academy", area: "Contemporâneo", photo: "" },
+        { name: "Quorum Dance Company", area: "Contemporâneo", photo: "" },
         { name: "Rita Spider", area: "Fusion", photo: "" },
         { name: "Colin Vieira", area: "Lyrical Jazz", photo: "" },
         { name: "Afonso Rola", area: "Commercial & Lyrical Jazz", photo: "" },
@@ -652,7 +652,6 @@ export const projectConfig = {
     {
       title: "Grupo A",
       people: [
-        { name: "Sofia David Luz", photo: "" },
         { name: "Andreia Silva", photo: "" },
         { name: "Carolina Carvalho", photo: "" },
         { name: "Cátia Soares", photo: "" },

@@ -45,7 +45,11 @@ function StylePage() {
   };
   return (
     <section className="container mx-auto px-5 pb-12 pt-24">
-      <Button variant="ghost" onClick={back} className="mb-4 px-0 text-primary">
+      <Button
+        variant="ghost"
+        onClick={back}
+        className="mb-4 px-3 text-primary hover:bg-brand-hover hover:text-primary-foreground"
+      >
         <ArrowLeft />
         {siteConfig.copy.back}
       </Button>
@@ -61,11 +65,19 @@ function StylePage() {
           <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground md:text-base">
             {style.description}
           </p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <CTAButton href={siteConfig.links.trialClass} variant="glow">
+          <div className="mt-5 flex flex-nowrap gap-2 sm:gap-3">
+            <CTAButton
+              href={siteConfig.links.trialClass}
+              variant="outline"
+              className="whitespace-nowrap gap-1 px-3 py-2.5 text-[11px] sm:gap-2 sm:px-7 sm:py-3.5 sm:text-sm"
+            >
               {siteConfig.copy.trialButton}
             </CTAButton>
-            <CTAButton href={siteConfig.links.enrol} variant="outline">
+            <CTAButton
+              href={siteConfig.links.enrol}
+              variant="glow"
+              className="whitespace-nowrap gap-1 px-3 py-2.5 text-[11px] sm:gap-2 sm:px-7 sm:py-3.5 sm:text-sm"
+            >
               {siteConfig.copy.enrolButton}
             </CTAButton>
           </div>
@@ -109,7 +121,7 @@ function StylePage() {
                     ))}
                   </ul>
                   {level.requiresApproval && (
-                    <p className="mt-3 text-sm font-medium text-primary">
+                    <p className="mt-3 whitespace-pre-line text-[11px] font-medium text-primary sm:text-sm">
                       {siteConfig.copy.approval}
                     </p>
                   )}

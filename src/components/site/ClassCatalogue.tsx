@@ -11,7 +11,7 @@ export function ClassCatalogue({ group }: { group: keyof typeof classGroups }) {
         <p>{data.description}</p>
       </PageHero>
       <section className="container mx-auto px-5 py-12 md:py-16">
-        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 mx-auto max-w-5xl gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
           {data.slugs.map((slug) => {
             const style = getStyle(slug);
             if (!style)

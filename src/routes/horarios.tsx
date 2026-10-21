@@ -27,18 +27,18 @@ function TimetablePage() {
   return (
     <>
       <PageHero title={siteConfig.copy.timetableTitle}>
-        <p>{siteConfig.copy.timetableText}</p>
+        <p className="whitespace-nowrap text-sm md:text-lg">{siteConfig.copy.timetableText}</p>
       </PageHero>
-      <section className="container mx-auto px-5 py-12">
-        <div className="mb-10 flex flex-wrap justify-center gap-3">
-          <CTAButton href={siteConfig.links.trialClass} variant="glow">
+      <section className="container mx-auto px-5 pb-12 pt-6">
+        <div className="mb-6 flex flex-wrap justify-center gap-3">
+          <CTAButton href={siteConfig.links.trialClass} variant="outline">
             {siteConfig.copy.trialButton}
           </CTAButton>
           <CTAButton href={siteConfig.links.enrol} variant="glow">
             {siteConfig.copy.enrolButton}
           </CTAButton>
         </div>
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto w-full max-w-[min(72rem,calc((100svh-24rem)*1400/1150))]">
           <Button
             variant="ghost"
             className="block h-auto w-full overflow-hidden rounded-lg p-0"
@@ -51,7 +51,7 @@ function TimetablePage() {
               wrapperClassName="aspect-[1400/1150] w-full"
             />
           </Button>
-          <div className="mt-6 flex justify-center gap-4">
+          <div className="mt-4 flex justify-center gap-4">
             <Button variant="outline" onClick={() => setZoom(0)}>
               <ZoomIn />
               Ampliar

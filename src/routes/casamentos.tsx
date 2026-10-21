@@ -24,8 +24,8 @@ function WeddingsPage() {
   return (
     <>
       <PageHero title="Casamentos" image={siteConfig.weddingsHero} />
-      <section className="container mx-auto max-w-3xl px-5 py-12 text-center">
-        <p className="whitespace-pre-line text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
+      <section className="container mx-auto max-w-4xl px-5 py-12 text-center">
+        <p className="whitespace-pre-line text-balance text-base leading-relaxed text-muted-foreground md:text-lg">
           {siteConfig.copy.weddingsText}
         </p>
         <p className="mt-6 text-balance text-lg italic text-primary md:text-xl">
