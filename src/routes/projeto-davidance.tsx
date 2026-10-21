@@ -23,7 +23,7 @@ export const Route = createFileRoute("/projeto-davidance")({
 function ProjectPage() {
   return (
     <>
-      <section className="relative flex min-h-[76svh] items-end overflow-hidden bg-plum">
+      <section className="relative flex h-[100svh] items-center justify-center overflow-hidden bg-plum">
         <SmartImage
           src={siteConfig.projectHero}
           alt={p.title}
@@ -31,41 +31,41 @@ function ProjectPage() {
           wrapperClassName="absolute inset-0"
         />
         <div className="absolute inset-0 bg-hero-overlay" />
-        <div className="container relative mx-auto px-5 pb-14 pt-32">
-          <h1 className="max-w-5xl font-script text-6xl font-normal leading-tight text-cream md:text-8xl">
+        <div className="container relative mx-auto px-5 text-center">
+          <h1 className="mx-auto font-script text-5xl font-normal leading-tight text-cream md:text-7xl">
             {p.title}
           </h1>
         </div>
       </section>
-      <section className="container mx-auto px-5 py-16">
-        <p className="mx-auto max-w-4xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+      <section className="container mx-auto px-5 py-12">
+        <p className="mx-auto max-w-3xl text-balance text-center text-base leading-relaxed text-muted-foreground md:text-lg">
           {p.description}
         </p>
       </section>
-      <section className="bg-secondary/40 py-16">
-        <div className="container mx-auto grid items-center gap-10 px-5 md:grid-cols-[280px_1fr]">
+      <section className="bg-secondary/40 py-12">
+        <div className="container mx-auto grid items-center gap-8 px-5 md:grid-cols-[260px_1fr]">
           <Portrait
             src={siteConfig.founder.photo}
             name={siteConfig.founder.name}
-            className="mx-auto aspect-[3/4] w-full max-w-[280px] rounded-lg"
+            className="mx-auto aspect-[3/4] w-full max-w-[260px] rounded-lg"
           />
           <div>
-            <h2 className="text-3xl font-light md:text-4xl">{p.directionTitle}</h2>
-            <h3 className="mt-4 text-xl font-medium text-primary">{siteConfig.founder.name}</h3>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            <h2 className="text-2xl font-light md:text-3xl">{p.directionTitle}</h2>
+            <h3 className="mt-3 text-lg font-medium text-primary">{siteConfig.founder.name}</h3>
+            <p className="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground">
               {p.directionText}
             </p>
           </div>
         </div>
       </section>
-      <section className="container mx-auto px-5 py-16">
+      <section className="container mx-auto px-5 py-12">
         <SectionTitle title={p.formationTitle} />
-        <div className="space-y-12">
+        <div className="space-y-10">
           {p.formations.map((f) => (
-            <div key={f.title}>
-              <h3 className="text-2xl font-medium">{f.title}</h3>
-              {f.subtitle && <p className="mt-2 text-muted-foreground">{f.subtitle}</p>}
-              <div className="mt-6 grid grid-cols-2 gap-6 md:grid-cols-4">
+            <div key={f.title} className="text-center">
+              <h3 className="text-xl font-medium">{f.title}</h3>
+              {f.subtitle && <p className="mt-1 text-sm text-muted-foreground">{f.subtitle}</p>}
+              <div className="mx-auto mt-6 grid max-w-4xl grid-cols-2 gap-6 md:grid-cols-4">
                 {f.people.map((person) => (
                   <article key={person.name} className="min-w-0">
                     <Portrait
@@ -73,8 +73,8 @@ function ProjectPage() {
                       name={person.name}
                       className="aspect-[4/3] rounded-lg"
                     />
-                    <h4 className="mt-3 text-base font-medium">{person.name}</h4>
-                    <p className="mt-1 text-sm text-muted-foreground">{person.area}</p>
+                    <h4 className="mt-2 text-sm font-medium">{person.name}</h4>
+                    <p className="mt-0.5 text-xs text-muted-foreground">{person.area}</p>
                   </article>
                 ))}
               </div>
@@ -82,34 +82,29 @@ function ProjectPage() {
           ))}
         </div>
       </section>
-      <section className="bg-secondary/40 py-16">
+      <section className="bg-secondary/40 py-12">
         <div className="container mx-auto px-5">
           <SectionTitle title={p.dancersTitle} />
           <Portrait
             src={p.groupPhoto}
             name={p.dancersTitle}
-            className="mx-auto mb-12 aspect-[21/9] w-full rounded-lg"
+            className="mx-auto mb-10 aspect-[21/9] w-full rounded-lg"
           />
-          {p.groups.map((g, i) => (
-            <div key={g.title} className={i ? "mt-12 border-t border-border pt-10" : ""}>
-              <h3 className="mb-6 text-2xl font-medium">{g.title}</h3>
-              <div className="grid grid-cols-2 gap-x-5 gap-y-7 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-                {g.people.map((person) => (
-                  <article key={person.name} className="min-w-0">
-                    <Portrait
-                      src={person.photo}
-                      name={person.name}
-                      className="aspect-[3/4] rounded-lg"
-                    />
-                    <h4 className="mt-3 text-sm font-medium">{person.name}</h4>
-                  </article>
-                ))}
-              </div>
-            </div>
-          ))}
+          <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+            {p.groups.flatMap((g) => g.people).map((person) => (
+              <article key={person.name} className="min-w-0">
+                <Portrait
+                  src={person.photo}
+                  name={person.name}
+                  className="aspect-[3/4] rounded-lg"
+                />
+                <h4 className="mt-2 text-sm font-medium">{person.name}</h4>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
-      <section className="container mx-auto px-5 py-16">
+      <section className="container mx-auto px-5 py-12">
         <SectionTitle title={p.historyTitle} />
         <div className="grid gap-6 md:grid-cols-3">
           {p.videos.map((v, i) => (
@@ -119,13 +114,13 @@ function ProjectPage() {
           ))}
         </div>
       </section>
-      <section className="bg-secondary/40 py-16">
+      <section className="bg-secondary/40 py-12">
         <div className="container mx-auto max-w-3xl px-5 text-center">
-          <h2 className="text-4xl font-light">{p.futureTitle}</h2>
-          <p className="mt-6 whitespace-pre-line text-lg leading-relaxed text-muted-foreground">
+          <h2 className="text-balance text-3xl font-light">{p.futureTitle}</h2>
+          <p className="mt-5 whitespace-pre-line text-pretty text-base leading-relaxed text-muted-foreground">
             {p.futureText}
           </p>
-          <Button asChild className="mt-8 h-auto rounded-full px-7 py-3.5">
+          <Button asChild className="mt-7 h-auto rounded-full px-7 py-3.5">
             <Link to="/jovens-adultos">{p.futureButton}</Link>
           </Button>
         </div>
