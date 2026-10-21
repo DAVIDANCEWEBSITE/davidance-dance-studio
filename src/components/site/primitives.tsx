@@ -67,7 +67,7 @@ export function SectionTitle({
   light?: boolean;
 }) {
   return (
-    <Reveal className={cn("mb-12 text-center", className)}>
+    <Reveal className={cn("mb-10 text-center", className)}>
       {eyebrow && (
         <p
           className={cn(
@@ -79,7 +79,10 @@ export function SectionTitle({
         </p>
       )}
       <h2
-        className={cn("text-4xl font-light md:text-6xl", light ? "text-cream" : "text-foreground")}
+        className={cn(
+          "text-balance text-3xl font-light md:text-5xl",
+          light ? "text-cream" : "text-foreground",
+        )}
       >
         {title}
       </h2>
@@ -145,7 +148,7 @@ export function PageHero({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden pt-32 md:pt-40">
+    <section className="relative overflow-hidden pt-28 md:pt-32">
       <div className="container relative mx-auto px-5 text-center">
         <Reveal>
           {eyebrow && (
@@ -153,9 +156,11 @@ export function PageHero({
               {eyebrow}
             </p>
           )}
-          <h1 className="text-4xl font-light text-foreground md:text-6xl">{title}</h1>
+          <h1 className="text-balance text-3xl font-light text-foreground md:text-5xl">{title}</h1>
           {children && (
-            <div className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">{children}</div>
+            <div className="mx-auto mt-5 max-w-2xl text-pretty text-base text-muted-foreground md:text-lg">
+              {children}
+            </div>
           )}
         </Reveal>
         {image && (
