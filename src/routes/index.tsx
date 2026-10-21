@@ -337,7 +337,7 @@ function SpaceSection() {
               wrapperClassName="aspect-[16/10] w-full"
             />
           </Button>
-          <p className="text-lg leading-relaxed text-muted-foreground">
+          <p className="text-base leading-relaxed text-muted-foreground">
             {siteConfig.facilities.text}
           </p>
         </div>

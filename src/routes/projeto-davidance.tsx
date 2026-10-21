@@ -91,16 +91,18 @@ function ProjectPage() {
             className="mx-auto mb-10 aspect-[21/9] w-full rounded-lg"
           />
           <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-            {p.groups.flatMap((g) => g.people).map((person) => (
-              <article key={person.name} className="min-w-0">
-                <Portrait
-                  src={person.photo}
-                  name={person.name}
-                  className="aspect-[3/4] rounded-lg"
-                />
-                <h4 className="mt-2 text-sm font-medium">{person.name}</h4>
-              </article>
-            ))}
+            {p.groups
+              .flatMap((g) => g.people)
+              .map((person) => (
+                <article key={person.name} className="min-w-0">
+                  <Portrait
+                    src={person.photo}
+                    name={person.name}
+                    className="aspect-[3/4] rounded-lg"
+                  />
+                  <h4 className="mt-2 text-sm font-medium">{person.name}</h4>
+                </article>
+              ))}
           </div>
         </div>
       </section>
