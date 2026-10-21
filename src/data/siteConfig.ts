@@ -1,3 +1,28 @@
+import wedding_alexandra_hugo from "@/assets/casamento-alexandra-hugo.jpg.asset.json";
+import wedding_andreia_diogo from "@/assets/casamento-andreia-diogo.jpg.asset.json";
+import wedding_carina_andre from "@/assets/casamento-carina-andre.jpg.asset.json";
+import wedding_catarina_pedro from "@/assets/casamento-catarina-pedro.jpg.asset.json";
+import wedding_claudia_pedro from "@/assets/casamento-claudia-pedro.jpg.asset.json";
+import wedding_daniela_rui from "@/assets/casamento-daniela-rui.jpg.asset.json";
+import wedding_filipa_miguel from "@/assets/casamento-filipa-miguel.jpg.asset.json";
+import wedding_ines_bruno from "@/assets/casamento-ines-bruno.jpg.asset.json";
+import wedding_ines_diogo from "@/assets/casamento-ines-diogo.jpg.asset.json";
+import wedding_ines_miguel from "@/assets/casamento-ines-miguel.jpg.asset.json";
+import wedding_irina_filipe from "@/assets/casamento-irina-filipe.jpg.asset.json";
+import wedding_joana_daniel from "@/assets/casamento-joana-daniel.jpg.asset.json";
+import wedding_joana_helder from "@/assets/casamento-joana-helder.jpg.asset.json";
+import wedding_joana_lourenco from "@/assets/casamento-joana-lourenco.jpg.asset.json";
+import wedding_katharina_ricardo from "@/assets/casamento-katharina-ricardo.jpg.asset.json";
+import wedding_katherine_antonino from "@/assets/casamento-katherine-antonino.jpg.asset.json";
+import wedding_margarida_andre from "@/assets/casamento-margarida-andre.jpg.asset.json";
+import wedding_mariana_joao from "@/assets/casamento-mariana-joao.jpg.asset.json";
+import wedding_mariana_pedro from "@/assets/casamento-mariana-pedro.jpg.asset.json";
+import wedding_nanci_joao from "@/assets/casamento-nanci-joao.jpg.asset.json";
+import wedding_paula_paulo from "@/assets/casamento-paula-paulo.jpg.asset.json";
+import wedding_rafaela_rui from "@/assets/casamento-rafaela-rui.jpg.asset.json";
+import wedding_rita_david from "@/assets/casamento-rita-david.jpg.asset.json";
+import wedding_veronica_diogo from "@/assets/casamento-veronica-diogo.jpg.asset.json";
+import wedding_zelia_joao from "@/assets/casamento-zelia-joao.jpg.asset.json";
 import cls_danca_criativa from "@/assets/class-danca-criativa.jpg.asset.json";
 import cls_contemporaneo_kids from "@/assets/class-contemporaneo-kids.jpg.asset.json";
 import cls_ballet_kids from "@/assets/class-ballet-kids.jpg.asset.json";
@@ -508,7 +533,7 @@ export const testimonials: Testimonial[] = [
   {
     couple: "Inês & Miguel",
     text: "Adorámos a nossa experiência na Davidance! Desde o primeiro contacto até ao último ensaio, a Sofia foi incansável. Do seu profissionalismo, criatividade e sensibilidade, resultou uma coreografia lindíssima! Os momentos que passámos na Davidance foram verdadeiramente divertidos e, numa semana tão stressante devido a todos os preparativos do casamento, o tempo a dois a ensaiar a nossa primeira dança foi uma lufada de ar fresco! Recomendamos a Davidance a todos os noivos!",
-    photos: [],
+    photos: [wedding_ines_miguel.url],
   },
   {
     couple: "Mafalda & Nuno",
@@ -518,82 +543,82 @@ export const testimonials: Testimonial[] = [
   {
     couple: "Rafaela & Rui",
     text: "As aulas na Davidance foram umas das melhores partes dos preparativos para o nosso casamento. E nossa primeira dança foi, sem dúvida, um dos momentos mais divertidos do dia para todos! A Sofia é uma pessoa muito querida, bem-disposta e excelente profissional. Não há melhor pessoa e professora para confiar e embarcar nesta aventura. Adorámos! Recomendamos!",
-    photos: [],
+    photos: [wedding_rafaela_rui.url],
   },
   {
     couple: "Irina & Filipe",
     text: "A Sofia é incrível! Uma excelente professora e pessoa, com muita paciência para nos preparar para brilhar no grande dia. As aulas foram muito divertidas e o facto de serem nas últimas semanas antes do casamento, ajudou a descontrair. Adorámos as aulas e adorámos a Sofia! Se voltássemos a casar, a Sofia e a Davidance seriam sempre a nossa escolha! Obrigada!",
-    photos: [],
+    photos: [wedding_irina_filipe.url],
   },
   {
     couple: "Joana & Daniel",
     text: "Obrigada, querida Sofia, por toda a paciência que tiveste connosco! Tornaste dois “robots” em dois excelentes e felizes bailarinos noivos. Todos os convidados adoraram a nossa dança! Fomos muito, muito elogiados e nada disto teria sido possível sem as aulas com a Sofia na Davidance. Divertimo-nos imenso! Obrigada, mais uma vez!",
-    photos: [],
+    photos: [wedding_joana_daniel.url],
   },
   {
     couple: "Filipa & Miguel",
     text: "A Sofia é uma ótima coreógrafa e está muito atenta às nossas dificuldades e à “falta de jeito”. No nosso caso, dançar não nos era algo natural e a Sofia, para além de nos dar a confiança que necessitávamos, tornou a nossa primeira dança num momento muito especial do nosso dia e casamento! As aulas foram muito divertidas! Recomendamos muito! Obrigada!",
-    photos: [],
+    photos: [wedding_filipa_miguel.url],
   },
   {
     couple: "Margarida & André",
     text: "A Sofia foi espetacular, sempre simpática, explicou tudo com muita paciência. Deu-nos motivação e encorajou-nos a aproveitar todos os instantes. Ao início, pensámos que ia ser mais complicado, mas no final estávamos super à vontade com tudo e conseguimos desfrutar da nossa dança. A Sofia sentia a coreografia com muito entusiasmo, o que nos ajudou bastante a tornar cada momento mais natural e divertido! Obrigado por todo o trabalho, foi uma experiência excelente!",
-    photos: [],
+    photos: [wedding_margarida_andre.url],
   },
   {
     couple: "Inês & Diogo",
     text: "Adorámos cada passo da nossa dança! Com extraordinária empatia e engenho, a Sofia captou a essência das nossas ideias e desenhou uma coreografia que nos representou. Foi um momento marcante do nosso grande dia e culminou de forma incrível com os convidados a juntarem-se a nós na pista! As aulas foram momentos descontraídos e muito divertidos, em que os nervos dos preparativos para o casamento se dissipavam. Gostámos tanto que vamos continuar com as aulas regulares! Obrigado, Sofia e Davidance!",
-    photos: [],
+    photos: [wedding_ines_diogo.url],
   },
   {
     couple: "Nanci & João",
     text: "A nossa experiência na Davidance foi fantástica! A Sofia é uma professora muito paciente, com excelentes ideias para a primeira dança dos noivos e com a capacidade de transformar noivos “pés de chumbo” em dançarinos que se divertem. Obrigado, Sofia!",
-    photos: [],
+    photos: [wedding_nanci_joao.url],
   },
   {
     couple: "Zélia & João",
     text: "Sofia, muito obrigada pelo seu profissionalismo. Correu tudo muito bem! Foi um momento muito feliz e bem sucedido, graças ao seu elevado prestígio. Um grande beijinho!",
-    photos: [],
+    photos: [wedding_zelia_joao.url],
   },
   {
     couple: "Carina & André",
     text: "A Davidance foi a melhor escolha que podíamos teria feito (autênticos pés de chumbo) para preparar uma dança linda no nosso grande dia! A Sofia foi o nosso pilar durante toda a aprendizagem da coreografia que pedimos para ser simples, pois o nosso jeitinho para dançar era zero. Disse-nos logo para não nos preocuparmos, pois estaríamos muito bem preparados! E assim foi, surpreendemo-nos a nós próprios e a todos os nossos convidados! A passagem pela Davidance também ficou marcada pela paciência, calma e diversão da nossa querida Sofia, com a sua incrível energia e criatividade! Muito obrigado pelos momentos que passámos contigo Sofia, na Davidance!",
-    photos: [],
+    photos: [wedding_carina_andre.url],
   },
   {
     couple: "Katherine & Antonino",
     text: "Gostámos muito das aulas de dança na Davidance para o nosso casamento. A Sofia é uma ótima professora, com muita paciência e dedicação. Mesmo sem termos experiência em dança, ela conseguiu ensinar-nos uma coreografia muito divertida e elegante, que foi, sem dúvida, uma parte muito especial do nosso casamento. Obrigada, Sofia!",
-    photos: [],
+    photos: [wedding_katherine_antonino.url],
   },
   {
     couple: "Rita & David",
     text: "Em apenas 4 aulas, a Sofia conseguiu criar um momento inesquecível, tanto para nós como para os convidados. Durante os ensaios, deixou-nos sempre bastante à vontade e mais confiantes com a dança, adaptando sempre ao nosso gosto! Obrigada, Sofia e Davidance!",
-    photos: [],
+    photos: [wedding_rita_david.url],
   },
   {
     couple: "Andreia & Diogo",
     text: "A Sofia foi incrível, sempre criativa e disponível para adaptar a coreografia ao nosso gosto e capacidades. Fizemos uma excelente escolha, não podíamos ter sido uma melhor equipa a criar esta dança! Percebe-se de longe que a Sofia põe o coração em todas as danças que cria, é fantástica! Obrigada por tudo!",
-    photos: [],
+    photos: [wedding_andreia_diogo.url],
   },
   {
     couple: "Joana & Hélder",
     text: "Queremos deixar um enorme obrigado à Sofia, que nos acolheu na Davidance, por toda a dedicação e paciência na preparação da nossa dança de casamento. Sabemos que não temos o dom da dança (nem lá perto!) e a música não era das mais fáceis, mas a Sofia conseguiu criar uma coreografia que fez todo o sentido para nós, bonita, divertida e que nos deixou super à vontade. Foi um momento especial que vamos guardar para sempre, e não teria sido possível sem a vossa ajuda. Obrigado por tudo!",
-    photos: [],
+    photos: [wedding_joana_helder.url],
   },
   {
     couple: "Katharina & Ricardo",
     text: "Não vamos mentir - estávamos muito reticentes no início. Nunca tínhamos dançado a par e pensámos “Como é que vamos aprender uma coreografia em 4 ensaios?”. A verdade é que foi possível! A Sofia, com base nas músicas escolhidas por nós, tinha já uma sugestão de coreografia e, sem sabermos como, foi a nossa cara! A Sofia é super atenciosa, paciente e claramente uma grande artista e professora. Adorámos o resultado e os convidados também. Recomendamos muito o seu trabalho.",
-    photos: [],
+    photos: [wedding_katharina_ricardo.url],
   },
   {
     couple: "Verónica & Diogo",
     text: "Adorámos a nossa experiência na Davidance! A Sofia foi simplesmente incrível, super profissional e ao mesmo tempo simpática e divertida. Os ensaios tornaram-se dos nossos momentos preferidos de toda a preparação do casamento! Criou uma coreografia linda, exatamente ao nosso estilo e ajudou-nos sempre com imensa paciência (mesmo com a nossa falta de jeito!). A nossa dança ficou inesquecível graças a ela. Recomendamos muito a Davidance a todos os noivos!",
-    photos: [],
+    photos: [wedding_veronica_diogo.url],
   },
   {
     couple: "Cláudia & Pedro",
     text: "A Davidance já era um lugar como casa antes e por isso, fez-nos todo o sentido ter as nossas aulas de dança para noivos lá. Foi uma experiência incrível! A música que escolhemos era animada e divertida, muito diferente da “comum” dança dos noivos e a Sofia, com a sua energia contagiante, criatividade e sensibilidade artística, tornou cada aula única e a coreografia cheia de significado. Vivemos momentos muito especiais, que guardamos para sempre. Obrigado à Davidance e em especial à Sofia, por tornar o nosso grande dia ainda mais memorável!",
-    photos: [],
+    photos: [wedding_claudia_pedro.url],
   },
   {
     couple: "Tânia & Ricardo",
@@ -603,27 +628,27 @@ export const testimonials: Testimonial[] = [
   {
     couple: "Daniela & Rui",
     text: "Escolhemos a Davidance por referência de outro casal e adorámos a experiência. Desde o primeiro contacto com a Sofia que nos sentimos muito acolhidos e que estávamos em boas mãos! Sendo que temos os 2, dois pés esquerdos, a Sofia proporcionou aulas divertidas e personalizadas, fazendo com que conseguíssemos ter uma dança bonita para o nosso dia! Divertimo-nos bastante e agradecemos à Sofia esta experiência!",
-    photos: [],
+    photos: [wedding_daniela_rui.url],
   },
   {
     couple: "Alexandra & Hugo",
     text: "Queríamos deixar um agradecimento especial pelo tempo que passámos nas aulas na Davidance. Foram momentos muito divertidos, leves e cheios de boa energia. A dedicação, paciência e simpatia da Sofia fizeram toda a diferença. Graças a isso, conseguimos transformar a nossa primeira dança do casamento num momento único, que vamos guardar para sempre na memória. Obrigada por tudo!",
-    photos: [],
+    photos: [wedding_alexandra_hugo.url],
   },
   {
     couple: "Inês & Bruno",
     text: "Conseguiram fazer o impossível! Queremos agradecer do fundo do coração por toda a dedicação, paciência e boa energia nas nossas aulas de dança. Transformaram um momento que nos deixava um pouco nervosos em algo leve, divertido e muito especial. A Sofia é uma excelente coreógrafa e atendeu sempre às nossas dificuldades, pronta a alterar quando não estávamos tão à vontade. A tua forma de ensinar é incrível e ajudaste-nos não só a preparar a nossa dança, mas também a criar uma memória que vamos guardar com muito carinho. Recomendamos 1000%",
-    photos: [],
+    photos: [wedding_ines_bruno.url],
   },
   {
     couple: "Mariana & João",
     text: "Para quem não tinha jeitinho nenhum (e continuou a não ter muito), em quatro aulas conseguiu-se fazer uma coreografia muito gira e que divertiu toda a gente na nossa festa (só por bons motivos). Adorámos as aulas com a Sofia, divertimo-nos e rimos muito, aprendemos a sentir os ritmos da música e ela percebeu que há esperança para toda a gente, mesmo quando parece impossível! Muito obrigado!",
-    photos: [],
+    photos: [wedding_mariana_joao.url],
   },
   {
     couple: "Paula & Paulo",
     text: "A nossa querida Sofia conseguiu a proeza de em 4 ensaios dar vida ao nosso sonho de dançarmos no dia do casamento. Com o seu jeito delicado, mostrou-se uma grande profissional. Identificou o que queríamos e desenhou a coreografia perfeita. Ensinou passo a passo, deu-nos uma energia e motivação maravilhosa e principalmente nunca nos largou mesmo quando era mais difícil. A Sofia mostrou-nos o caminho e até fez nascer a vontade de continuarmos a dançar! Desejamos que continues sempre a espalhar a tua magia. Somos teus FÃS! Obrigada, Sofia!!!!",
-    photos: [],
+    photos: [wedding_paula_paulo.url],
   },
   {
     couple: "Nadja & Rui",
@@ -633,17 +658,17 @@ export const testimonials: Testimonial[] = [
   {
     couple: "Mariana & Pedro",
     text: "Começámos as aulas de dança sem saber muito bem o que esperar e acabámos por gostar mais do que imaginávamos. A Sofia esteve sempre disponível para nos ajudar durante todo o processo e criou uma coreografia que nos fez desfrutar do momento. Acabou por ser uma parte muito divertida da preparação do casamento e, hoje, não trocaríamos esta experiência por nada!",
-    photos: [],
+    photos: [wedding_mariana_pedro.url],
   },
   {
     couple: "Joana & Lourenço",
     text: "A Sofia é uma excelente profissional. Teve paciência connosco, apesar do pouco jeitinho, e fez-nos aprender a dança de forma perfeita. Correu tudo muito bem graças a ela. Obrigado, Sofia!",
-    photos: [],
+    photos: [wedding_joana_lourenco.url],
   },
   {
     couple: "Catarina & Pedro",
     text: "Tivemos uma experiência incrível na Davidance! Adorámos a coreografia e a Sofia foi sempre muito querida e paciente. Tínhamos zero experiência de dança e com poucas aulas, conseguimos dançar uma música completa e criar um momento que foi muito especial no nosso casamento. Recomendamos imenso e repetíamos sem pensar duas vezes!",
-    photos: [],
+    photos: [wedding_catarina_pedro.url],
   },
   { couple: "Filipa & André", text: "", photos: [] },
   { couple: "Mariana & Carolina", text: "", photos: [] },

@@ -6,4 +6,6 @@
 - [x] Test rules and verify desktop/mobile navigation and key pages.
 - [x] Apply the official timetable artwork and project photos/covers.
 - [x] Connect the four project videos and verify click-only playback, timetable zoom and download.
+- [x] Apply and verify the 25 wedding photographs whose filenames match configured couples.
+- [ ] Confirm which couples Mariana_Nuno.jpg and Tânia_Tiago.jpg belong to before applying them.
 - [ ] Await venue photos, missing individual project portraits and paid font files.
