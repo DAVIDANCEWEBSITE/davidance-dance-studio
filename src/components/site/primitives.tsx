@@ -264,7 +264,13 @@ export function ContactCard({ light, className }: { light?: boolean; className?:
   const icon = cn("mt-0.5 h-5 w-5 shrink-0", light ? "text-cream" : "text-primary");
   const linkCls = light ? "text-cream hover:underline" : "text-foreground hover:text-primary";
   return (
-    <div className={cn("space-y-5", light ? "text-cream" : "text-foreground", className)}>
+    <div
+      className={cn(
+        "space-y-4 text-sm sm:text-base",
+        light ? "text-cream" : "text-foreground",
+        className,
+      )}
+    >
       <div className={row}>
         <Phone className={icon} aria-hidden />
         <a className={linkCls} href={`tel:${c.phone.replace(/\s/g, "")}`}>

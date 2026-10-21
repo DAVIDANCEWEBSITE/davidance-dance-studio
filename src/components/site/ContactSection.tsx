@@ -12,7 +12,7 @@ export function ContactSection() {
             <Logo light className="h-16 md:h-20" />
             <p className="mt-3 text-lg font-light">{siteConfig.tagline}</p>
             <h2 className="mt-8 text-3xl font-light md:text-4xl">{siteConfig.copy.contactTitle}</h2>
-            <p className="mt-3 text-primary-foreground/90">{siteConfig.copy.contactText}</p>
+            <p className="mt-3 text-sm text-primary-foreground/90">{siteConfig.copy.contactText}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <CTAButton href={siteConfig.links.enrol} variant="light">
                 {siteConfig.copy.enrolButton}!
