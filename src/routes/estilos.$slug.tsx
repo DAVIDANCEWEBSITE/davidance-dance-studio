@@ -25,8 +25,12 @@ export const Route = createFileRoute("/estilos/$slug")({
         { property: "og:description", content: s.description },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
-        { property: "og:image", content: s.cover },
-        { name: "twitter:image", content: s.cover },
+        ...(s.cover.startsWith("https://")
+          ? [
+              { property: "og:image", content: s.cover },
+              { name: "twitter:image", content: s.cover },
+            ]
+          : []),
       ],
     };
   },

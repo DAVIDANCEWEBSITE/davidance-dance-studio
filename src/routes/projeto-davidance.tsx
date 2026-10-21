@@ -14,8 +14,6 @@ export const Route = createFileRoute("/projeto-davidance")({
       { property: "og:description", content: p.description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:image", content: siteConfig.projectHero },
-      { name: "twitter:image", content: siteConfig.projectHero },
     ],
   }),
   component: ProjectPage,
@@ -97,7 +95,7 @@ function ProjectPage() {
           <Portrait
             src={p.groupPhoto}
             name={p.dancersTitle}
-            className="mx-auto mb-10 aspect-[21/9] w-full rounded-lg"
+            className="mx-auto mb-10 aspect-[3/2] w-full max-w-4xl rounded-lg"
           />
           <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
             {p.groups

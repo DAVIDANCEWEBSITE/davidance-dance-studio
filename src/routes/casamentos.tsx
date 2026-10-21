@@ -14,8 +14,6 @@ export const Route = createFileRoute("/casamentos")({
       { property: "og:description", content: siteConfig.copy.weddingsPhrase },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:image", content: siteConfig.weddingsHero },
-      { name: "twitter:image", content: siteConfig.weddingsHero },
     ],
   }),
   component: WeddingsPage,

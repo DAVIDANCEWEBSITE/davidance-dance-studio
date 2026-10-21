@@ -38,7 +38,7 @@ function TimetablePage() {
             {siteConfig.copy.enrolButton}
           </CTAButton>
         </div>
-        <div className="mx-auto w-full max-w-[min(72rem,calc((100svh-24rem)*1400/1150))]">
+        <div className="mx-auto w-full max-w-[min(54rem,calc((100svh-24rem)*1080/1350))]">
           <Button
             variant="ghost"
             className="block h-auto w-full overflow-hidden rounded-lg p-0"
@@ -48,7 +48,7 @@ function TimetablePage() {
             <SmartImage
               src={siteConfig.timetable.image}
               alt={siteConfig.copy.timetableTitle}
-              wrapperClassName="aspect-[1400/1150] w-full"
+              wrapperClassName="aspect-[1080/1350] w-full"
             />
           </Button>
           <div className="mt-4 flex justify-center gap-4">
@@ -57,7 +57,7 @@ function TimetablePage() {
               Ampliar
             </Button>
             <Button asChild>
-              <a href={siteConfig.timetable.download} download="horario-davidance.svg">
+              <a href={siteConfig.timetable.download} download={siteConfig.timetable.filename}>
                 <Download />
                 Descarregar
               </a>
