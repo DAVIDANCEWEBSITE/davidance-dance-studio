@@ -1,3 +1,9 @@
+import cls_danca_criativa from "@/assets/class-danca-criativa.jpg.asset.json";
+import cls_contemporaneo_kids from "@/assets/class-contemporaneo-kids.jpg.asset.json";
+import cls_ballet_kids from "@/assets/class-ballet-kids.jpg.asset.json";
+import cls_hip_hop_kids from "@/assets/class-hip-hop-kids.jpg.asset.json";
+import cls_flexibilidade from "@/assets/class-flexibilidade.jpg.asset.json";
+import cls_acrobacias from "@/assets/class-acrobacias.jpg.asset.json";
 import img_andreia_paulo from "@/assets/home-andreia-paulo.jpg.asset.json";
 import img_beatriz from "@/assets/home-beatriz.jpg.asset.json";
 import img_casamentos from "@/assets/home-casamentos.jpg.asset.json";
@@ -181,7 +187,7 @@ export const styles: Style[] = [
       ],
       gallery: [],
     },
-    cover: u("photo-1547153760-18fc86324498"),
+    cover: cls_danca_criativa.url,
   },
   {
     ...{
@@ -197,7 +203,7 @@ export const styles: Style[] = [
       ],
       gallery: [],
     },
-    cover: u("photo-1547153760-18fc86324498"),
+    cover: cls_contemporaneo_kids.url,
   },
   {
     ...{
@@ -213,7 +219,7 @@ export const styles: Style[] = [
       ],
       gallery: [],
     },
-    cover: u("photo-1518834107812-67b0b7c58434"),
+    cover: cls_ballet_kids.url,
   },
   {
     ...{
@@ -229,7 +235,7 @@ export const styles: Style[] = [
       ],
       gallery: [],
     },
-    cover: u("photo-1535525153412-5a42439a210d"),
+    cover: cls_hip_hop_kids.url,
   },
   {
     ...{
@@ -242,7 +248,7 @@ export const styles: Style[] = [
       schedule: [{ day: "Segunda", time: "19H00 - 20H00" }],
       gallery: [],
     },
-    cover: u("photo-1518611012118-696072aa579a"),
+    cover: cls_flexibilidade.url,
   },
   {
     ...{
@@ -255,7 +261,7 @@ export const styles: Style[] = [
       schedule: [{ day: "Quarta", time: "19H00 - 20H00" }],
       gallery: [],
     },
-    cover: u("photo-1524594152303-9fd13543fe6e"),
+    cover: cls_acrobacias.url,
   },
   {
     ...{
