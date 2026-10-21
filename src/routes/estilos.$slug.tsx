@@ -69,14 +69,14 @@ function StylePage() {
             <CTAButton
               href={siteConfig.links.trialClass}
               variant="outline"
-              className="px-4 py-3 text-xs sm:px-7 sm:py-3.5 sm:text-sm"
+              className="whitespace-nowrap gap-1 px-3 py-2.5 text-[11px] sm:gap-2 sm:px-7 sm:py-3.5 sm:text-sm"
             >
               {siteConfig.copy.trialButton}
             </CTAButton>
             <CTAButton
               href={siteConfig.links.enrol}
               variant="glow"
-              className="px-4 py-3 text-xs sm:px-7 sm:py-3.5 sm:text-sm"
+              className="whitespace-nowrap gap-1 px-3 py-2.5 text-[11px] sm:gap-2 sm:px-7 sm:py-3.5 sm:text-sm"
             >
               {siteConfig.copy.enrolButton}
             </CTAButton>
