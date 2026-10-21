@@ -1,6 +1,15 @@
-import kidsImage from "@/assets/kids-dance.jpg";
+import img_andreia_paulo from "@/assets/home-andreia-paulo.jpg.asset.json";
+import img_beatriz from "@/assets/home-beatriz.jpg.asset.json";
+import img_casamentos from "@/assets/home-casamentos.jpg.asset.json";
+import img_davidance from "@/assets/home-davidance.jpg.asset.json";
+import img_joana from "@/assets/home-joana.jpg.asset.json";
+import img_jovens from "@/assets/home-jovens.jpg.asset.json";
+import img_kids from "@/assets/home-kids.jpg.asset.json";
+import img_professores from "@/assets/home-professores.jpg.asset.json";
+import img_ricardo from "@/assets/home-ricardo.jpg.asset.json";
+import img_sara from "@/assets/home-sara.jpg.asset.json";
+import img_sofia from "@/assets/home-sofia.jpg.asset.json";
 import logoAsset from "@/assets/logo.png.asset.json";
-import teamPhotoAsset from "@/assets/equipa-davidance.jpg.asset.json";
 
 /**
  * DAVIDANCE — CONTEÚDO CENTRAL
@@ -13,7 +22,8 @@ const u = (id: string, w = 1200) =>
 
 export const siteConfig = {
   name: "Davidance",
-  kidsImage,
+  kidsImage: img_kids.url,
+  youngAdultsImage: img_jovens.url,
   tagline: "Vamos viver a Dança!",
   showHeroTagline: false,
   // Substitua por "/logo.png" (coloque o ficheiro em /public) ou por um URL.
@@ -65,7 +75,7 @@ export const siteConfig = {
   founder: {
     name: "Sofia David Luz",
     role: "Fundadora e Diretora Artística",
-    photo: "",
+    photo: img_sofia.url,
     intro:
       "Bailarina, coreógrafa e professora, Sofia David Luz é licenciada pela Escola Superior de Dança e conta com 13 anos de experiência no ensino. Em 2022, fundou a Davidance, onde dá continuidade à sua paixão pelo ensino e pela criação artística. É também responsável pela direção artística do Projeto Davidance, acompanhando a formação e o desenvolvimento artístico dos seus alunos.",
     biography: [
@@ -139,9 +149,9 @@ export const siteConfig = {
     ],
   },
 
-  groupPhoto: u("photo-1504609813442-a8924e83f76e", 1400),
+  groupPhoto: img_davidance.url,
   projectHero: u("photo-1547153760-18fc86324498", 1920),
-  weddingsHero: u("photo-1519741497674-611481863552", 1600),
+  weddingsHero: img_casamentos.url,
 };
 
 export type Schedule = { day: string; time: string };
@@ -402,14 +412,14 @@ export const styles: Style[] = [
   },
 ];
 export type Teacher = { name: string; photo: string };
-export const teamPhoto = teamPhotoAsset.url;
+export const teamPhoto = img_professores.url;
 export const teachers: Teacher[] = [
-  { name: "Sofia David Luz", photo: "" },
-  { name: "Beatriz Matos", photo: "" },
-  { name: "Joana Lopes", photo: "" },
-  { name: "Andreia & Paulo", photo: "" },
-  { name: "Ricardo Coelho", photo: "" },
-  { name: "Sara Freitas", photo: "" },
+  { name: "Sofia David Luz", photo: img_sofia.url },
+  { name: "Beatriz Matos", photo: img_beatriz.url },
+  { name: "Joana Lopes", photo: img_joana.url },
+  { name: "Andreia & Paulo", photo: img_andreia_paulo.url },
+  { name: "Ricardo Coelho", photo: img_ricardo.url },
+  { name: "Sara Freitas", photo: img_sara.url },
 ];
 export const classGroups = {
   kids: {
