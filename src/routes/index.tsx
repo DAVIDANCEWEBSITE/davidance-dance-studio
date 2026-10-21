@@ -1,9 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type RefObject } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, Volume1, Volume2, VolumeX } from "lucide-react";
-import { siteConfig, teachers, teamPhoto, homeCards, styles } from "@/data/siteConfig";
-import { CTAButton, Reveal, SectionTitle, SectionWave } from "@/components/site/primitives";
+import { Volume1, Volume2, VolumeX } from "lucide-react";
+import {
+  siteConfig,
+  teachers,
+  teamPhoto,
+  homeCards,
+  getTeacherStyles,
+} from "@/data/siteConfig";
+import { CTAButton, Reveal, SectionTitle } from "@/components/site/primitives";
 import { SmartImage } from "@/components/site/SmartImage";
 import { Lightbox } from "@/components/site/Lightbox";
 import { Portrait } from "@/components/site/Portrait";
@@ -38,6 +44,7 @@ type YTPlayer = {
   destroy?: () => void;
   mute: () => void;
   unMute: () => void;
+  isMuted?: () => boolean;
   playVideo: () => void;
   setVolume: (v: number) => void;
   seekTo: (s: number, allow: boolean) => void;
@@ -49,12 +56,16 @@ function SoundControl({ playerRef }: { playerRef: RefObject<YTPlayer | null> }) 
   const toggle = () => {
     const p = playerRef.current;
     if (!p) return;
-    if (muted) {
+    const actuallyMuted = p.isMuted ? p.isMuted() : muted;
+    if (actuallyMuted) {
       p.unMute();
       p.setVolume(volume || 60);
       if (!volume) setVolume(60);
-    } else p.mute();
-    setMuted(!muted);
+      setMuted(false);
+    } else {
+      p.mute();
+      setMuted(true);
+    }
   };
   const change = (v: number) => {
     setVolume(v);
@@ -71,7 +82,7 @@ function SoundControl({ playerRef }: { playerRef: RefObject<YTPlayer | null> }) 
   };
   const Icon = muted || volume === 0 ? VolumeX : volume < 50 ? Volume1 : Volume2;
   return (
-    <div className="group absolute bottom-28 right-5 z-10 flex items-center gap-2 rounded-full bg-plum/50 px-2 py-2 text-cream backdrop-blur md:bottom-32 md:right-8">
+    <div className="group absolute bottom-8 right-5 z-10 flex items-center gap-2 rounded-full bg-plum/50 px-2 py-2 text-cream backdrop-blur md:bottom-10 md:right-8">
       <input
         type="range"
         min={0}
@@ -168,7 +179,7 @@ function Hero() {
 
   return (
     <section
-      className="relative h-[92svh] overflow-hidden bg-plum"
+      className="relative h-[100svh] overflow-hidden bg-plum"
       aria-label="Vídeo de apresentação"
     >
       <motion.div style={{ y }} className="absolute inset-0 overflow-hidden" aria-hidden>
@@ -191,9 +202,6 @@ function Hero() {
       )}
       {!siteConfig.showHeroTagline && <h1 className="sr-only">Davidance — Escola de Dança</h1>}
       <SoundControl playerRef={playerRef} />
-      <div className="absolute inset-x-0 bottom-0">
-        <SectionWave />
-      </div>
     </section>
   );
 }
