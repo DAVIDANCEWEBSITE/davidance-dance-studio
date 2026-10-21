@@ -44,22 +44,24 @@ function StylePage() {
       });
   };
   return (
-    <section className="container mx-auto px-5 pb-20 pt-28">
-      <Button variant="ghost" onClick={back} className="mb-6 px-0 text-primary">
+    <section className="container mx-auto px-5 pb-12 pt-24">
+      <Button variant="ghost" onClick={back} className="mb-4 px-0 text-primary">
         <ArrowLeft />
         {siteConfig.copy.back}
       </Button>
-      <div className="grid items-start gap-10 lg:grid-cols-2">
+      <div className="grid items-start gap-8 lg:grid-cols-2">
         <SmartImage
           src={style.cover}
           alt={style.name}
           eager
-          wrapperClassName="aspect-[4/3] rounded-lg lg:sticky lg:top-28"
+          wrapperClassName="aspect-[4/3] rounded-lg lg:sticky lg:top-24"
         />
         <div>
-          <h1 className="text-4xl font-light md:text-5xl">{style.name}</h1>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{style.description}</p>
-          <div className="mt-7 flex flex-wrap gap-3">
+          <h1 className="text-balance text-3xl font-light md:text-4xl">{style.name}</h1>
+          <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground md:text-base">
+            {style.description}
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
             <CTAButton href={siteConfig.links.trialClass} variant="glow">
               {siteConfig.copy.trialButton}
             </CTAButton>
@@ -67,19 +69,19 @@ function StylePage() {
               {siteConfig.copy.enrolButton}
             </CTAButton>
           </div>
-          <div className="mt-10 flex items-center gap-4 border-t border-border pt-7">
+          <div className="mt-7 flex items-center gap-4 border-t border-border pt-5">
             <Portrait
               src={teacher?.photo}
               name={style.teacher}
-              className="h-20 w-20 shrink-0 rounded-lg"
+              className="h-16 w-16 shrink-0 rounded-lg"
             />
             <div>
               <p className="text-sm text-muted-foreground">{siteConfig.copy.teacher}</p>
-              <h2 className="mt-1 text-xl font-medium">{style.teacher}</h2>
+              <h2 className="mt-1 text-lg font-medium">{style.teacher}</h2>
             </div>
           </div>
           {style.ageRange && (
-            <div className="mt-6 flex items-center gap-3">
+            <div className="mt-4 flex items-center gap-3 text-sm">
               <Users className="h-5 w-5 text-primary" />
               <p>
                 <span className="text-muted-foreground">{siteConfig.copy.age} · </span>
@@ -87,14 +89,14 @@ function StylePage() {
               </p>
             </div>
           )}
-          <div className="mt-7 border-t border-border pt-6">
-            <h2 className="mb-5 flex items-center gap-3 text-xl font-medium">
+          <div className="mt-5 border-t border-border pt-4">
+            <h2 className="mb-4 flex items-center gap-3 text-lg font-medium">
               <CalendarClock className="h-5 w-5 text-primary" />
               {siteConfig.copy.schedule}
             </h2>
             {style.levels ? (
               style.levels.map((level) => (
-                <div key={level.name} className="mb-5 border-l-2 border-primary pl-4">
+                <div key={level.name} className="mb-4 border-l-2 border-primary pl-4">
                   <h3 className="flex items-center gap-2 font-semibold">
                     {level.name}
                     {level.requiresApproval && <LockKeyhole className="h-4 w-4 text-primary" />}
