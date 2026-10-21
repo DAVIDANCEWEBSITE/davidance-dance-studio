@@ -124,7 +124,11 @@ export function Navbar() {
                 aria-expanded={classesOpen}
                 aria-controls="desktop-classes"
                 onClick={() => setClassesOpen(true)}
-                className={cn(linkClass, "inline-flex h-auto items-center gap-1")}
+                className={cn(
+                  linkClass,
+                  "inline-flex h-auto items-center gap-1",
+                  classesOpen && "bg-brand-hover text-primary-foreground",
+                )}
               >
                 Aulas de Dança
                 <ChevronDown className={cn("transition-transform", classesOpen && "rotate-180")} />

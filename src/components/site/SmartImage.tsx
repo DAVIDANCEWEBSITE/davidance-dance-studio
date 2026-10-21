@@ -21,7 +21,11 @@ export function SmartImage({ src, alt = "", className, wrapperClassName, eager, 
     <div className={cn("relative overflow-hidden", wrapperClassName)}>
       {!loaded && !failed && <div className="shimmer absolute inset-0" aria-hidden />}
       {failed ? (
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-brand opacity-80" role="img" aria-label={alt}>
+        <div
+          className="absolute inset-0 flex items-center justify-center bg-gradient-brand opacity-80"
+          role="img"
+          aria-label={alt}
+        >
           <ImageOff className="h-8 w-8 text-primary-foreground/70" aria-hidden />
         </div>
       ) : (

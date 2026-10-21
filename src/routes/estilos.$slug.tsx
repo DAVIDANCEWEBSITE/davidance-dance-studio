@@ -45,7 +45,11 @@ function StylePage() {
   };
   return (
     <section className="container mx-auto px-5 pb-12 pt-24">
-      <Button variant="ghost" onClick={back} className="mb-4 px-3 text-primary hover:bg-brand-hover hover:text-primary-foreground">
+      <Button
+        variant="ghost"
+        onClick={back}
+        className="mb-4 px-3 text-primary hover:bg-brand-hover hover:text-primary-foreground"
+      >
         <ArrowLeft />
         {siteConfig.copy.back}
       </Button>
@@ -62,10 +66,18 @@ function StylePage() {
             {style.description}
           </p>
           <div className="mt-5 flex flex-nowrap gap-2 sm:gap-3">
-            <CTAButton href={siteConfig.links.trialClass} variant="outline" className="px-4 py-3 text-xs sm:px-7 sm:py-3.5 sm:text-sm">
+            <CTAButton
+              href={siteConfig.links.trialClass}
+              variant="outline"
+              className="px-4 py-3 text-xs sm:px-7 sm:py-3.5 sm:text-sm"
+            >
               {siteConfig.copy.trialButton}
             </CTAButton>
-            <CTAButton href={siteConfig.links.enrol} variant="glow" className="px-4 py-3 text-xs sm:px-7 sm:py-3.5 sm:text-sm">
+            <CTAButton
+              href={siteConfig.links.enrol}
+              variant="glow"
+              className="px-4 py-3 text-xs sm:px-7 sm:py-3.5 sm:text-sm"
+            >
               {siteConfig.copy.enrolButton}
             </CTAButton>
           </div>

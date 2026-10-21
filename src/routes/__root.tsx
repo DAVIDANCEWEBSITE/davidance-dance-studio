@@ -28,7 +28,7 @@ function NotFoundComponent() {
         </p>
         <Link
           to="/"
-          className="mt-8 inline-flex rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-rose"
+          className="mt-8 inline-flex rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-brand-hover"
         >
           Voltar ao início
         </Link>

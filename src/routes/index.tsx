@@ -2,13 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type RefObject } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Volume1, Volume2, VolumeX } from "lucide-react";
-import {
-  siteConfig,
-  teachers,
-  teamPhoto,
-  homeCards,
-  getTeacherStyles,
-} from "@/data/siteConfig";
+import { siteConfig, teachers, teamPhoto, homeCards, getTeacherStyles } from "@/data/siteConfig";
 import { CTAButton, Logo, Reveal, SectionTitle } from "@/components/site/primitives";
 import { SmartImage } from "@/components/site/SmartImage";
 import { Lightbox } from "@/components/site/Lightbox";
@@ -205,11 +199,7 @@ function Hero() {
 }
 
 function AudienceSection() {
-  const images = [
-    siteConfig.kidsImage,
-    siteConfig.groupPhoto,
-    siteConfig.weddingsHero,
-  ];
+  const images = [siteConfig.kidsImage, siteConfig.groupPhoto, siteConfig.weddingsHero];
   return (
     <section className="container mx-auto px-5 py-12 md:py-16">
       <SectionTitle title={siteConfig.copy.homeTitle} />

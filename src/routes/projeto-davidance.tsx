@@ -67,7 +67,10 @@ function ProjectPage() {
               {f.subtitle && <p className="mt-1 text-sm text-muted-foreground">{f.subtitle}</p>}
               <div className="mx-auto mt-6 flex max-w-4xl flex-wrap justify-center gap-6">
                 {f.people.map((person) => (
-                  <article key={person.name} className="w-[calc(50%-0.75rem)] min-w-0 md:w-[calc(25%-1.125rem)]">
+                  <article
+                    key={person.name}
+                    className="w-[calc(50%-0.75rem)] min-w-0 md:w-[calc(25%-1.125rem)]"
+                  >
                     <Portrait
                       src={person.photo}
                       name={person.name}
