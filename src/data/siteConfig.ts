@@ -37,7 +37,7 @@ export const siteConfig = {
     ],
     familyPhrase:
       "Independentemente da idade ou experiência, há um lugar para ti na nossa família.",
-    familyButton: "Junta-te à família Davidance",
+    familyButton: "Junta-te à família Davidance!",
     teamTitle: "A nossa equipa",
     teachersTitle: "Professores",
     spaceTitle: "O nosso espaço",
@@ -46,7 +46,7 @@ export const siteConfig = {
     trialButton: "Vem experimentar uma aula",
     enrolButton: "Inscreve-te",
     timetableTitle: "Horário",
-    timetableText: "Consulta o horário das aulas.",
+    timetableText: "Consulta o horário das aulas e vem dançar!",
     back: "Voltar",
     teacher: "Professor(a)",
     age: "Faixa etária",
@@ -639,7 +639,7 @@ export const projectConfig = {
       title: "Workshops",
       subtitle: "Abertos a todos os alunos",
       people: [
-        { name: "Quorum Dance Academy", area: "Contemporâneo", photo: "" },
+        { name: "Quorum Dance Company", area: "Contemporâneo", photo: "" },
         { name: "Rita Spider", area: "Fusion", photo: "" },
         { name: "Colin Vieira", area: "Lyrical Jazz", photo: "" },
         { name: "Afonso Rola", area: "Commercial & Lyrical Jazz", photo: "" },
@@ -652,7 +652,6 @@ export const projectConfig = {
     {
       title: "Grupo A",
       people: [
-        { name: "Sofia David Luz", photo: "" },
         { name: "Andreia Silva", photo: "" },
         { name: "Carolina Carvalho", photo: "" },
         { name: "Cátia Soares", photo: "" },
