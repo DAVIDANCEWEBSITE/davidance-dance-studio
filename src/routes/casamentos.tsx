@@ -25,9 +25,17 @@ function WeddingsPage() {
     <>
       <PageHero title="Casamentos" image={siteConfig.weddingsHero} />
       <section className="container mx-auto max-w-4xl px-5 py-12 text-center">
-        <p className="whitespace-pre-line text-balance text-base leading-relaxed text-muted-foreground md:text-lg">
-          {siteConfig.copy.weddingsText}
-        </p>
+        {siteConfig.copy.weddingsText.split("\n\n").map((para, i) => (
+          <p
+            key={i}
+            className={cn(
+              "text-balance text-base leading-relaxed text-muted-foreground md:text-lg",
+              i > 0 && "mt-4",
+            )}
+          >
+            {para}
+          </p>
+        ))}
         <p className="mt-6 text-balance text-lg italic text-primary md:text-xl">
           {siteConfig.copy.weddingsPhrase}
         </p>

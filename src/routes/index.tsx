@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type RefObject } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Volume1, Volume2, VolumeX } from "lucide-react";
-import { siteConfig, teachers, teamPhoto, homeCards, getTeacherStyles } from "@/data/siteConfig";
+import { siteConfig, teachers, teamPhoto, homeCards } from "@/data/siteConfig";
 import { CTAButton, Logo, Reveal, SectionTitle } from "@/components/site/primitives";
 import { SmartImage } from "@/components/site/SmartImage";
 import { Lightbox } from "@/components/site/Lightbox";
@@ -292,16 +292,11 @@ function TeamSection() {
           alt={siteConfig.copy.teamTitle}
           wrapperClassName="mx-auto aspect-[1387/1920] w-full max-w-[440px] rounded-lg shadow-soft"
         />
-        <div className="grid grid-cols-3 gap-x-3 gap-y-5 sm:grid-cols-4 lg:grid-cols-4">
+        <div className="grid grid-cols-3 gap-x-4 gap-y-6">
           {teachers.map((t) => (
             <article key={t.name} className="min-w-0">
               <Portrait src={t.photo} name={t.name} className="aspect-square rounded-lg" />
               <h3 className="mt-2 text-xs font-medium sm:text-sm">{t.name}</h3>
-              <ul className="mt-0.5 text-[10px] leading-snug text-muted-foreground sm:text-xs">
-                {getTeacherStyles(t.name).map((s) => (
-                  <li key={s.slug}>{s.name}</li>
-                ))}
-              </ul>
             </article>
           ))}
         </div>
@@ -329,7 +324,7 @@ function SpaceSection() {
               wrapperClassName="aspect-[16/10] w-full"
             />
           </Button>
-          <p className="text-center text-sm leading-relaxed text-muted-foreground md:text-left md:text-base">
+          <p className="text-balance text-center text-sm leading-relaxed text-muted-foreground md:text-left md:text-base">
             {siteConfig.facilities.text}
           </p>
         </div>
