@@ -43,19 +43,19 @@ describe("Davidance business rules", () => {
   it("Contemporâneo has the supplied level schedules", () => {
     expect(getStyle("contemporaneo")?.levels?.map((l) => l.schedule)).toEqual([
       [
-        { day: "Terça", time: "20h00 - 21h00" },
-        { day: "Quinta", time: "19h00 - 20h00" },
+        { day: "Terça", time: "20H00 - 21H00" },
+        { day: "Quinta", time: "19H00 - 20H00" },
       ],
       [
-        { day: "Terça", time: "19h00 - 20h00" },
-        { day: "Quinta", time: "19h00 - 20h00" },
+        { day: "Terça", time: "19H00 - 20H00" },
+        { day: "Quinta", time: "19H00 - 20H00" },
       ],
     ]);
   });
   it("Kizomba Fusion has the supplied level schedules", () => {
     expect(getStyle("kizomba-fusion")?.levels?.map((l) => l.schedule)).toEqual([
-      [{ day: "Quarta", time: "21h00 - 22h00" }],
-      [{ day: "Quarta", time: "20h00 - 21h00" }],
+      [{ day: "Quarta", time: "21H00 - 22H00" }],
+      [{ day: "Quarta", time: "20H00 - 21H00" }],
     ]);
   });
   it("Dança Criativa accepts ages 3–5", () =>
