@@ -104,6 +104,7 @@ function Hero() {
   const y = useTransform(scrollY, [0, 800], [0, 200]);
   const hostRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<YTPlayer | null>(null);
+  const [playing, setPlaying] = useState(false);
 
   // Player do YouTube sem controlos, em loop infinito (via IFrame API).
   useEffect(() => {
@@ -140,6 +141,7 @@ function Hero() {
             playerRef.current = e.target;
           },
           onStateChange: (e: { data: number; target: YTPlayer }) => {
+            if (e.data === 1) setPlaying(true);
             if (e.data === 0) e.target.seekTo(0, true); // volta ao início quando acaba
           },
         },
@@ -177,14 +179,17 @@ function Hero() {
       aria-label="Vídeo de apresentação"
     >
       <motion.div style={{ y }} className="absolute inset-0 overflow-hidden" aria-hidden>
-        <div className="absolute inset-0 flex items-center justify-center bg-plum">
-          <Logo light className="h-auto w-2/3 max-w-md opacity-90" />
-        </div>
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[56.25vw] w-[177.78vh] min-h-full min-w-full -translate-x-1/2 -translate-y-1/2">
           <div ref={hostRef} className="h-full w-full" />
         </div>
       </motion.div>
       <div className="absolute inset-0 bg-hero-overlay" />
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute inset-0 flex items-center justify-center bg-plum transition-opacity duration-1000 ${playing ? "opacity-0" : "opacity-100"}`}
+      >
+        <Logo light className="h-auto w-2/3 max-w-md opacity-90" />
+      </div>
       {siteConfig.showHeroTagline && (
         <div className="absolute inset-0 flex items-center justify-center px-5">
           <h1 className="text-center text-5xl font-light italic text-cream md:text-7xl">
