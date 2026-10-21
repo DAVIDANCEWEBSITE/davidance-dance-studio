@@ -70,7 +70,7 @@ describe("Davidance business rules", () => {
     ["ritmos-latinos", "+16 anos"],
   ] as const)
     it(`${slug} has the approved age range`, () => expect(getStyle(slug)?.ageRange).toBe(age));
-  it("dancers are divided into groups of 13 and 6", () =>
+  it("dancers start with Andreia (Sofia removed): groups of 12 and 6", () =>
     expect(projectConfig.groups.map((g) => g.people.length)).toEqual([13, 6]));
   it("uses the real enrolment link", () =>
     expect(siteConfig.links.enrol).toBe("https://forms.gle/HEKGNfnnKE4jBG616"));
