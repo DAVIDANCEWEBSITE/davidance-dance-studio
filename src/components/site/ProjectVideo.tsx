@@ -46,7 +46,6 @@ export function ProjectVideo({ video }: { video: Video }) {
             )}
             {available && (
               <Button
-                variant="default"
                 onClick={() => setPlaying(true)}
                 aria-label={`Reproduzir ${video.title}`}
                 variant="ghost"
