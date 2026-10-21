@@ -18,8 +18,8 @@ export const Route = createFileRoute("/sofia-david-luz")({
 function FounderPage() {
   const f = siteConfig.founder;
   return (
-    <section className="container mx-auto px-5 pb-20 pt-32">
-      <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)]">
+    <section className="container mx-auto px-5 pb-16 pt-28">
+      <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)]">
         <Portrait
           src={f.photo}
           name={f.name}
@@ -27,12 +27,14 @@ function FounderPage() {
         />
         <div>
           <p className="text-sm font-medium text-primary">{f.role}</p>
-          <h1 className="mt-3 text-4xl font-light md:text-5xl">{f.name}</h1>
-          <div className="mt-10 space-y-8">
+          <h1 className="mt-2 text-3xl font-light md:text-4xl">{f.name}</h1>
+          <div className="mt-8 space-y-7">
             {f.biography.map((b) => (
               <div key={b.title}>
-                <h2 className="text-2xl font-medium">{b.title}</h2>
-                <p className="mt-3 leading-relaxed text-muted-foreground">{b.text}</p>
+                <h2 className="text-xl font-medium">{b.title}</h2>
+                <p className="mt-2 text-justify text-sm leading-relaxed text-muted-foreground md:text-base">
+                  {b.text}
+                </p>
               </div>
             ))}
           </div>
