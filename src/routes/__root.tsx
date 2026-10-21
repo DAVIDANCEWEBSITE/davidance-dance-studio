@@ -14,7 +14,6 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/site/Navbar";
 import { ContactSection } from "@/components/site/ContactSection";
-import { Footer } from "@/components/site/Footer";
 
 function NotFoundComponent() {
   return (
@@ -132,7 +131,6 @@ function RootComponent() {
           <Outlet />
         </main>
         <ContactSection />
-        <Footer />
       </div>
     </QueryClientProvider>
   );

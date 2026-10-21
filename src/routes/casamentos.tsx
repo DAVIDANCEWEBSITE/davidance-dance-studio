@@ -24,18 +24,20 @@ function WeddingsPage() {
   return (
     <>
       <PageHero title="Casamentos" image={siteConfig.weddingsHero} />
-      <section className="container mx-auto max-w-3xl px-5 py-14 text-center">
-        <p className="whitespace-pre-line text-lg leading-relaxed text-muted-foreground">
+      <section className="container mx-auto max-w-3xl px-5 py-12 text-center">
+        <p className="whitespace-pre-line text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
           {siteConfig.copy.weddingsText}
         </p>
-        <p className="mt-7 text-xl italic text-primary">{siteConfig.copy.weddingsPhrase}</p>
+        <p className="mt-6 text-balance text-lg italic text-primary md:text-xl">
+          {siteConfig.copy.weddingsPhrase}
+        </p>
         <div className="mt-8">
           <CTAButton href={siteConfig.links.weddings} variant="glow">
             {siteConfig.copy.weddingsButton}
           </CTAButton>
         </div>
       </section>
-      <section className="bg-secondary/40 py-16">
+      <section className="bg-secondary/40 py-12">
         <div className="container mx-auto px-5">
           <SectionTitle
             title={siteConfig.copy.loveTitle}

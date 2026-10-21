@@ -34,7 +34,7 @@ function TimetablePage() {
           <CTAButton href={siteConfig.links.trialClass} variant="glow">
             {siteConfig.copy.trialButton}
           </CTAButton>
-          <CTAButton href={siteConfig.links.enrol} variant="outline">
+          <CTAButton href={siteConfig.links.enrol} variant="glow">
             {siteConfig.copy.enrolButton}
           </CTAButton>
         </div>

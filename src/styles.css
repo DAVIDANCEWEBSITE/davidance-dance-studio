@@ -3,8 +3,20 @@
 @import "tw-animate-css";
 
 /* Fontes próprias: coloque os ficheiros em /public/fonts/ (fallbacks: Montserrat e Great Vibes). */
-@font-face { font-family: "Amsterdam Four"; src: url("/fonts/AmsterdamFour.woff2") format("woff2"), url("/fonts/AmsterdamFour.ttf") format("truetype"); font-display: swap; }
-@font-face { font-family: "Media Pro"; src: url("/fonts/MediaPro.woff2") format("woff2"), url("/fonts/MediaPro.otf") format("opentype"); font-display: swap; }
+@font-face {
+  font-family: "Amsterdam Four";
+  src:
+    url("/fonts/AmsterdamFour.woff2") format("woff2"),
+    url("/fonts/AmsterdamFour.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Media Pro";
+  src:
+    url("/fonts/MediaPro.woff2") format("woff2"),
+    url("/fonts/MediaPro.otf") format("opentype");
+  font-display: swap;
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -56,7 +68,7 @@
   --plum: oklch(0.2 0.05 355);
   --violet: oklch(0.64 0.2 289);
   --rose: oklch(0.63 0.13 357);
-  --brand-hover: oklch(0.47 0.15 357);
+  --brand-hover: #96305a;
   --blush: oklch(0.95 0.03 355);
   --lilac: oklch(0.94 0.04 290);
   --indigo-deep: oklch(0.18 0.07 278);
@@ -84,8 +96,18 @@
 
   --gradient-brand: linear-gradient(135deg, var(--primary), var(--rose) 50%, var(--violet));
   --gradient-soft: linear-gradient(180deg, var(--cream), var(--blush) 50%, var(--lilac));
-  --gradient-hero-overlay: linear-gradient(180deg, oklch(0.2 0.05 355 / 0.45), oklch(0.2 0.05 355 / 0.15) 40%, oklch(0.2 0.05 355 / 0.55));
-  --gradient-night: linear-gradient(180deg, var(--indigo-deep), var(--indigo-mid) 60%, oklch(0.32 0.13 330));
+  --gradient-hero-overlay: linear-gradient(
+    180deg,
+    oklch(0.2 0.05 355 / 0.45),
+    oklch(0.2 0.05 355 / 0.15) 40%,
+    oklch(0.2 0.05 355 / 0.55)
+  );
+  --gradient-night: linear-gradient(
+    180deg,
+    var(--indigo-deep),
+    var(--indigo-mid) 60%,
+    oklch(0.32 0.13 330)
+  );
   --shadow-soft: 0 20px 50px -20px oklch(0.47 0.15 357 / 0.35);
   --shadow-glow: 0 10px 40px -10px oklch(0.64 0.2 289 / 0.55);
 }
@@ -103,7 +125,10 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     letter-spacing: 0;
   }
@@ -112,17 +137,36 @@
     outline-offset: 3px;
   }
   @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
-@utility bg-gradient-brand { background-image: var(--gradient-brand); }
-@utility bg-gradient-soft { background-image: var(--gradient-soft); }
-@utility bg-gradient-night { background-image: var(--gradient-night); }
-@utility bg-hero-overlay { background-image: var(--gradient-hero-overlay); }
-@utility shadow-soft { box-shadow: var(--shadow-soft); }
-@utility shadow-glow { box-shadow: var(--shadow-glow); }
+@utility bg-gradient-brand {
+  background-image: var(--gradient-brand);
+}
+@utility bg-gradient-soft {
+  background-image: var(--gradient-soft);
+}
+@utility bg-gradient-night {
+  background-image: var(--gradient-night);
+}
+@utility bg-hero-overlay {
+  background-image: var(--gradient-hero-overlay);
+}
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
 @utility text-gradient-brand {
   background-image: var(--gradient-brand);
   -webkit-background-clip: text;
@@ -141,4 +185,8 @@
   background-size: 200% 100%;
   animation: shimmer 1.6s linear infinite;
 }
-@keyframes shimmer { to { background-position: -200% 0; } }
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}

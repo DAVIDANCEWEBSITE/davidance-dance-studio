@@ -54,7 +54,7 @@ export const siteConfig = {
     approval:
       "Só podes experimentar ou inscrever-te no Nível II mediante autorização prévia dos professores.",
     biographyButton: "Conhecer o percurso",
-    instagramButton: "Ver mais",
+    instagramButton: "Instagram",
     weddingsText:
       "Acreditamos que a primeira dança é um dos momentos mais especiais do vosso dia. As aulas para casamento são privadas, personalizadas e agendadas de acordo com a disponibilidade dos noivos, preferencialmente nas semanas que antecedem a celebração.\nA coreografia é criada à medida do casal, tendo em conta a música escolhida e o nível de experiência, para que possam viver e desfrutar deste momento com confiança e naturalidade. Temos todo o gosto em preparar convosco uma recordação única para uma união tão especial.",
     weddingsPhrase: "As melhores memórias são aquelas que se vivem com emoção.",
@@ -413,7 +413,7 @@ export const teachers: Teacher[] = [
 ];
 export const classGroups = {
   kids: {
-    title: "Kids — Dos 3 aos 9 anos",
+    title: "Kids",
     menu: "Kids (3–9 anos)",
     description:
       "Na Davidance, os mais pequenos descobrem a dança num ambiente acolhedor, onde há espaço para imaginar, explorar e criar. Através de diferentes aulas, desenvolvem a coordenação, a musicalidade e a confiança, aprendem a trabalhar em grupo e fazem novas amizades — com alegria e respeito pelo ritmo de cada criança.",
@@ -455,10 +455,14 @@ export const homeCards = [
   },
   {
     title: "Jovens & Adultos",
-    text: "Iniciar, retomar ou continuar a aprender? Aqui há um lugar para ti",
+    text: "Iniciar, retomar ou continuar a aprender? Explora o movimento e encontra a tua expressão",
     to: "/jovens-adultos",
   },
-  { title: "Casamentos", text: "Uma dança à medida da vossa história", to: "/casamentos" },
+  {
+    title: "Casamentos",
+    text: "Uma coreografia à medida da vossa história!",
+    to: "/casamentos",
+  },
 ] as const;
 export type Testimonial = { couple: string; text: string; photos: string[] };
 export const testimonials: Testimonial[] = [
