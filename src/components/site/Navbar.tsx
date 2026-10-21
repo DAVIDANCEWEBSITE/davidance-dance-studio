@@ -189,7 +189,7 @@ export function Navbar() {
                 onClick={() => setClassesOpen((v) => !v)}
                 aria-expanded={classesOpen}
                 aria-controls="mobile-classes"
-                className="h-auto w-full justify-between px-0 py-2 text-lg font-medium"
+                className="h-auto w-full justify-between px-2 py-2 text-lg font-medium hover:bg-brand-hover hover:text-primary-foreground active:bg-brand-hover"
               >
                 Aulas de Dança
                 <ChevronDown className={cn(classesOpen && "rotate-180")} />

@@ -9,7 +9,7 @@ import {
   homeCards,
   getTeacherStyles,
 } from "@/data/siteConfig";
-import { CTAButton, Reveal, SectionTitle } from "@/components/site/primitives";
+import { CTAButton, Logo, Reveal, SectionTitle } from "@/components/site/primitives";
 import { SmartImage } from "@/components/site/SmartImage";
 import { Lightbox } from "@/components/site/Lightbox";
 import { Portrait } from "@/components/site/Portrait";
@@ -183,11 +183,9 @@ function Hero() {
       aria-label="Vídeo de apresentação"
     >
       <motion.div style={{ y }} className="absolute inset-0 overflow-hidden" aria-hidden>
-        <img
-          src={siteConfig.hero.poster}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+        <div className="absolute inset-0 flex items-center justify-center bg-plum">
+          <Logo light className="h-auto w-2/3 max-w-md opacity-90" />
+        </div>
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[56.25vw] w-[177.78vh] min-h-full min-w-full -translate-x-1/2 -translate-y-1/2">
           <div ref={hostRef} className="h-full w-full" />
         </div>
@@ -224,8 +222,7 @@ function AudienceSection() {
               wrapperClassName="aspect-[4/3] rounded-lg"
               className="group-hover:scale-105"
             />
-            <h3 className="mt-4 text-lg font-medium">{c.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.text}</p>
+            <h3 className="mt-4 text-center text-lg font-medium md:text-left">{c.title}</h3>
           </Link>
         ))}
       </div>
@@ -241,7 +238,7 @@ function Presentation() {
           alt={siteConfig.copy.presentationTitle}
           wrapperClassName="aspect-[16/9] rounded-lg md:aspect-[21/9]"
         />
-        <h2 className="mx-auto mt-10 max-w-4xl text-center text-2xl font-light md:text-3xl">
+        <h2 className="mx-auto mt-10 max-w-4xl whitespace-nowrap text-center text-lg font-light sm:text-2xl md:text-3xl">
           {siteConfig.copy.presentationTitle}
         </h2>
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
@@ -256,7 +253,7 @@ function Presentation() {
           ))}
         </div>
         <div className="mt-10 text-center">
-          <p className="mx-auto max-w-4xl text-base font-light md:whitespace-nowrap md:text-lg">
+          <p className="mx-auto max-w-sm text-balance text-sm font-light sm:max-w-4xl md:whitespace-nowrap md:text-lg">
             {siteConfig.copy.familyPhrase}
           </p>
           <div className="mt-6">
@@ -280,7 +277,7 @@ function TeamSection() {
           name={f.name}
           className="mx-auto aspect-[3/4] w-full max-w-[240px] rounded-lg"
         />
-        <div>
+        <div className="text-center md:text-left">
           <p className="text-sm font-medium text-primary">{f.role}</p>
           <h3 className="mt-2 text-2xl font-light md:text-3xl">{f.name}</h3>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
@@ -294,22 +291,22 @@ function TeamSection() {
       <h2 className="mb-8 mt-14 text-center text-2xl font-light md:text-3xl">
         {siteConfig.copy.teachersTitle}
       </h2>
-      <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,360px)_1fr]">
+      <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,440px)_1fr]">
         <SmartImage
           src={teamPhoto}
           alt={siteConfig.copy.teamTitle}
-          wrapperClassName="mx-auto aspect-[1387/1920] w-full max-w-[360px] rounded-lg shadow-soft"
+          wrapperClassName="mx-auto aspect-[1387/1920] w-full max-w-[440px] rounded-lg shadow-soft"
         />
-        <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3">
+        <div className="grid grid-cols-3 gap-x-3 gap-y-5 sm:grid-cols-4 lg:grid-cols-4">
           {teachers.map((t) => (
             <article key={t.name} className="min-w-0">
               <Portrait src={t.photo} name={t.name} className="aspect-square rounded-lg" />
-              <h3 className="mt-2 text-sm font-medium">{t.name}</h3>
-              <p className="mt-0.5 text-xs leading-snug text-muted-foreground">
-                {getTeacherStyles(t.name)
-                  .map((s) => s.name)
-                  .join(", ")}
-              </p>
+              <h3 className="mt-2 text-xs font-medium sm:text-sm">{t.name}</h3>
+              <ul className="mt-0.5 text-[10px] leading-snug text-muted-foreground sm:text-xs">
+                {getTeacherStyles(t.name).map((s) => (
+                  <li key={s.slug}>{s.name}</li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>
@@ -322,7 +319,7 @@ function SpaceSection() {
   const [idx, setIdx] = useState<number | null>(null);
   return (
     <section className="bg-secondary/40 py-12 md:py-16">
-      <div className="container mx-auto max-w-5xl px-5">
+      <div className="container mx-auto max-w-4xl px-5">
         <SectionTitle title={siteConfig.copy.spaceTitle} />
         <div className="grid items-center gap-6 lg:grid-cols-[1.5fr_1fr]">
           <Button
@@ -337,11 +334,11 @@ function SpaceSection() {
               wrapperClassName="aspect-[16/10] w-full"
             />
           </Button>
-          <p className="text-base leading-relaxed text-muted-foreground">
+          <p className="text-center text-sm leading-relaxed text-muted-foreground md:text-left md:text-base">
             {siteConfig.facilities.text}
           </p>
         </div>
-        <div className="mt-6 grid grid-cols-3 gap-3 md:gap-6">
+        <div className="mt-4 grid grid-cols-3 gap-3 md:gap-4">
           {photos.slice(1).map((p, i) => (
             <Button
               key={p}

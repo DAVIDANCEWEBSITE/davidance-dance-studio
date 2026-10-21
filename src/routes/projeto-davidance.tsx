@@ -43,7 +43,7 @@ function ProjectPage() {
         </p>
       </section>
       <section className="bg-secondary/40 py-12">
-        <div className="container mx-auto grid items-center gap-8 px-5 md:grid-cols-[260px_1fr]">
+        <div className="container mx-auto flex max-w-3xl flex-col items-center gap-6 px-5 text-center">
           <Portrait
             src={siteConfig.founder.photo}
             name={siteConfig.founder.name}
@@ -52,7 +52,7 @@ function ProjectPage() {
           <div>
             <h2 className="text-2xl font-light md:text-3xl">{p.directionTitle}</h2>
             <h3 className="mt-3 text-lg font-medium text-primary">{siteConfig.founder.name}</h3>
-            <p className="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-2xl text-balance text-base leading-relaxed text-muted-foreground">
               {p.directionText}
             </p>
           </div>
@@ -65,15 +65,21 @@ function ProjectPage() {
             <div key={f.title} className="text-center">
               <h3 className="text-xl font-medium">{f.title}</h3>
               {f.subtitle && <p className="mt-1 text-sm text-muted-foreground">{f.subtitle}</p>}
-              <div className="mx-auto mt-6 grid max-w-4xl grid-cols-2 gap-6 md:grid-cols-4">
+              <div className="mx-auto mt-6 flex max-w-4xl flex-wrap justify-center gap-6">
                 {f.people.map((person) => (
-                  <article key={person.name} className="min-w-0">
+                  <article key={person.name} className="w-[calc(50%-0.75rem)] min-w-0 md:w-[calc(25%-1.125rem)]">
                     <Portrait
                       src={person.photo}
                       name={person.name}
                       className="aspect-[4/3] rounded-lg"
                     />
-                    <h4 className="mt-2 text-sm font-medium">{person.name}</h4>
+                    <h4 className="mt-2 text-[13px] font-medium sm:text-sm">
+                      {person.name.split(" (").map((part, k) => (
+                        <span key={part} className="block whitespace-nowrap">
+                          {k ? `(${part}` : part}
+                        </span>
+                      ))}
+                    </h4>
                     <p className="mt-0.5 text-xs text-muted-foreground">{person.area}</p>
                   </article>
                 ))}
