@@ -26,6 +26,15 @@ import img_ricardo from "@/assets/home-ricardo.jpg.asset.json";
 import img_sara from "@/assets/home-sara.jpg.asset.json";
 import img_sofia from "@/assets/home-sofia.jpg.asset.json";
 import logoAsset from "@/assets/logo.png.asset.json";
+import timetableAsset from "@/assets/horario-oficial.png.asset.json";
+import projectGroup from "@/assets/projeto-grupo.jpg.asset.json";
+import quorum from "@/assets/projeto-quorum.jpg.asset.json";
+import ritaSpider from "@/assets/projeto-rita-spider.jpg.asset.json";
+import afonsoRola from "@/assets/projeto-afonso-rola.jpg.asset.json";
+import senhoraCover from "@/assets/projeto-senhora-do-mar.jpg.asset.json";
+import futebolCover from "@/assets/projeto-futebol.jpg.asset.json";
+import voilaCover from "@/assets/projeto-voila.jpg.asset.json";
+import cancaoCover from "@/assets/projeto-cancao-sem-final.jpg.asset.json";
 
 /**
  * DAVIDANCE — CONTEÚDO CENTRAL
@@ -149,9 +158,9 @@ export const siteConfig = {
   auditionsOpen: false,
 
   timetable: {
-    // [PLACEHOLDER: horario.jpg] — coloque em /public/horario.jpg
-    image: "/horario-davidance.svg",
-    download: "/horario-davidance.svg",
+    image: timetableAsset.url,
+    download: timetableAsset.url,
+    filename: "horario-davidance.png",
   },
 
   facilities: {
@@ -656,24 +665,24 @@ export const projectConfig = {
         {
           name: "Quorum Dance Company (Margarida Carvalho)",
           area: "Repertório da companhia",
-          photo: "",
+          photo: quorum.url,
         },
-        { name: "Rita Spider", area: "Criação Coreográfica", photo: "" },
+        { name: "Rita Spider", area: "Criação Coreográfica", photo: ritaSpider.url },
       ],
     },
     {
       title: "Workshops",
       subtitle: "Abertos a todos os alunos",
       people: [
-        { name: "Quorum Dance Company", area: "Contemporâneo", photo: "" },
-        { name: "Rita Spider", area: "Fusion", photo: "" },
+        { name: "Quorum Dance Company", area: "Contemporâneo", photo: quorum.url },
+        { name: "Rita Spider", area: "Fusion", photo: ritaSpider.url },
         { name: "Colin Vieira", area: "Lyrical Jazz", photo: "" },
-        { name: "Afonso Rola", area: "Commercial & Lyrical Jazz", photo: "" },
+        { name: "Afonso Rola", area: "Commercial & Lyrical Jazz", photo: afonsoRola.url },
       ],
     },
   ],
   dancersTitle: "Bailarinos 26/27",
-  groupPhoto: "",
+  groupPhoto: projectGroup.url,
   groups: [
     {
       title: "Grupo A",
@@ -706,10 +715,10 @@ export const projectConfig = {
   ],
   historyTitle: "Percurso",
   videos: [
-    { title: "Projeto Davidance 25/26 — Senhora do Mar", src: "", youtubeId: "", poster: "" },
-    { title: "Projeto Davidance 25/26 — Futebol", src: "", youtubeId: "", poster: "" },
-    { title: "Projeto Davidance 24/25 — Voilá", src: "", youtubeId: "", poster: "" },
-    { title: "Projeto Davidance 23/24 — Canção sem final", src: "", youtubeId: "", poster: "" },
+    { title: "Projeto Davidance 25/26 — Senhora do Mar", src: "", youtubeId: "0DMrdPdzlv4", poster: senhoraCover.url },
+    { title: "Projeto Davidance 25/26 — Futebol", src: "", youtubeId: "iP9PhHy5qao", poster: futebolCover.url },
+    { title: "Projeto Davidance 24/25 — Voilá", src: "", youtubeId: "VpOSiGaMLLM", poster: voilaCover.url },
+    { title: "Projeto Davidance 23/24 — Canção sem final", src: "", youtubeId: "D4RMznCCitc", poster: cancaoCover.url },
   ],
   futureTitle: "Queres fazer parte?",
   futureText:
