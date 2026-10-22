@@ -253,7 +253,7 @@ export const styles: Style[] = [
       ageRange: "3 - 5 anos",
       schedule: [
         { day: "Segunda", time: "17H15 - 18H00" },
-        { day: "Quartas", time: "17H15 - 18H00" },
+        { day: "Quarta", time: "17H15 - 18H00" },
       ],
       gallery: [],
     },
@@ -269,7 +269,7 @@ export const styles: Style[] = [
       ageRange: "6 - 9 anos",
       schedule: [
         { day: "Segunda", time: "18H00 - 19H00" },
-        { day: "Quartas", time: "18H00 - 19H00" },
+        { day: "Quarta", time: "18H00 - 19H00" },
       ],
       gallery: [],
     },
@@ -285,7 +285,7 @@ export const styles: Style[] = [
       ageRange: "6 - 9 anos",
       schedule: [
         { day: "Terça", time: "18H00 - 19H00" },
-        { day: "Quintas", time: "18H00 - 19H00" },
+        { day: "Quinta", time: "18H00 - 19H00" },
       ],
       gallery: [],
     },
@@ -301,7 +301,7 @@ export const styles: Style[] = [
       ageRange: "6 - 9 anos",
       schedule: [
         { day: "Terça", time: "18H00 - 19H00" },
-        { day: "Quintas", time: "18H00 - 19H00" },
+        { day: "Quinta", time: "18H00 - 19H00" },
       ],
       gallery: [],
     },
