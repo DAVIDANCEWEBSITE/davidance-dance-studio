@@ -16,3 +16,4 @@
 - [x] Reduce the venue gallery by removing the beige dresses, sunglasses, student splits and Beatriz-with-Kids photographs; verify the reduced gallery.
 - [x] Remove the supplied group screenshot, heels and Christmas photographs; replace the venue previews with a compact editorial grid; verified seven-photo navigation on desktop, tablet and mobile.
 - [ ] Await missing individual project portraits and paid font files.
+- [ ] Apply the 14 newly supplied project portraits and add the two studio photographs below the main facilities photo, without click-to-open.
