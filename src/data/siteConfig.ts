@@ -32,7 +32,7 @@ import cls_acrobacias from "@/assets/class-acrobacias.jpg.asset.json";
 import cls_contemporaneo from "@/assets/class-contemporaneo.jpg.asset.json";
 import cls_lyrical_jazz from "@/assets/class-lyrical-jazz.jpg.asset.json";
 import cls_ballet from "@/assets/class-ballet.jpg.asset.json";
-import cls_hip_hop from "@/assets/class-hip-hop-v3.jpg.asset.json";
+import cls_hip_hop from "@/assets/class-hip-hop-v4.png.asset.json";
 import cls_choreography from "@/assets/class-choreography.jpg.asset.json";
 import cls_high_heels from "@/assets/high-heels-final.jpg.asset.json";
 import cls_kizomba_fusion from "@/assets/class-kizomba-fusion.jpg.asset.json";
@@ -225,10 +225,10 @@ export const photoFraming: Record<string, string> = {
   [wedding_ines_bruno.url]: "object-center",
   [cls_danca_criativa.url]: "object-[center_60%]",
   [cls_ballet_kids.url]: "object-[center_40%]",
-  [cls_hip_hop.url]: "object-center",
+  [cls_hip_hop.url]: "object-contain bg-plum",
   [cls_danca_oriental.url]: "object-[center_35%]",
-  [cls_hip_hop_kids.url]: "object-[center_62%]",
-  [cls_high_heels.url]: "object-[center_42%]",
+  [cls_hip_hop_kids.url]: "object-contain bg-plum",
+  [cls_high_heels.url]: "object-contain bg-plum",
 };
 export type Schedule = { day: string; time: string };
 export type Style = {
