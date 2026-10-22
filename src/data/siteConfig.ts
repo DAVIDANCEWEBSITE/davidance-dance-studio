@@ -57,10 +57,20 @@ import projectStageHero from "@/assets/projeto-stage-hero.jpg.asset.json";
 import quorum from "@/assets/projeto-quorum.jpg.asset.json";
 import ritaSpider from "@/assets/projeto-rita-spider.jpg.asset.json";
 import afonsoRola from "@/assets/projeto-afonso-rola.jpg.asset.json";
-import dancerCarolinaMaia from "@/assets/projeto-carolina-maia.jpg.asset.json";
-import dancerCatiaSoares from "@/assets/projeto-catia-soares.jpg.asset.json";
-import dancerLeonorCatarrilhas from "@/assets/projeto-leonor-catarrilhas.jpg.asset.json";
-import dancerSusanaFerreira from "@/assets/projeto-susana-ferreira.jpg.asset.json";
+import dancerCarolinaMaia from "@/assets/projeto-carolina-maia-updated.jpg.asset.json";
+import dancerCatiaSoares from "@/assets/projeto-catia-soares-updated.jpg.asset.json";
+import dancerLeonorCatarrilhas from "@/assets/projeto-leonor-catarrilhas-updated.jpg.asset.json";
+import dancerSusanaFerreira from "@/assets/projeto-susana-ferreira-updated.jpg.asset.json";
+import dancerAndreiaSilva from "@/assets/projeto-andreia-silva-updated.jpg.asset.json";
+import dancerCarolinaCarvalho from "@/assets/projeto-carolina-carvalho-updated.jpg.asset.json";
+import dancerMariaInesCosta from "@/assets/projeto-maria-ines-costa-updated.jpg.asset.json";
+import dancerMatheusGoncalves from "@/assets/projeto-matheus-goncalves-updated.jpg.asset.json";
+import dancerMeylinLeyva from "@/assets/projeto-meylin-leyva-updated.jpg.asset.json";
+import dancerRaquelPinto from "@/assets/projeto-raquel-pinto-updated.jpg.asset.json";
+import dancerSofiaConde from "@/assets/projeto-sofia-conde-updated.jpg.asset.json";
+import dancerAlexandrePortugal from "@/assets/projeto-alexandre-portugal-updated.jpg.asset.json";
+import dancerJoanaLuz from "@/assets/projeto-joana-luz-updated.jpg.asset.json";
+import dancerMargaridaDores from "@/assets/projeto-margarida-dores-updated.jpg.asset.json";
 import futebolCover from "@/assets/projeto-futebol.jpg.asset.json";
 import voilaCover from "@/assets/projeto-voila.jpg.asset.json";
 import cancaoCover from "@/assets/projeto-cancao-sem-final.jpg.asset.json";
@@ -68,6 +78,8 @@ import space4081 from "@/assets/espaco-img_4081_2.jpg.asset.json";
 import space4084 from "@/assets/espaco-img_4084.jpg.asset.json";
 import space4086 from "@/assets/espaco-img_4086.jpg.asset.json";
 import space5165 from "@/assets/espaco-img_5165.jpg.asset.json";
+import spaceStudio1 from "@/assets/espaco-estudio-1-updated.jpg.asset.json";
+import spaceStudio2 from "@/assets/espaco-estudio-2-updated.jpg.asset.json";
 
 /**
  * DAVIDANCE — CONTEÚDO CENTRAL
@@ -200,6 +212,8 @@ export const siteConfig = {
       space4084.url,
       space4086.url,
       space5165.url,
+      spaceStudio1.url,
+      spaceStudio2.url,
     ],
   },
 
@@ -745,16 +759,16 @@ export const projectConfig = {
     {
       title: "Grupo A",
       people: [
-        { name: "Andreia Silva", photo: "" },
-        { name: "Carolina Carvalho", photo: "" },
+        { name: "Andreia Silva", photo: dancerAndreiaSilva.url },
+        { name: "Carolina Carvalho", photo: dancerCarolinaCarvalho.url },
         { name: "Cátia Soares", photo: dancerCatiaSoares.url },
         { name: "Leonor Catarrilhas", photo: dancerLeonorCatarrilhas.url },
         { name: "Margarida Palminha", photo: "" },
-        { name: "Maria Inês Costa", photo: "" },
-        { name: "Matheus Gonçalves", photo: "" },
-        { name: "Meylin Leyva", photo: "" },
-        { name: "Raquel Pinto", photo: "" },
-        { name: "Sofia Conde", photo: "" },
+        { name: "Maria Inês Costa", photo: dancerMariaInesCosta.url },
+        { name: "Matheus Gonçalves", photo: dancerMatheusGoncalves.url },
+        { name: "Meylin Leyva", photo: dancerMeylinLeyva.url },
+        { name: "Raquel Pinto", photo: dancerRaquelPinto.url },
+        { name: "Sofia Conde", photo: dancerSofiaConde.url },
         { name: "Sofia Silva", photo: "" },
         { name: "Susana Ferreira", photo: dancerSusanaFerreira.url },
       ],
@@ -762,11 +776,11 @@ export const projectConfig = {
     {
       title: "Grupo B",
       people: [
-        { name: "Alexandre Portugal", photo: "" },
+        { name: "Alexandre Portugal", photo: dancerAlexandrePortugal.url },
         { name: "Deusa Santana", photo: "" },
         { name: "Carolina Maia", photo: dancerCarolinaMaia.url },
-        { name: "Joana Luz", photo: "" },
-        { name: "Margarida Dores", photo: "" },
+        { name: "Joana Luz", photo: dancerJoanaLuz.url },
+        { name: "Margarida Dores", photo: dancerMargaridaDores.url },
         { name: "Tatiana Teixeira", photo: "" },
       ],
     },

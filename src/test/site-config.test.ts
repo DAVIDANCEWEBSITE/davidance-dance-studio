@@ -12,9 +12,9 @@ import {
 } from "@/data/siteConfig";
 
 describe("Davidance business rules", () => {
-  it("the facilities gallery keeps the main studio photo first and 4 unique photographs", () => {
-    expect(siteConfig.facilities.photos).toHaveLength(4);
-    expect(new Set(siteConfig.facilities.photos).size).toBe(4);
+  it("the facilities gallery keeps the main studio photo first and 6 unique photographs", () => {
+    expect(siteConfig.facilities.photos).toHaveLength(6);
+    expect(new Set(siteConfig.facilities.photos).size).toBe(6);
     expect(siteConfig.facilities.photos[0]).toMatch(/\/espaco-img_4081_2\.jpg$/);
   });
   for (const [description, filename] of [
