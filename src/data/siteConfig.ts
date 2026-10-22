@@ -67,10 +67,7 @@ import cancaoCover from "@/assets/projeto-cancao-sem-final.jpg.asset.json";
 import space4081 from "@/assets/espaco-img_4081.jpg.asset.json";
 import space4084 from "@/assets/espaco-img_4084.jpg.asset.json";
 import space4086 from "@/assets/espaco-img_4086.jpg.asset.json";
-import space4001 from "@/assets/espaco-img_4001.jpg.asset.json";
 import space5165 from "@/assets/espaco-img_5165.jpg.asset.json";
-import space9255 from "@/assets/espaco-img_9255.jpg.asset.json";
-import space9418 from "@/assets/espaco-img_9418.jpg.asset.json";
 
 /**
  * DAVIDANCE — CONTEÚDO CENTRAL
