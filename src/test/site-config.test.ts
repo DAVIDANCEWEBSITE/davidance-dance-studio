@@ -12,10 +12,10 @@ import {
 } from "@/data/siteConfig";
 
 describe("Davidance business rules", () => {
-  it("the facilities gallery keeps IMG_4081 first and 4 unique photographs", () => {
+  it("the facilities gallery keeps the main studio photo first and 4 unique photographs", () => {
     expect(siteConfig.facilities.photos).toHaveLength(4);
     expect(new Set(siteConfig.facilities.photos).size).toBe(4);
-    expect(siteConfig.facilities.photos[0]).toMatch(/\/espaco-img_4081\.jpg$/);
+    expect(siteConfig.facilities.photos[0]).toMatch(/\/espaco-img_4081_2\.jpg$/);
   });
   for (const [description, filename] of [
     ["beige dresses", "espaco-img_2136.jpg"],

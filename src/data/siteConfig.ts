@@ -64,7 +64,7 @@ import dancerSusanaFerreira from "@/assets/projeto-susana-ferreira.jpg.asset.jso
 import futebolCover from "@/assets/projeto-futebol.jpg.asset.json";
 import voilaCover from "@/assets/projeto-voila.jpg.asset.json";
 import cancaoCover from "@/assets/projeto-cancao-sem-final.jpg.asset.json";
-import space4081 from "@/assets/espaco-img_4081.jpg.asset.json";
+import space4081 from "@/assets/espaco-img_4081_2.jpg.asset.json";
 import space4084 from "@/assets/espaco-img_4084.jpg.asset.json";
 import space4086 from "@/assets/espaco-img_4086.jpg.asset.json";
 import space5165 from "@/assets/espaco-img_5165.jpg.asset.json";
