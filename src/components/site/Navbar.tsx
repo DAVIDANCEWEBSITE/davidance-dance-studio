@@ -183,7 +183,7 @@ export function Navbar() {
             <Link
               to="/"
               onClick={close}
-              className="block border-b border-border py-3 text-lg font-medium"
+              className="block rounded-md border-b border-border px-2 py-3 text-lg font-medium hover:bg-brand-hover hover:text-primary-foreground active:bg-brand-hover"
             >
               {navLinks[0].label}
             </Link>
@@ -209,12 +209,12 @@ export function Navbar() {
                 key={l.to}
                 to={l.to}
                 onClick={close}
-                className="block border-b border-border py-3 text-lg font-medium"
+                className="block rounded-md border-b border-border px-2 py-3 text-lg font-medium hover:bg-brand-hover hover:text-primary-foreground active:bg-brand-hover"
               >
                 {l.label}
               </Link>
             ))}
-            <a href="#contactos" onClick={contact} className="block py-3 text-lg font-medium">
+            <a href="#contactos" onClick={contact} className="block rounded-md px-2 py-3 text-lg font-medium hover:bg-brand-hover hover:text-primary-foreground active:bg-brand-hover">
               Contactos
             </a>
           </nav>

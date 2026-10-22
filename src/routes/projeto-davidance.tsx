@@ -108,7 +108,7 @@ function ProjectPage() {
                     name={person.name}
                     className="aspect-[3/4] rounded-lg"
                   />
-                  <h4 className="mt-2 text-sm font-medium">{person.name}</h4>
+                  <h4 className="mt-2 truncate whitespace-nowrap text-[10px] font-medium sm:text-xs">{person.name}</h4>
                 </article>
               ))}
           </div>

@@ -227,8 +227,8 @@ export const photoFraming: Record<string, string> = {
   [cls_ballet_kids.url]: "object-[center_40%]",
   [cls_hip_hop.url]: "object-center",
   [cls_danca_oriental.url]: "object-center",
-  [cls_hip_hop_kids.url]: "object-contain bg-plum",
-  [cls_high_heels.url]: "object-contain bg-plum",
+  [cls_hip_hop_kids.url]: "object-cover object-[center_45%]",
+  [cls_high_heels.url]: "object-cover object-[center_40%]",
 };
 export type Schedule = { day: string; time: string };
 export type Style = {
@@ -542,6 +542,7 @@ export const homeCards = [
   },
   {
     title: "Jovens & Adultos",
+    subtitle: "A partir dos 10 anos",
     text: "Iniciar, retomar ou continuar a aprender? Explora o movimento e encontra a tua expressão",
     to: "/jovens-adultos",
   },
