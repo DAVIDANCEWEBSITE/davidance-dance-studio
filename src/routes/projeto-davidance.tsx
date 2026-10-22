@@ -51,7 +51,7 @@ function ProjectPage() {
           <div>
             <h2 className="text-2xl font-light md:text-3xl">{p.directionTitle}</h2>
             <h3 className="mt-3 text-lg font-medium text-primary">{siteConfig.founder.name}</h3>
-            <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-2xl text-balance text-base leading-relaxed text-muted-foreground">
               {p.directionText}
             </p>
           </div>

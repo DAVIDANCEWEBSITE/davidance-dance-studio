@@ -9,7 +9,7 @@ type Video = (typeof projectConfig.videos)[number];
 export function getProjectPlaybackSource(video: Video, requested: boolean) {
   if (!requested) return undefined;
   return video.youtubeId
-    ? `https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0`
+    ? `https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0&vq=hd1080`
     : video.src || undefined;
 }
 export function ProjectVideo({ video }: { video: Video }) {

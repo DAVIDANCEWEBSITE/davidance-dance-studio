@@ -9,7 +9,7 @@ describe("supplied project videos", () => {
       expect(video.youtubeId).toBe(ids[index]);
       expect(getProjectPlaybackSource(video, false)).toBeUndefined();
       expect(getProjectPlaybackSource(video, true)).toBe(
-        `https://www.youtube-nocookie.com/embed/${ids[index]}?autoplay=1&rel=0`,
+        `https://www.youtube-nocookie.com/embed/${ids[index]}?autoplay=1&rel=0&vq=hd1080`,
       );
     });
   });

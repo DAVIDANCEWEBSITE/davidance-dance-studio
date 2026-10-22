@@ -25,19 +25,19 @@ import wedding_veronica_diogo from "@/assets/casamento-veronica-diogo.jpg.asset.
 import wedding_zelia_joao from "@/assets/casamento-zelia-joao.jpg.asset.json";
 import cls_danca_criativa from "@/assets/class-danca-criativa.jpg.asset.json";
 import cls_contemporaneo_kids from "@/assets/class-contemporaneo-kids.jpg.asset.json";
-import cls_ballet_kids from "@/assets/class-ballet-kids.jpg.asset.json";
+import cls_ballet_kids from "@/assets/class-ballet-kids-v3.jpg.asset.json";
 import cls_hip_hop_kids from "@/assets/class-hip-hop-kids-updated.jpg.asset.json";
 import cls_flexibilidade from "@/assets/class-flexibilidade.jpg.asset.json";
 import cls_acrobacias from "@/assets/class-acrobacias.jpg.asset.json";
 import cls_contemporaneo from "@/assets/class-contemporaneo.jpg.asset.json";
 import cls_lyrical_jazz from "@/assets/class-lyrical-jazz.jpg.asset.json";
 import cls_ballet from "@/assets/class-ballet.jpg.asset.json";
-import cls_hip_hop from "@/assets/class-hip-hop.jpg.asset.json";
+import cls_hip_hop from "@/assets/class-hip-hop-v3.jpg.asset.json";
 import cls_choreography from "@/assets/class-choreography.jpg.asset.json";
 import cls_high_heels from "@/assets/high-heels-final.jpg.asset.json";
 import cls_kizomba_fusion from "@/assets/class-kizomba-fusion.jpg.asset.json";
-import cls_ritmos_latinos from "@/assets/class-ritmos-latinos.jpg.asset.json";
-import cls_danca_oriental from "@/assets/class-danca-oriental.jpg.asset.json";
+import cls_ritmos_latinos from "@/assets/class-ritmos-latinos-v3.jpg.asset.json";
+import cls_danca_oriental from "@/assets/class-danca-oriental-v3.jpg.asset.json";
 import img_projeto_hero from "@/assets/projeto-hero.jpg.asset.json";
 import img_andreia_paulo from "@/assets/home-andreia-paulo.jpg.asset.json";
 import img_beatriz from "@/assets/home-beatriz.jpg.asset.json";
@@ -213,7 +213,7 @@ export const photoFraming: Record<string, string> = {
   [img_ricardo.url]: "object-top",
   [img_andreia_paulo.url]: "object-top",
   [cls_kizomba_fusion.url]: "object-[center_20%]",
-  [cls_ritmos_latinos.url]: "object-contain",
+  [cls_ritmos_latinos.url]: "object-[center_30%]",
   [ritaSpider.url]: "object-[center_20%]",
   [afonsoRola.url]: "object-[center_30%]",
   [wedding_joana_daniel.url]: "object-[center_20%]",
@@ -224,11 +224,11 @@ export const photoFraming: Record<string, string> = {
   [wedding_paula_paulo.url]: "object-top",
   [wedding_ines_bruno.url]: "object-center",
   [cls_danca_criativa.url]: "object-[center_60%]",
-  [cls_ballet_kids.url]: "object-[center_65%]",
-  [cls_hip_hop.url]: "object-[center_70%]",
-  [cls_danca_oriental.url]: "object-contain",
-  [cls_hip_hop_kids.url]: "object-[center_48%]",
-  [cls_high_heels.url]: "object-[center_58%]",
+  [cls_ballet_kids.url]: "object-[center_40%]",
+  [cls_hip_hop.url]: "object-center",
+  [cls_danca_oriental.url]: "object-[center_35%]",
+  [cls_hip_hop_kids.url]: "object-[center_62%]",
+  [cls_high_heels.url]: "object-[center_42%]",
 };
 export type Schedule = { day: string; time: string };
 export type Style = {
