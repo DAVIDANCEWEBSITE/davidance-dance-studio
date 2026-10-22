@@ -5,7 +5,6 @@ import { Volume1, Volume2, VolumeX } from "lucide-react";
 import { siteConfig, teachers, teamPhoto, homeCards } from "@/data/siteConfig";
 import { CTAButton, Logo, Reveal, SectionTitle } from "@/components/site/primitives";
 import { SmartImage } from "@/components/site/SmartImage";
-import { Lightbox } from "@/components/site/Lightbox";
 import { Portrait } from "@/components/site/Portrait";
 import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/")({
@@ -318,7 +317,6 @@ function TeamSection() {
 function SpaceSection() {
   const photos = siteConfig.facilities.photos;
   const [main, ...previews] = photos;
-  const [idx, setIdx] = useState<number | null>(null);
   return (
     <section className="bg-secondary/40 py-12 md:py-16">
       <div className="container mx-auto max-w-4xl px-5">
@@ -326,45 +324,24 @@ function SpaceSection() {
         <p className="mx-auto max-w-2xl text-balance text-center text-sm leading-relaxed text-muted-foreground md:text-base">
           {siteConfig.facilities.text}
         </p>
-        <Button
-          variant="ghost"
-          onClick={() => setIdx(0)}
-          aria-label="Ampliar fotografia do espaço"
-          className="group relative mt-8 h-auto min-h-0 w-full overflow-hidden rounded-lg p-0"
-        >
-          <SmartImage
-            src={main}
-            alt={siteConfig.copy.spaceTitle}
-            wrapperClassName="aspect-[16/10] w-full"
-            className="group-hover:scale-105"
-          />
-        </Button>
+        <SmartImage
+          src={main}
+          alt={siteConfig.copy.spaceTitle}
+          wrapperClassName="mt-8 aspect-[16/10] w-full rounded-lg"
+          className="h-full w-full"
+        />
         <div className="mt-2 grid grid-cols-3 gap-2 sm:mt-3 sm:gap-3 md:mt-4 md:gap-4">
-          {previews.map((p, i) => (
-            <Button
+          {previews.map((p) => (
+            <SmartImage
               key={p}
-              variant="ghost"
-              onClick={() => setIdx(i + 1)}
-              aria-label={`Ampliar fotografia ${i + 2} do espaço`}
-              className="group relative h-auto min-h-0 w-full overflow-hidden rounded-lg p-0"
-            >
-              <SmartImage
-                src={p}
-                alt={siteConfig.copy.spaceTitle}
-                wrapperClassName="aspect-[4/3] w-full"
-                className="group-hover:scale-105"
-              />
-            </Button>
+              src={p}
+              alt={siteConfig.copy.spaceTitle}
+              wrapperClassName="aspect-[4/3] w-full rounded-lg"
+              className="h-full w-full"
+            />
           ))}
         </div>
       </div>
-      <Lightbox
-        images={photos}
-        index={idx}
-        onClose={() => setIdx(null)}
-        onChange={setIdx}
-        alt={siteConfig.copy.spaceTitle}
-      />
     </section>
   );
 }
