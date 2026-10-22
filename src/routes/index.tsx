@@ -5,7 +5,6 @@ import { Volume1, Volume2, VolumeX } from "lucide-react";
 import { siteConfig, teachers, teamPhoto, homeCards } from "@/data/siteConfig";
 import { CTAButton, Logo, Reveal, SectionTitle } from "@/components/site/primitives";
 import { SmartImage } from "@/components/site/SmartImage";
-import { Lightbox } from "@/components/site/Lightbox";
 import { Portrait } from "@/components/site/Portrait";
 import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/")({
