@@ -73,7 +73,7 @@ function WeddingsPage() {
                   {t.text && (
                     <>
                       <Quote className="h-8 w-8 text-primary" />
-                      <blockquote className="mt-3 text-lg font-light leading-relaxed">
+                      <blockquote className="mt-3 text-pretty text-base font-light leading-relaxed md:text-lg">
                         “{t.text}”
                       </blockquote>
                     </>
