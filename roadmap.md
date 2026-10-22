@@ -1,4 +1,5 @@
 # Davidance reformulation
+- [ ] Approximate project students' faces within the existing grid without cutting anyone's head; visually verify every supplied portrait.
 - [x] Centralise supplied text, contacts, classes and schedules.
 - [x] Rebuild navigation and home; add founder biography and shared contact band.
 - [x] Add Kids and Jovens & Adultos; simplify class details with level schedules.
