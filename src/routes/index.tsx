@@ -249,7 +249,7 @@ function Presentation() {
               className="rounded-2xl bg-card p-7 text-center shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-glow"
             >
               <h3 className="text-lg font-medium text-primary">{b.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{b.text}</p>
+              <p className="mt-3 text-pretty text-sm leading-relaxed text-muted-foreground">{b.text}</p>
             </div>
           ))}
         </div>
