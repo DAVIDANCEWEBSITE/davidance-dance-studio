@@ -317,49 +317,29 @@ function TeamSection() {
 }
 function SpaceSection() {
   const photos = siteConfig.facilities.photos;
-  const previews = photos.slice(1, 4);
-  const remaining = photos.length - 4;
   const [idx, setIdx] = useState<number | null>(null);
   return (
     <section className="bg-secondary/40 py-12 md:py-16">
       <div className="container mx-auto max-w-4xl px-5">
         <SectionTitle title={siteConfig.copy.spaceTitle} />
-        <div className="grid items-center gap-6 lg:grid-cols-[1.5fr_1fr]">
-          <Button
-            variant="ghost"
-            onClick={() => setIdx(0)}
-            className="h-auto w-full overflow-hidden rounded-lg p-0"
-            aria-label="Ampliar fotografia do espaço"
-          >
-            <SmartImage
-              src={photos[0]}
-              alt={siteConfig.copy.spaceTitle}
-              wrapperClassName="aspect-[16/10] w-full"
-            />
-          </Button>
-          <p className="text-balance text-center text-sm leading-relaxed text-muted-foreground md:text-left md:text-base">
-            {siteConfig.facilities.text}
-          </p>
-        </div>
-        <div className="mt-4 grid grid-cols-3 gap-3 md:gap-4">
-          {previews.map((p, i) => (
+        <p className="mx-auto max-w-2xl text-balance text-center text-sm leading-relaxed text-muted-foreground md:text-base">
+          {siteConfig.facilities.text}
+        </p>
+        <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-3 md:grid-cols-4 md:gap-4">
+          {photos.map((p, i) => (
             <Button
               key={p}
               variant="ghost"
-              onClick={() => setIdx(i + 1)}
-              aria-label={i === 2 && remaining > 0 ? `Ver todas as ${photos.length} fotografias do espaço` : `Ampliar fotografia ${i + 2} do espaço`}
-              className="relative h-auto overflow-hidden rounded-lg p-0"
+              onClick={() => setIdx(i)}
+              aria-label={i === 0 ? "Ampliar fotografia do espaço" : `Ampliar fotografia ${i + 1} do espaço`}
+              className={`group relative h-auto min-h-0 w-full overflow-hidden rounded-lg p-0 ${i === 0 ? "col-span-3 aspect-[16/10] md:col-span-2 md:row-span-3 md:aspect-auto" : "aspect-square md:aspect-[4/3]"}`}
             >
               <SmartImage
                 src={p}
                 alt={siteConfig.copy.spaceTitle}
-                wrapperClassName="aspect-[4/3] w-full"
+                wrapperClassName="h-full w-full"
+                className="group-hover:scale-105"
               />
-              {i === 2 && remaining > 0 && (
-                <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-plum/60 text-sm font-medium text-cream md:text-base">
-                  +{remaining} fotos
-                </span>
-              )}
             </Button>
           ))}
         </div>

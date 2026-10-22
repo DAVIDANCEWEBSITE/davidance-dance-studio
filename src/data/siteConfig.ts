@@ -69,11 +69,6 @@ import space4084 from "@/assets/espaco-img_4084.jpg.asset.json";
 import space4086 from "@/assets/espaco-img_4086.jpg.asset.json";
 import space4001 from "@/assets/espaco-img_4001.jpg.asset.json";
 import space5165 from "@/assets/espaco-img_5165.jpg.asset.json";
-import space5230 from "@/assets/espaco-img_5230.jpg.asset.json";
-import space5503 from "@/assets/espaco-img_5503.jpg.asset.json";
-import space6090 from "@/assets/espaco-img_6090.jpg.asset.json";
-import space8869 from "@/assets/espaco-img_8869.jpg.asset.json";
-import space8883 from "@/assets/espaco-img_8883.jpg.asset.json";
 import space9255 from "@/assets/espaco-img_9255.jpg.asset.json";
 import space9418 from "@/assets/espaco-img_9418.jpg.asset.json";
 
@@ -209,11 +204,6 @@ export const siteConfig = {
       space4086.url,
       space4001.url,
       space5165.url,
-      space5230.url,
-      space5503.url,
-      space6090.url,
-      space8869.url,
-      space8883.url,
       space9255.url,
       space9418.url,
     ],

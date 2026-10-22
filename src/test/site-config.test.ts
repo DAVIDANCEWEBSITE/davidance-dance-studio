@@ -12,9 +12,9 @@ import {
 } from "@/data/siteConfig";
 
 describe("Davidance business rules", () => {
-  it("the reduced facilities gallery keeps IMG_4081 first and 12 unique photographs", () => {
-    expect(siteConfig.facilities.photos).toHaveLength(12);
-    expect(new Set(siteConfig.facilities.photos).size).toBe(12);
+  it("the reduced facilities gallery keeps IMG_4081 first and 7 unique photographs", () => {
+    expect(siteConfig.facilities.photos).toHaveLength(7);
+    expect(new Set(siteConfig.facilities.photos).size).toBe(7);
     expect(siteConfig.facilities.photos[0]).toMatch(/\/espaco-img_4081\.jpg$/);
   });
   for (const [description, filename] of [
@@ -22,6 +22,11 @@ describe("Davidance business rules", () => {
     ["sunglasses", "espaco-img_1568.jpg"],
     ["student doing splits", "espaco-img_1665.jpg"],
     ["Beatriz with Kids", "espaco-img_8083.jpg"],
+    ["group shown in the supplied screenshot", "espaco-img_5230.jpg"],
+    ["high heels group", "espaco-img_5503.jpg"],
+    ["Christmas studio group", "espaco-img_6090.jpg"],
+    ["Christmas children", "espaco-img_8869.jpg"],
+    ["Christmas adults with gift bag", "espaco-img_8883.jpg"],
   ]) {
     it(`excludes the ${description} photograph from the facilities gallery`, () => {
       expect(siteConfig.facilities.photos.some((url) => url.endsWith(`/${filename}`))).toBe(false);
