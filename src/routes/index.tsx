@@ -211,7 +211,9 @@ function AudienceSection() {
           <Link key={c.to} to={c.to} className="group min-w-0">
             <h3 className={`text-center text-lg font-medium ${"subtitle" in c ? "mb-1" : "mb-4"}`}>{c.title}</h3>
             {"subtitle" in c && (
-              <p className="mb-4 text-center text-sm font-normal text-muted-foreground">{c.subtitle}</p>
+              <p className="mb-4 text-center text-sm font-normal text-muted-foreground md:whitespace-nowrap md:text-[clamp(8px,1.25vw,12.5px)] xl:text-sm">
+                {c.subtitle}
+              </p>
             )}
             <SmartImage
               src={images[i]}
