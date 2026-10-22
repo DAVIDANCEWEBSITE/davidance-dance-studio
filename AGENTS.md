@@ -18,3 +18,4 @@
 - ProjectVideo resolves playback sources only after an explicit click; each cover's fit is configured in siteConfig, independently of home hero playback.
 - SmartImage applies photo framing from the central configuration so the same photograph stays consistently framed across pages.
 - Project lock indicators derive from auditionsOpen without blocking the public page; this keeps availability consistent across navigation and catalogues.
+- The facilities section derives its main image, compact previews and full Lightbox gallery from the ordered facilities.photos configuration so every supplied photograph remains accessible without expanding the home page.

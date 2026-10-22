@@ -64,15 +64,28 @@ import dancerSusanaFerreira from "@/assets/projeto-susana-ferreira.jpg.asset.jso
 import futebolCover from "@/assets/projeto-futebol.jpg.asset.json";
 import voilaCover from "@/assets/projeto-voila.jpg.asset.json";
 import cancaoCover from "@/assets/projeto-cancao-sem-final.jpg.asset.json";
+import space4081 from "@/assets/espaco-img_4081.jpg.asset.json";
+import space4084 from "@/assets/espaco-img_4084.jpg.asset.json";
+import space4086 from "@/assets/espaco-img_4086.jpg.asset.json";
+import space2136 from "@/assets/espaco-img_2136.jpg.asset.json";
+import space1568 from "@/assets/espaco-img_1568.jpg.asset.json";
+import space1665 from "@/assets/espaco-img_1665.jpg.asset.json";
+import space4001 from "@/assets/espaco-img_4001.jpg.asset.json";
+import space5165 from "@/assets/espaco-img_5165.jpg.asset.json";
+import space5230 from "@/assets/espaco-img_5230.jpg.asset.json";
+import space5503 from "@/assets/espaco-img_5503.jpg.asset.json";
+import space6090 from "@/assets/espaco-img_6090.jpg.asset.json";
+import space8083 from "@/assets/espaco-img_8083.jpg.asset.json";
+import space8869 from "@/assets/espaco-img_8869.jpg.asset.json";
+import space8883 from "@/assets/espaco-img_8883.jpg.asset.json";
+import space9255 from "@/assets/espaco-img_9255.jpg.asset.json";
+import space9418 from "@/assets/espaco-img_9418.jpg.asset.json";
 
 /**
  * DAVIDANCE — CONTEÚDO CENTRAL
  * Edite aqui todos os textos, links, imagens e dados do site.
  * Valores marcados com [PLACEHOLDER] devem ser substituídos.
  */
-
-const u = (id: string, w = 1200) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=75`;
 
 export const siteConfig = {
   name: "Davidance",
@@ -195,11 +208,22 @@ export const siteConfig = {
   facilities: {
     text: "Em Paio Pires, a Davidance recebe-te num estúdio amplo, com chão com caixa de ar, preparado para a prática da dança. Um espaço onde trabalhamos técnica, exploramos o movimento e partilhamos o caminho entre os ensaios e o palco.",
     photos: [
-      u("photo-1518611012118-696072aa579a"),
-      u("photo-1547153760-18fc86324498"),
-      u("photo-1524594152303-9fd13543fe6e"),
-      u("photo-1571019613454-1cb2f99b2d8b"),
-      u("photo-1535525153412-5a42439a210d"),
+      space4081.url,
+      space4084.url,
+      space4086.url,
+      space2136.url,
+      space1568.url,
+      space1665.url,
+      space4001.url,
+      space5165.url,
+      space5230.url,
+      space5503.url,
+      space6090.url,
+      space8083.url,
+      space8869.url,
+      space8883.url,
+      space9255.url,
+      space9418.url,
     ],
   },
 

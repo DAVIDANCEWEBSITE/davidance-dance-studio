@@ -12,6 +12,11 @@ import {
 } from "@/data/siteConfig";
 
 describe("Davidance business rules", () => {
+  it("the facilities gallery includes all 16 supplied photographs with IMG_4081 first", () => {
+    expect(siteConfig.facilities.photos).toHaveLength(16);
+    expect(new Set(siteConfig.facilities.photos).size).toBe(16);
+    expect(siteConfig.facilities.photos[0]).toMatch(/\/espaco-img_4081\.jpg$/);
+  });
   it("couples without photographs come after all photographed couples", () => {
     const firstMissing = orderedTestimonials.findIndex((t) => t.photos.length === 0);
     expect(firstMissing).toBe(25);
