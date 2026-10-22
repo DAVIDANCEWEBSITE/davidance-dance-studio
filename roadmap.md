@@ -1,4 +1,5 @@
 # Davidance reformulation
+- [x] Approximate all 14 project students' faces by 30% within the existing grid; verified entire heads visible on desktop, tablet and mobile, with 47 tests passing.
 - [x] Centralise supplied text, contacts, classes and schedules.
 - [x] Rebuild navigation and home; add founder biography and shared contact band.
 - [x] Add Kids and Jovens & Adultos; simplify class details with level schedules.

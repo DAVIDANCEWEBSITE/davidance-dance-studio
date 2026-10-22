@@ -243,6 +243,21 @@ export const photoFraming: Record<string, string> = {
   [cls_danca_oriental.url]: "object-center",
   [cls_hip_hop_kids.url]: "object-cover object-[center_53%]",
   [cls_high_heels.url]: "object-cover object-[center_52%]",
+  // Bring faces closer while keeping clear space above the entire head.
+  [dancerAndreiaSilva.url]: "scale-[1.3] origin-[center_65%]",
+  [dancerCarolinaCarvalho.url]: "scale-[1.3] origin-[center_65%]",
+  [dancerCatiaSoares.url]: "scale-[1.3] origin-[center_65%]",
+  [dancerLeonorCatarrilhas.url]: "scale-[1.3] origin-[center_65%]",
+  [dancerMariaInesCosta.url]: "scale-[1.3] origin-[center_65%]",
+  [dancerMatheusGoncalves.url]: "scale-[1.3] origin-[center_65%]",
+  [dancerMeylinLeyva.url]: "scale-[1.3] origin-[center_65%]",
+  [dancerRaquelPinto.url]: "scale-[1.3] origin-[center_65%]",
+  [dancerSofiaConde.url]: "scale-[1.3] origin-[center_65%]",
+  [dancerSusanaFerreira.url]: "scale-[1.3] origin-[center_65%]",
+  [dancerAlexandrePortugal.url]: "scale-[1.3] origin-[center_65%]",
+  [dancerCarolinaMaia.url]: "scale-[1.3] origin-[center_65%]",
+  [dancerJoanaLuz.url]: "scale-[1.3] origin-[center_65%]",
+  [dancerMargaridaDores.url]: "scale-[1.3] origin-[center_65%]",
 };
 export type Schedule = { day: string; time: string };
 export type Style = {
