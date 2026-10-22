@@ -774,28 +774,28 @@ export const projectConfig = {
   historyTitle: "Percurso",
   videos: [
     {
-      title: "Projeto Davidance 25/26 — \"Senhora do Mar\"",
+      title: 'Projeto Davidance 25/26 — "Senhora do Mar"',
       src: "",
       youtubeId: "0DMrdPdzlv4",
       poster: img_projeto_hero.url,
       coverFit: "cover",
     },
     {
-      title: "Projeto Davidance 25/26 — \"Euro 2016\"",
+      title: 'Projeto Davidance 25/26 — "Euro 2016"',
       src: "",
       youtubeId: "iP9PhHy5qao",
       poster: futebolCover.url,
       coverFit: "cover",
     },
     {
-      title: "Projeto Davidance 24/25 — \"Voilá\"",
+      title: 'Projeto Davidance 24/25 — "Voilá"',
       src: "",
       youtubeId: "VpOSiGaMLLM",
       poster: voilaCover.url,
       coverFit: "cover",
     },
     {
-      title: "Projeto Davidance 23/24 — \"Canção sem final\"",
+      title: 'Projeto Davidance 23/24 — "Canção sem final"',
       src: "",
       youtubeId: "D4RMznCCitc",
       poster: cancaoCover.url,
