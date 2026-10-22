@@ -295,7 +295,11 @@ function TeamSection() {
         <div className="grid grid-cols-3 gap-x-4 gap-y-6 lg:h-0 lg:min-h-full lg:grid-rows-2">
           {teachers.map((t) => (
             <article key={t.name} className="flex min-h-0 min-w-0 flex-col">
-              <Portrait src={t.photo} name={t.name} className="aspect-square rounded-lg lg:aspect-auto lg:min-h-0 lg:flex-1" />
+              <Portrait
+                src={t.photo}
+                name={t.name}
+                className="aspect-square rounded-lg lg:aspect-auto lg:min-h-0 lg:flex-1"
+              />
               <h3 className="mt-2 text-xs font-medium sm:text-sm">{t.name}</h3>
             </article>
           ))}

@@ -5,7 +5,7 @@ import wedding_catarina_pedro from "@/assets/casamento-catarina-pedro.jpg.asset.
 import wedding_claudia_pedro from "@/assets/casamento-claudia-pedro.jpg.asset.json";
 import wedding_daniela_rui from "@/assets/casamento-daniela-rui.jpg.asset.json";
 import wedding_filipa_miguel from "@/assets/casamento-filipa-miguel.jpg.asset.json";
-import wedding_ines_bruno from "@/assets/casamento-ines-bruno.jpg.asset.json";
+import wedding_ines_bruno from "@/assets/ines-bruno-centred.jpg.asset.json";
 import wedding_ines_diogo from "@/assets/casamento-ines-diogo.jpg.asset.json";
 import wedding_ines_miguel from "@/assets/casamento-ines-miguel.jpg.asset.json";
 import wedding_irina_filipe from "@/assets/casamento-irina-filipe.jpg.asset.json";
@@ -222,7 +222,7 @@ export const photoFraming: Record<string, string> = {
   [wedding_daniela_rui.url]: "object-[center_30%]",
   [wedding_alexandra_hugo.url]: "object-[center_25%]",
   [wedding_paula_paulo.url]: "object-top",
-  [wedding_ines_bruno.url]: "object-[70%_center]",
+  [wedding_ines_bruno.url]: "object-center",
   [cls_danca_criativa.url]: "object-[center_60%]",
   [cls_ballet_kids.url]: "object-[center_65%]",
   [cls_hip_hop.url]: "object-[center_70%]",
@@ -674,7 +674,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     couple: "Nadja & Rui",
-    text: "Tivemos uma experiência maravilhosa com as aulas de dança para o nosso casamento. Como um casal sem experiência prévia em dança, as aulas encontraram o equilíbrio perfeito entre diversão e desafio e incentivaram-nos o suficiente para melhorarmos, sem deixar de ser algo totalmente alcançável. A nossa instrutora foi incrivelmente atenciosa e encorajadora durante todo o processo, adaptando sempre o ritmo e o estilo para se adequar ao nosso nível de conforto e às nossas necessidades de aprendizagem. Graças à sua paciência e orientação, não só aprendemos uma coreografia bonita, mas também ganhámos confiança e desfrutámos de cada momento. Estamos muito gratos pela sua amabilidade, profissionalismo e dedicação. Obrigada, Sofia!",
+    text: "Tivemos uma experiência maravilhosa com as aulas de dança para o nosso casamento. Como um casal sem experiência prévia em dança, as aulas encontraram o equilíbrio perfeito entre diversão e desafio e incentivaram-nos o suficiente para melhorarmos, sem deixar de ser algo totalmente alcançável. A nossa instrutora foi incrivelmente atenciosa e encorajadora durante todo o processo, adaptando sempre o ritmo e o estilo para se adequar ao nosso nível de conforto e às nossas necessidades de aprendizagem. Graças à sua paciência e orientação, não só aprendemos uma coreografia bonita, mas também ganhámos confiança e desfrutámos de cada momento. Estamos muito gratos pela sua amabilidade, profissionalismo e dedicação. Obrigada!",
     photos: [],
   },
   {

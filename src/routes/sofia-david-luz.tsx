@@ -21,8 +21,15 @@ function FounderPage() {
   const f = siteConfig.founder;
   return (
     <section className="container mx-auto px-5 pb-16 pt-28">
-      <Button asChild variant="ghost" className="mb-6 px-3 text-primary hover:bg-brand-hover hover:text-primary-foreground">
-        <Link to="/"><ArrowLeft />{siteConfig.copy.back}</Link>
+      <Button
+        asChild
+        variant="ghost"
+        className="mb-6 px-3 text-primary hover:bg-brand-hover hover:text-primary-foreground"
+      >
+        <Link to="/">
+          <ArrowLeft />
+          {siteConfig.copy.back}
+        </Link>
       </Button>
       <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)]">
         <Portrait
