@@ -316,7 +316,9 @@ function TeamSection() {
   );
 }
 function SpaceSection() {
-  const photos = siteConfig.facilities.photos.slice(0, 4);
+  const photos = siteConfig.facilities.photos;
+  const previews = photos.slice(1, 4);
+  const remaining = photos.length - 4;
   const [idx, setIdx] = useState<number | null>(null);
   return (
     <section className="bg-secondary/40 py-12 md:py-16">
@@ -340,19 +342,24 @@ function SpaceSection() {
           </p>
         </div>
         <div className="mt-4 grid grid-cols-3 gap-3 md:gap-4">
-          {photos.slice(1).map((p, i) => (
+          {previews.map((p, i) => (
             <Button
               key={p}
               variant="ghost"
               onClick={() => setIdx(i + 1)}
-              aria-label={`Ampliar fotografia ${i + 2} do espaço`}
-              className="h-auto overflow-hidden rounded-lg p-0"
+              aria-label={i === 2 && remaining > 0 ? `Ver todas as ${photos.length} fotografias do espaço` : `Ampliar fotografia ${i + 2} do espaço`}
+              className="relative h-auto overflow-hidden rounded-lg p-0"
             >
               <SmartImage
                 src={p}
                 alt={siteConfig.copy.spaceTitle}
                 wrapperClassName="aspect-[4/3] w-full"
               />
+              {i === 2 && remaining > 0 && (
+                <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-plum/60 text-sm font-medium text-cream md:text-base">
+                  +{remaining} fotos
+                </span>
+              )}
             </Button>
           ))}
         </div>
