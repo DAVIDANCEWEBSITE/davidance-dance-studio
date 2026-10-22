@@ -225,10 +225,10 @@ export const photoFraming: Record<string, string> = {
   [wedding_ines_bruno.url]: "object-center",
   [cls_danca_criativa.url]: "object-[center_60%]",
   [cls_ballet_kids.url]: "object-[center_40%]",
-  [cls_hip_hop.url]: "object-center",
+  [cls_hip_hop.url]: "object-cover object-[center_53%]",
   [cls_danca_oriental.url]: "object-center",
   [cls_hip_hop_kids.url]: "object-cover object-[center_53%]",
-  [cls_high_heels.url]: "object-cover object-[center_48%]",
+  [cls_high_heels.url]: "object-cover object-[center_52%]",
 };
 export type Schedule = { day: string; time: string };
 export type Style = {
