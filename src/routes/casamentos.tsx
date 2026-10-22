@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Quote } from "lucide-react";
-import { siteConfig, testimonials } from "@/data/siteConfig";
+import { siteConfig, orderedTestimonials } from "@/data/siteConfig";
 import { CTAButton, PageHero, SectionTitle } from "@/components/site/primitives";
 import { Portrait } from "@/components/site/Portrait";
 import { SmartImage } from "@/components/site/SmartImage";
@@ -21,7 +21,7 @@ export const Route = createFileRoute("/casamentos")({
 function WeddingsPage() {
   return (
     <>
-      <PageHero title="Casamentos" image={siteConfig.weddingsHero} />
+      <PageHero title="Casamentos" image={siteConfig.weddingsHero} imageClassName="max-w-3xl" />
       <section className="container mx-auto max-w-4xl px-5 py-12 text-center">
         {siteConfig.copy.weddingsText.split("\n\n").map((para, i) => (
           <p
@@ -50,7 +50,7 @@ function WeddingsPage() {
             eyebrow={siteConfig.copy.testimonialsTitle}
           />
           <div className="space-y-16">
-            {testimonials.map((t, i) => (
+            {orderedTestimonials.map((t, i) => (
               <div
                 key={t.couple + i}
                 className={cn(

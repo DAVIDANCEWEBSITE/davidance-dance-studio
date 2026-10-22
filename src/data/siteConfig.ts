@@ -26,7 +26,7 @@ import wedding_zelia_joao from "@/assets/casamento-zelia-joao.jpg.asset.json";
 import cls_danca_criativa from "@/assets/class-danca-criativa.jpg.asset.json";
 import cls_contemporaneo_kids from "@/assets/class-contemporaneo-kids.jpg.asset.json";
 import cls_ballet_kids from "@/assets/class-ballet-kids.jpg.asset.json";
-import cls_hip_hop_kids from "@/assets/class-hip-hop-kids.jpg.asset.json";
+import cls_hip_hop_kids from "@/assets/class-hip-hop-kids-updated.jpg.asset.json";
 import cls_flexibilidade from "@/assets/class-flexibilidade.jpg.asset.json";
 import cls_acrobacias from "@/assets/class-acrobacias.jpg.asset.json";
 import cls_contemporaneo from "@/assets/class-contemporaneo.jpg.asset.json";
@@ -34,7 +34,7 @@ import cls_lyrical_jazz from "@/assets/class-lyrical-jazz.jpg.asset.json";
 import cls_ballet from "@/assets/class-ballet.jpg.asset.json";
 import cls_hip_hop from "@/assets/class-hip-hop.jpg.asset.json";
 import cls_choreography from "@/assets/class-choreography.jpg.asset.json";
-import cls_high_heels from "@/assets/class-high-heels.jpg.asset.json";
+import cls_high_heels from "@/assets/class-high-heels-updated.jpg.asset.json";
 import cls_kizomba_fusion from "@/assets/class-kizomba-fusion.jpg.asset.json";
 import cls_ritmos_latinos from "@/assets/class-ritmos-latinos.jpg.asset.json";
 import cls_danca_oriental from "@/assets/class-danca-oriental.jpg.asset.json";
@@ -53,6 +53,7 @@ import img_sofia from "@/assets/home-sofia.jpg.asset.json";
 import logoAsset from "@/assets/logo.png.asset.json";
 import timetableAsset from "@/assets/horario-oficial.png.asset.json";
 import projectGroup from "@/assets/projeto-grupo.jpg.asset.json";
+import projectStageHero from "@/assets/projeto-stage-hero.jpg.asset.json";
 import quorum from "@/assets/projeto-quorum.jpg.asset.json";
 import ritaSpider from "@/assets/projeto-rita-spider.jpg.asset.json";
 import afonsoRola from "@/assets/projeto-afonso-rola.jpg.asset.json";
@@ -60,7 +61,6 @@ import dancerCarolinaMaia from "@/assets/projeto-carolina-maia.jpg.asset.json";
 import dancerCatiaSoares from "@/assets/projeto-catia-soares.jpg.asset.json";
 import dancerLeonorCatarrilhas from "@/assets/projeto-leonor-catarrilhas.jpg.asset.json";
 import dancerSusanaFerreira from "@/assets/projeto-susana-ferreira.jpg.asset.json";
-import senhoraCover from "@/assets/projeto-senhora-do-mar.jpg.asset.json";
 import futebolCover from "@/assets/projeto-futebol.jpg.asset.json";
 import voilaCover from "@/assets/projeto-voila.jpg.asset.json";
 import cancaoCover from "@/assets/projeto-cancao-sem-final.jpg.asset.json";
@@ -155,7 +155,7 @@ export const siteConfig = {
   hero: {
     // Vídeo do hero no YouTube — toca automaticamente, sem som, em loop.
     youtubeId: "c4Frs8xJtiA",
-    poster: u("photo-1508700929628-666bc8bd84ea", 1920),
+    poster: logoAsset.url,
   },
 
   links: {
@@ -204,10 +204,32 @@ export const siteConfig = {
   },
 
   groupPhoto: img_davidance.url,
-  projectHero: img_projeto_hero.url,
+  projectHero: projectStageHero.url,
   weddingsHero: img_casamentos.url,
 };
 
+// Photo framing is shared by catalogues, portraits and detail pages.
+export const photoFraming: Record<string, string> = {
+  [img_ricardo.url]: "object-top",
+  [img_andreia_paulo.url]: "object-top",
+  [cls_kizomba_fusion.url]: "object-[center_20%]",
+  [cls_ritmos_latinos.url]: "object-[center_20%]",
+  [ritaSpider.url]: "object-[center_20%]",
+  [afonsoRola.url]: "object-[center_20%]",
+  [wedding_joana_daniel.url]: "object-[center_20%]",
+  [wedding_katherine_antonino.url]: "object-contain",
+  [wedding_claudia_pedro.url]: "object-[center_30%]",
+  [wedding_daniela_rui.url]: "object-[center_30%]",
+  [wedding_alexandra_hugo.url]: "object-[center_25%]",
+  [wedding_paula_paulo.url]: "object-[center_20%]",
+  [wedding_ines_bruno.url]: "object-[70%_center]",
+  [cls_danca_criativa.url]: "object-[center_60%]",
+  [cls_ballet_kids.url]: "object-[center_55%]",
+  [cls_hip_hop.url]: "object-[center_55%]",
+  [cls_danca_oriental.url]: "object-[center_25%]",
+  [cls_hip_hop_kids.url]: "object-[center_57%]",
+  [cls_high_heels.url]: "object-top",
+};
 export type Schedule = { day: string; time: string };
 export type Style = {
   slug: string;
@@ -471,8 +493,8 @@ export const teachers: Teacher[] = [
   { name: "Sofia David Luz", photo: img_sofia.url },
   { name: "Beatriz Matos", photo: img_beatriz.url },
   { name: "Joana Lopes", photo: img_joana.url },
-  { name: "Andreia & Paulo", photo: img_andreia_paulo.url },
   { name: "Ricardo Coelho", photo: img_ricardo.url },
+  { name: "Andreia & Paulo", photo: img_andreia_paulo.url },
   { name: "Sara Freitas", photo: img_sara.url },
 ];
 export const classGroups = {
@@ -678,6 +700,10 @@ export const testimonials: Testimonial[] = [
   { couple: "Mafalda & Nuno", text: "", photos: [] },
   { couple: "Andreia & Ruben", text: "", photos: [] },
 ];
+export const orderedTestimonials = [
+  ...testimonials.filter((t) => t.photos.length > 0),
+  ...testimonials.filter((t) => t.photos.length === 0),
+];
 export const projectConfig = {
   title: "Projeto Davidance",
   description:
@@ -748,25 +774,29 @@ export const projectConfig = {
       title: "Projeto Davidance 25/26 — Senhora do Mar",
       src: "",
       youtubeId: "0DMrdPdzlv4",
-      poster: senhoraCover.url,
+      poster: img_projeto_hero.url,
+      coverFit: "contain",
     },
     {
       title: "Projeto Davidance 25/26 — Futebol",
       src: "",
       youtubeId: "iP9PhHy5qao",
       poster: futebolCover.url,
+      coverFit: "cover",
     },
     {
       title: "Projeto Davidance 24/25 — Voilá",
       src: "",
       youtubeId: "VpOSiGaMLLM",
       poster: voilaCover.url,
+      coverFit: "cover",
     },
     {
       title: "Projeto Davidance 23/24 — Canção sem final",
       src: "",
       youtubeId: "D4RMznCCitc",
       poster: cancaoCover.url,
+      coverFit: "cover",
     },
   ],
   futureTitle: "Queres fazer parte?",
