@@ -206,7 +206,7 @@ function AudienceSection() {
   return (
     <section className="container mx-auto px-5 pb-12 pt-16 md:pb-16 md:pt-20">
       <SectionTitle title={siteConfig.copy.homeTitle} />
-      <div className="grid gap-8 md:grid-cols-3">
+      <div className="mt-12 grid gap-8 md:mt-14 md:grid-cols-3">
         {homeCards.map((c, i) => (
           <Link key={c.to} to={c.to} className="group min-w-0">
             <h3 className="mb-4 text-center text-lg font-medium">{c.title}</h3>
@@ -274,7 +274,7 @@ function TeamSection() {
         <div className="text-center md:text-left">
           <p className="text-sm font-medium text-primary">{f.role}</p>
           <h3 className="mt-2 text-2xl font-light md:text-3xl">{f.name}</h3>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+          <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground md:text-base">
             {f.intro}
           </p>
           <Button asChild className="mt-5 h-auto whitespace-normal rounded-full px-6 py-3">
@@ -295,7 +295,11 @@ function TeamSection() {
         <div className="grid grid-cols-3 gap-x-4 gap-y-6 lg:h-0 lg:min-h-full lg:grid-rows-2">
           {teachers.map((t) => (
             <article key={t.name} className="flex min-h-0 min-w-0 flex-col">
-              <Portrait src={t.photo} name={t.name} className="aspect-square rounded-lg lg:aspect-auto lg:min-h-0 lg:flex-1" />
+              <Portrait
+                src={t.photo}
+                name={t.name}
+                className="aspect-square rounded-lg lg:aspect-auto lg:min-h-0 lg:flex-1"
+              />
               <h3 className="mt-2 text-xs font-medium sm:text-sm">{t.name}</h3>
             </article>
           ))}

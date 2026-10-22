@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, LockKeyhole } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navLinks, siteConfig, classGroups } from "@/data/siteConfig";
 import { Logo } from "./primitives";
@@ -148,6 +148,12 @@ export function Navbar() {
             {navLinks.slice(1).map((l) => (
               <li key={l.to}>
                 <Link to={l.to} className={linkClass}>
+                  {l.to === "/projeto-davidance" && !siteConfig.auditionsOpen && (
+                    <LockKeyhole
+                      className="mr-1.5 inline h-3.5 w-3.5"
+                      aria-label="Projeto completo"
+                    />
+                  )}
                   {l.label}
                 </Link>
               </li>
@@ -211,6 +217,9 @@ export function Navbar() {
                 onClick={close}
                 className="block border-b border-border py-3 text-lg font-medium"
               >
+                {l.to === "/projeto-davidance" && !siteConfig.auditionsOpen && (
+                  <LockKeyhole className="mr-2 inline h-4 w-4" aria-label="Projeto completo" />
+                )}
                 {l.label}
               </Link>
             ))}

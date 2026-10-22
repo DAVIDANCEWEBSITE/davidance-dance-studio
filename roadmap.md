@@ -11,4 +11,5 @@
 - [x] Replace Hip-Hop Kids/High Heels photos and update project hero, covers and compact portraits.
 - [x] Add catalogue back arrows, compact wedding opening photo and place missing couple photos last; verify pages.
 - [ ] Confirm which couples Mariana_Nuno.jpg and Tânia_Tiago.jpg belong to before applying them.
+- [x] Apply October 22 final spacing, back arrow, replacements, photo framing, project lock/title/cover and Friday Dança Oriental schedule; verify playback and pages. YouTube alone controls automatic starting quality.
 - [ ] Await venue photos, missing individual project portraits and paid font files.

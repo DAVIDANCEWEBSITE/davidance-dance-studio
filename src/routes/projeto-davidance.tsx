@@ -30,8 +30,8 @@ function ProjectPage() {
           className="object-top"
         />
         <div className="absolute inset-0 bg-hero-overlay" />
-        <div className="container absolute inset-x-0 top-28 mx-auto px-5 text-center md:top-32">
-          <h1 className="mx-auto font-script text-5xl font-normal leading-tight text-cream md:text-7xl">
+        <div className="container absolute inset-x-0 top-24 mx-auto px-5 text-center md:top-28">
+          <h1 className="mx-auto font-script text-[46px] font-normal leading-tight text-cream md:text-[68px]">
             {p.title}
           </h1>
         </div>
@@ -51,7 +51,7 @@ function ProjectPage() {
           <div>
             <h2 className="text-2xl font-light md:text-3xl">{p.directionTitle}</h2>
             <h3 className="mt-3 text-lg font-medium text-primary">{siteConfig.founder.name}</h3>
-            <p className="mx-auto mt-4 max-w-2xl text-balance text-base leading-relaxed text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground">
               {p.directionText}
             </p>
           </div>
