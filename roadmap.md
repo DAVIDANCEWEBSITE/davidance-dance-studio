@@ -7,5 +7,8 @@
 - [x] Apply the official timetable artwork and project photos/covers.
 - [x] Connect the four project videos and verify click-only playback, timetable zoom and download.
 - [x] Apply and verify the 25 wedding photographs whose filenames match configured couples.
+- [ ] Apply approved home layout, teacher order/alignment and photo framing refinements.
+- [ ] Replace Hip-Hop Kids/High Heels photos and update project hero, covers and compact portraits.
+- [ ] Add catalogue back arrows, compact wedding opening photo and place missing couple photos last; verify pages.
 - [ ] Confirm which couples Mariana_Nuno.jpg and Tânia_Tiago.jpg belong to before applying them.
 - [ ] Await venue photos, missing individual project portraits and paid font files.
