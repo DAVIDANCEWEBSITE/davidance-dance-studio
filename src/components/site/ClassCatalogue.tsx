@@ -2,12 +2,18 @@ import { Link } from "@tanstack/react-router";
 import { classGroups, getStyle, projectConfig, siteConfig } from "@/data/siteConfig";
 import { PageHero } from "./primitives";
 import { SmartImage } from "./SmartImage";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function ClassCatalogue({ group }: { group: keyof typeof classGroups }) {
   const data = classGroups[group];
   return (
     <>
-      <PageHero title={data.title}>
+      <PageHero title={data.title} leading={
+        <Button asChild variant="ghost" className="mb-4 px-3 text-primary hover:bg-brand-hover hover:text-primary-foreground">
+          <Link to="/"><ArrowLeft />{siteConfig.copy.back}</Link>
+        </Button>
+      }>
         <p>{data.description}</p>
       </PageHero>
       <section className="container mx-auto px-5 py-12 md:py-16">

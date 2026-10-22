@@ -142,15 +142,20 @@ export function PageHero({
   eyebrow,
   image,
   children,
+  leading,
+  imageClassName,
 }: {
   title: string;
   eyebrow?: string;
   image?: string;
   children?: React.ReactNode;
+  leading?: React.ReactNode;
+  imageClassName?: string;
 }) {
   return (
     <section className="relative overflow-hidden pt-28 md:pt-32">
       <div className="container relative mx-auto px-5 text-center">
+        {leading && <div className="text-left">{leading}</div>}
         <Reveal>
           {eyebrow && (
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-rose">
@@ -165,7 +170,7 @@ export function PageHero({
           )}
         </Reveal>
         {image && (
-          <Reveal delay={0.15} className="mx-auto mt-12 max-w-5xl">
+          <Reveal delay={0.15} className={cn("mx-auto mt-12 max-w-5xl", imageClassName)}>
             <SmartImage
               src={image}
               alt={title}

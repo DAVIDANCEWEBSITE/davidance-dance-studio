@@ -206,18 +206,18 @@ function Hero() {
 function AudienceSection() {
   const images = [siteConfig.kidsImage, siteConfig.youngAdultsImage, siteConfig.weddingsHero];
   return (
-    <section className="container mx-auto px-5 py-12 md:py-16">
+    <section className="container mx-auto px-5 pb-12 pt-16 md:pb-16 md:pt-20">
       <SectionTitle title={siteConfig.copy.homeTitle} />
       <div className="grid gap-8 md:grid-cols-3">
         {homeCards.map((c, i) => (
           <Link key={c.to} to={c.to} className="group min-w-0">
+            <h3 className="mb-4 text-center text-lg font-medium">{c.title}</h3>
             <SmartImage
               src={images[i]}
               alt={c.title}
               wrapperClassName="aspect-[4/3] rounded-lg"
               className="group-hover:scale-105"
             />
-            <h3 className="mt-4 text-center text-lg font-medium md:text-left">{c.title}</h3>
           </Link>
         ))}
       </div>
@@ -231,7 +231,8 @@ function Presentation() {
         <SmartImage
           src={siteConfig.groupPhoto}
           alt={siteConfig.copy.presentationTitle}
-          wrapperClassName="aspect-[16/9] rounded-lg md:aspect-[21/9]"
+          wrapperClassName="mx-auto max-w-4xl rounded-lg"
+          className="h-auto object-contain"
         />
         <h2 className="mx-auto mt-10 max-w-4xl whitespace-nowrap text-center text-lg font-light sm:text-2xl md:text-3xl">
           {siteConfig.copy.presentationTitle}
@@ -286,16 +287,17 @@ function TeamSection() {
       <h2 className="mb-8 mt-14 text-center text-2xl font-light md:text-3xl">
         {siteConfig.copy.teachersTitle}
       </h2>
-      <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,440px)_1fr]">
+      <div className="mx-auto grid max-w-4xl items-stretch gap-8 lg:grid-cols-[320px_1fr]">
         <SmartImage
           src={teamPhoto}
           alt={siteConfig.copy.teamTitle}
-          wrapperClassName="mx-auto aspect-[1387/1920] w-full max-w-[440px] rounded-lg shadow-soft"
+          wrapperClassName="mx-auto aspect-[1387/1920] w-full max-w-[320px] rounded-lg shadow-soft"
+          className="object-contain"
         />
-        <div className="grid grid-cols-3 gap-x-4 gap-y-6">
+        <div className="grid grid-cols-3 gap-x-4 gap-y-6 lg:h-0 lg:min-h-full lg:grid-rows-2">
           {teachers.map((t) => (
-            <article key={t.name} className="min-w-0">
-              <Portrait src={t.photo} name={t.name} className="aspect-square rounded-lg" />
+            <article key={t.name} className="flex min-h-0 min-w-0 flex-col">
+              <Portrait src={t.photo} name={t.name} className="aspect-square rounded-lg lg:aspect-auto lg:min-h-0 lg:flex-1" />
               <h3 className="mt-2 text-xs font-medium sm:text-sm">{t.name}</h3>
             </article>
           ))}

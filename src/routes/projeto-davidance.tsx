@@ -27,9 +27,10 @@ function ProjectPage() {
           alt={p.title}
           eager
           wrapperClassName="absolute inset-0"
+          className="object-top"
         />
         <div className="absolute inset-0 bg-hero-overlay" />
-        <div className="container relative mx-auto px-5 text-center">
+        <div className="container relative mx-auto -translate-y-28 px-5 text-center md:-translate-y-40">
           <h1 className="mx-auto font-script text-5xl font-normal leading-tight text-cream md:text-7xl">
             {p.title}
           </h1>
@@ -97,7 +98,7 @@ function ProjectPage() {
             name={p.dancersTitle}
             className="mx-auto mb-10 aspect-[3/2] w-full max-w-4xl rounded-lg"
           />
-          <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+          <div className="mx-auto grid max-w-4xl grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4 md:grid-cols-6">
             {p.groups
               .flatMap((g) => g.people)
               .map((person) => (

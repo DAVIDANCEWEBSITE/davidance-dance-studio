@@ -15,4 +15,4 @@
 - Render the contact band once in the root shell and navigate to its in-page anchor from every page, avoiding duplicated contacts.
 - Missing named-person and couple photographs render brand placeholders, never stock identities; project history media stays inactive until real source URLs are configured.
 - Generate the downloadable timetable from the configured class schedules when no timetable artwork is supplied, preserving one source of truth.
-- ProjectVideo resolves playback sources only after an explicit click; keep project cover images uncropped and home hero playback independent.
+- ProjectVideo resolves playback sources only after an explicit click; each cover's fit is configured in siteConfig, independently of home hero playback.

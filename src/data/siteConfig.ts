@@ -60,7 +60,6 @@ import dancerCarolinaMaia from "@/assets/projeto-carolina-maia.jpg.asset.json";
 import dancerCatiaSoares from "@/assets/projeto-catia-soares.jpg.asset.json";
 import dancerLeonorCatarrilhas from "@/assets/projeto-leonor-catarrilhas.jpg.asset.json";
 import dancerSusanaFerreira from "@/assets/projeto-susana-ferreira.jpg.asset.json";
-import senhoraCover from "@/assets/projeto-senhora-do-mar.jpg.asset.json";
 import futebolCover from "@/assets/projeto-futebol.jpg.asset.json";
 import voilaCover from "@/assets/projeto-voila.jpg.asset.json";
 import cancaoCover from "@/assets/projeto-cancao-sem-final.jpg.asset.json";
@@ -204,7 +203,7 @@ export const siteConfig = {
   },
 
   groupPhoto: img_davidance.url,
-  projectHero: img_projeto_hero.url,
+  projectHero: projectGroup.url,
   weddingsHero: img_casamentos.url,
 };
 
@@ -471,8 +470,8 @@ export const teachers: Teacher[] = [
   { name: "Sofia David Luz", photo: img_sofia.url },
   { name: "Beatriz Matos", photo: img_beatriz.url },
   { name: "Joana Lopes", photo: img_joana.url },
-  { name: "Andreia & Paulo", photo: img_andreia_paulo.url },
   { name: "Ricardo Coelho", photo: img_ricardo.url },
+  { name: "Andreia & Paulo", photo: img_andreia_paulo.url },
   { name: "Sara Freitas", photo: img_sara.url },
 ];
 export const classGroups = {
@@ -678,6 +677,10 @@ export const testimonials: Testimonial[] = [
   { couple: "Mafalda & Nuno", text: "", photos: [] },
   { couple: "Andreia & Ruben", text: "", photos: [] },
 ];
+export const orderedTestimonials = [
+  ...testimonials.filter((t) => t.photos.length > 0),
+  ...testimonials.filter((t) => t.photos.length === 0),
+];
 export const projectConfig = {
   title: "Projeto Davidance",
   description:
@@ -748,25 +751,29 @@ export const projectConfig = {
       title: "Projeto Davidance 25/26 — Senhora do Mar",
       src: "",
       youtubeId: "0DMrdPdzlv4",
-      poster: senhoraCover.url,
+      poster: img_projeto_hero.url,
+      coverFit: "contain",
     },
     {
       title: "Projeto Davidance 25/26 — Futebol",
       src: "",
       youtubeId: "iP9PhHy5qao",
       poster: futebolCover.url,
+      coverFit: "cover",
     },
     {
       title: "Projeto Davidance 24/25 — Voilá",
       src: "",
       youtubeId: "VpOSiGaMLLM",
       poster: voilaCover.url,
+      coverFit: "cover",
     },
     {
       title: "Projeto Davidance 23/24 — Canção sem final",
       src: "",
       youtubeId: "D4RMznCCitc",
       poster: cancaoCover.url,
+      coverFit: "cover",
     },
   ],
   futureTitle: "Queres fazer parte?",

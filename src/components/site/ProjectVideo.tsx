@@ -44,7 +44,7 @@ export function ProjectVideo({ video }: { video: Video }) {
                 src={video.poster}
                 alt={video.title}
                 wrapperClassName="absolute inset-0"
-                className="object-contain"
+                className={video.coverFit === "contain" ? "object-contain" : "object-cover"}
               />
             ) : (
               <Portrait name={video.title} className="absolute inset-0" />
