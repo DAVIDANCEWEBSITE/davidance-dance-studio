@@ -20,16 +20,18 @@ export const Route = createFileRoute("/projeto-davidance")({
 });
 function ProjectPage() {
   return (
-    <>
-      <section className="relative flex h-[100svh] items-center justify-center overflow-hidden bg-plum">
+    <div className="relative isolate [&>section:not(:first-child)]:bg-background/85 [&>section:not(:first-child)]:backdrop-blur-sm">
+      <div aria-hidden className="fixed inset-0 -z-10 bg-plum">
         <SmartImage
           src={siteConfig.projectHero}
-          alt={p.title}
+          alt=""
           eager
           wrapperClassName="absolute inset-0"
           className="object-top"
         />
         <div className="absolute inset-0 bg-hero-overlay" />
+      </div>
+      <section className="relative flex h-[100svh] items-center justify-center overflow-hidden">
         <div className="container absolute inset-x-0 top-24 mx-auto px-5 text-center md:top-28">
           <h1 className="mx-auto font-script text-[46px] font-normal leading-tight text-cream md:text-[68px]">
             {p.title}
@@ -93,11 +95,6 @@ function ProjectPage() {
       <section className="bg-secondary/40 py-12">
         <div className="container mx-auto px-5">
           <SectionTitle title={p.dancersTitle} />
-          <Portrait
-            src={p.groupPhoto}
-            name={p.dancersTitle}
-            className="mx-auto mb-10 aspect-[3/2] w-full max-w-4xl rounded-lg"
-          />
           <div className="mx-auto grid max-w-4xl grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4 md:grid-cols-6">
             {p.groups
               .flatMap((g) => g.people)
