@@ -132,6 +132,6 @@ function ProjectPage() {
           </Button>
         </div>
       </section>
-    </>
+    </div>
   );
 }
