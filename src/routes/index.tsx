@@ -317,6 +317,7 @@ function TeamSection() {
 }
 function SpaceSection() {
   const photos = siteConfig.facilities.photos;
+  const [main, ...previews] = photos;
   const [idx, setIdx] = useState<number | null>(null);
   return (
     <section className="bg-secondary/40 py-12 md:py-16">
@@ -325,19 +326,32 @@ function SpaceSection() {
         <p className="mx-auto max-w-2xl text-balance text-center text-sm leading-relaxed text-muted-foreground md:text-base">
           {siteConfig.facilities.text}
         </p>
-        <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-3 md:grid-cols-4 md:gap-4">
-          {photos.map((p, i) => (
+        <Button
+          variant="ghost"
+          onClick={() => setIdx(0)}
+          aria-label="Ampliar fotografia do espaço"
+          className="group relative mt-8 h-auto min-h-0 w-full overflow-hidden rounded-lg p-0"
+        >
+          <SmartImage
+            src={main}
+            alt={siteConfig.copy.spaceTitle}
+            wrapperClassName="aspect-[16/10] w-full"
+            className="group-hover:scale-105"
+          />
+        </Button>
+        <div className="mt-2 grid grid-cols-3 gap-2 sm:mt-3 sm:gap-3 md:mt-4 md:gap-4">
+          {previews.map((p, i) => (
             <Button
               key={p}
               variant="ghost"
-              onClick={() => setIdx(i)}
-              aria-label={i === 0 ? "Ampliar fotografia do espaço" : `Ampliar fotografia ${i + 1} do espaço`}
-              className={`group relative h-auto min-h-0 w-full overflow-hidden rounded-lg p-0 ${i === 0 ? "col-span-3 aspect-[16/10] md:col-span-2 md:row-span-3 md:aspect-auto" : "aspect-square md:aspect-[4/3]"}`}
+              onClick={() => setIdx(i + 1)}
+              aria-label={`Ampliar fotografia ${i + 2} do espaço`}
+              className="group relative h-auto min-h-0 w-full overflow-hidden rounded-lg p-0"
             >
               <SmartImage
                 src={p}
                 alt={siteConfig.copy.spaceTitle}
-                wrapperClassName="h-full w-full"
+                wrapperClassName="aspect-[4/3] w-full"
                 className="group-hover:scale-105"
               />
             </Button>
