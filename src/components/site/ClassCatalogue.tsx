@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { classGroups, getStyle, projectConfig, siteConfig } from "@/data/siteConfig";
 import { PageHero } from "./primitives";
 import { SmartImage } from "./SmartImage";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, LockKeyhole } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function ClassCatalogue({ group }: { group: keyof typeof classGroups }) {
@@ -29,7 +29,10 @@ export function ClassCatalogue({ group }: { group: keyof typeof classGroups }) {
                     wrapperClassName="aspect-[4/3] rounded-lg"
                     className="group-hover:scale-105"
                   />
-                  <h2 className="mt-4 text-lg font-medium">{projectConfig.title}</h2>
+                  <h2 className="mt-4 flex items-center gap-2 text-lg font-medium">
+                    {!siteConfig.auditionsOpen && <LockKeyhole className="h-4 w-4 shrink-0" aria-label="Projeto completo" />}
+                    {projectConfig.title}
+                  </h2>
                 </Link>
               );
             return (

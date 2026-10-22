@@ -19,6 +19,11 @@ describe("Davidance business rules", () => {
     expect(orderedTestimonials.slice(0, firstMissing).every((t) => t.photos.length > 0)).toBe(true);
   });
   it("the 26/27 project is full", () => expect(siteConfig.auditionsOpen).toBe(false));
+  it("Dança Oriental takes place on Friday from 19H00 to 20H00", () => {
+    expect(getStyle("danca-oriental")?.schedule).toEqual([
+      { day: "Sexta", time: "19H00 - 20H00" },
+    ]);
+  });
   it("Kids offers six classes", () =>
     expect(classGroups.kids.slugs).toEqual([
       "danca-criativa",

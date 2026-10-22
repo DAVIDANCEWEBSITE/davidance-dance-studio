@@ -34,7 +34,7 @@ import cls_lyrical_jazz from "@/assets/class-lyrical-jazz.jpg.asset.json";
 import cls_ballet from "@/assets/class-ballet.jpg.asset.json";
 import cls_hip_hop from "@/assets/class-hip-hop.jpg.asset.json";
 import cls_choreography from "@/assets/class-choreography.jpg.asset.json";
-import cls_high_heels from "@/assets/class-high-heels-updated.jpg.asset.json";
+import cls_high_heels from "@/assets/high-heels-final.jpg.asset.json";
 import cls_kizomba_fusion from "@/assets/class-kizomba-fusion.jpg.asset.json";
 import cls_ritmos_latinos from "@/assets/class-ritmos-latinos.jpg.asset.json";
 import cls_danca_oriental from "@/assets/class-danca-oriental.jpg.asset.json";
@@ -47,7 +47,7 @@ import img_joana from "@/assets/home-joana.jpg.asset.json";
 import img_jovens from "@/assets/home-jovens.jpg.asset.json";
 import img_kids from "@/assets/home-kids.jpg.asset.json";
 import img_professores from "@/assets/home-professores.jpg.asset.json";
-import img_ricardo from "@/assets/home-ricardo.jpg.asset.json";
+import img_ricardo from "@/assets/ricardo-coelho-final.jpg.asset.json";
 import img_sara from "@/assets/home-sara.jpg.asset.json";
 import img_sofia from "@/assets/home-sofia.jpg.asset.json";
 import logoAsset from "@/assets/logo.png.asset.json";
@@ -213,22 +213,22 @@ export const photoFraming: Record<string, string> = {
   [img_ricardo.url]: "object-top",
   [img_andreia_paulo.url]: "object-top",
   [cls_kizomba_fusion.url]: "object-[center_20%]",
-  [cls_ritmos_latinos.url]: "object-[center_20%]",
+  [cls_ritmos_latinos.url]: "object-contain",
   [ritaSpider.url]: "object-[center_20%]",
-  [afonsoRola.url]: "object-[center_20%]",
+  [afonsoRola.url]: "object-[center_30%]",
   [wedding_joana_daniel.url]: "object-[center_20%]",
   [wedding_katherine_antonino.url]: "object-contain",
   [wedding_claudia_pedro.url]: "object-[center_30%]",
   [wedding_daniela_rui.url]: "object-[center_30%]",
   [wedding_alexandra_hugo.url]: "object-[center_25%]",
-  [wedding_paula_paulo.url]: "object-[center_20%]",
+  [wedding_paula_paulo.url]: "object-top",
   [wedding_ines_bruno.url]: "object-[70%_center]",
   [cls_danca_criativa.url]: "object-[center_60%]",
-  [cls_ballet_kids.url]: "object-[center_55%]",
-  [cls_hip_hop.url]: "object-[center_55%]",
-  [cls_danca_oriental.url]: "object-[center_25%]",
-  [cls_hip_hop_kids.url]: "object-[center_57%]",
-  [cls_high_heels.url]: "object-top",
+  [cls_ballet_kids.url]: "object-[center_65%]",
+  [cls_hip_hop.url]: "object-[center_70%]",
+  [cls_danca_oriental.url]: "object-contain",
+  [cls_hip_hop_kids.url]: "object-[center_48%]",
+  [cls_high_heels.url]: "object-[center_58%]",
 };
 export type Schedule = { day: string; time: string };
 export type Style = {
@@ -481,7 +481,7 @@ export const styles: Style[] = [
         "Exploramos isolamentos, ondulações, movimentos de anca e diferentes acentuações rítmicas. Através da técnica e de sequências coreográficas, desenvolvemos coordenação, consciência corporal e expressividade, descobrindo a relação entre o movimento e a música.",
       teacher: "Sara Freitas",
       ageRange: "",
-      schedule: [{ day: "Quinta", time: "21H00 - 22H00" }],
+      schedule: [{ day: "Sexta", time: "19H00 - 20H00" }],
       gallery: [],
     },
     cover: cls_danca_oriental.url,
@@ -775,7 +775,7 @@ export const projectConfig = {
       src: "",
       youtubeId: "0DMrdPdzlv4",
       poster: img_projeto_hero.url,
-      coverFit: "contain",
+      coverFit: "cover",
     },
     {
       title: "Projeto Davidance 25/26 — Futebol",
