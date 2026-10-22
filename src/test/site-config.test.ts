@@ -12,11 +12,21 @@ import {
 } from "@/data/siteConfig";
 
 describe("Davidance business rules", () => {
-  it("the facilities gallery includes all 16 supplied photographs with IMG_4081 first", () => {
-    expect(siteConfig.facilities.photos).toHaveLength(16);
-    expect(new Set(siteConfig.facilities.photos).size).toBe(16);
+  it("the reduced facilities gallery keeps IMG_4081 first and 12 unique photographs", () => {
+    expect(siteConfig.facilities.photos).toHaveLength(12);
+    expect(new Set(siteConfig.facilities.photos).size).toBe(12);
     expect(siteConfig.facilities.photos[0]).toMatch(/\/espaco-img_4081\.jpg$/);
   });
+  for (const [description, filename] of [
+    ["beige dresses", "espaco-img_2136.jpg"],
+    ["sunglasses", "espaco-img_1568.jpg"],
+    ["student doing splits", "espaco-img_1665.jpg"],
+    ["Beatriz with Kids", "espaco-img_8083.jpg"],
+  ]) {
+    it(`excludes the ${description} photograph from the facilities gallery`, () => {
+      expect(siteConfig.facilities.photos.some((url) => url.endsWith(`/${filename}`))).toBe(false);
+    });
+  }
   it("couples without photographs come after all photographed couples", () => {
     const firstMissing = orderedTestimonials.findIndex((t) => t.photos.length === 0);
     expect(firstMissing).toBe(25);
