@@ -30,7 +30,7 @@ function ProjectPage() {
           className="object-top"
         />
         <div className="absolute inset-0 bg-hero-overlay" />
-        <div className="container relative mx-auto -translate-y-28 px-5 text-center md:-translate-y-40">
+        <div className="container absolute inset-x-0 top-28 mx-auto px-5 text-center md:top-32">
           <h1 className="mx-auto font-script text-5xl font-normal leading-tight text-cream md:text-7xl">
             {p.title}
           </h1>
