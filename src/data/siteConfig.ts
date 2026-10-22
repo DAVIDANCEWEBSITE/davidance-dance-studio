@@ -135,7 +135,7 @@ export const siteConfig = {
     biography: [
       {
         title: "Uma vida ligada ao movimento",
-        text: "A ligação de Sofia David Luz à dança começou aos 3 anos. Entre 2005 e 2016, dedicou-se também à Ginástica Rítmica, participando em apresentações a solo e em grupo. Iniciou a sua formação profissional na Academia de Dança Contemporânea de Setúbal e licenciou-se na Escola Superior de Dança, em Lisboa. Durante a licenciatura, frequentou a Oslo National Academy of the Arts — KHIO, na Noruega, através do programa Erasmus+, aprofundando a formação em Dança Contemporânea e Clássica e explorando outras linguagens, como Jazz, Hip-Hop e Danças de Salão.",
+        text: "A ligação da Sofia David Luz à dança começou aos 3 anos. Entre 2005 e 2016, dedicou-se também à Ginástica Rítmica, participando em apresentações a solo e em grupo. Iniciou a sua formação profissional na Academia de Dança Contemporânea de Setúbal e licenciou-se na Escola Superior de Dança, em Lisboa. Durante a licenciatura, frequentou a Oslo National Academy of the Arts — KHIO, na Noruega, através do programa Erasmus+, aprofundando a formação em Dança Contemporânea e Clássica e explorando outras linguagens, como Jazz, Hip-Hop e Danças de Salão.",
       },
       {
         title: "Do palco à criação",

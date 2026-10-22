@@ -31,11 +31,11 @@ function FounderPage() {
           {siteConfig.copy.back}
         </Link>
       </Button>
-      <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)]">
+      <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,260px)_minmax(0,1fr)]">
         <Portrait
           src={f.photo}
           name={f.name}
-          className="aspect-[3/4] w-full rounded-lg lg:sticky lg:top-28"
+          className="mx-auto aspect-[3/4] w-full max-w-[280px] rounded-lg lg:max-w-none lg:sticky lg:top-28"
         />
         <div>
           <p className="text-sm font-medium text-primary">{f.role}</p>

@@ -48,7 +48,7 @@ function StylePage() {
       });
   };
   return (
-    <section className="container mx-auto px-5 pb-12 pt-24">
+    <section className="container mx-auto max-w-6xl px-5 pb-12 pt-24">
       <Button
         variant="ghost"
         onClick={back}
