@@ -32,12 +32,12 @@ import cls_acrobacias from "@/assets/class-acrobacias.jpg.asset.json";
 import cls_contemporaneo from "@/assets/class-contemporaneo.jpg.asset.json";
 import cls_lyrical_jazz from "@/assets/class-lyrical-jazz.jpg.asset.json";
 import cls_ballet from "@/assets/class-ballet.jpg.asset.json";
-import cls_hip_hop from "@/assets/class-hip-hop-v4.png.asset.json";
+import cls_hip_hop from "@/assets/class-hip-hop-v5.png.asset.json";
 import cls_choreography from "@/assets/class-choreography.jpg.asset.json";
 import cls_high_heels from "@/assets/high-heels-final.jpg.asset.json";
 import cls_kizomba_fusion from "@/assets/class-kizomba-fusion.jpg.asset.json";
-import cls_ritmos_latinos from "@/assets/class-ritmos-latinos-v3.jpg.asset.json";
-import cls_danca_oriental from "@/assets/class-danca-oriental-v3.jpg.asset.json";
+import cls_ritmos_latinos from "@/assets/class-ritmos-latinos-v4.png.asset.json";
+import cls_danca_oriental from "@/assets/class-danca-oriental-v4.png.asset.json";
 import img_projeto_hero from "@/assets/projeto-hero.jpg.asset.json";
 import img_andreia_paulo from "@/assets/home-andreia-paulo.jpg.asset.json";
 import img_beatriz from "@/assets/home-beatriz.jpg.asset.json";
@@ -213,7 +213,7 @@ export const photoFraming: Record<string, string> = {
   [img_ricardo.url]: "object-top",
   [img_andreia_paulo.url]: "object-top",
   [cls_kizomba_fusion.url]: "object-[center_20%]",
-  [cls_ritmos_latinos.url]: "object-[center_30%]",
+  [cls_ritmos_latinos.url]: "object-center",
   [ritaSpider.url]: "object-[center_20%]",
   [afonsoRola.url]: "object-[center_30%]",
   [wedding_joana_daniel.url]: "object-[center_20%]",
@@ -225,8 +225,8 @@ export const photoFraming: Record<string, string> = {
   [wedding_ines_bruno.url]: "object-center",
   [cls_danca_criativa.url]: "object-[center_60%]",
   [cls_ballet_kids.url]: "object-[center_40%]",
-  [cls_hip_hop.url]: "object-contain bg-plum",
-  [cls_danca_oriental.url]: "object-[center_35%]",
+  [cls_hip_hop.url]: "object-center",
+  [cls_danca_oriental.url]: "object-center",
   [cls_hip_hop_kids.url]: "object-contain bg-plum",
   [cls_high_heels.url]: "object-contain bg-plum",
 };
@@ -535,7 +535,8 @@ export const classGroups = {
 };
 export const homeCards = [
   {
-    title: "Kids | Dos 3 aos 9 anos",
+    title: "Kids",
+    subtitle: "Dos 3 aos 9 anos",
     text: "Descobrir o movimento, dar espaço à imaginação e crescer a dançar",
     to: "/kids",
   },
@@ -546,6 +547,7 @@ export const homeCards = [
   },
   {
     title: "Casamentos",
+    subtitle: "Uma coreografia à medida da vossa história",
     text: "Uma coreografia à medida da vossa história!",
     to: "/casamentos",
   },
@@ -771,28 +773,28 @@ export const projectConfig = {
   historyTitle: "Percurso",
   videos: [
     {
-      title: "Projeto Davidance 25/26 — Senhora do Mar",
+      title: "Projeto Davidance 25/26 — \"Senhora do Mar\"",
       src: "",
       youtubeId: "0DMrdPdzlv4",
       poster: img_projeto_hero.url,
       coverFit: "cover",
     },
     {
-      title: "Projeto Davidance 25/26 — Futebol",
+      title: "Projeto Davidance 25/26 — \"Euro 2016\"",
       src: "",
       youtubeId: "iP9PhHy5qao",
       poster: futebolCover.url,
       coverFit: "cover",
     },
     {
-      title: "Projeto Davidance 24/25 — Voilá",
+      title: "Projeto Davidance 24/25 — \"Voilá\"",
       src: "",
       youtubeId: "VpOSiGaMLLM",
       poster: voilaCover.url,
       coverFit: "cover",
     },
     {
-      title: "Projeto Davidance 23/24 — Canção sem final",
+      title: "Projeto Davidance 23/24 — \"Canção sem final\"",
       src: "",
       youtubeId: "D4RMznCCitc",
       poster: cancaoCover.url,

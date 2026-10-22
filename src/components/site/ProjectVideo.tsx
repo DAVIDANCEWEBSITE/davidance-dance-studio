@@ -18,7 +18,7 @@ export function ProjectVideo({ video }: { video: Video }) {
   const playbackSource = getProjectPlaybackSource(video, playing);
   return (
     <article>
-      <h3 className="mb-3 text-base font-medium">{video.title}</h3>
+      <h3 className="mb-3 whitespace-nowrap text-[13px] font-medium sm:text-base">{video.title}</h3>
       <div className="relative aspect-video overflow-hidden rounded-lg bg-secondary">
         {playbackSource && video.youtubeId ? (
           <iframe
