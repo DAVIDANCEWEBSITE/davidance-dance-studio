@@ -16,3 +16,4 @@
 - Missing named-person and couple photographs render brand placeholders, never stock identities; project history media stays inactive until real source URLs are configured.
 - Generate the downloadable timetable from the configured class schedules when no timetable artwork is supplied, preserving one source of truth.
 - ProjectVideo resolves playback sources only after an explicit click; each cover's fit is configured in siteConfig, independently of home hero playback.
+- SmartImage applies photo framing from the central configuration so the same photograph stays consistently framed across pages.

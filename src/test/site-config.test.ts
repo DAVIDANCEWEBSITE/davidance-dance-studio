@@ -8,9 +8,16 @@ import {
   classGroups,
   projectConfig,
   canEnrolInLevel,
+  orderedTestimonials,
 } from "@/data/siteConfig";
 
 describe("Davidance business rules", () => {
+  it("couples without photographs come after all photographed couples", () => {
+    const firstMissing = orderedTestimonials.findIndex((t) => t.photos.length === 0);
+    expect(firstMissing).toBe(25);
+    expect(orderedTestimonials.slice(firstMissing).every((t) => t.photos.length === 0)).toBe(true);
+    expect(orderedTestimonials.slice(0, firstMissing).every((t) => t.photos.length > 0)).toBe(true);
+  });
   it("the 26/27 project is full", () => expect(siteConfig.auditionsOpen).toBe(false));
   it("Kids offers six classes", () =>
     expect(classGroups.kids.slugs).toEqual([

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ImageOff } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { photoFraming } from "@/data/siteConfig";
 
 type Props = React.ImgHTMLAttributes<HTMLImageElement> & {
   wrapperClassName?: string;
@@ -40,6 +41,7 @@ export function SmartImage({ src, alt = "", className, wrapperClassName, eager, 
           className={cn(
             "h-full w-full object-cover transition-[opacity,filter,transform] duration-700",
             loaded ? "opacity-100 blur-0" : "opacity-0 blur-md",
+            src ? photoFraming[src] : undefined,
             className,
           )}
           {...rest}
