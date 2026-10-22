@@ -535,7 +535,8 @@ export const classGroups = {
 };
 export const homeCards = [
   {
-    title: "Kids | Dos 3 aos 9 anos",
+    title: "Kids",
+    subtitle: "Dos 3 aos 9 anos",
     text: "Descobrir o movimento, dar espaço à imaginação e crescer a dançar",
     to: "/kids",
   },
@@ -546,6 +547,7 @@ export const homeCards = [
   },
   {
     title: "Casamentos",
+    subtitle: "Uma coreografia à medida da vossa história",
     text: "Uma coreografia à medida da vossa história!",
     to: "/casamentos",
   },
