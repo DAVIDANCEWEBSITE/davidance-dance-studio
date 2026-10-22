@@ -299,7 +299,7 @@ function TeamSection() {
           wrapperClassName="mx-auto aspect-[1387/1920] w-full max-w-[320px] rounded-lg shadow-soft"
           className="object-contain"
         />
-        <div className="grid grid-cols-3 gap-x-4 gap-y-6 lg:h-0 lg:min-h-full lg:grid-rows-2">
+        <div className="grid grid-cols-3 gap-x-4 gap-y-6 md:mx-auto md:max-w-2xl lg:h-0 lg:max-w-none lg:min-h-full lg:mx-0 lg:grid-rows-2">
           {teachers.map((t) => (
             <article key={t.name} className="flex min-h-0 min-w-0 flex-col">
               <Portrait
