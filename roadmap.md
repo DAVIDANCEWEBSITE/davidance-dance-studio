@@ -14,5 +14,5 @@
 - [x] Apply October 22 final spacing, back arrow, replacements, photo framing, project lock/title/cover and Friday Dança Oriental schedule; verify playback and pages. YouTube alone controls automatic starting quality.
 - [x] Integrate all 16 venue photographs, with IMG_4081 as the main photo and a compact gallery; verify navigation and rendering.
 - [x] Reduce the venue gallery by removing the beige dresses, sunglasses, student splits and Beatriz-with-Kids photographs; verify the reduced gallery.
-- [ ] Remove the supplied group screenshot, heels and Christmas photographs; replace the venue previews with a compact editorial grid and verify the gallery.
+- [x] Remove the supplied group screenshot, heels and Christmas photographs; replace the venue previews with a compact editorial grid; verified seven-photo navigation on desktop, tablet and mobile.
 - [ ] Await missing individual project portraits and paid font files.
