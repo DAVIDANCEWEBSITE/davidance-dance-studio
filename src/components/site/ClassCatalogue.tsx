@@ -17,7 +17,7 @@ export function ClassCatalogue({ group }: { group: keyof typeof classGroups }) {
             variant="ghost"
             className="mb-4 px-3 text-primary hover:bg-brand-hover hover:text-primary-foreground"
           >
-            <Link to="/">
+            <Link to="/" hash="aulas">
               <ArrowLeft />
               {siteConfig.copy.back}
             </Link>

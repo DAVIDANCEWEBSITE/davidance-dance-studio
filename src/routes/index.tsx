@@ -210,7 +210,7 @@ function AudienceSection() {
   const images = [siteConfig.kidsImage, siteConfig.youngAdultsImage, siteConfig.weddingsHero];
   const cards = homeCards;
   return (
-    <section className="container mx-auto px-5 pb-12 pt-16 md:pb-16 md:pt-20">
+    <section id="aulas" className="container mx-auto scroll-mt-24 px-5 pb-12 pt-16 md:pb-16 md:pt-20">
       <SectionTitle title={siteConfig.copy.homeTitle} />
       <div className="mt-12 grid gap-8 md:mt-14 md:grid-cols-3">
         {cards.map((c, i) => (

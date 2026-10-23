@@ -21,4 +21,4 @@
 - The facilities section derives its main image and smaller non-interactive photographs from the ordered facilities.photos configuration, showing all configured photos without a separate gallery or duplicated content.
 - Home presentation blocks reveal configured text with a curtain on hover or touch and close on mobile scroll; reduced motion is respected and touch open state overrides emulated hover.
 - Home audience cards and class catalogues reuse RevealPhotoCard, keeping the same curtain and touch navigation behavior with centrally configured ages or subtitles.
-- The home teacher section has a stable professores anchor used by the founder biography back link, so returning never resets to the page top.
+- Home sections expose stable anchors for biography and catalogue back links, and the main school photograph reserves its natural aspect ratio to keep return scrolling stable while images load.
