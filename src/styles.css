@@ -190,3 +190,20 @@
     background-position: -200% 0;
   }
 }
+
+/* Touch cards are controlled by their open state, not sticky emulated hover. */
+@media (hover: none) {
+  .presentation-photo-card[data-open="false"] {
+    transform: none !important;
+    box-shadow: var(--shadow-soft);
+  }
+  .presentation-photo-card[data-open="false"] > div:nth-last-child(2) {
+    transform: translateY(100%);
+  }
+  .presentation-photo-card[data-open="false"] p {
+    max-height: 0;
+    margin-top: 0;
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+}

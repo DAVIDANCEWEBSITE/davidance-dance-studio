@@ -11,6 +11,7 @@ import { siteConfig, teachers, teamPhoto, homeCards } from "@/data/siteConfig";
 import { CTAButton, Logo, Reveal, SectionTitle } from "@/components/site/primitives";
 import { SmartImage } from "@/components/site/SmartImage";
 import { Portrait } from "@/components/site/Portrait";
+import { RevealPhotoCard } from "@/components/site/RevealPhotoCard";
 import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -205,72 +206,20 @@ function Hero() {
   );
 }
 
-type HomeCard = { title: string; subtitle?: string; text: string; to: string };
-
-/** Cortina da marca: em repouso só título e linha; ao passar o rato/tocar revela apenas a idade (sem frases). */
-function RevealCard({
-  c,
-  image,
-  reveal,
-}: {
-  c: HomeCard;
-  image: string;
-  reveal?: string | undefined;
-}) {
-  const [open, setOpen] = useState(false);
-  return (
-    <Link
-      to={c.to}
-      data-open={open}
-      onClick={(e) => {
-        const touch = window.matchMedia("(hover: none)").matches;
-        if (touch && !open) {
-          e.preventDefault();
-          setOpen(true);
-        }
-      }}
-      className="group relative flex aspect-[4/3] min-w-0 flex-col justify-end overflow-hidden rounded-lg shadow-soft transition-shadow duration-500 hover:shadow-glow data-[open=true]:shadow-glow"
-    >
-      <SmartImage
-        src={image}
-        alt={c.title}
-        wrapperClassName="absolute inset-0"
-        className="transition-transform duration-[1.2s] group-hover:scale-105 group-data-[open=true]:scale-105"
-      />
-      <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-plum/10 via-plum/30 to-plum/85" />
-      <div
-        aria-hidden
-        className="absolute inset-0 translate-y-full bg-gradient-brand opacity-90 transition-transform duration-700 ease-out group-hover:translate-y-0 group-data-[open=true]:translate-y-0"
-      />
-      <div className="relative p-5">
-        <h3 className="text-xl font-medium text-cream">{c.title}</h3>
-        <span
-          aria-hidden
-          className="mt-2 block h-px w-10 bg-cream/80 transition-all duration-500 group-hover:w-20 group-data-[open=true]:w-20"
-        />
-        <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-700 group-hover:grid-rows-[1fr] group-hover:opacity-100 group-data-[open=true]:grid-rows-[1fr] group-data-[open=true]:opacity-100">
-          <div className="overflow-hidden">
-            {reveal && <p className="mt-3 text-sm font-medium text-cream">{reveal}</p>}
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
 function AudienceSection() {
   const images = [siteConfig.kidsImage, siteConfig.youngAdultsImage, siteConfig.weddingsHero];
-  const cards = homeCards as unknown as HomeCard[];
+  const cards = homeCards;
   return (
-    <section className="container mx-auto px-5 pb-12 pt-16 md:pb-16 md:pt-20">
+    <section id="aulas" className="container mx-auto scroll-mt-24 px-5 pb-12 pt-16 md:pb-16 md:pt-20">
       <SectionTitle title={siteConfig.copy.homeTitle} />
       <div className="mt-12 grid gap-8 md:mt-14 md:grid-cols-3">
         {cards.map((c, i) => (
-          <RevealCard
+          <RevealPhotoCard
             key={c.to}
-            c={c}
+            title={c.title}
+            to={c.to}
             image={images[i] ?? ""}
-            reveal={i === 2 ? undefined : c.subtitle}
+            reveal={c.subtitle}
           />
         ))}
       </div>
@@ -284,6 +233,14 @@ function PresentationCard({
 }) {
   const reduce = useReducedMotion();
   const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (!open) return;
+    const closeOnScroll = () => {
+      if (window.matchMedia("(max-width: 767px)").matches) setOpen(false);
+    };
+    window.addEventListener("scroll", closeOnScroll, { passive: true });
+    return () => window.removeEventListener("scroll", closeOnScroll);
+  }, [open]);
   return (
     <motion.article
       whileHover={{ y: reduce ? 0 : -8 }}
@@ -299,7 +256,7 @@ function PresentationCard({
           setOpen((o) => !o);
         }
       }}
-      className="group relative flex h-full min-h-[24rem] cursor-pointer flex-col justify-end overflow-hidden rounded-[2rem] border border-border bg-plum shadow-soft transition-shadow duration-500 hover:shadow-glow data-[open=true]:shadow-glow"
+      className="group presentation-photo-card relative flex h-full min-h-[24rem] cursor-pointer flex-col justify-end overflow-hidden rounded-[2rem] border border-border bg-plum shadow-soft transition-shadow duration-500 hover:shadow-glow data-[open=true]:shadow-glow"
     >
       {block.photo && (
         <SmartImage
@@ -340,7 +297,7 @@ function Presentation() {
         <SmartImage
           src={siteConfig.groupPhoto}
           alt={siteConfig.copy.presentationTitle}
-          wrapperClassName="mx-auto max-w-4xl rounded-lg"
+          wrapperClassName="mx-auto aspect-[200/133] max-w-4xl rounded-lg"
           className="h-auto object-contain"
         />
         <h2 className="mx-auto mt-10 max-w-4xl whitespace-nowrap text-center text-lg font-light sm:text-2xl md:text-3xl">
@@ -370,7 +327,7 @@ function Presentation() {
 function TeamSection() {
   const f = siteConfig.founder;
   return (
-    <section className="container mx-auto px-5 py-12 md:py-16">
+    <section id="professores" className="container mx-auto scroll-mt-24 px-5 py-12 md:py-16">
       <SectionTitle title={siteConfig.copy.teamTitle} />
       <div className="mx-auto grid max-w-4xl items-center gap-8 md:grid-cols-[240px_1fr]">
         <Portrait

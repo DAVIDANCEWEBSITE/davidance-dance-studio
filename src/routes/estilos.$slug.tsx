@@ -14,7 +14,15 @@ export const Route = createFileRoute("/estilos/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData)
       return {
-        meta: [{ title: "Aula indisponível — Davidance" }, { name: "robots", content: "noindex" }],
+        meta: [
+          { title: "Aula indisponível — Davidance" },
+          { name: "description", content: "Esta aula não está disponível no catálogo da Davidance." },
+          { property: "og:title", content: "Aula indisponível — Davidance" },
+          { property: "og:description", content: "Esta aula não está disponível no catálogo da Davidance." },
+          { property: "og:type", content: "website" },
+          { name: "twitter:card", content: "summary_large_image" },
+          { name: "robots", content: "noindex" },
+        ],
       };
     const s = loaderData.style;
     return {
