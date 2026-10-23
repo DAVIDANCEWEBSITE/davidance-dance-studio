@@ -1,4 +1,7 @@
 # Davidance reformulation
+- [ ] Restore the wedding-card phrase and share audience reveal effects with all class catalogue photographs.
+- [ ] Close mobile presentation cards on scroll; balance Sofia biography text and return to teachers on back navigation.
+- [ ] Remove the illuminated-logo facilities photo and Alexandre Portugal; test and verify across three screen sizes.
 - [x] Approximate all 14 project students' faces by 30% within the existing grid; verified entire heads visible on desktop, tablet and mobile, with 47 tests passing.
 - [x] Centralise supplied text, contacts, classes and schedules.
 - [x] Rebuild navigation and home; add founder biography and shared contact band.
