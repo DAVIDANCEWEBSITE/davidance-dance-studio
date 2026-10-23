@@ -5,6 +5,7 @@ import {
   teachers,
   getStyle,
   getTeacherStyles,
+  getTeacherLabel,
   classGroups,
   projectConfig,
   canEnrolInLevel,
@@ -118,6 +119,12 @@ describe("Davidance business rules", () => {
   it("uses the supplied phone", () => expect(siteConfig.contacts.phone).toBe("+351 928322643"));
   it("every teacher teaches a configured class", () => {
     for (const t of teachers) expect(getTeacherStyles(t.name).length).toBeGreaterThan(0);
+  });
+  it("Ricardo is labelled Professor", () => expect(getTeacherLabel("Ricardo Coelho")).toBe("Professor"));
+  it("Andreia & Paulo are labelled Professores", () => expect(getTeacherLabel("Andreia & Paulo")).toBe("Professores"));
+  it("female teachers are labelled Professora", () => {
+    for (const name of ["Sofia David Luz", "Beatriz Matos", "Sara Freitas", "Joana Lopes"])
+      expect(getTeacherLabel(name)).toBe("Professora");
   });
   it("style slugs are unique", () =>
     expect(new Set(styles.map((s) => s.slug)).size).toBe(styles.length));

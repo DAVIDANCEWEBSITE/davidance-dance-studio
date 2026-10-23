@@ -849,6 +849,12 @@ export const navLinks = [
 export const getStyle = (slug: string) => styles.find((s) => s.slug === slug);
 export const getTeacherByName = (name: string) => teachers.find((t) => t.name === name);
 export const getTeacherStyles = (name: string) => styles.filter((s) => s.teacher === name);
+/** Rótulo do docente no cartão do estilo: Professor (Ricardo), Professores (duo), Professora (restantes). */
+export const getTeacherLabel = (name: string) => {
+  if (name === "Andreia & Paulo") return "Professores";
+  if (name === "Ricardo Coelho") return "Professor";
+  return "Professora";
+};
 export const canEnrolInLevel = (style: Style, level: string, approved = false) => {
   const selected = style.levels?.find((l) => l.name === level);
   return Boolean(selected && (!selected.requiresApproval || approved));
