@@ -235,6 +235,75 @@ function AudienceSection() {
     </section>
   );
 }
+function PresentationCard({
+  block,
+  index,
+}: {
+  block: { title: string; text: string };
+  index: number;
+}) {
+  const reduce = useReducedMotion();
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const x = useSpring(mx, { stiffness: 60, damping: 18 });
+  const y = useSpring(my, { stiffness: 60, damping: 18 });
+
+  const onMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (reduce) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    mx.set(((e.clientX - r.left) / r.width - 0.5) * 14);
+    my.set(((e.clientY - r.top) / r.height - 0.5) * 14);
+  };
+  const onLeave = () => {
+    mx.set(0);
+    my.set(0);
+  };
+
+  return (
+    <motion.article
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      whileHover={reduce ? undefined : { y: -8 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative min-h-[26rem] overflow-hidden rounded-[2rem] shadow-soft transition-shadow duration-500 hover:shadow-glow md:min-h-[30rem]"
+    >
+      {/* Fotografia de grupo diluída, reage ao rato */}
+      <motion.div style={{ x, y }} className="absolute -inset-4" aria-hidden>
+        <SmartImage
+          src={siteConfig.groupPhoto}
+          alt=""
+          wrapperClassName="h-full w-full"
+          className="opacity-25 saturate-[0.6]"
+        />
+      </motion.div>
+      <div className="absolute inset-0 bg-cream/55 transition-opacity duration-500 group-hover:opacity-0" />
+      <div className="absolute inset-0 bg-gradient-brand opacity-0 transition-opacity duration-500 group-hover:opacity-85" />
+
+      {/* Conteúdo editorial */}
+      <div className="relative flex h-full min-h-[26rem] flex-col justify-between p-7 md:min-h-[30rem] md:p-8">
+        <span
+          aria-hidden
+          className="text-gradient-brand text-6xl font-light leading-none transition-all duration-500 group-hover:text-cream/30 md:text-7xl"
+        >
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <div>
+          <h3 className="text-2xl font-light text-primary transition-colors duration-500 group-hover:text-cream md:text-3xl">
+            {block.title}
+          </h3>
+          <span
+            aria-hidden
+            className="mt-3 block h-px w-10 bg-rose transition-all duration-500 group-hover:w-20 group-hover:bg-cream"
+          />
+          <p className="mt-4 text-pretty text-sm leading-relaxed text-foreground/80 transition-all duration-500 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:text-cream/90 md:group-hover:opacity-100">
+            {block.text}
+          </p>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
 function Presentation() {
   return (
     <section className="bg-secondary/40 py-12 md:py-16">
@@ -249,14 +318,10 @@ function Presentation() {
           {siteConfig.copy.presentationTitle}
         </h2>
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
-          {siteConfig.copy.blocks.map((b) => (
-            <div
-              key={b.title}
-              className="rounded-2xl bg-card p-7 text-center shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-glow"
-            >
-              <h3 className="text-lg font-medium text-primary">{b.title}</h3>
-              <p className="mt-3 text-pretty text-sm leading-relaxed text-muted-foreground">{b.text}</p>
-            </div>
+          {siteConfig.copy.blocks.map((b, i) => (
+            <Reveal key={b.title} delay={i * 0.12}>
+              <PresentationCard block={b} index={i} />
+            </Reveal>
           ))}
         </div>
         <div className="mt-10 text-center">
