@@ -79,7 +79,7 @@ import space4084 from "@/assets/espaco-img_4084.jpg.asset.json";
 import space4086 from "@/assets/espaco-img_4086.jpg.asset.json";
 import space5165 from "@/assets/espaco-img_5165.jpg.asset.json";
 import spaceStudio1 from "@/assets/espaco-estudio-1-updated.jpg.asset.json";
-import spaceStudio2 from "@/assets/espaco-estudio-2-updated.jpg.asset.json";
+import spaceStudio2 from "@/assets/espaco-estudio-2-final.jpg.asset.json";
 
 /**
  * DAVIDANCE — CONTEÚDO CENTRAL
