@@ -237,68 +237,45 @@ function PresentationCard({
   block,
   index,
 }: {
-  block: { title: string; text: string; quote?: string };
+  block: { title: string; text: string; quote?: string; photo?: string };
   index: number;
 }) {
   const reduce = useReducedMotion();
-  const [flipped, setFlipped] = useState(false);
-  const face = "col-start-1 row-start-1 rounded-[2rem] p-7 md:p-8 [backface-visibility:hidden]";
   return (
-    <div
-      className="h-full cursor-pointer [perspective:1400px]"
-      onMouseEnter={() => window.matchMedia("(hover: hover)").matches && setFlipped(true)}
-      onMouseLeave={() => window.matchMedia("(hover: hover)").matches && setFlipped(false)}
-      onClick={() => setFlipped((f) => !f)}
-      role="button"
-      tabIndex={0}
-      aria-pressed={flipped}
-      aria-label={`${block.title} — mostrar texto`}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          setFlipped((f) => !f);
-        }
-      }}
+    <motion.article
+      whileHover={{ y: reduce ? 0 : -8 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative flex h-full min-h-[26rem] flex-col justify-end overflow-hidden rounded-[2rem] border border-border bg-plum shadow-soft transition-shadow duration-500 hover:shadow-glow md:min-h-[30rem]"
     >
-      <motion.div
-        animate={{ rotateY: flipped ? 180 : 0 }}
-        transition={{ duration: reduce ? 0 : 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="grid h-full min-h-[22rem] [transform-style:preserve-3d]"
+      {block.photo && (
+        <SmartImage
+          src={block.photo}
+          alt={block.title}
+          wrapperClassName="absolute inset-0"
+          className="transition-transform duration-[1.2s] group-hover:scale-105"
+        />
+      )}
+      <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-plum/90 via-plum/40 to-plum/10" />
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-brand opacity-70 transition-transform duration-700 ease-out md:translate-y-full md:opacity-90 md:group-hover:translate-y-0"
+      />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute right-5 top-2 select-none text-[7rem] font-light leading-none text-cream/30 md:text-[8rem]"
       >
-        <article className={`${face} relative flex flex-col justify-end overflow-hidden border border-border bg-card shadow-soft`}>
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -right-2 -top-6 select-none text-[9rem] font-light leading-none text-primary/10 md:text-[11rem]"
-          >
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <div className="relative">
-            {block.quote && (
-              <p className="font-script text-3xl leading-tight text-brand-hover md:text-4xl">
-                {block.quote}
-              </p>
-            )}
-            <h3 className="mt-6 text-xl font-medium uppercase tracking-wide text-primary md:text-2xl">
-              {block.title}
-            </h3>
-            <span aria-hidden className="mt-3 block h-px w-10 bg-brand-hover" />
-            <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">
-              Toca para descobrir ↻
-            </p>
-          </div>
-        </article>
-        <article
-          className={`${face} flex flex-col justify-center bg-gradient-brand text-primary-foreground shadow-glow [transform:rotateY(180deg)]`}
-          aria-hidden={!flipped}
-        >
-          <h3 className="text-lg font-medium uppercase tracking-wide md:text-xl">{block.title}</h3>
-          <span aria-hidden className="mt-3 block h-px w-16 bg-primary-foreground/70" />
-          <p className="mt-4 text-pretty text-sm leading-relaxed text-primary-foreground/90">
-            {block.text}
-          </p>
-        </article>
-      </motion.div>
-    </div>
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <div className="relative p-7 md:p-8">
+        <h3 className="text-xl font-medium uppercase tracking-wide text-cream md:text-2xl">
+          {block.title}
+        </h3>
+        <span aria-hidden className="mt-3 block h-px w-10 bg-cream/80 transition-all duration-500 group-hover:w-20" />
+        <p className="mt-4 text-pretty text-sm leading-relaxed text-cream/90 transition-all duration-700 md:max-h-0 md:translate-y-4 md:overflow-hidden md:opacity-0 md:group-hover:max-h-[30rem] md:group-hover:translate-y-0 md:group-hover:opacity-100">
+          {block.text}
+        </p>
+      </div>
+    </motion.article>
   );
 }
 
