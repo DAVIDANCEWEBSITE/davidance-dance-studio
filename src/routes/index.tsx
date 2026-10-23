@@ -239,39 +239,49 @@ function PresentationCard({
   block: { title: string; text: string; quote?: string; photo?: string };
 }) {
   const reduce = useReducedMotion();
+  const [open, setOpen] = useState(false);
   return (
     <motion.article
       whileHover={{ y: reduce ? 0 : -8 }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex h-full min-h-[26rem] flex-col overflow-hidden rounded-[2rem] border border-border bg-plum shadow-soft transition-shadow duration-500 hover:shadow-glow md:min-h-[24rem]"
+      data-open={open}
+      role="button"
+      tabIndex={0}
+      aria-expanded={open}
+      onClick={() => setOpen((o) => !o)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          setOpen((o) => !o);
+        }
+      }}
+      className="group relative flex h-full min-h-[24rem] cursor-pointer flex-col justify-end overflow-hidden rounded-[2rem] border border-border bg-plum shadow-soft transition-shadow duration-500 hover:shadow-glow data-[open=true]:shadow-glow"
     >
       {block.photo && (
         <SmartImage
           src={block.photo}
           alt={block.title}
           wrapperClassName="absolute inset-0"
-          className="transition-transform duration-[1.2s] group-hover:scale-105"
+          className="transition-transform duration-[1.2s] group-hover:scale-105 group-data-[open=true]:scale-105"
         />
       )}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-plum/80 via-plum/30 to-plum/70"
+        className="absolute inset-0 bg-gradient-to-b from-plum/10 via-plum/30 to-plum/85"
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-brand opacity-70 transition-transform duration-700 ease-out md:translate-y-full md:opacity-90 md:group-hover:translate-y-0"
+        className="absolute inset-0 translate-y-full bg-gradient-brand opacity-90 transition-transform duration-700 ease-out group-hover:translate-y-0 group-data-[open=true]:translate-y-0"
       />
-      <div className="relative p-7 pb-2 md:p-8 md:pb-2">
+      <div className="relative p-7 md:p-8">
         <h3 className="text-xl font-medium uppercase tracking-wide text-cream md:text-2xl">
           {block.title}
         </h3>
         <span
           aria-hidden
-          className="mt-3 block h-px w-10 bg-cream/80 transition-all duration-500 group-hover:w-20"
+          className="mt-3 block h-px w-10 bg-cream/80 transition-all duration-500 group-hover:w-20 group-data-[open=true]:w-20"
         />
-      </div>
-      <div className="relative mt-auto p-7 pt-3 md:p-8 md:pt-3">
-        <p className="text-pretty text-sm leading-relaxed text-cream/90 transition-all duration-700 md:max-h-0 md:translate-y-4 md:overflow-hidden md:opacity-0 md:group-hover:max-h-[30rem] md:group-hover:translate-y-0 md:group-hover:opacity-100">
+        <p className="max-h-0 translate-y-4 overflow-hidden text-pretty text-sm leading-relaxed text-cream/90 opacity-0 transition-all duration-700 group-hover:mt-4 group-hover:max-h-[30rem] group-hover:translate-y-0 group-hover:opacity-100 group-data-[open=true]:mt-4 group-data-[open=true]:max-h-[30rem] group-data-[open=true]:translate-y-0 group-data-[open=true]:opacity-100 motion-reduce:transition-none">
           {block.text}
         </p>
       </div>
