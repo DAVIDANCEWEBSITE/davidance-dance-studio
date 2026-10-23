@@ -235,17 +235,15 @@ function AudienceSection() {
 }
 function PresentationCard({
   block,
-  index,
 }: {
   block: { title: string; text: string; quote?: string; photo?: string };
-  index: number;
 }) {
   const reduce = useReducedMotion();
   return (
     <motion.article
       whileHover={{ y: reduce ? 0 : -8 }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex h-full min-h-[26rem] flex-col justify-end overflow-hidden rounded-[2rem] border border-border bg-plum shadow-soft transition-shadow duration-500 hover:shadow-glow md:min-h-[30rem]"
+      className="group relative flex h-full min-h-[26rem] flex-col overflow-hidden rounded-[2rem] border border-border bg-plum shadow-soft transition-shadow duration-500 hover:shadow-glow md:min-h-[24rem]"
     >
       {block.photo && (
         <SmartImage
@@ -255,23 +253,25 @@ function PresentationCard({
           className="transition-transform duration-[1.2s] group-hover:scale-105"
         />
       )}
-      <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-plum/90 via-plum/40 to-plum/10" />
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-b from-plum/80 via-plum/30 to-plum/70"
+      />
       <div
         aria-hidden
         className="absolute inset-0 bg-gradient-brand opacity-70 transition-transform duration-700 ease-out md:translate-y-full md:opacity-90 md:group-hover:translate-y-0"
       />
-      <span
-        aria-hidden
-        className="pointer-events-none absolute right-5 top-2 select-none text-[7rem] font-light leading-none text-cream/30 md:text-[8rem]"
-      >
-        {String(index + 1).padStart(2, "0")}
-      </span>
-      <div className="relative p-7 md:p-8">
+      <div className="relative p-7 pb-2 md:p-8 md:pb-2">
         <h3 className="text-xl font-medium uppercase tracking-wide text-cream md:text-2xl">
           {block.title}
         </h3>
-        <span aria-hidden className="mt-3 block h-px w-10 bg-cream/80 transition-all duration-500 group-hover:w-20" />
-        <p className="mt-4 text-pretty text-sm leading-relaxed text-cream/90 transition-all duration-700 md:max-h-0 md:translate-y-4 md:overflow-hidden md:opacity-0 md:group-hover:max-h-[30rem] md:group-hover:translate-y-0 md:group-hover:opacity-100">
+        <span
+          aria-hidden
+          className="mt-3 block h-px w-10 bg-cream/80 transition-all duration-500 group-hover:w-20"
+        />
+      </div>
+      <div className="relative mt-auto p-7 pt-3 md:p-8 md:pt-3">
+        <p className="text-pretty text-sm leading-relaxed text-cream/90 transition-all duration-700 md:max-h-0 md:translate-y-4 md:overflow-hidden md:opacity-0 md:group-hover:max-h-[30rem] md:group-hover:translate-y-0 md:group-hover:opacity-100">
           {block.text}
         </p>
       </div>
@@ -293,9 +293,9 @@ function Presentation() {
           {siteConfig.copy.presentationTitle}
         </h2>
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
-          {siteConfig.copy.blocks.map((b, i) => (
-            <Reveal key={b.title} delay={i * 0.12} className="h-full">
-              <PresentationCard block={b} index={i} />
+          {siteConfig.copy.blocks.map((b) => (
+            <Reveal key={b.title} delay={0} className="h-full">
+              <PresentationCard block={b} />
             </Reveal>
           ))}
         </div>
