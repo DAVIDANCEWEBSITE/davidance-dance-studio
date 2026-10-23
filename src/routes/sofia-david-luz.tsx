@@ -26,7 +26,7 @@ function FounderPage() {
         variant="ghost"
         className="mb-6 px-3 text-primary hover:bg-brand-hover hover:text-primary-foreground"
       >
-        <Link to="/">
+        <Link to="/" hash="professores">
           <ArrowLeft />
           {siteConfig.copy.back}
         </Link>
@@ -39,12 +39,12 @@ function FounderPage() {
         />
         <div>
           <p className="text-sm font-medium text-primary">{f.role}</p>
-          <h1 className="mt-2 text-3xl font-light md:text-4xl">{f.name}</h1>
+          <h1 className="mt-2 text-balance text-3xl font-light md:text-4xl">{f.name}</h1>
           <div className="mt-8 space-y-7">
             {f.biography.map((b) => (
               <div key={b.title}>
-                <h2 className="text-xl font-medium">{b.title}</h2>
-                <p className="mt-2 text-justify text-sm leading-relaxed text-muted-foreground md:text-base">
+                <h2 className="text-balance text-xl font-medium">{b.title}</h2>
+                <p className="mt-2 text-pretty text-left text-sm leading-relaxed text-muted-foreground md:text-justify md:text-base">
                   {b.text}
                 </p>
               </div>

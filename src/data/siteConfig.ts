@@ -68,14 +68,12 @@ import dancerMatheusGoncalves from "@/assets/projeto-matheus-goncalves-updated.j
 import dancerMeylinLeyva from "@/assets/projeto-meylin-leyva-updated.jpg.asset.json";
 import dancerRaquelPinto from "@/assets/projeto-raquel-pinto-updated.jpg.asset.json";
 import dancerSofiaConde from "@/assets/projeto-sofia-conde-updated.jpg.asset.json";
-import dancerAlexandrePortugal from "@/assets/projeto-alexandre-portugal-updated.jpg.asset.json";
 import dancerJoanaLuz from "@/assets/projeto-joana-luz-updated.jpg.asset.json";
 import dancerMargaridaDores from "@/assets/projeto-margarida-dores-updated.jpg.asset.json";
 import futebolCover from "@/assets/projeto-futebol.jpg.asset.json";
 import voilaCover from "@/assets/projeto-voila.jpg.asset.json";
 import cancaoCover from "@/assets/projeto-cancao-sem-final.jpg.asset.json";
 import space4081 from "@/assets/espaco-img_4081_2.jpg.asset.json";
-import space4084 from "@/assets/espaco-img_4084.jpg.asset.json";
 import space4086 from "@/assets/espaco-img_4086.jpg.asset.json";
 import space5165 from "@/assets/espaco-img_5165.jpg.asset.json";
 import spaceStudio1 from "@/assets/espaco-estudio-1-updated.jpg.asset.json";
@@ -218,7 +216,6 @@ export const siteConfig = {
     text: "Em Paio Pires, a Davidance recebe-te num estúdio amplo, com chão com caixa de ar, preparado para a prática da dança. Um espaço onde trabalhamos técnica, exploramos o movimento e partilhamos o caminho entre os ensaios e o palco.",
     photos: [
       space4081.url,
-      space4084.url,
       space4086.url,
       space5165.url,
       spaceStudio1.url,
@@ -263,7 +260,6 @@ export const photoFraming: Record<string, string> = {
   [dancerRaquelPinto.url]: "scale-[1.3] origin-[center_65%]",
   [dancerSofiaConde.url]: "scale-[1.3] origin-[center_65%]",
   [dancerSusanaFerreira.url]: "scale-[1.3] origin-[center_65%]",
-  [dancerAlexandrePortugal.url]: "scale-[1.3] origin-[center_65%]",
   [dancerCarolinaMaia.url]: "scale-[1.3] origin-[center_65%]",
   [dancerJoanaLuz.url]: "scale-[1.3] origin-[center_65%]",
   [dancerMargaridaDores.url]: "scale-[1.3] origin-[center_65%]",
@@ -800,7 +796,6 @@ export const projectConfig = {
     {
       title: "Grupo B",
       people: [
-        { name: "Alexandre Portugal", photo: dancerAlexandrePortugal.url },
         { name: "Deusa Santana", photo: "" },
         { name: "Carolina Maia", photo: dancerCarolinaMaia.url },
         { name: "Joana Luz", photo: dancerJoanaLuz.url },

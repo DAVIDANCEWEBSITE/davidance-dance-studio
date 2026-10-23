@@ -12,12 +12,13 @@ import {
 } from "@/data/siteConfig";
 
 describe("Davidance business rules", () => {
-  it("the facilities gallery keeps the main studio photo first and 6 unique photographs", () => {
-    expect(siteConfig.facilities.photos).toHaveLength(6);
-    expect(new Set(siteConfig.facilities.photos).size).toBe(6);
+  it("the facilities gallery keeps the main studio photo first and 5 unique photographs", () => {
+    expect(siteConfig.facilities.photos).toHaveLength(5);
+    expect(new Set(siteConfig.facilities.photos).size).toBe(5);
     expect(siteConfig.facilities.photos[0]).toMatch(/\/espaco-img_4081_2\.jpg$/);
   });
   for (const [description, filename] of [
+    ["illuminated logo", "espaco-img_4084.jpg"],
     ["beige dresses", "espaco-img_2136.jpg"],
     ["sunglasses", "espaco-img_1568.jpg"],
     ["student doing splits", "espaco-img_1665.jpg"],
@@ -103,8 +104,11 @@ describe("Davidance business rules", () => {
     ["ritmos-latinos", "+16 anos"],
   ] as const)
     it(`${slug} has the approved age range`, () => expect(getStyle(slug)?.ageRange).toBe(age));
-  it("dancers start with Andreia (Sofia removed): groups of 12 and 6", () =>
-    expect(projectConfig.groups.map((g) => g.people.length)).toEqual([12, 6]));
+  it("dancers start with Andreia (Sofia removed): groups of 12 and 5", () =>
+    expect(projectConfig.groups.map((g) => g.people.length)).toEqual([12, 5]));
+  it("excludes Alexandre Portugal from all project dancer groups", () => {
+    expect(projectConfig.groups.flatMap((group) => group.people).some((person) => person.name === "Alexandre Portugal")).toBe(false);
+  });
   it("uses the real enrolment link", () =>
     expect(siteConfig.links.enrol).toBe("https://forms.gle/HEKGNfnnKE4jBG616"));
   it("uses the real trial link", () =>
