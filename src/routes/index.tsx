@@ -241,36 +241,64 @@ function PresentationCard({
   index: number;
 }) {
   const reduce = useReducedMotion();
+  const [flipped, setFlipped] = useState(false);
+  const face = "col-start-1 row-start-1 rounded-[2rem] p-7 md:p-8 [backface-visibility:hidden]";
   return (
-    <motion.article
-      whileHover={{ y: reduce ? 0 : -8 }}
-      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative h-full overflow-hidden rounded-[2rem] border border-border bg-card p-7 shadow-soft transition-all duration-500 hover:border-brand-hover/40 hover:shadow-glow md:p-8"
+    <div
+      className="h-full cursor-pointer [perspective:1400px]"
+      onMouseEnter={() => window.matchMedia("(hover: hover)").matches && setFlipped(true)}
+      onMouseLeave={() => window.matchMedia("(hover: hover)").matches && setFlipped(false)}
+      onClick={() => setFlipped((f) => !f)}
+      role="button"
+      tabIndex={0}
+      aria-pressed={flipped}
+      aria-label={`${block.title} — mostrar texto`}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          setFlipped((f) => !f);
+        }
+      }}
     >
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-2 -top-6 select-none text-[9rem] font-light leading-none text-primary/10 transition-colors duration-500 group-hover:text-brand-hover/20 md:text-[11rem]"
+      <motion.div
+        animate={{ rotateY: flipped ? 180 : 0 }}
+        transition={{ duration: reduce ? 0 : 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="grid h-full min-h-[22rem] [transform-style:preserve-3d]"
       >
-        {String(index + 1).padStart(2, "0")}
-      </span>
-      <div className="relative">
-        {block.quote && (
-          <p className="font-script text-3xl leading-tight text-brand-hover md:text-4xl">
-            {block.quote}
+        <article className={`${face} relative flex flex-col justify-end overflow-hidden border border-border bg-card shadow-soft`}>
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -right-2 -top-6 select-none text-[9rem] font-light leading-none text-primary/10 md:text-[11rem]"
+          >
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <div className="relative">
+            {block.quote && (
+              <p className="font-script text-3xl leading-tight text-brand-hover md:text-4xl">
+                {block.quote}
+              </p>
+            )}
+            <h3 className="mt-6 text-xl font-medium uppercase tracking-wide text-primary md:text-2xl">
+              {block.title}
+            </h3>
+            <span aria-hidden className="mt-3 block h-px w-10 bg-brand-hover" />
+            <p className="mt-4 text-xs uppercase tracking-widest text-muted-foreground">
+              Toca para descobrir ↻
+            </p>
+          </div>
+        </article>
+        <article
+          className={`${face} flex flex-col justify-center bg-gradient-brand text-primary-foreground shadow-glow [transform:rotateY(180deg)]`}
+          aria-hidden={!flipped}
+        >
+          <h3 className="text-lg font-medium uppercase tracking-wide md:text-xl">{block.title}</h3>
+          <span aria-hidden className="mt-3 block h-px w-16 bg-primary-foreground/70" />
+          <p className="mt-4 text-pretty text-sm leading-relaxed text-primary-foreground/90">
+            {block.text}
           </p>
-        )}
-        <h3 className="mt-6 text-xl font-medium uppercase tracking-wide text-primary md:text-2xl">
-          {block.title}
-        </h3>
-        <span
-          aria-hidden
-          className="mt-3 block h-px w-10 bg-brand-hover transition-all duration-500 group-hover:w-24"
-        />
-        <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground">
-          {block.text}
-        </p>
-      </div>
-    </motion.article>
+        </article>
+      </motion.div>
+    </div>
   );
 }
 
