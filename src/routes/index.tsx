@@ -208,7 +208,15 @@ function Hero() {
 type HomeCard = { title: string; subtitle?: string; text: string; to: string };
 
 /** Cortina da marca: em repouso só título e linha; ao passar o rato/tocar revela apenas a idade (sem frases). */
-function RevealCard({ c, image, reveal }: { c: HomeCard; image: string; reveal?: string }) {
+function RevealCard({
+  c,
+  image,
+  reveal,
+}: {
+  c: HomeCard;
+  image: string;
+  reveal?: string | undefined;
+}) {
   const [open, setOpen] = useState(false);
   return (
     <Link
