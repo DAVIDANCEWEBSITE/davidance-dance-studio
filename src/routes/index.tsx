@@ -207,8 +207,16 @@ function Hero() {
 
 type HomeCard = { title: string; subtitle?: string; text: string; to: string };
 
-/** Cortina da marca: em repouso só título e linha; ao passar o rato/tocar revela a idade (ou frase-chave). */
-function RevealCard({ c, image }: { c: HomeCard; image: string }) {
+/** Cortina da marca: em repouso só título e linha; ao passar o rato/tocar revela apenas a idade (sem frases). */
+function RevealCard({
+  c,
+  image,
+  reveal,
+}: {
+  c: HomeCard;
+  image: string;
+  reveal?: string | undefined;
+}) {
   const [open, setOpen] = useState(false);
   return (
     <Link
@@ -242,7 +250,7 @@ function RevealCard({ c, image }: { c: HomeCard; image: string }) {
         />
         <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-700 group-hover:grid-rows-[1fr] group-hover:opacity-100 group-data-[open=true]:grid-rows-[1fr] group-data-[open=true]:opacity-100">
           <div className="overflow-hidden">
-            {c.subtitle && <p className="mt-3 text-sm font-medium text-cream">{c.subtitle}</p>}
+            {reveal && <p className="mt-3 text-sm font-medium text-cream">{reveal}</p>}
           </div>
         </div>
       </div>
@@ -258,7 +266,12 @@ function AudienceSection() {
       <SectionTitle title={siteConfig.copy.homeTitle} />
       <div className="mt-12 grid gap-8 md:mt-14 md:grid-cols-3">
         {cards.map((c, i) => (
-          <RevealCard key={c.to} c={c} image={images[i] ?? ""} />
+          <RevealCard
+            key={c.to}
+            c={c}
+            image={images[i] ?? ""}
+            reveal={i === 2 ? undefined : c.subtitle}
+          />
         ))}
       </div>
     </section>
