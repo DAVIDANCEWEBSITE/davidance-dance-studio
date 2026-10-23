@@ -18,3 +18,4 @@
 - [x] Remove the supplied group screenshot, heels and Christmas photographs; replace the venue previews with a compact editorial grid; verified seven-photo navigation on desktop, tablet and mobile.
 - [ ] Await portraits for Margarida Palminha, Sofia Silva, Deusa Santana and Tatiana Teixeira, and the paid font files.
 - [x] Apply the 14 newly supplied project portraits and add the two studio photographs below the main facilities photo, without click-to-open; verified loading on desktop, tablet and mobile, with 51 tests passing.
+- [x] Rebuild the three "Davidance — Estúdio de Dança" blocks as mouse-reactive editorial cards (diluted group photo, numbered titles, hover veil revealing the text; text always visible on mobile); verified desktop and mobile, 51 tests passing.
