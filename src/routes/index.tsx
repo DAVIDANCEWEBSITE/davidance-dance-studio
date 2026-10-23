@@ -224,7 +224,6 @@ function CurtainCard({ c, image }: { c: HomeCard; image: string }) {
       <div
         aria-hidden
         className="absolute inset-0 bg-gradient-brand opacity-85 transition-transform duration-700 ease-out md:translate-y-full md:group-hover:translate-y-0"
-        style={{ opacity: undefined }}
       />
       <div className="absolute inset-x-0 bottom-0 p-5 text-cream">
         <h3 className="text-xl font-medium">{c.title}</h3>
