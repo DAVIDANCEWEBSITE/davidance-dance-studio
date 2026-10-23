@@ -2,10 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type RefObject } from "react";
 import {
   motion,
-  useMotionValue,
   useReducedMotion,
   useScroll,
-  useSpring,
   useTransform,
 } from "framer-motion";
 import { Volume1, Volume2, VolumeX } from "lucide-react";
@@ -239,66 +237,38 @@ function PresentationCard({
   block,
   index,
 }: {
-  block: { title: string; text: string };
+  block: { title: string; text: string; quote?: string };
   index: number;
 }) {
   const reduce = useReducedMotion();
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const x = useSpring(mx, { stiffness: 60, damping: 18 });
-  const y = useSpring(my, { stiffness: 60, damping: 18 });
-
-  const onMove = (e: React.MouseEvent<HTMLElement>) => {
-    if (reduce) return;
-    const r = e.currentTarget.getBoundingClientRect();
-    mx.set(((e.clientX - r.left) / r.width - 0.5) * 14);
-    my.set(((e.clientY - r.top) / r.height - 0.5) * 14);
-  };
-  const onLeave = () => {
-    mx.set(0);
-    my.set(0);
-  };
-
   return (
     <motion.article
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
       whileHover={{ y: reduce ? 0 : -8 }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative min-h-[26rem] overflow-hidden rounded-[2rem] shadow-soft transition-shadow duration-500 hover:shadow-glow md:min-h-[30rem]"
+      className="group relative h-full overflow-hidden rounded-[2rem] border border-border bg-card p-7 shadow-soft transition-all duration-500 hover:border-brand-hover/40 hover:shadow-glow md:p-8"
     >
-      {/* Fotografia de grupo diluída, reage ao rato */}
-      <motion.div style={{ x, y }} className="absolute -inset-4" aria-hidden>
-        <SmartImage
-          src={siteConfig.groupPhoto}
-          alt=""
-          wrapperClassName="h-full w-full"
-          className="opacity-25 saturate-[0.6]"
-        />
-      </motion.div>
-      <div className="absolute inset-0 bg-cream/55 transition-opacity duration-500 group-hover:opacity-0" />
-      <div className="absolute inset-0 bg-gradient-brand opacity-0 transition-opacity duration-500 group-hover:opacity-85" />
-
-      {/* Conteúdo editorial */}
-      <div className="relative flex h-full min-h-[26rem] flex-col justify-between p-7 md:min-h-[30rem] md:p-8">
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -right-2 -top-6 select-none text-[9rem] font-light leading-none text-primary/10 transition-colors duration-500 group-hover:text-brand-hover/20 md:text-[11rem]"
+      >
+        {String(index + 1).padStart(2, "0")}
+      </span>
+      <div className="relative">
+        {block.quote && (
+          <p className="font-script text-3xl leading-tight text-brand-hover md:text-4xl">
+            {block.quote}
+          </p>
+        )}
+        <h3 className="mt-6 text-xl font-medium uppercase tracking-wide text-primary md:text-2xl">
+          {block.title}
+        </h3>
         <span
           aria-hidden
-          className="text-6xl font-light leading-none text-primary/20 transition-colors duration-500 group-hover:text-cream/30 md:text-7xl"
-        >
-          {String(index + 1).padStart(2, "0")}
-        </span>
-        <div>
-          <h3 className="text-2xl font-light text-primary transition-colors duration-500 group-hover:text-cream md:text-3xl">
-            {block.title}
-          </h3>
-          <span
-            aria-hidden
-            className="mt-3 block h-px w-10 bg-rose transition-all duration-500 group-hover:w-20 group-hover:bg-cream"
-          />
-          <p className="mt-4 text-pretty text-sm leading-relaxed text-foreground/80 transition-all duration-500 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:text-cream/90 md:group-hover:opacity-100">
-            {block.text}
-          </p>
-        </div>
+          className="mt-3 block h-px w-10 bg-brand-hover transition-all duration-500 group-hover:w-24"
+        />
+        <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground">
+          {block.text}
+        </p>
       </div>
     </motion.article>
   );
@@ -319,7 +289,7 @@ function Presentation() {
         </h2>
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
           {siteConfig.copy.blocks.map((b, i) => (
-            <Reveal key={b.title} delay={i * 0.12}>
+            <Reveal key={b.title} delay={i * 0.12} className="h-full">
               <PresentationCard block={b} index={i} />
             </Reveal>
           ))}
