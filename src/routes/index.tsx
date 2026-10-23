@@ -263,7 +263,7 @@ function PresentationCard({
     <motion.article
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      whileHover={reduce ? undefined : { y: -8 }}
+      whileHover={{ y: reduce ? 0 : -8 }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       className="group relative min-h-[26rem] overflow-hidden rounded-[2rem] shadow-soft transition-shadow duration-500 hover:shadow-glow md:min-h-[30rem]"
     >
