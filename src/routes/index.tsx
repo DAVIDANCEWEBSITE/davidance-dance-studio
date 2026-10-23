@@ -293,9 +293,9 @@ function Presentation() {
           {siteConfig.copy.presentationTitle}
         </h2>
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
-          {siteConfig.copy.blocks.map((b, i) => (
-            <Reveal key={b.title} delay={i * 0.12} className="h-full">
-              <PresentationCard block={b} index={i} />
+          {siteConfig.copy.blocks.map((b) => (
+            <Reveal key={b.title} delay={0} className="h-full">
+              <PresentationCard block={b} />
             </Reveal>
           ))}
         </div>
