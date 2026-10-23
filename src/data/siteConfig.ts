@@ -101,14 +101,17 @@ export const siteConfig = {
     blocks: [
       {
         title: "Quem somos",
+        quote: "Sentir e Viver a Dança.",
         text: "Somos um Estúdio de Dança, inaugurado em 2022, situado em Paio Pires, no Seixal. Com aulas a partir dos 3 anos de idade, em vários estilos – Contemporâneo, Lyrical Jazz, Ballet, Dança Criativa, Hip-Hop, Choreography, High Heels, Ritmos Latinos, Kizomba Fusion, Dança Oriental, Flexibilidade e Acrobacias. Seja para iniciar, retomar ou continuar a aprender, a Davidance é o lugar ideal para Sentir e Viver a Dança!",
       },
       {
         title: "Os nossos valores",
+        quote: "Cada pessoa, com a sua história.",
         text: "Cultivamos um ambiente acolhedor e inspirador, onde cada pessoa se sente reconhecida, valorizada e respeitada na sua autenticidade, com as suas próprias histórias, emoções e formas de expressar. Crescemos através da partilha e de um forte espírito de comunidade. Valorizamos a empatia, a cooperação e a confiança como bases para a aprendizagem, construção de relações genuínas e desenvolvimento pessoal.",
       },
       {
         title: "O que construímos",
+        quote: "Dar voz à alma através do movimento.",
         text: "O nosso objetivo é proporcionar uma educação de qualidade nos diversos estilos, desenvolvendo as respetivas aptidões técnicas, criativas e expressivas. Promovemos a autodescoberta e o crescimento pessoal de cada aluno, fortalecendo a confiança, a disciplina e a sensibilidade artística. Acima de tudo, nutrimos a paixão pelo movimento, exercitando o corpo e dando voz à alma e ao coração através da dança.",
       },
     ],
