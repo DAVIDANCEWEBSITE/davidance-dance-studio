@@ -297,7 +297,7 @@ function Presentation() {
         <SmartImage
           src={siteConfig.groupPhoto}
           alt={siteConfig.copy.presentationTitle}
-          wrapperClassName="mx-auto max-w-4xl rounded-lg"
+          wrapperClassName="mx-auto aspect-[200/133] max-w-4xl rounded-lg"
           className="h-auto object-contain"
         />
         <h2 className="mx-auto mt-10 max-w-4xl whitespace-nowrap text-center text-lg font-light sm:text-2xl md:text-3xl">
