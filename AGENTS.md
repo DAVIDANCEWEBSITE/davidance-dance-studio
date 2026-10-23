@@ -19,3 +19,4 @@
 - SmartImage applies photo framing from the central configuration so the same photograph stays consistently framed across pages.
 - Project lock indicators derive from auditionsOpen without blocking the public page; this keeps availability consistent across navigation and catalogues.
 - The facilities section derives its main image and smaller non-interactive photographs from the ordered facilities.photos configuration, showing all configured photos without a separate gallery or duplicated content.
+- The home presentation blocks are mouse-reactive editorial cards over the diluted group photo: desktop reveals each block's text on hover under a brand veil, while mobile always shows the text; motion respects prefers-reduced-motion.
