@@ -352,7 +352,7 @@ function TeamSection() {
         <SmartImage
           src={teamPhoto}
           alt={siteConfig.copy.teamTitle}
-          wrapperClassName="mx-auto aspect-[1387/1920] w-full max-w-[320px] rounded-lg shadow-soft"
+          wrapperClassName="aspect-[1387/1920] w-full rounded-lg shadow-soft"
           className="object-contain"
         />
         <div className="grid grid-cols-3 gap-x-4 gap-y-6 md:mx-auto md:max-w-2xl lg:h-0 lg:max-w-none lg:min-h-full lg:mx-0 lg:grid-rows-2">
