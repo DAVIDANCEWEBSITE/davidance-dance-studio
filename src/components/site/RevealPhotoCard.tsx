@@ -4,11 +4,11 @@ import { SmartImage } from "./SmartImage";
 import { cn } from "@/lib/utils";
 
 type Props = {
-  to: LinkProps["to"];
+  to: Exclude<LinkProps["to"], undefined>;
   params?: LinkProps["params"];
   title: string;
   image: string;
-  reveal?: string;
+  reveal?: string | undefined;
   leading?: ReactNode;
   className?: string;
 };
@@ -19,7 +19,7 @@ export function RevealPhotoCard({ to, params, title, image, reveal, leading, cla
   return (
     <Link
       to={to}
-      params={params}
+      {...(params ? { params } : {})}
       data-open={open}
       onClick={(event) => {
         if (window.matchMedia("(hover: none)").matches && !open) {
