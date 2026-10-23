@@ -205,30 +205,129 @@ function Hero() {
   );
 }
 
+type HomeCard = { title: string; subtitle?: string; text: string; to: string };
+
+/** Opção 1 — cortina de navegação integrada na fotografia. */
+function CurtainCard({ c, image }: { c: HomeCard; image: string }) {
+  return (
+    <Link
+      to={c.to}
+      className="group relative block aspect-[4/3] min-w-0 overflow-hidden rounded-lg shadow-soft transition-shadow duration-500 hover:shadow-glow"
+    >
+      <SmartImage
+        src={image}
+        alt={c.title}
+        wrapperClassName="absolute inset-0"
+        className="transition-transform duration-[1.2s] group-hover:scale-105"
+      />
+      <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-plum/85 via-plum/20 to-transparent" />
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-brand opacity-85 transition-transform duration-700 ease-out md:translate-y-full md:group-hover:translate-y-0"
+        style={{ opacity: undefined }}
+      />
+      <div className="absolute inset-x-0 bottom-0 p-5 text-cream">
+        <h3 className="text-xl font-medium">{c.title}</h3>
+        {c.subtitle && <p className="text-sm text-cream/85">{c.subtitle}</p>}
+        <div className="grid transition-all duration-700 md:grid-rows-[0fr] md:opacity-0 md:group-hover:grid-rows-[1fr] md:group-hover:opacity-100">
+          <div className="overflow-hidden">
+            <p className="mt-3 text-pretty text-sm leading-relaxed text-cream/90">{c.text}</p>
+            <span className="mt-3 inline-block text-sm font-medium underline-offset-4 group-hover:underline">
+              Explorar aulas {c.title} →
+            </span>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+/** Opção 2 — moldura com brilho e pílula flutuante. */
+function PillCard({ c, image }: { c: HomeCard; image: string }) {
+  return (
+    <Link to={c.to} className="group min-w-0">
+      <h3 className="mb-1 text-center text-lg font-medium">{c.title}</h3>
+      {c.subtitle && (
+        <p className="mb-4 text-center text-sm text-muted-foreground">{c.subtitle}</p>
+      )}
+      <div className="relative overflow-hidden rounded-lg ring-1 ring-border transition-all duration-500 group-hover:shadow-glow group-hover:ring-2 group-hover:ring-primary">
+        <SmartImage
+          src={image}
+          alt={c.title}
+          wrapperClassName="aspect-[4/3]"
+          className="transition-transform duration-[1.2s] group-hover:scale-110"
+        />
+        <div className="absolute inset-0 flex items-center justify-center p-5">
+          <div className="max-w-[85%] translate-y-3 rounded-full bg-plum/70 px-5 py-3 text-center text-cream opacity-0 backdrop-blur transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+            <p className="text-xs leading-snug">{c.text}</p>
+            <p className="mt-1 text-sm font-medium">Ver turmas e horários →</p>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+/** Opção 3 — igual aos blocos de apresentação, com botão de entrada. */
+function RevealCard({ c, image }: { c: HomeCard; image: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <article
+      data-open={open}
+      role="button"
+      tabIndex={0}
+      aria-expanded={open}
+      onClick={() => setOpen((o) => !o)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          setOpen((o) => !o);
+        }
+      }}
+      className="group relative flex aspect-[4/3] min-w-0 cursor-pointer flex-col justify-end overflow-hidden rounded-lg shadow-soft transition-shadow duration-500 hover:shadow-glow data-[open=true]:shadow-glow"
+    >
+      <SmartImage
+        src={image}
+        alt={c.title}
+        wrapperClassName="absolute inset-0"
+        className="transition-transform duration-[1.2s] group-hover:scale-105 group-data-[open=true]:scale-105"
+      />
+      <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-plum/10 via-plum/30 to-plum/85" />
+      <div
+        aria-hidden
+        className="absolute inset-0 translate-y-full bg-gradient-brand opacity-90 transition-transform duration-700 ease-out group-hover:translate-y-0 group-data-[open=true]:translate-y-0"
+      />
+      <div className="relative p-5">
+        <h3 className="text-xl font-medium text-cream">{c.title}</h3>
+        <span
+          aria-hidden
+          className="mt-2 block h-px w-10 bg-cream/80 transition-all duration-500 group-hover:w-20 group-data-[open=true]:w-20"
+        />
+        <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-700 group-hover:grid-rows-[1fr] group-hover:opacity-100 group-data-[open=true]:grid-rows-[1fr] group-data-[open=true]:opacity-100">
+          <div className="overflow-hidden">
+            <p className="mt-3 text-sm leading-relaxed text-cream/90">{c.text}</p>
+            <Button asChild size="sm" variant="secondary" className="mt-3 rounded-full">
+              <Link to={c.to} onClick={(e) => e.stopPropagation()}>
+                Ver coreografias
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 function AudienceSection() {
   const images = [siteConfig.kidsImage, siteConfig.youngAdultsImage, siteConfig.weddingsHero];
+  const cards = homeCards as readonly HomeCard[];
   return (
     <section className="container mx-auto px-5 pb-12 pt-16 md:pb-16 md:pt-20">
       <SectionTitle title={siteConfig.copy.homeTitle} />
-      <div className="mt-12 grid gap-8 md:mt-14 md:grid-cols-3">
-        {homeCards.map((c, i) => (
-          <Link key={c.to} to={c.to} className="group min-w-0">
-            <h3 className={`text-center text-lg font-medium ${"subtitle" in c ? "mb-1" : "mb-4"}`}>
-              {c.title}
-            </h3>
-            {"subtitle" in c && (
-              <p className="mb-4 text-center text-sm font-normal text-muted-foreground md:whitespace-nowrap md:text-[clamp(8px,1.25vw,12.5px)] xl:text-sm">
-                {c.subtitle}
-              </p>
-            )}
-            <SmartImage
-              src={images[i]}
-              alt={c.title}
-              wrapperClassName="aspect-[4/3] rounded-lg"
-              className="group-hover:scale-105"
-            />
-          </Link>
-        ))}
+      <div className="mt-12 grid items-end gap-8 md:mt-14 md:grid-cols-3">
+        <CurtainCard c={cards[0]} image={images[0]} />
+        <PillCard c={cards[1]} image={images[1]} />
+        <RevealCard c={cards[2]} image={images[2]} />
       </div>
     </section>
   );
