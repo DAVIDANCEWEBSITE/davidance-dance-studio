@@ -283,7 +283,7 @@ function PresentationCard({
       <div className="relative flex h-full min-h-[26rem] flex-col justify-between p-7 md:min-h-[30rem] md:p-8">
         <span
           aria-hidden
-          className="text-gradient-brand text-6xl font-light leading-none transition-all duration-500 group-hover:text-cream/30 md:text-7xl"
+          className="text-6xl font-light leading-none text-primary/20 transition-colors duration-500 group-hover:text-cream/30 md:text-7xl"
         >
           {String(index + 1).padStart(2, "0")}
         </span>
