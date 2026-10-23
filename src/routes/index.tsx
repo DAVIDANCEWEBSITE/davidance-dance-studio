@@ -388,7 +388,7 @@ function SpaceSection() {
           wrapperClassName="mt-8 aspect-[16/10] w-full rounded-lg"
           className="h-full w-full"
         />
-        <div className="mt-2 grid grid-cols-2 gap-2 sm:mt-3 sm:grid-cols-3 sm:gap-3 md:mt-4 md:grid-cols-5 md:gap-4">
+        <div className="mt-2 grid grid-cols-2 gap-2 sm:mt-3 sm:grid-cols-3 sm:gap-3 md:mt-4 md:grid-cols-4 md:gap-4">
           {previews.map((p) => (
             <SmartImage
               key={p}

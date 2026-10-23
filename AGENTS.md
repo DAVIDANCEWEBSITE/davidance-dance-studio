@@ -20,5 +20,5 @@
 - Project lock indicators derive from auditionsOpen without blocking the public page; this keeps availability consistent across navigation and catalogues.
 - The facilities section derives its main image and smaller non-interactive photographs from the ordered facilities.photos configuration, showing all configured photos without a separate gallery or duplicated content.
 - Home presentation blocks reveal configured text with a curtain on hover or touch and close on mobile scroll; reduced motion is respected and touch open state overrides emulated hover.
-- Home audience cards and class catalogues reuse RevealPhotoCard, keeping the same curtain and touch navigation behavior with centrally configured ages or subtitles.
+- Home audience cards and class catalogues reuse RevealPhotoCard: the curtain and age reveal follow hover on desktop, while on touch devices the age/subtitle is always visible below the line and a single tap navigates.
 - Home sections expose stable anchors for biography and catalogue back links, and the main school photograph reserves its natural aspect ratio to keep return scrolling stable while images load.
