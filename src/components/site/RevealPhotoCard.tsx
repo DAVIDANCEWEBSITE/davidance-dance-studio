@@ -44,7 +44,7 @@ export function RevealPhotoCard({ to, params, title, image, reveal, leading, cla
         <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-700 group-hover:grid-rows-[1fr] group-hover:opacity-100 group-data-[open=true]:grid-rows-[1fr] group-data-[open=true]:opacity-100 motion-reduce:transition-none">
           <div className="overflow-hidden">
             {reveal && <p className="mt-3 text-pretty text-sm font-medium text-cream">{reveal}</p>}
-            <p className="mt-2 hidden text-xs uppercase tracking-wide text-cream/90 [@media(hover:none)]:block">Toca para entrar →</p>
+            <p className="mt-2 hidden text-[10px] uppercase tracking-wide text-cream/90 [@media(hover:none)]:block">Entrar →</p>
           </div>
         </div>
       </div>

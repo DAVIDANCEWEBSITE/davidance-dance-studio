@@ -1,6 +1,6 @@
 import { createFileRoute, notFound, Link, useRouter } from "@tanstack/react-router";
 import { ArrowLeft, CalendarClock, LockKeyhole, Users } from "lucide-react";
-import { classGroups, getStyle, getTeacherByName, siteConfig } from "@/data/siteConfig";
+import { classGroups, getStyle, getTeacherByName, getTeacherLabel, siteConfig } from "@/data/siteConfig";
 import { CTAButton } from "@/components/site/primitives";
 import { SmartImage } from "@/components/site/SmartImage";
 import { Portrait } from "@/components/site/Portrait";
@@ -100,7 +100,7 @@ function StylePage() {
               className="h-16 w-16 shrink-0 rounded-lg"
             />
             <div>
-              <p className="text-sm text-muted-foreground">{siteConfig.copy.teacher}</p>
+              <p className="text-sm text-muted-foreground">{getTeacherLabel(style.teacher)}</p>
               <h2 className="mt-1 text-lg font-medium">{style.teacher}</h2>
             </div>
           </div>
