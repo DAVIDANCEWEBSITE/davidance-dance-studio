@@ -319,14 +319,14 @@ function RevealCard({ c, image }: { c: HomeCard; image: string }) {
 
 function AudienceSection() {
   const images = [siteConfig.kidsImage, siteConfig.youngAdultsImage, siteConfig.weddingsHero];
-  const cards = homeCards as readonly HomeCard[];
+  const cards = homeCards as unknown as [HomeCard, HomeCard, HomeCard];
   return (
     <section className="container mx-auto px-5 pb-12 pt-16 md:pb-16 md:pt-20">
       <SectionTitle title={siteConfig.copy.homeTitle} />
       <div className="mt-12 grid items-end gap-8 md:mt-14 md:grid-cols-3">
-        <CurtainCard c={cards[0]} image={images[0]} />
-        <PillCard c={cards[1]} image={images[1]} />
-        <RevealCard c={cards[2]} image={images[2]} />
+        <CurtainCard c={cards[0]} image={images[0] ?? ""} />
+        <PillCard c={cards[1]} image={images[1] ?? ""} />
+        <RevealCard c={cards[2]} image={images[2] ?? ""} />
       </div>
     </section>
   );
