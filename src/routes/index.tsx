@@ -207,7 +207,7 @@ function Hero() {
 
 type HomeCard = { title: string; subtitle?: string; text: string; to: string };
 
-/** Cortina da marca: em repouso só título e linha; ao passar o rato/tocar revela idade e frase. */
+/** Cortina da marca: em repouso só título e linha; ao passar o rato/tocar revela a idade (ou frase-chave). */
 function RevealCard({ c, image }: { c: HomeCard; image: string }) {
   const [open, setOpen] = useState(false);
   return (
@@ -243,7 +243,6 @@ function RevealCard({ c, image }: { c: HomeCard; image: string }) {
         <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-700 group-hover:grid-rows-[1fr] group-hover:opacity-100 group-data-[open=true]:grid-rows-[1fr] group-data-[open=true]:opacity-100">
           <div className="overflow-hidden">
             {c.subtitle && <p className="mt-3 text-sm font-medium text-cream">{c.subtitle}</p>}
-            <p className="mt-2 text-sm leading-relaxed text-cream/90">{c.text}</p>
           </div>
         </div>
       </div>
