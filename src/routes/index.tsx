@@ -139,12 +139,16 @@ function Hero() {
         events: {
           onReady: (e: { target: YTPlayer }) => {
             e.target.mute();
-            e.target.setVolume(60);
             e.target.playVideo();
             playerRef.current = e.target;
           },
           onStateChange: (e: { data: number; target: YTPlayer }) => {
             if (e.data === 1) setPlaying(true);
+            // Tablets podem pausar/cue o vídeo: voltar a tentar mudo.
+            if (e.data === 5 || e.data === -1 || e.data === 2) {
+              e.target.mute();
+              e.target.playVideo();
+            }
             if (e.data === 0) e.target.seekTo(0, true); // volta ao início quando acaba
           },
         },
@@ -235,12 +239,21 @@ function PresentationCard({
   const [open, setOpen] = useState(false);
   useEffect(() => {
     if (!open) return;
-    const closeOnScroll = () => {
-      if (window.matchMedia("(max-width: 767px)").matches) setOpen(false);
+    const close = () => setOpen(false);
+    const onOther = (e: Event) => {
+      if ((e as CustomEvent).detail !== block.title) close();
     };
-    window.addEventListener("scroll", closeOnScroll, { passive: true });
-    return () => window.removeEventListener("scroll", closeOnScroll);
-  }, [open]);
+    window.addEventListener("scroll", close, { passive: true });
+    window.addEventListener("presentation-open", onOther);
+    return () => {
+      window.removeEventListener("scroll", close);
+      window.removeEventListener("presentation-open", onOther);
+    };
+  }, [open, block.title]);
+  const toggle = () => {
+    if (!open) window.dispatchEvent(new CustomEvent("presentation-open", { detail: block.title }));
+    setOpen(!open);
+  };
   return (
     <motion.article
       whileHover={{ y: reduce ? 0 : -8 }}
@@ -249,11 +262,11 @@ function PresentationCard({
       role="button"
       tabIndex={0}
       aria-expanded={open}
-      onClick={() => setOpen((o) => !o)}
+      onClick={toggle}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          setOpen((o) => !o);
+          toggle();
         }
       }}
       className="group presentation-photo-card relative flex h-full min-h-[24rem] cursor-pointer flex-col justify-end overflow-hidden rounded-[2rem] border border-border bg-plum shadow-soft transition-shadow duration-500 hover:shadow-glow data-[open=true]:shadow-glow"

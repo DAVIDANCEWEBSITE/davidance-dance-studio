@@ -65,12 +65,12 @@ function StylePage() {
         <ArrowLeft />
         {siteConfig.copy.back}
       </Button>
-      <div className="grid items-start gap-8 lg:grid-cols-2">
+      <div className="grid items-start gap-8 md:grid-cols-2 md:gap-6 lg:gap-8">
         <SmartImage
           src={style.cover}
           alt={style.name}
           eager
-          wrapperClassName="aspect-[4/3] rounded-lg lg:sticky lg:top-24"
+          wrapperClassName="aspect-[4/3] rounded-lg md:sticky md:top-24"
         />
         <div>
           <h1 className="text-balance text-3xl font-light md:text-4xl">{style.name}</h1>
