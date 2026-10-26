@@ -250,11 +250,10 @@ function PresentationCard({
       window.removeEventListener("presentation-open", onOther);
     };
   }, [open, block.title]);
-  const toggle = () =>
-    setOpen((o) => {
-      if (!o) window.dispatchEvent(new CustomEvent("presentation-open", { detail: block.title }));
-      return !o;
-    });
+  const toggle = () => {
+    if (!open) window.dispatchEvent(new CustomEvent("presentation-open", { detail: block.title }));
+    setOpen(!open);
+  };
   return (
     <motion.article
       whileHover={{ y: reduce ? 0 : -8 }}
@@ -263,11 +262,11 @@ function PresentationCard({
       role="button"
       tabIndex={0}
       aria-expanded={open}
-      onClick={() => setOpen((o) => !o)}
+      onClick={toggle}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          setOpen((o) => !o);
+          toggle();
         }
       }}
       className="group presentation-photo-card relative flex h-full min-h-[24rem] cursor-pointer flex-col justify-end overflow-hidden rounded-[2rem] border border-border bg-plum shadow-soft transition-shadow duration-500 hover:shadow-glow data-[open=true]:shadow-glow"
