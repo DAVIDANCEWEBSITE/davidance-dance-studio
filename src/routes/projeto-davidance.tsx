@@ -113,7 +113,7 @@ function ProjectPage() {
         <SectionTitle title={p.historyTitle} />
         <div className="grid gap-6 md:grid-cols-3">
           {p.videos.map((v, i) => (
-            <div key={v.title} className={i === 0 ? "md:col-span-3" : ""}>
+            <div key={`${v.edition} ${v.piece}`} className={i === 0 ? "md:col-span-3" : ""}>
               <ProjectVideo video={v} />
             </div>
           ))}
