@@ -139,12 +139,16 @@ function Hero() {
         events: {
           onReady: (e: { target: YTPlayer }) => {
             e.target.mute();
-            e.target.setVolume(60);
             e.target.playVideo();
             playerRef.current = e.target;
           },
           onStateChange: (e: { data: number; target: YTPlayer }) => {
             if (e.data === 1) setPlaying(true);
+            // Tablets podem pausar/cue o vídeo: voltar a tentar mudo.
+            if (e.data === 5 || e.data === -1 || e.data === 2) {
+              e.target.mute();
+              e.target.playVideo();
+            }
             if (e.data === 0) e.target.seekTo(0, true); // volta ao início quando acaba
           },
         },
@@ -235,12 +239,22 @@ function PresentationCard({
   const [open, setOpen] = useState(false);
   useEffect(() => {
     if (!open) return;
-    const closeOnScroll = () => {
-      if (window.matchMedia("(max-width: 767px)").matches) setOpen(false);
+    const close = () => setOpen(false);
+    const onOther = (e: Event) => {
+      if ((e as CustomEvent).detail !== block.title) close();
     };
-    window.addEventListener("scroll", closeOnScroll, { passive: true });
-    return () => window.removeEventListener("scroll", closeOnScroll);
-  }, [open]);
+    window.addEventListener("scroll", close, { passive: true });
+    window.addEventListener("presentation-open", onOther);
+    return () => {
+      window.removeEventListener("scroll", close);
+      window.removeEventListener("presentation-open", onOther);
+    };
+  }, [open, block.title]);
+  const toggle = () =>
+    setOpen((o) => {
+      if (!o) window.dispatchEvent(new CustomEvent("presentation-open", { detail: block.title }));
+      return !o;
+    });
   return (
     <motion.article
       whileHover={{ y: reduce ? 0 : -8 }}
