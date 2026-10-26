@@ -28,6 +28,7 @@ describe("project video titles", () => {
   expected.forEach((want, index) => {
     it(`video ${index + 1} shows the edition and the piece on separate lines`, () => {
       const video = projectConfig.videos[index];
+      if (!video) throw new Error(`video ${index + 1} is missing`);
       expect(video.edition).toBe(want.edition);
       expect(video.piece).toBe(want.piece);
       expect(getProjectVideoHeading(video)).toBe(`${want.edition} — ${want.piece}`);
