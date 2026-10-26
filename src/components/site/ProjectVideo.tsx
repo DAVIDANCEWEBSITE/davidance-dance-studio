@@ -12,18 +12,31 @@ export function getProjectPlaybackSource(video: Video, requested: boolean) {
     ? `https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0&vq=hd1080`
     : video.src || undefined;
 }
+export function getProjectVideoHeading(video: Video) {
+  return video.piece ? `${video.edition} — ${video.piece}` : video.edition;
+}
 export function ProjectVideo({ video }: { video: Video }) {
   const [playing, setPlaying] = useState(false);
   const available = Boolean(video.src || video.youtubeId);
   const playbackSource = getProjectPlaybackSource(video, playing);
+  const heading = getProjectVideoHeading(video);
   return (
     <article>
-      <h3 className="mb-3 text-balance text-center text-[13px] font-medium sm:text-sm lg:text-base">{video.title}</h3>
+      <h3 className="mb-3 text-center">
+        <span className="block text-balance text-[13px] font-medium sm:text-sm lg:text-base">
+          {video.edition}
+        </span>
+        {video.piece && (
+          <span className="mt-1 block text-balance text-[12px] font-normal text-muted-foreground sm:text-[13px] lg:text-sm">
+            {video.piece}
+          </span>
+        )}
+      </h3>
       <div className="relative aspect-video overflow-hidden rounded-lg bg-secondary">
         {playbackSource && video.youtubeId ? (
           <iframe
             src={playbackSource}
-            title={video.title}
+            title={heading}
             allow="autoplay; encrypted-media; picture-in-picture"
             allowFullScreen
             className="h-full w-full border-0"
@@ -42,17 +55,17 @@ export function ProjectVideo({ video }: { video: Video }) {
             {video.poster ? (
               <SmartImage
                 src={video.poster}
-                alt={video.title}
+                alt={heading}
                 wrapperClassName="absolute inset-0"
                 className={video.coverFit === "contain" ? "object-contain" : "object-cover"}
               />
             ) : (
-              <Portrait name={video.title} className="absolute inset-0" />
+              <Portrait name={heading} className="absolute inset-0" />
             )}
             {available && (
               <Button
                 onClick={() => setPlaying(true)}
-                aria-label={`Reproduzir ${video.title}`}
+                aria-label={`Reproduzir ${heading}`}
                 variant="ghost"
                 className="absolute inset-0 h-full w-full rounded-none p-0 hover:bg-transparent"
               >
