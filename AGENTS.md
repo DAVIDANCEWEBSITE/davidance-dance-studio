@@ -23,3 +23,4 @@
 - Home audience cards and class catalogues reuse RevealPhotoCard: the curtain and age reveal follow hover on desktop, while on touch devices the age/subtitle is always visible below the line and a single tap navigates.
 - Home sections expose stable anchors for biography and catalogue back links, and the main school photograph reserves its natural aspect ratio to keep return scrolling stable while images load.
 - Netlify hosting is configured in root netlify.toml via NITRO_PRESET=netlify (publish dist); do not add public/_redirects SPA fallbacks — pages are server-rendered.
+- Site images live as plain files in public/images/ referenced by /images/... paths from src/data/siteConfig.ts; no CDN pointers, so any static host (Netlify) serves them.
