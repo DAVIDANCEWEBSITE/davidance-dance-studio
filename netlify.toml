@@ -1,0 +1,10 @@
+# Netlify deployment for the TanStack Start app.
+# NITRO_PRESET=netlify makes the build emit a Netlify server function
+# (handles every page, so direct links like /contactos work) plus static files in dist.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NITRO_PRESET = "netlify"
+  NODE_VERSION = "22"
