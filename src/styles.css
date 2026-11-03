@@ -209,6 +209,8 @@
 }
 
 /* Hide the badge injected by Netlify's free plan. */
+iframe#nl-badge-frame,
+iframe[title="Powered by Netlify"],
 #netlify-badge,
 .netlify-badge,
 netlify-badge,
