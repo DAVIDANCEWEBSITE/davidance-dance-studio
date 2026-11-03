@@ -207,3 +207,20 @@
     opacity: 0;
   }
 }
+
+/* Hide the badge injected by Netlify's free plan. */
+#netlify-badge,
+.netlify-badge,
+netlify-badge,
+netlify-drawer,
+[data-netlify-badge],
+[data-netlify-drawer],
+[id*="netlify-badge"],
+[class*="netlify-badge"],
+a[href*="utm_source=netlify-badge"],
+a[href*="netlify.com"][href*="badge"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
