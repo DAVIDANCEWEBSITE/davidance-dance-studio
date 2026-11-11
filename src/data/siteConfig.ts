@@ -52,7 +52,7 @@ const img_sara = { url: "/images/home-sara.jpg" };
 const img_sofia = { url: "/images/home-sofia.jpg" };
 const logoAsset = { url: "/images/logo.png" };
 const timetableAsset = { url: "/images/horario-oficial.png" };
-const projectGroup = { url: "/images/projeto-grupo.jpg" };
+const projectGroup = { url: "/images/projeto-grupo-26-27.jpg" };
 const projectStageHero = { url: "/images/projeto-stage-hero.jpg" };
 const quorum = { url: "/images/projeto-quorum.jpg" };
 const ritaSpider = { url: "/images/projeto-rita-spider.jpg" };
@@ -70,6 +70,9 @@ const dancerRaquelPinto = { url: "/images/projeto-raquel-pinto-updated.jpg" };
 const dancerSofiaConde = { url: "/images/projeto-sofia-conde-updated.jpg" };
 const dancerJoanaLuz = { url: "/images/projeto-joana-luz-updated.jpg" };
 const dancerMargaridaDores = { url: "/images/projeto-margarida-dores-updated.jpg" };
+const dancerMargaridaPalminha = { url: "/images/projeto-margarida-palminha.jpg" };
+const dancerSofiaSilva = { url: "/images/projeto-sofia-silva.jpg" };
+const dancerDeusaSantana = { url: "/images/projeto-deusa-santana.jpg" };
 const futebolCover = { url: "/images/projeto-futebol.jpg" };
 const voilaCover = { url: "/images/projeto-voila.jpg" };
 const cancaoCover = { url: "/images/projeto-cancao-sem-final.jpg" };
@@ -263,6 +266,9 @@ export const photoFraming: Record<string, string> = {
   [dancerCarolinaMaia.url]: "scale-[1.3] origin-[center_65%]",
   [dancerJoanaLuz.url]: "scale-[1.3] origin-[center_65%]",
   [dancerMargaridaDores.url]: "scale-[1.3] origin-[center_65%]",
+  [dancerMargaridaPalminha.url]: "scale-[1.3] origin-[center_65%]",
+  [dancerSofiaSilva.url]: "scale-[1.3] origin-[center_65%]",
+  [dancerDeusaSantana.url]: "scale-[1.3] origin-[center_65%]",
 };
 export type Schedule = { day: string; time: string };
 export type Style = {
@@ -783,20 +789,20 @@ export const projectConfig = {
         { name: "Carolina Carvalho", photo: dancerCarolinaCarvalho.url },
         { name: "Cátia Soares", photo: dancerCatiaSoares.url },
         { name: "Leonor Catarrilhas", photo: dancerLeonorCatarrilhas.url },
-        { name: "Margarida Palminha", photo: "" },
+        { name: "Margarida Palminha", photo: dancerMargaridaPalminha.url },
         { name: "Maria Inês Costa", photo: dancerMariaInesCosta.url },
         { name: "Matheus Gonçalves", photo: dancerMatheusGoncalves.url },
         { name: "Meylin Leyva", photo: dancerMeylinLeyva.url },
         { name: "Raquel Pinto", photo: dancerRaquelPinto.url },
         { name: "Sofia Conde", photo: dancerSofiaConde.url },
-        { name: "Sofia Silva", photo: "" },
+        { name: "Sofia Silva", photo: dancerSofiaSilva.url },
         { name: "Susana Ferreira", photo: dancerSusanaFerreira.url },
       ],
     },
     {
       title: "Grupo B",
       people: [
-        { name: "Deusa Santana", photo: "" },
+        { name: "Deusa Santana", photo: dancerDeusaSantana.url },
         { name: "Carolina Maia", photo: dancerCarolinaMaia.url },
         { name: "Joana Luz", photo: dancerJoanaLuz.url },
         { name: "Margarida Dores", photo: dancerMargaridaDores.url },

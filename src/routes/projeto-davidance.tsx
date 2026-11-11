@@ -93,6 +93,12 @@ function ProjectPage() {
       <section className="bg-secondary/40 py-12">
         <div className="container mx-auto px-5">
           <SectionTitle title={p.dancersTitle} />
+          <SmartImage
+            src={p.groupPhoto}
+            alt="Bailarinos do Projeto Davidance 26/27"
+            wrapperClassName="mx-auto mb-10 aspect-[3/4] max-w-3xl rounded-lg bg-secondary"
+            className="object-contain"
+          />
           <div className="mx-auto grid max-w-4xl grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4 md:grid-cols-6">
             {p.groups
               .flatMap((g) => g.people)
