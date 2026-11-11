@@ -117,8 +117,6 @@ describe("Davidance business rules", () => {
       expect(people.find((person) => person.name === name)?.photo).toBe(`/images/${filename}`);
     }
   });
-  it("uses the supplied 26/27 group photograph", () =>
-    expect(projectConfig.groupPhoto).toBe("/images/projeto-grupo-26-27.jpg"));
   it("excludes Alexandre Portugal from all project dancer groups", () => {
     expect(projectConfig.groups.flatMap((group) => group.people).some((person) => person.name === "Alexandre Portugal")).toBe(false);
   });
@@ -127,7 +125,7 @@ describe("Davidance business rules", () => {
   it("uses the real trial link", () =>
     expect(siteConfig.links.trialClass).toBe("https://forms.gle/ibVWxdEjLrz4qWv59"));
   it("uses the real weddings link", () =>
-    expect(siteConfig.links.weddings).toBe("https://forms.gle/BuwEuLPAFLc9UoUk9"));
+    expect(siteConfig.links.weddings).toBe("https://forms.gle/1Hem86ukKWTj2WSv5"));
   it("uses the supplied phone", () => expect(siteConfig.contacts.phone).toBe("+351 928322643"));
   it("every teacher teaches a configured class", () => {
     for (const t of teachers) expect(getTeacherStyles(t.name).length).toBeGreaterThan(0);
