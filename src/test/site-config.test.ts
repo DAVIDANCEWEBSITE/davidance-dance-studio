@@ -107,6 +107,18 @@ describe("Davidance business rules", () => {
     it(`${slug} has the approved age range`, () => expect(getStyle(slug)?.ageRange).toBe(age));
   it("dancers start with Andreia (Sofia removed): groups of 12 and 5", () =>
     expect(projectConfig.groups.map((g) => g.people.length)).toEqual([12, 5]));
+  it("uses the supplied portraits for Margarida Palminha, Sofia Silva and Deusa Santana", () => {
+    const people = projectConfig.groups.flatMap((group) => group.people);
+    for (const [name, filename] of [
+      ["Margarida Palminha", "projeto-margarida-palminha.jpg"],
+      ["Sofia Silva", "projeto-sofia-silva.jpg"],
+      ["Deusa Santana", "projeto-deusa-santana.jpg"],
+    ]) {
+      expect(people.find((person) => person.name === name)?.photo).toBe(`/images/${filename}`);
+    }
+  });
+  it("uses the supplied 26/27 group photograph", () =>
+    expect(projectConfig.groupPhoto).toBe("/images/projeto-grupo-26-27.jpg"));
   it("excludes Alexandre Portugal from all project dancer groups", () => {
     expect(projectConfig.groups.flatMap((group) => group.people).some((person) => person.name === "Alexandre Portugal")).toBe(false);
   });
