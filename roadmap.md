@@ -24,4 +24,4 @@
 - [x] Apply the 14 newly supplied project portraits and add the two studio photographs below the main facilities photo, without click-to-open; verified loading on desktop, tablet and mobile, with 51 tests passing.
 - [x] Rebuild the three "Davidance — Estúdio de Dança" blocks as mouse-reactive editorial cards (diluted group photo, numbered titles, hover veil revealing the text; text always visible on mobile); verified desktop and mobile, 51 tests passing.- [x] Replace Estúdio 2 photo and apply Option 3 editorial cards (quote, large number, hover lift/glow).
 - [x] Split the four Projeto Davidance video titles into two centered lines (edition above, piece name below); verified desktop and tablet, 60 tests passing.
-- [ ] Remove the 26/27 group photograph from the Project page and update the wedding form link; verify both pages.
+- [x] Remove the 26/27 group photograph from the Project page and update the wedding form link; verified both pages, with 61 tests passing.
