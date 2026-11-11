@@ -52,7 +52,6 @@ const img_sara = { url: "/images/home-sara.jpg" };
 const img_sofia = { url: "/images/home-sofia.jpg" };
 const logoAsset = { url: "/images/logo.png" };
 const timetableAsset = { url: "/images/horario-oficial.png" };
-const projectGroup = { url: "/images/projeto-grupo-26-27.jpg" };
 const projectStageHero = { url: "/images/projeto-stage-hero.jpg" };
 const quorum = { url: "/images/projeto-quorum.jpg" };
 const ritaSpider = { url: "/images/projeto-rita-spider.jpg" };
@@ -186,7 +185,7 @@ export const siteConfig = {
     trialClass: "https://forms.gle/ibVWxdEjLrz4qWv59",
     enrol: "https://forms.gle/HEKGNfnnKE4jBG616",
     audition: "https://forms.gle/PLACEHOLDER-audicao",
-    weddings: "https://forms.gle/BuwEuLPAFLc9UoUk9",
+    weddings: "https://forms.gle/1Hem86ukKWTj2WSv5",
     linktree: "https://linktr.ee/ddavidance",
     instagram: "https://www.instagram.com/_davidance_?utm_source=qr",
     facebook: "https://www.facebook.com/Davidancee?",
@@ -780,7 +779,6 @@ export const projectConfig = {
     },
   ],
   dancersTitle: "Bailarinos 26/27",
-  groupPhoto: projectGroup.url,
   groups: [
     {
       title: "Grupo A",
