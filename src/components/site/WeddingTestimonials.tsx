@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
-import { isTestimonialPending, orderedTestimonials, siteConfig } from "@/data/siteConfig";
+import { isTestimonialPending, orderedTestimonials, siteConfig, weddingPortraitPhotos } from "@/data/siteConfig";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { SmartImage } from "./SmartImage";
@@ -36,12 +36,15 @@ export function WeddingTestimonials() {
             <Button size="icon" variant="outline" className="rounded-full" onClick={() => api?.scrollNext()} aria-label={copy.nextStory} title={copy.nextStory}><ArrowRight /></Button>
           </div>
           <CarouselContent className="items-start">
-            {orderedTestimonials.map((testimonial, index) => (
+            {orderedTestimonials.map((testimonial, index) => {
+              const photo = testimonial.photos[0];
+              const isLandscape = Boolean(photo && !weddingPortraitPhotos.includes(photo));
+              return (
               <CarouselItem key={`${testimonial.couple}-${index}`} className={cn(selected !== index && "h-0 overflow-hidden")} aria-label={`${testimonial.couple}, ${index + 1} / ${orderedTestimonials.length}`} aria-hidden={selected !== index} inert={selected !== index}>
                 <article className="grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-10">
-                  <div className="relative mx-auto aspect-[4/5] w-full max-w-80 overflow-hidden rounded-lg">
-                    {testimonial.photos[0] ? (
-                      <SmartImage src={testimonial.photos[0]} alt={testimonial.couple} wrapperClassName="absolute inset-0 wedding-story-photo" className="object-contain object-center" />
+                  <div className={cn("relative mx-auto w-full max-w-80 overflow-hidden rounded-lg", isLandscape ? "md:aspect-[4/5]" : "aspect-[4/5]")}>
+                    {photo ? (
+                      <SmartImage src={photo} alt={testimonial.couple} wrapperClassName={cn("wedding-story-photo", isLandscape ? "relative md:absolute md:inset-0" : "absolute inset-0")} className={cn("object-contain object-center", isLandscape && "h-auto md:h-full")} />
                     ) : (
                       <Portrait name={testimonial.couple} className="h-full w-full" />
                     )}
@@ -56,7 +59,8 @@ export function WeddingTestimonials() {
                   </div>
                 </article>
               </CarouselItem>
-            ))}
+              );
+            })}
           </CarouselContent>
         </Carousel>
       </div>

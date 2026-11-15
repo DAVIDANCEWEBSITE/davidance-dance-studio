@@ -1,4 +1,5 @@
 # Davidance reformulation
+- [x] Remove empty vertical space around landscape wedding photographs on mobile using natural image height; preserve portrait, tablet and desktop framing.
 - [x] Make active wedding photographs move continuously on every device without changing frame dimensions or cropping heads; remove Sofia David Luz from dancers. Verified desktop, tablet, mobile and reduced motion; 49 tests passing.
 - [x] Add a size-preserving wedding photo effect, remove Tatiana and place Sofia before Andreia; verified desktop, tablet and mobile, with 49 tests passing.
 - [x] Clean the Rafaela & Rui photo, remove testimonial photo backgrounds and move Casamentos below the opening photograph; verified desktop, tablet and mobile, with 48 tests passing.
