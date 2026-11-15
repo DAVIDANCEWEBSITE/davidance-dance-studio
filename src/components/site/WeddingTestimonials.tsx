@@ -34,9 +34,9 @@ export function WeddingTestimonials() {
             {orderedTestimonials.map((testimonial, index) => (
               <CarouselItem key={`${testimonial.couple}-${index}`} aria-label={`${testimonial.couple}, ${index + 1} / ${orderedTestimonials.length}`} aria-hidden={selected !== index} inert={selected !== index}>
                 <article className="grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-10">
-                  <div className="relative overflow-hidden rounded-lg bg-secondary">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-secondary">
                     {testimonial.photos[0] ? (
-                      <SmartImage src={testimonial.photos[0]} alt={testimonial.couple} wrapperClassName="aspect-[4/3]" className="object-contain" />
+                      <SmartImage src={testimonial.photos[0]} alt={testimonial.couple} wrapperClassName="absolute inset-0" className="object-contain" />
                     ) : (
                       <Portrait name={testimonial.couple} className="aspect-[4/3]" />
                     )}
