@@ -10,9 +10,15 @@ import {
   projectConfig,
   canEnrolInLevel,
   orderedTestimonials,
+  isTestimonialPending,
 } from "@/data/siteConfig";
 
 describe("Davidance business rules", () => {
+  it("marks only couples with neither a photograph nor a testimonial as pending", () => {
+    expect(isTestimonialPending({ couple: "Joana & Pedro", text: "", photos: [] })).toBe(true);
+    expect(isTestimonialPending({ couple: "Mafalda & Nuno", text: "Testemunho fornecido", photos: [] })).toBe(false);
+    expect(isTestimonialPending({ couple: "Casal com foto", text: "", photos: ["/images/casal.jpg"] })).toBe(false);
+  });
   it("limits the wedding music or mix to the supplied three minutes", () => {
     expect(siteConfig.weddingsMusicLimitMinutes).toBe(3);
   });
