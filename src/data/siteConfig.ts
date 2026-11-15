@@ -837,7 +837,6 @@ export const projectConfig = {
     {
       title: "Grupo A",
       people: [
-        { name: "Sofia David Luz", photo: siteConfig.founder.photo },
         { name: "Andreia Silva", photo: dancerAndreiaSilva.url },
         { name: "Carolina Carvalho", photo: dancerCarolinaCarvalho.url },
         { name: "Cátia Soares", photo: dancerCatiaSoares.url },
