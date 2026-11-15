@@ -1,5 +1,5 @@
 # Davidance reformulation
-- [ ] Show complete wedding stories with couple signatures, pending couples, head-safe portrait frames and a centered FAQ accordion; verify all screen sizes.
+- [x] Show complete wedding stories with couple signatures, pending couples, head-safe portrait frames and a centered FAQ accordion; verified desktop, tablet and mobile, with 55 targeted tests passing.
 - [x] Expand the wedding opening photo, present testimonials in a compact carousel and add the reviewed FAQs afterwards; verified desktop, tablet and mobile, with 62 tests passing.
 - [x] Restore the wedding-card phrase and share audience reveal effects with all class catalogue photographs.
 - [x] Close mobile presentation cards on scroll; balance Sofia biography text and return to teachers on back navigation.
