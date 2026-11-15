@@ -1,5 +1,5 @@
 # Davidance reformulation
-- [ ] Add a size-preserving wedding photo effect, remove Tatiana and place Sofia before Andreia; verify the carousel and dancer grid.
+- [x] Add a size-preserving wedding photo effect, remove Tatiana and place Sofia before Andreia; verified desktop, tablet and mobile, with 49 tests passing.
 - [x] Clean the Rafaela & Rui photo, remove testimonial photo backgrounds and move Casamentos below the opening photograph; verified desktop, tablet and mobile, with 48 tests passing.
 - [x] Uniform wedding photographs in head-safe 4:5 frames with soft photographic backgrounds; verified carousel on desktop, tablet and mobile, with 48 targeted tests passing.
 - [x] Remove wedding photo borders and reduce story typography; arrows verified in a stable position above the stories on desktop, tablet and mobile, with 48 tests passing.
