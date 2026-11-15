@@ -23,9 +23,9 @@ export const Route = createFileRoute("/casamentos")({
 function WeddingsPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-plum">
+      <section className="relative overflow-hidden bg-plum pt-20">
         <SmartImage src={siteConfig.weddingsHero} alt={siteConfig.copy.weddingsTitle} eager wrapperClassName="aspect-[1318/880] w-full" className="object-contain" />
-        <div className="pointer-events-none absolute inset-0 bg-hero-overlay" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-20 bg-hero-overlay" />
         <div className="container absolute inset-x-0 top-24 mx-auto px-5 md:top-28">
           <Button asChild variant="ghost" className="absolute left-5 top-0 px-3 text-cream hover:bg-cream/15 hover:text-cream">
             <Link to="/" hash="aulas"><ArrowLeft />{siteConfig.copy.back}</Link>

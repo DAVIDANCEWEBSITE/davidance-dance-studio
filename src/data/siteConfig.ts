@@ -90,7 +90,10 @@ const block3 = { url: "/images/home-bloco-3.jpg" };
  * Valores marcados com [PLACEHOLDER] devem ser substituídos.
  */
 
+const weddingsMusicLimitMinutes = 3;
+
 export const siteConfig = {
+  weddingsMusicLimitMinutes,
   name: "Davidance",
   kidsImage: img_kids.url,
   youngAdultsImage: img_jovens.url,
@@ -161,7 +164,7 @@ export const siteConfig = {
     },
     {
       question: "Temos de dançar uma valsa ou podemos escolher a nossa música?",
-      answer: "A música é à vossa escolha. Pode ser uma valsa, mas também uma música que tenha marcado a vossa história, ou até uma mistura de músicas, com um limite de três minutos. Se ainda têm dúvidas, a coreógrafa ajuda-vos a perceber o que combina com a dança que imaginam.",
+      answer: `A música é à vossa escolha. Pode ser uma valsa, mas também uma música que tenha marcado a vossa história, ou até uma mistura de músicas, com um limite de ${weddingsMusicLimitMinutes} minutos. Se ainda têm dúvidas, a coreógrafa ajuda-vos a perceber o que combina com a dança que imaginam.`,
     },
     {
       question: "Com que antecedência devemos entrar em contacto?",

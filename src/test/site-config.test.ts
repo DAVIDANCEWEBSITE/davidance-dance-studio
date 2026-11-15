@@ -13,6 +13,9 @@ import {
 } from "@/data/siteConfig";
 
 describe("Davidance business rules", () => {
+  it("limits the wedding music or mix to the supplied three minutes", () => {
+    expect(siteConfig.weddingsMusicLimitMinutes).toBe(3);
+  });
   it("the facilities gallery keeps the main studio photo first and 5 unique photographs", () => {
     expect(siteConfig.facilities.photos).toHaveLength(5);
     expect(new Set(siteConfig.facilities.photos).size).toBe(5);
