@@ -30,10 +30,10 @@ function WeddingsPage() {
           <Button asChild variant="ghost" className="absolute left-5 top-0 px-3 text-cream hover:bg-cream/15 hover:text-cream">
             <Link to="/" hash="aulas"><ArrowLeft />{siteConfig.copy.back}</Link>
           </Button>
-          <h1 className="pt-12 text-center text-3xl font-light text-cream md:pt-0 md:text-5xl">{siteConfig.copy.weddingsTitle}</h1>
         </div>
       </section>
       <section className="container mx-auto max-w-4xl px-5 py-12 text-center">
+        <h1 className="mb-8 text-3xl font-light text-primary md:text-5xl">{siteConfig.copy.weddingsTitle}</h1>
         {siteConfig.copy.weddingsText.split("\n\n").map((para, i) => (
           <p
             key={i}
