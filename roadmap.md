@@ -1,5 +1,5 @@
 # Davidance reformulation
-- [ ] Clean the Rafaela & Rui photo, remove testimonial photo backgrounds and move Casamentos below the opening photograph; verify all screen sizes.
+- [x] Clean the Rafaela & Rui photo, remove testimonial photo backgrounds and move Casamentos below the opening photograph; verified desktop, tablet and mobile, with 48 tests passing.
 - [x] Uniform wedding photographs in head-safe 4:5 frames with soft photographic backgrounds; verified carousel on desktop, tablet and mobile, with 48 targeted tests passing.
 - [x] Remove wedding photo borders and reduce story typography; arrows verified in a stable position above the stories on desktop, tablet and mobile, with 48 tests passing.
 - [x] Show complete wedding stories with couple signatures, pending couples, head-safe portrait frames and a centered FAQ accordion; verified desktop, tablet and mobile, with 55 targeted tests passing.
