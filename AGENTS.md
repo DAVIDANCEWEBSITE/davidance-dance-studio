@@ -25,3 +25,4 @@
 - Netlify hosting is configured in root netlify.toml via NITRO_PRESET=netlify (publish dist); do not add public/_redirects SPA fallbacks — pages are server-rendered.
 - Site images live as plain files in public/images/ referenced by /images/... paths from src/data/siteConfig.ts; no CDN pointers, so any static host (Netlify) serves them.
 - WeddingTestimonials uses the shared Embla carousel with complete inline stories and an active-slide height; navigation stays above the changing content to keep its position stable. Photos stay whole and centered inside a transparent constrained 4:5 area without duplicate backgrounds, preserving heads; pending status requires both missing text and photos.
+- Wedding photo motion transforms only the image, never the frame; touch slide arrival stays at or below natural scale and all motion respects reduced-motion preferences.

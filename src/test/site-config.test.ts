@@ -114,8 +114,15 @@ describe("Davidance business rules", () => {
     ["ritmos-latinos", "+16 anos"],
   ] as const)
     it(`${slug} has the approved age range`, () => expect(getStyle(slug)?.ageRange).toBe(age));
-  it("dancers start with Andreia (Sofia removed): groups of 12 and 5", () =>
-    expect(projectConfig.groups.map((g) => g.people.length)).toEqual([12, 5]));
+  it("places Sofia David Luz with her official photograph immediately before Andreia", () => {
+    const people = projectConfig.groups.flatMap((group) => group.people);
+    expect(people.slice(0, 2).map((person) => person.name)).toEqual(["Sofia David Luz", "Andreia Silva"]);
+    expect(people[0]?.photo).toBe(siteConfig.founder.photo);
+    expect(projectConfig.groups.map((group) => group.people.length)).toEqual([13, 4]);
+  });
+  it("excludes Tatiana Teixeira from the project dancers", () => {
+    expect(projectConfig.groups.flatMap((group) => group.people).some((person) => person.name === "Tatiana Teixeira")).toBe(false);
+  });
   it("uses the supplied portraits for Margarida Palminha, Sofia Silva and Deusa Santana", () => {
     const people = projectConfig.groups.flatMap((group) => group.people);
     for (const [name, filename] of [
