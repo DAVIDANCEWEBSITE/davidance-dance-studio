@@ -39,11 +39,16 @@ export function WeddingTestimonials() {
             {orderedTestimonials.map((testimonial, index) => (
               <CarouselItem key={`${testimonial.couple}-${index}`} className={cn(selected !== index && "h-0 overflow-hidden")} aria-label={`${testimonial.couple}, ${index + 1} / ${orderedTestimonials.length}`} aria-hidden={selected !== index} inert={selected !== index}>
                 <article className="grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-10">
-                  <div className={cn("relative mx-auto w-full overflow-hidden rounded-lg shadow-soft", weddingPortraitPhotos.includes(testimonial.photos[0] ?? "") ? "max-w-80" : "max-w-lg")}>
+                  <div className="relative mx-auto aspect-[4/5] w-full max-w-80 overflow-hidden rounded-lg bg-secondary shadow-soft">
                     {testimonial.photos[0] ? (
-                      <SmartImage src={testimonial.photos[0]} alt={testimonial.couple} wrapperClassName={weddingPortraitPhotos.includes(testimonial.photos[0]) ? "aspect-[3/4] rounded-sm" : "aspect-[4/3] rounded-sm"} className={weddingPortraitPhotos.includes(testimonial.photos[0]) ? "object-cover object-top" : "object-contain"} />
+                      <>
+                        <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+                          <SmartImage src={testimonial.photos[0]} alt="" wrapperClassName="absolute inset-0 scale-110 blur-xl opacity-40" className="object-cover" />
+                        </div>
+                        <SmartImage src={testimonial.photos[0]} alt={testimonial.couple} wrapperClassName="absolute inset-0" className={weddingPortraitPhotos.includes(testimonial.photos[0]) ? "object-cover object-top" : "object-contain"} />
+                      </>
                     ) : (
-                      <Portrait name={testimonial.couple} className="aspect-[4/3]" />
+                      <Portrait name={testimonial.couple} className="h-full w-full" />
                     )}
                   </div>
                   <div className="flex min-w-0 flex-col items-center justify-center py-2 text-center">
