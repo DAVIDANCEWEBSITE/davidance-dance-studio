@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Quote } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { siteConfig, orderedTestimonials } from "@/data/siteConfig";
-import { CTAButton, PageHero, SectionTitle } from "@/components/site/primitives";
-import { Portrait } from "@/components/site/Portrait";
+import { siteConfig } from "@/data/siteConfig";
+import { CTAButton, SectionTitle } from "@/components/site/primitives";
+import { WeddingTestimonials } from "@/components/site/WeddingTestimonials";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SmartImage } from "@/components/site/SmartImage";
 import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/casamentos")({
@@ -22,15 +23,16 @@ export const Route = createFileRoute("/casamentos")({
 function WeddingsPage() {
   return (
     <>
-      <div className="container mx-auto px-5 pt-28">
-        <Button asChild variant="ghost" className="px-3 text-primary hover:bg-brand-hover hover:text-primary-foreground">
-          <Link to="/" hash="aulas">
-            <ArrowLeft />
-            {siteConfig.copy.back}
-          </Link>
-        </Button>
-      </div>
-      <PageHero title="Casamentos" image={siteConfig.weddingsHero} imageClassName="max-w-3xl" />
+      <section className="relative overflow-hidden bg-plum pt-20">
+        <SmartImage src={siteConfig.weddingsHero} alt={siteConfig.copy.weddingsTitle} eager wrapperClassName="aspect-[1318/880] w-full" className="object-contain" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-20 bg-hero-overlay" />
+        <div className="container absolute inset-x-0 top-24 mx-auto px-5 md:top-28">
+          <Button asChild variant="ghost" className="absolute left-5 top-0 px-3 text-cream hover:bg-cream/15 hover:text-cream">
+            <Link to="/" hash="aulas"><ArrowLeft />{siteConfig.copy.back}</Link>
+          </Button>
+          <h1 className="pt-12 text-center text-3xl font-light text-cream md:pt-0 md:text-5xl">{siteConfig.copy.weddingsTitle}</h1>
+        </div>
+      </section>
       <section className="container mx-auto max-w-4xl px-5 py-12 text-center">
         {siteConfig.copy.weddingsText.split("\n\n").map((para, i) => (
           <p
@@ -52,46 +54,18 @@ function WeddingsPage() {
           </CTAButton>
         </div>
       </section>
-      <section className="bg-secondary/40 py-12">
-        <div className="container mx-auto px-5">
-          <SectionTitle
-            title={siteConfig.copy.loveTitle}
-            eyebrow={siteConfig.copy.testimonialsTitle}
-          />
-          <div className="space-y-16">
-            {orderedTestimonials.map((t, i) => (
-              <div
-                key={t.couple + i}
-                className={cn(
-                  "mx-auto grid max-w-5xl items-center gap-8 md:grid-cols-[300px_1fr]",
-                  i % 2 && "md:grid-cols-[1fr_300px] md:[&>*:first-child]:order-2",
-                )}
-              >
-                <div className="relative">
-                  {t.photos[0] ? (
-                    <SmartImage
-                      src={t.photos[0]}
-                      alt={t.couple}
-                      wrapperClassName="aspect-[4/3] rounded-lg shadow-soft"
-                    />
-                  ) : (
-                    <Portrait name={t.couple} className="aspect-[4/3] rounded-lg" />
-                  )}
-                </div>
-                <div>
-                  {t.text && (
-                    <>
-                      <Quote className="h-8 w-8 text-primary" />
-                      <blockquote className="mt-3 text-pretty text-sm font-light leading-relaxed md:text-base">
-                        “{t.text}”
-                      </blockquote>
-                    </>
-                  )}
-                  <p className="mt-5 font-semibold text-primary">{t.couple}</p>
-                </div>
-              </div>
+      <WeddingTestimonials />
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto max-w-5xl px-5">
+          <SectionTitle title={siteConfig.copy.weddingsFaqTitle} />
+          <Accordion type="single" collapsible className="grid items-start gap-x-10 md:grid-cols-2">
+            {siteConfig.weddingsFaqs.map((faq, index) => (
+              <AccordionItem key={faq.question} value={`faq-${index}`}>
+                <AccordionTrigger className="min-h-20 gap-4 py-5 text-base text-foreground hover:text-primary hover:no-underline">{faq.question}</AccordionTrigger>
+                <AccordionContent className="pr-6 text-pretty leading-relaxed text-muted-foreground">{faq.answer}</AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
         </div>
       </section>
     </>
