@@ -1,4 +1,5 @@
 # Davidance reformulation
+- [x] Remove wedding photo borders and reduce story typography; arrows verified in a stable position above the stories on desktop, tablet and mobile, with 48 tests passing.
 - [x] Show complete wedding stories with couple signatures, pending couples, head-safe portrait frames and a centered FAQ accordion; verified desktop, tablet and mobile, with 55 targeted tests passing.
 - [x] Expand the wedding opening photo, present testimonials in a compact carousel and add the reviewed FAQs afterwards; verified desktop, tablet and mobile, with 62 tests passing.
 - [x] Restore the wedding-card phrase and share audience reveal effects with all class catalogue photographs.
