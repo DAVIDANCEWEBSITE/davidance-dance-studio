@@ -56,13 +56,13 @@ function WeddingsPage() {
       </section>
       <WeddingTestimonials />
       <section className="py-12 md:py-16">
-        <div className="container mx-auto max-w-5xl px-5">
+        <div className="container mx-auto max-w-3xl px-5">
           <SectionTitle title={siteConfig.copy.weddingsFaqTitle} />
-          <Accordion type="single" collapsible className="grid items-start gap-x-10 md:grid-cols-2">
+          <Accordion type="single" collapsible>
             {siteConfig.weddingsFaqs.map((faq, index) => (
               <AccordionItem key={faq.question} value={`faq-${index}`}>
-                <AccordionTrigger className="min-h-20 gap-4 py-5 text-base text-foreground hover:text-primary hover:no-underline">{faq.question}</AccordionTrigger>
-                <AccordionContent className="pr-6 text-pretty leading-relaxed text-muted-foreground">{faq.answer}</AccordionContent>
+                <AccordionTrigger className="min-h-20 gap-4 py-5 text-base text-foreground hover:text-primary hover:no-underline"><span className="flex min-w-0 items-baseline gap-4"><span className="shrink-0 text-xs font-normal tabular-nums text-primary" aria-hidden>{String(index + 1).padStart(2, "0")}.</span><span className="text-pretty">{faq.question}</span></span></AccordionTrigger>
+                <AccordionContent className="pl-9 pr-6 text-pretty leading-relaxed text-muted-foreground">{faq.answer}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

@@ -154,8 +154,7 @@ export const siteConfig = {
     weddingsFaqTitle: "Perguntas frequentes",
     previousStory: "Testemunho anterior",
     nextStory: "Testemunho seguinte",
-    readFullStory: "Ler testemunho completo",
-    closeStory: "Fechar testemunho",
+    comingSoon: "Brevemente",
   },
   weddingsFaqs: [
     {
@@ -281,11 +280,14 @@ export const photoFraming: Record<string, string> = {
   [cls_ritmos_latinos.url]: "object-center",
   [ritaSpider.url]: "object-[center_20%]",
   [afonsoRola.url]: "object-[center_30%]",
-  [wedding_joana_daniel.url]: "object-[center_20%]",
+  [wedding_joana_daniel.url]: "object-top",
   [wedding_katherine_antonino.url]: "object-contain",
-  [wedding_claudia_pedro.url]: "object-[center_30%]",
-  [wedding_daniela_rui.url]: "object-[center_30%]",
-  [wedding_alexandra_hugo.url]: "object-[center_25%]",
+  [wedding_claudia_pedro.url]: "object-top",
+  [wedding_daniela_rui.url]: "object-top",
+  [wedding_alexandra_hugo.url]: "object-top",
+  [wedding_carina_andre.url]: "object-top",
+  [wedding_joana_lourenco.url]: "object-top",
+  [wedding_mariana_pedro.url]: "object-top",
   [wedding_paula_paulo.url]: "object-top",
   [wedding_ines_bruno.url]: "object-center",
   [cls_danca_criativa.url]: "object-[center_60%]",
@@ -636,6 +638,15 @@ export const homeCards = [
   },
 ] as const;
 export type Testimonial = { couple: string; text: string; photos: string[] };
+export function isTestimonialPending(testimonial: Testimonial) {
+  return testimonial.photos.length === 0 && testimonial.text.trim().length === 0;
+}
+// Portrait frames gently crop the lower image, keeping the original top edge and heads intact.
+export const weddingPortraitPhotos = [
+  wedding_alexandra_hugo.url, wedding_carina_andre.url, wedding_claudia_pedro.url,
+  wedding_daniela_rui.url, wedding_joana_daniel.url, wedding_joana_lourenco.url,
+  wedding_mariana_pedro.url, wedding_paula_paulo.url,
+];
 export const testimonials: Testimonial[] = [
   {
     couple: "Inês & Miguel",

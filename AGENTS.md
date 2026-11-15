@@ -24,4 +24,4 @@
 - Home sections expose stable anchors for biography and catalogue back links, and the main school photograph reserves its natural aspect ratio to keep return scrolling stable while images load.
 - Netlify hosting is configured in root netlify.toml via NITRO_PRESET=netlify (publish dist); do not add public/_redirects SPA fallbacks — pages are server-rendered.
 - Site images live as plain files in public/images/ referenced by /images/... paths from src/data/siteConfig.ts; no CDN pointers, so any static host (Netlify) serves them.
-- WeddingTestimonials uses the shared Embla carousel with fixed-height excerpts and a full-text dialog; this keeps every supplied story accessible without pushing FAQs down the page.
+- WeddingTestimonials uses the shared Embla carousel with complete inline stories and an active-slide height; portrait photos use configured top-aligned frames to preserve heads, and pending status requires both missing text and photos.
