@@ -208,6 +208,25 @@
   }
 }
 
+/* Animate only the photograph; carousel dimensions and navigation stay fixed. */
+.wedding-story-photo img {
+  transition: opacity 700ms, filter 700ms, transform 900ms ease-out;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .wedding-story-photo:hover img {
+    transform: scale(1.05);
+  }
+}
+@media (hover: none) and (prefers-reduced-motion: no-preference) {
+  [aria-hidden="false"] .wedding-story-photo img {
+    animation: wedding-photo-arrival 900ms ease-out both;
+  }
+}
+@keyframes wedding-photo-arrival {
+  from { transform: scale(0.97); }
+  to { transform: scale(1); }
+}
+
 /* Hide the badge injected by Netlify's free plan. */
 iframe#nl-badge-frame,
 iframe[title="Powered by Netlify"],

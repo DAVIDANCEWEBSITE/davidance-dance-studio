@@ -1,4 +1,5 @@
 # Davidance reformulation
+- [x] Add a size-preserving wedding photo effect, remove Tatiana and place Sofia before Andreia; verified desktop, tablet and mobile, with 49 tests passing.
 - [x] Clean the Rafaela & Rui photo, remove testimonial photo backgrounds and move Casamentos below the opening photograph; verified desktop, tablet and mobile, with 48 tests passing.
 - [x] Uniform wedding photographs in head-safe 4:5 frames with soft photographic backgrounds; verified carousel on desktop, tablet and mobile, with 48 targeted tests passing.
 - [x] Remove wedding photo borders and reduce story typography; arrows verified in a stable position above the stories on desktop, tablet and mobile, with 48 tests passing.
@@ -24,7 +25,7 @@
 - [x] Integrate all 16 venue photographs, with IMG_4081 as the main photo and a compact gallery; verify navigation and rendering.
 - [x] Reduce the venue gallery by removing the beige dresses, sunglasses, student splits and Beatriz-with-Kids photographs; verify the reduced gallery.
 - [x] Remove the supplied group screenshot, heels and Christmas photographs; replace the venue previews with a compact editorial grid; verified seven-photo navigation on desktop, tablet and mobile.
-- [ ] Await a portrait for Tatiana Teixeira and the paid font files.
+- [ ] Await the paid font files.
 - [x] Add the supplied Margarida Palminha, Sofia Silva and Deusa Santana portraits.
 - [x] Apply the 14 newly supplied project portraits and add the two studio photographs below the main facilities photo, without click-to-open; verified loading on desktop, tablet and mobile, with 51 tests passing.
 - [x] Rebuild the three "Davidance — Estúdio de Dança" blocks as mouse-reactive editorial cards (diluted group photo, numbered titles, hover veil revealing the text; text always visible on mobile); verified desktop and mobile, 51 tests passing.- [x] Replace Estúdio 2 photo and apply Option 3 editorial cards (quote, large number, hover lift/glow).

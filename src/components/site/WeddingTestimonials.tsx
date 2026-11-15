@@ -41,7 +41,7 @@ export function WeddingTestimonials() {
                 <article className="grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-10">
                   <div className="relative mx-auto aspect-[4/5] w-full max-w-80 overflow-hidden rounded-lg">
                     {testimonial.photos[0] ? (
-                      <SmartImage src={testimonial.photos[0]} alt={testimonial.couple} wrapperClassName="absolute inset-0" className="object-contain object-center" />
+                      <SmartImage src={testimonial.photos[0]} alt={testimonial.couple} wrapperClassName="absolute inset-0 wedding-story-photo" className="object-contain object-center" />
                     ) : (
                       <Portrait name={testimonial.couple} className="h-full w-full" />
                     )}
