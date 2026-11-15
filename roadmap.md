@@ -1,4 +1,5 @@
 # Davidance reformulation
+- [ ] Expand the wedding opening photo, present testimonials in a compact carousel and add the reviewed FAQs afterwards; verify desktop, tablet and mobile.
 - [x] Restore the wedding-card phrase and share audience reveal effects with all class catalogue photographs.
 - [x] Close mobile presentation cards on scroll; balance Sofia biography text and return to teachers on back navigation.
 - [x] Remove the illuminated-logo facilities photo and Alexandre Portugal; verified across three screen sizes, with 53 tests passing.

@@ -147,7 +147,47 @@ export const siteConfig = {
     weddingsButton: "Queremos preparar a nossa dança!",
     loveTitle: "Histórias de amor",
     testimonialsTitle: "Testemunhos",
+    weddingsTitle: "Casamentos",
+    weddingsFaqTitle: "Perguntas frequentes",
+    previousStory: "Testemunho anterior",
+    nextStory: "Testemunho seguinte",
+    readFullStory: "Ler testemunho completo",
+    closeStory: "Fechar testemunho",
   },
+  weddingsFaqs: [
+    {
+      question: "E se não tivermos experiência em dança e formos dois pés esquerdos?",
+      answer: "Podem começar do zero. Os passos são preparados e ensinados ao vosso ritmo, respeitando aquilo que cada um se sente confortável a fazer. Se imaginam uma dança simples, sem passos complicados, é isso mesmo que vamos preparar convosco.",
+    },
+    {
+      question: "Temos de dançar uma valsa ou podemos escolher a nossa música?",
+      answer: "A música é à vossa escolha. Pode ser uma valsa, mas também uma música que tenha marcado a vossa história, ou até uma mistura de músicas, com um limite de três minutos. Se ainda têm dúvidas, a coreógrafa ajuda-vos a perceber o que combina com a dança que imaginam.",
+    },
+    {
+      question: "Com que antecedência devemos entrar em contacto?",
+      answer: "Podem falar connosco assim que tiverem a data do casamento, mesmo que ainda não tenham escolhido a música. Os ensaios decorrem, de preferência, nas semanas que antecedem a celebração. Se o casamento já estiver próximo, indiquem-nos a data para vermos o que é possível preparar.",
+    },
+    {
+      question: "De quantos ensaios vamos precisar?",
+      answer: "Depende da dança que imaginam, da vossa experiência e do tempo disponível até ao casamento. Não precisam de decidir já: contem-nos a vossa ideia e a coreógrafa ajuda-vos a escolher o número de ensaios adequado.",
+    },
+    {
+      question: "Onde e quando são as aulas?",
+      answer: "As aulas decorrem na Davidance, em Paio Pires, no Seixal. São privadas e os horários são combinados convosco, de acordo com a vossa disponibilidade e a do estúdio.",
+    },
+    {
+      question: "Podemos incluir familiares, madrinhas, padrinhos ou amigos?",
+      answer: "Sim! Além da primeira dança do casal, podemos preparar uma dança com a mãe ou o pai, uma coreografia com os padrinhos ou um momento de grupo. Se estão a organizar uma surpresa para o casal, também podem fazer o pedido em vosso nome.",
+    },
+    {
+      question: "Quanto custam as aulas e como pedimos o preçário?",
+      answer: "Preencham o breve formulário com a data do casamento e o contacto por onde preferem receber a resposta. Enviamos o preçário por WhatsApp ou email e confirmamos a disponibilidade para a vossa data. O pedido não implica inscrição.",
+    },
+    {
+      question: "Como confirmamos a inscrição?",
+      answer: "Depois de receberem o preçário e esclarecerem as vossas dúvidas, basta dizerem-nos que querem avançar. Enviamos a ficha de inscrição e combinamos convosco o primeiro ensaio.",
+    },
+  ],
   founder: {
     name: "Sofia David Luz",
     role: "Fundadora e Diretora Artística",
