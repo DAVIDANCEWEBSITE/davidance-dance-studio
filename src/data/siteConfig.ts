@@ -147,7 +147,7 @@ export const siteConfig = {
     weddingsText:
       "Acreditamos que a primeira dança é um dos momentos mais especiais do vosso dia. As aulas para casamento são privadas, personalizadas e agendadas de acordo com a disponibilidade dos noivos, preferencialmente nas semanas que antecedem a celebração.\n\nA coreografia é criada à medida do casal, tendo em conta a música escolhida e o nível de experiência, para que possam viver e desfrutar deste momento com confiança e naturalidade. Temos todo o gosto em preparar convosco uma recordação única para uma união tão especial.",
     weddingsPhrase: "As melhores memórias são aquelas que se vivem com emoção.",
-    weddingsButton: "Queremos preparar a nossa dança!",
+    weddingsButton: "Pedir orçamento e disponibilidade",
     loveTitle: "Histórias de amor",
     testimonialsTitle: "Testemunhos",
     weddingsTitle: "Casamentos",

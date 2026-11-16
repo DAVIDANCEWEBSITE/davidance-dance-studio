@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { classGroups, getStyle, projectConfig, siteConfig } from "@/data/siteConfig";
-import { PageHero } from "./primitives";
+import { CTAButton, PageHero } from "./primitives";
 import { RevealPhotoCard } from "./RevealPhotoCard";
 import { ArrowLeft, LockKeyhole } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -25,6 +25,9 @@ export function ClassCatalogue({ group }: { group: keyof typeof classGroups }) {
         }
       >
         <p>{data.description}</p>
+        <div className="mt-7">
+          <CTAButton href={siteConfig.links.trialClass}>{siteConfig.copy.trialButton}</CTAButton>
+        </div>
       </PageHero>
       <section className="container mx-auto px-5 py-12 md:py-16">
         <div className="grid grid-cols-1 mx-auto max-w-5xl gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
