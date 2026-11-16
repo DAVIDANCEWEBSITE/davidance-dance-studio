@@ -25,8 +25,8 @@ export function ClassCatalogue({ group }: { group: keyof typeof classGroups }) {
         }
       >
         <p>{data.description}</p>
-        <div className="mt-7">
-          <CTAButton href={siteConfig.links.trialClass}>{siteConfig.copy.trialButton}</CTAButton>
+        <div className="mt-5">
+          <CTAButton href={siteConfig.links.trialClass} className="px-5 py-2.5 text-xs md:text-[13px]">{siteConfig.copy.trialButton}</CTAButton>
         </div>
       </PageHero>
       <section className="container mx-auto px-5 py-12 md:py-16">
