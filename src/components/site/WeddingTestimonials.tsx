@@ -27,7 +27,7 @@ export function WeddingTestimonials() {
 
   return (
     <section className="bg-secondary/40 py-12 md:py-16">
-      <div className="container mx-auto max-w-5xl px-5">
+      <div id="testemunhos" className="container mx-auto max-w-5xl scroll-mt-24 px-5">
         <SectionTitle title={copy.loveTitle} eyebrow={copy.testimonialsTitle} />
         <Carousel opts={{ loop: true }} setApi={setApi} aria-label={copy.testimonialsTitle}>
           <div className="mb-6 flex items-center justify-center gap-5">
