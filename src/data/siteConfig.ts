@@ -600,7 +600,7 @@ export const classGroups = {
     title: "Jovens & Adultos",
     menu: "Jovens & Adultos",
     description:
-      "Na Davidance, há espaço para começar, voltar a dançar ou continuar a desafiar-te. Nas nossas aulas para jovens e adultos, desenvolves a técnica, a confiança e a tua forma de te expressares, num ambiente de partilha e boa energia. Descobre as aulas que mais combinam contigo e vem sentir e viver a dança!",
+      "Na Davidance, há espaço para começar, voltar a dançar ou continuar a desafiar-te. Nas nossas aulas para jovens e adultos, desenvolves a técnica, a confiança e a tua forma de te expressares, num ambiente de partilha e boa energia. Descobre as aulas que mais combinam\u00a0contigo.",
     slugs: [
       "contemporaneo",
       "lyrical-jazz",
