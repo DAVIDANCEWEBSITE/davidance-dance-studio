@@ -33,22 +33,22 @@ function WeddingsPage() {
         </div>
       </section>
       <section className="container mx-auto max-w-4xl px-5 py-12 text-center">
-        <h1 className="mb-8 text-3xl font-light text-primary md:text-5xl">{siteConfig.copy.weddingsTitle}</h1>
+        <h1 className="mb-4 text-3xl font-light text-primary md:mb-8 md:text-5xl">{siteConfig.copy.weddingsTitle}</h1>
         {siteConfig.copy.weddingsText.split("\n\n").map((para, i) => (
           <p
             key={i}
             className={cn(
-              "text-base leading-8 text-muted-foreground md:text-lg md:leading-9",
-              i > 0 && "mt-8",
+              "text-base leading-relaxed text-muted-foreground md:text-lg md:leading-9",
+              i > 0 && "mt-4 md:mt-8",
             )}
           >
             {para}
           </p>
         ))}
-        <p className="mt-8 whitespace-nowrap text-[10px] italic text-primary min-[400px]:text-xs sm:text-sm md:text-lg lg:text-xl">
+        <p className="mt-4 text-balance text-sm italic leading-relaxed text-primary md:mt-8 md:whitespace-nowrap md:text-lg lg:text-xl">
           {siteConfig.copy.weddingsPhrase}
         </p>
-        <div id="precario" className="mt-8 scroll-mt-24">
+        <div id="precario" className="mt-4 scroll-mt-24 md:mt-8">
           <CTAButton href={siteConfig.links.weddings} variant="glow">
             {siteConfig.copy.weddingsButton}
           </CTAButton>
