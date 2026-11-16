@@ -32,23 +32,23 @@ function WeddingsPage() {
           </Button>
         </div>
       </section>
-      <section className="container mx-auto max-w-4xl px-5 py-12 text-center">
+      <section className="container mx-auto max-w-2xl px-5 py-12 text-center">
         <h1 className="mb-8 text-3xl font-light text-primary md:text-5xl">{siteConfig.copy.weddingsTitle}</h1>
         {siteConfig.copy.weddingsText.split("\n\n").map((para, i) => (
           <p
             key={i}
             className={cn(
-              "text-balance text-base leading-relaxed text-muted-foreground md:text-lg",
-              i > 0 && "mt-4",
+              "text-pretty text-base leading-7 text-muted-foreground md:text-lg md:leading-8",
+              i > 0 && "mt-6",
             )}
           >
             {para}
           </p>
         ))}
-        <p className="mt-6 text-balance text-lg italic text-primary md:text-xl">
+        <p className="mt-6 text-pretty text-lg italic text-primary md:text-xl">
           {siteConfig.copy.weddingsPhrase}
         </p>
-        <div className="mt-8">
+        <div id="precario" className="mt-8 scroll-mt-24">
           <CTAButton href={siteConfig.links.weddings} variant="glow">
             {siteConfig.copy.weddingsButton}
           </CTAButton>
@@ -56,7 +56,7 @@ function WeddingsPage() {
       </section>
       <WeddingTestimonials />
       <section className="py-12 md:py-16">
-        <div className="container mx-auto max-w-3xl px-5">
+        <div id="perguntas-frequentes" className="container mx-auto max-w-3xl scroll-mt-24 px-5">
           <SectionTitle title={siteConfig.copy.weddingsFaqTitle} />
           <Accordion type="single" collapsible>
             {siteConfig.weddingsFaqs.map((faq, index) => (
