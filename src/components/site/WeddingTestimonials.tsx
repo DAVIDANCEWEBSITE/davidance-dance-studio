@@ -42,7 +42,7 @@ export function WeddingTestimonials() {
               return (
               <CarouselItem key={`${testimonial.couple}-${index}`} className={cn(selected !== index && "h-0 overflow-hidden")} aria-label={`${testimonial.couple}, ${index + 1} / ${orderedTestimonials.length}`} aria-hidden={selected !== index} inert={selected !== index}>
                 <article className="grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-10">
-                  <div className={cn("relative mx-auto w-full max-w-80 overflow-hidden rounded-lg", isLandscape ? "md:aspect-[4/5]" : "aspect-[4/5]")}>
+                  <div className={cn("relative mx-auto w-full max-w-80 overflow-hidden rounded-lg", isLandscape ? "md:aspect-[4/5] lg:max-w-96" : "aspect-[4/5]")}>
                     {photo ? (
                       <SmartImage src={photo} alt={testimonial.couple} wrapperClassName={cn("wedding-story-photo", isLandscape ? "relative md:absolute md:inset-0" : "absolute inset-0")} className={cn("object-contain object-center", isLandscape && "h-auto md:h-full")} />
                     ) : (
