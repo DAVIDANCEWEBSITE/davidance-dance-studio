@@ -1,5 +1,5 @@
 # Davidance reformulation
-- [ ] Refine wedding introduction typography and verify direct links to #precario, #testemunhos and #perguntas-frequentes on desktop, tablet and mobile.
+- [x] Refine wedding introduction typography and verify direct links to #precario, #testemunhos and #perguntas-frequentes on desktop, tablet and mobile; form link, carousel and FAQ checked, 56 tests passing.
 - [x] Remove empty vertical space around landscape wedding photographs on mobile using natural image height; preserve portrait, tablet and desktop framing.
 - [x] Make active wedding photographs move continuously on every device without changing frame dimensions or cropping heads; remove Sofia David Luz from dancers. Verified desktop, tablet, mobile and reduced motion; 49 tests passing.
 - [x] Add a size-preserving wedding photo effect, remove Tatiana and place Sofia before Andreia; verified desktop, tablet and mobile, with 49 tests passing.
