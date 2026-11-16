@@ -1,5 +1,5 @@
 # Davidance reformulation
-- [ ] Widen the wedding introduction, keep its closing phrase on one line, enlarge desktop landscape/square stories and update wedding and catalogue action buttons.
+- [x] Widen the wedding introduction, keep its closing phrase on one line, enlarge desktop landscape/square stories and update wedding and catalogue action buttons; verified on desktop, tablet and mobile, 56 tests passing.
 - [x] Refine wedding introduction typography and verify direct links to #precario, #testemunhos and #perguntas-frequentes on desktop, tablet and mobile; form link, carousel and FAQ checked, 56 tests passing.
 - [x] Remove empty vertical space around landscape wedding photographs on mobile using natural image height; preserve portrait, tablet and desktop framing.
 - [x] Make active wedding photographs move continuously on every device without changing frame dimensions or cropping heads; remove Sofia David Luz from dancers. Verified desktop, tablet, mobile and reduced motion; 49 tests passing.
