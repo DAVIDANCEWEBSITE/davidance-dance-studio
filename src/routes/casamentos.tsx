@@ -61,8 +61,8 @@ function WeddingsPage() {
           <Accordion type="single" collapsible>
             {siteConfig.weddingsFaqs.map((faq, index) => (
               <AccordionItem key={faq.question} value={`faq-${index}`}>
-                <AccordionTrigger className="min-h-20 gap-4 py-5 text-base text-foreground hover:text-primary hover:no-underline"><span className="flex min-w-0 items-baseline gap-4"><span className="shrink-0 text-xs font-normal tabular-nums text-primary" aria-hidden>{String(index + 1).padStart(2, "0")}.</span><span className="text-pretty">{faq.question}</span></span></AccordionTrigger>
-                <AccordionContent className="pl-9 pr-6 text-pretty leading-relaxed text-muted-foreground">{faq.answer}</AccordionContent>
+                <AccordionTrigger className="min-h-14 gap-4 py-3.5 text-sm font-medium text-foreground hover:text-primary hover:no-underline md:min-h-20 md:py-5 md:text-base"><span className="flex min-w-0 items-baseline gap-4"><span className="shrink-0 text-[11px] font-normal tabular-nums text-primary md:text-xs" aria-hidden>{String(index + 1).padStart(2, "0")}.</span><span className="text-pretty">{faq.question}</span></span></AccordionTrigger>
+                <AccordionContent className="pl-7 pr-3 text-xs leading-relaxed text-pretty text-muted-foreground md:pl-9 md:pr-6 md:text-sm">{faq.answer}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
