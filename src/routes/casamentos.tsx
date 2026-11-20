@@ -7,6 +7,13 @@ import { WeddingTestimonials } from "@/components/site/WeddingTestimonials";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SmartImage } from "@/components/site/SmartImage";
 import { cn } from "@/lib/utils";
+import { useEffect } from "react";
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
 export const Route = createFileRoute("/casamentos")({
   head: () => ({
     meta: [
@@ -21,6 +28,9 @@ export const Route = createFileRoute("/casamentos")({
   component: WeddingsPage,
 });
 function WeddingsPage() {
+  useEffect(() => {
+    window.gtag?.("event", "conversion", { send_to: "AW-18571464086/AramCOm7jrwdEJabyJdF" });
+  }, []);
   return (
     <>
       <section className="relative overflow-hidden bg-plum pt-20">
