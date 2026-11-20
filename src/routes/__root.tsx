@@ -101,10 +101,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", type: "image/png", href: "/favicon.png" },
     ],
     scripts: [
-      { async: true, src: "https://www.googletagmanager.com/gtag/js?id=AW-18571464086" },
+      { async: true, src: "https://www.googletagmanager.com/gtag/js?id=GTM-MZ5B7GTW" },
       {
         children:
-          "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18571464086');",
+          "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GTM-MZ5B7GTW');gtag('config','AW-18571464086');",
       },
     ],
   }),
